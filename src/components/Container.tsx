@@ -13,13 +13,13 @@ export const Container: React.FC<{
   showToolbar: boolean;
 }> = ({ children, showToolbar }) => {
   const { pathname } = useLocation();
+  const isCurrentPath = Object.values(Routes).map((path) => path === pathname);
 
-  // console.log(Object.values(Routes));
   return (
-    <div className="w-full bg-black">
+    <div className="w-full">
       {showToolbar && (
-        <div className="flex text-white p-4 sticky top-0">
-          <div className="">
+        <div className="flex text-white p-4 sticky top-0 bg-black">
+          <div className="hover:underline">
             <Link
               to="/"
               className={classnames({ underline: pathname === "/" })}
@@ -32,7 +32,13 @@ export const Container: React.FC<{
               return (
                 <Link
                   key={path}
-                  className={classnames({ underline: pathname === path })}
+                  className={classnames(
+                    {
+                      underline:
+                        isCurrentPath[Object.values(Routes).indexOf(path)],
+                    },
+                    "hover:underline"
+                  )}
                   to={path}
                 >
                   {name}
