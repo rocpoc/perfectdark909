@@ -4,7 +4,18 @@ export const About: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="text-2xl">About</div>
-      <div className="text-xl">This is the about page.</div>
+      <br></br>
+      <div className=" text-xl">
+        Perfect Dark is a CA based record label known for throwing high energy
+        underground parties and releasing a variety of electronic music - not
+        bound by genre but unified by feeling. We are a collective of friends.
+        <br></br>
+        <br></br>
+        We're interested in cultivating a community that shares our love for
+        eclectic dance music, ecological awareness, and aesthetic cohesion. We
+        want to bring people together through inclusive events that celebrate
+        life, friendship, mother earth, and music with soul.
+      </div>
     </Container>
   );
 };
