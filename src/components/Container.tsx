@@ -18,7 +18,7 @@ export const Container: React.FC<{
   return (
     <div className="w-full bg-black">
       {showToolbar && (
-        <div className="flex text-white p-4">
+        <div className="flex text-white p-4 sticky top-0">
           <div className="">
             <Link
               to="/"
