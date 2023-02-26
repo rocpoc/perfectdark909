@@ -10,5 +10,5 @@ We are a collective of friends. We're interested in cultivating a community that
 
 Check out the following links to support our music!
 
-  -  [Bandcamp](https://perfectdark909.bandcamp.com/)
-  -  [Instagram](https://instagram.com/perfectdark909)
+- [Bandcamp](https://perfectdark909.bandcamp.com/)
+- [Instagram](https://instagram.com/perfectdark909)
