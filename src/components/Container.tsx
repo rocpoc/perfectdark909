@@ -49,7 +49,7 @@ export const Container: React.FC<{
         </div>
       )}
 
-      <div className="max-w-4xl bg-black mx-auto text-center text-white min-h-screen">
+      <div className=" bg-black mx-auto text-center text-white min-h-screen">
         {children}
       </div>
     </div>
