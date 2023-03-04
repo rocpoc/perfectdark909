@@ -6,7 +6,6 @@ export const About: React.FC<{}> = () => {
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-lg m-auto pt-8">
         <div className="text-2xl">About</div>
-        <img src={logo}></image>
         <br></br>
         <div className="tex text-xl">
           Perfect Dark is a CA based record label known for throwing high energy

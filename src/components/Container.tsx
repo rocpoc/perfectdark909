@@ -19,7 +19,7 @@ export const Container: React.FC<{
 
   return (
     <div>
-      <Marquee gradient={false} className="bg-black text-white uppercase text-xs b bottom-[.5px]" pauseOnHover={true}>
+      <Marquee gradient={false} className="bg-black text-white uppercase text-xs b bottom-[.5px]" pauseOnHover={true} speed={50}>
         @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
       </Marquee>
       <div className="w-full">
