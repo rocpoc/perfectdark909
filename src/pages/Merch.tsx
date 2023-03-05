@@ -12,13 +12,15 @@ export const Merch: React.FC<{}> = () => {
       </div>
       <br></br>
       <div className="text-2xl">
+        CLICK
         <a
           className="className=text-4xl font-bold italic can-hover:hover:bg-gradient-to-bl from-violet-600 to-violet-800"
-          href="https://perfectdark909.bandcamp.com/merch"
+          href="https://perfectdark909.bandcamp.com/"
         >
           {" "}
-          CLICK HERE TO VISIT OUR BANDCAMP STORE
+          HERE{" "}
         </a>
+        TO VISIT OUR BANDCAMP STORE
       </div>
     </Container>
   );
