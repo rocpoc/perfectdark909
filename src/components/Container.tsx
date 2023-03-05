@@ -38,7 +38,7 @@ export const Container: React.FC<{
                 to="/"
                 className={classnames(
                   // { underline: pathname === "/" },
-                  "active:bg-violet-600 can-hover:hover:bg-violet-600 text-3xl"
+                  "active:bg-violet-600 can-hover:hover:bg-violet-600 text-4xl"
                 )}
               >
                 PERFECT DARK

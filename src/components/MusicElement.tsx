@@ -26,7 +26,7 @@ const MusicElement = ({
 
   return (
     <div
-      className={classNames({ "motion-safe:animate-fadeIn": isVisible }, "p11")}
+      className={classNames({ "motion-safe:animate-fadeIn": isVisible })}
       ref={domRef}
     >
       <iframe
