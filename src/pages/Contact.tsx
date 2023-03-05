@@ -5,14 +5,16 @@ export const Contact: React.FC<{}> = () => {
     <Container showToolbar={true}>
       {/* <div className="text-4xl font-bold">CONTACT</div> */}
       <div className="px-11 grow flex justify-center gap-2">
-        <span className="text-4xl font-bold hover:bg-violet-600">CONTACT</span>
+        <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
+          CONTACT
+        </span>
       </div>
       <br></br>
       <div className="text-2xl">
         For inquries and demo submissions, please email us at: <br></br>
         <br></br>
         <a
-          className="className=text-4xl font-bold hover:bg-violet-600 italic"
+          className="className=text-4xl font-bold can-hover:hover:bg-violet-600 italic"
           href="mailto:info@perfectdark909.com"
         >
           {" "}

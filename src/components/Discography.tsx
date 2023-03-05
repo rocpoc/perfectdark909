@@ -1,92 +1,94 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-// const Discography: React.FC<{}> = () => {
-//   const releases = [
-//     {
-//       title: "Pain Reinforcement",
-//       src: "https://bandcamp.com/EmbeddedPlayer/album=2815161335/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
-//     },
-//     {
-//       title: "5AM Dub by BRICK",
-//       src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
-//     },
-//     // {
-//     //   title: "Release 3",
-//     //   src: "https://your.bandcamp.com/album/release-3",
-//     // },
-//     // {
-//     //   title: "Release 4",
-//     //   src: "https://your.bandcamp.com/album/release-4",
-//     // },
-//     // {
-//     //   title: "Release 5",
-//     //   src: "https://your.bandcamp.com/album/release-5",
-//     // },
-//     // {
-//     //   title: "Release 6",
-//     //   src: "https://your.bandcamp.com/album/release-6",
-//     // },
-//   ];
-
-//   return (
-//     <div className="flex flex-wrap justify-center">
-//       {releases.map((release) => (
-//         <div key={release.title} className="w-full sm:w-1/2 md:w-1/3 p-2">
-//           <div className="p-1">
-//             <iframe
-//               title={release.title}
-//               style={{ border: 0, width: "350px", height: "350" }}
-//               src={release.src}
-//               seamless
-//             >
-//               <a href={release.src}>{release.title}</a>
-//             </iframe>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
+const releases = [
+  {
+    title: "Pain Reinforcement",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=2815161335/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+  {
+    title: "5AM Dub by BRICK",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
+  },
+];
 
 const Discography = () => {
+  useEffect(() => {
+    // Callback for IntersectionObserver
+    const callback = function (entries: IntersectionObserverEntry[]) {
+      entries.forEach((entry) => {
+        // Is the element in the viewport?
+        if (entry.isIntersecting) {
+          // Add the fadeIn class:
+          entry.target.classList.add("motion-safe:animate-fadeIn");
+        } else {
+          // Otherwise remove the fadein class
+          entry.target.classList.remove("motion-safe:animate-fadeIn");
+        }
+      });
+    };
+
+    // Get all the elements you want to show on scroll
+    const targets = document.querySelectorAll(".js-show-on-scroll");
+
+    // Set up a new observer
+    const observer = new IntersectionObserver(callback);
+
+    // Loop through each of the target
+    targets.forEach(function (target) {
+      // Hide the element
+      target.classList.add("opacity-0");
+
+      // Add the element to the watcher
+      observer.observe(target);
+    });
+  }, []);
   return (
-    <div className="discography-container flex flex-wrap -mx-4 p-1 grid-cols-3">
-      <iframe
-        style={{ border: 0, width: "350px", height: "350px" }}
-        src="https://bandcamp.com/EmbeddedPlayer/album=2815161335/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/"
-        seamless
-      >
-        <a href="https://perfectdark909.bandcamp.com/album/pain-reinforcement">
-          Pain Reinforcement by Perfect Dark
-        </a>
-      </iframe>
-      <iframe
-        style={{ border: 0, width: "350px", height: "350px" }}
-        src="https://bandcamp.com/EmbeddedPlayer/track=260360749/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/"
-        seamless
-      >
-        <a href="https://perfectdark909.bandcamp.com/track/5am-dub">
-          5AM Dub by BRICK
-        </a>
-      </iframe>
-      <iframe
-        style={{ border: 0, width: "350px", height: "350px" }}
-        src="https://bandcamp.com/EmbeddedPlayer/album=4158765372/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/"
-        seamless
-      >
-        <a href="ttps://perfectdark909.bandcamp.com/album/goofy-moment">
-          Goofy Moment by Dreamgoth
-        </a>
-      </iframe>
-      <iframe
-        style={{ border: 0, width: "350px", height: "350px" }}
-        src="https://bandcamp.com/EmbeddedPlayer/track=3649480773/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/"
-        seamless
-      >
-        <a href="https://perfectdark909.bandcamp.com/track/exit-loop">
-          Exit Loop by Luvr Boy
-        </a>
-      </iframe>
+    <div className="flex flex-wrap p-10 mx-auto max-w-6xl">
+      {releases.map((release) => {
+        return (
+          <div className="js-show-on-scroll">
+            <iframe
+              style={{ border: 0, width: "350px", height: "350px" }}
+              src={release.src}
+              seamless
+            >
+              <a href={release.link}>{release.title}</a>
+            </iframe>
+          </div>
+        );
+      })}
     </div>
   );
 };

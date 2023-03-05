@@ -12,3 +12,5 @@ const ScrollToTop = () => {
 };
 
 export default ScrollToTop;
+
+// fetching data from an API

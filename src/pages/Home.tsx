@@ -9,7 +9,7 @@ export const Home: React.FC<{}> = () => {
           <img
             src={logo}
             alt="Logo"
-            className="hover:shadow-inner hover:blur-sm transition duration-300"
+            className="can-hover:hover:shadow-inner can-hover:hover:blur-sm transition duration-300"
           />
         </div>
       </div>

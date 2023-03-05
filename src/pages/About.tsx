@@ -7,7 +7,7 @@ export const About: React.FC<{}> = () => {
       <div className="flex flex-col justify-center max-w-lg m-auto pt-8">
         {/* <div className="text-4xl font-bold">ABOUT US</div> */}
         <div className="px-11 grow flex justify-center gap-2">
-          <span className="text-4xl font-bold hover:bg-violet-600">
+          <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
             ABOUT US
           </span>
         </div>

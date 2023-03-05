@@ -18,7 +18,7 @@ export const Container: React.FC<{
   const isCurrentPath = Object.values(Routes).map((path) => path === pathname);
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen bg-black">
       <Marquee
         gradient={false}
         className="bg-black text-white uppercase text-xs b bottom-[.5px]"
@@ -32,11 +32,14 @@ export const Container: React.FC<{
       </Marquee>
       <div className="w-full">
         {showToolbar && (
-          <div className="flex text-white p-4 sticky top-0 bg-black text-2xl font-bold">
-            <div className="hover:bg-violet-600">
+          <div className="flex text-white p-4 sticky top-0 text-2xl font-bold bg-black z-20">
+            <div className="">
               <Link
                 to="/"
-                className={classnames({ underline: pathname === "/" })}
+                className={classnames(
+                  { underline: pathname === "/" },
+                  "active:bg-violet-600 can-hover:hover:bg-violet-600"
+                )}
               >
                 PERFECT DARK
               </Link>
@@ -50,9 +53,8 @@ export const Container: React.FC<{
                       {
                         underline:
                           isCurrentPath[Object.values(Routes).indexOf(path)],
-                        hover: "bg-violet-600",
                       },
-                      "hover:bg-violet-600 "
+                      "can-hover:hover:bg-violet-600 active:bg-violet-600"
                     )}
                     to={path}
                   >
@@ -64,9 +66,7 @@ export const Container: React.FC<{
           </div>
         )}
 
-        <div className=" bg-black mx-auto text-center text-white min-h-screen">
-          {children}
-        </div>
+        <div className="mx-auto text-center text-white">{children}</div>
       </div>
     </div>
   );

@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html, body, #root {
+      @apply h-full;
+      @apply bg-black;
+    }
+}
