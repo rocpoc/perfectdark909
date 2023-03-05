@@ -12,7 +12,7 @@ export const Contact: React.FC<{}> = () => {
         For inquries and demo submissions, please email us at: <br></br>
         <br></br>
         <a
-          className="className=text-4xl font-bold bg-yellow-500 italic"
+          className="className=text-4xl font-bold hover:bg-violet-600 italic"
           href="mailto:info@perfectdark909.com"
         >
           {" "}

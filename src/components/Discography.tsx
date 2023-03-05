@@ -87,7 +87,6 @@ const Discography = () => {
           Exit Loop by Luvr Boy
         </a>
       </iframe>
-      ;
     </div>
   );
 };
