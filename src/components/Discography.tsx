@@ -50,7 +50,7 @@ const releases = [
 
 const Discography = () => {
   return (
-    <div className="flex flex-wrap p-10 mx-auto max-w-6xl">
+    <div className="flex flex-wrap p-4 mx-auto max-w-6xl">
       {releases.map((release) => {
         return <MusicElement release={release} />;
       })}
