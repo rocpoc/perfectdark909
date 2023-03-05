@@ -11,7 +11,6 @@ export const Music: React.FC<{}> = () => {
         </div>
       </div>
       <br></br>
-      {/* discography */}
       <div className="app">
         <div className="discography-container p-4">
           <Discography />

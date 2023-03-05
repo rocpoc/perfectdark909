@@ -4,8 +4,8 @@ import logo from "../img/logo.jpg";
 export const Home: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
-      <div className="flex flex-col justify-center max-w-lg m-auto pt-8">
-        <div className="">
+      <div className="flex justify-center max-w-lg m-auto pt-8">
+        <div>
           <img
             src={logo}
             alt="Logo"

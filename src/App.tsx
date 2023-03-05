@@ -1,10 +1,12 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home, About, Contact, Music, Merch } from "./pages";
+import ScrollToTop from "./components/Scroll";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop /> {/* Scroll to top on route change */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
