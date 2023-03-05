@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.discography-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.release {
+  margin: 10px;
+  text-align: center;
+  flex: 0 0 calc(33.33% - 20px);
+}
+
+.release img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.release h3 {
+  font-size: 18px;
+  margin: 0;
+}

@@ -1,20 +1,22 @@
 import { Container } from "../components/Container";
+import Discography from "../components/Discography";
+import "../App.css";
 
 export const Music: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
-      <div className="text-2xl">Music</div>
-      <div className="text-xl">Listen to our music!</div>
-      <div className="w-full h-96 mx-auto my-auto align-middle p-4 self-auto">
-        <iframe
-          style={{ border: 0, width: "100%", height: "100%" }}
-          src="https://bandcamp.com/EmbeddedPlayer/album=2029916778/size=large/bgcol=333333/linkcol=2ebd35/artwork=small/transparent=true/"
-          seamless
-        >
-          <a href="https://perfectdark909.bandcamp.com/album/rave-forest">
-            Rave Forest by Perfect Dark
-          </a>
-        </iframe>
+      <div className="flex text-white p-4 sticky top-0 bg-black">
+        <div className="px-11 grow flex justify-center gap-2">
+          <span className="text-4xl font-bold hover:bg-violet-600">MUSIC</span>
+        </div>
+      </div>
+      <br></br>
+      {/* discography */}
+      <div className="app">
+        <h1>My Bandcamp Discography</h1>
+        <div className="discography-container">
+          <Discography />
+        </div>
       </div>
     </Container>
   );

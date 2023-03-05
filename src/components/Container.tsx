@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 
-
 enum Routes {
-  About = "/about",
-  Contact = "/contact",
-  Music = "/music",
+  ABOUT = "/about",
+  CONTACT = "/contact",
+  MUSIC = "/music",
+  MERCH = "/merch",
 }
 
 export const Container: React.FC<{
@@ -19,21 +19,29 @@ export const Container: React.FC<{
 
   return (
     <div>
-      <Marquee gradient={false} className="bg-black text-white uppercase text-xs b bottom-[.5px]" pauseOnHover={true} speed={50}>
-        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+      <Marquee
+        gradient={false}
+        className="bg-black text-white uppercase text-xs b bottom-[.5px]"
+        pauseOnHover={true}
+        speed={50}
+      >
+        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+        @perfectdark909 @perfectdark909
       </Marquee>
       <div className="w-full">
         {showToolbar && (
-          <div className="flex text-white p-4 sticky top-0 bg-black">
-            <div className="hover:underline">
+          <div className="flex text-white p-4 sticky top-0 bg-black text-2xl font-bold">
+            <div className="hover:bg-violet-600">
               <Link
                 to="/"
                 className={classnames({ underline: pathname === "/" })}
               >
-                Perfect Dark
+                PERFECT DARK
               </Link>
             </div>
-            <div className="grow flex justify-end gap-2">
+            <div className="grow flex justify-end gap-2 flex-wrap">
               {Object.entries(Routes).map(([name, path]) => {
                 return (
                   <Link
@@ -42,8 +50,9 @@ export const Container: React.FC<{
                       {
                         underline:
                           isCurrentPath[Object.values(Routes).indexOf(path)],
+                        hover: "bg-violet-600",
                       },
-                      "hover:underline"
+                      "hover:bg-violet-600 "
                     )}
                     to={path}
                   >
