@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       screens: { "can-hover": { raw: "(hover: hover)" } },
       animation: {
-        fadeIn: "fadeIn 2s ease-in forwards",
+        fadeIn: "fadeIn 1s ease-in forwards",
       },
       variants: {
         animation: ["motion-safe"],
