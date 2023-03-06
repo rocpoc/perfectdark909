@@ -10,7 +10,7 @@ const MusicElement = ({
     link: string;
   };
 }) => {
-  const [isVisible, setVisible] = useState(true);
+  const [isVisible, setVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
