@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, About, Contact, Music, Merch } from "./pages";
+import { Home, About, Contact, Music, Merch, Links, DJs } from "./pages";
 import ScrollToTop from "./components/Scroll";
 
 function App() {
@@ -13,6 +13,8 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
         <Route path="merch" element={<Merch />} />
+        <Route path="links" element={<Links />} />
+        <Route path="djs" element={<DJs />} />
       </Routes>
     </BrowserRouter>
   );

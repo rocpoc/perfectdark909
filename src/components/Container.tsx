@@ -8,6 +8,7 @@ enum Routes {
   CONTACT = "/contact",
   MUSIC = "/music",
   MERCH = "/merch",
+  LINKS = "/links",
 }
 
 export const Container: React.FC<{
@@ -54,7 +55,7 @@ export const Container: React.FC<{
                         underline:
                           isCurrentPath[Object.values(Routes).indexOf(path)],
                       },
-                      "can-hover:hover:bg-violet-600 active:bg-violet-600"
+                      "can-hover:hover:bg-violet-600 active:bg-violet-600 can-hover:hover:line-through"
                     )}
                     to={path}
                   >

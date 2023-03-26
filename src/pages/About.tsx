@@ -17,13 +17,18 @@ export const About: React.FC<{}> = () => {
           high energy underground parties and releasing a variety of electronic
           music. Not bound by genre but unified by feeling.
           <br></br>
-          <br></br>
           We are a collective of friends. We're interested in cultivating a
           community that shares our love for eclectic dance music, ecological
           awareness, and aesthetic cohesion. We want to bring people together
           through inclusive events that celebrate life, friendship, mother
           earth, and music with soul.
-          <img src={logo} alt="Logo" />
+        </div>
+        <div className="text-xl p-8">
+          You can check out our DJs{" "}
+          <a href="/djs" className="can-hover:hover:bg-violet-600 underline">
+            here
+          </a>
+          .{/* <img src={logo} alt="Logo" /> */}
         </div>
       </div>
     </Container>

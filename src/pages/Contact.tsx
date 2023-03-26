@@ -10,8 +10,10 @@ export const Contact: React.FC<{}> = () => {
         </span>
       </div>
       <br></br>
-      <div className="text-2xl">
-        For inquries and demo submissions, please email us at: <br></br>
+      <br></br>
+
+      <div className="text-2xl font-bold">
+        For booking inquries and demo submissions, please email us at: <br></br>
         <br></br>
         <a
           className="className=text-4xl font-bold can-hover:hover:bg-violet-600 italic"
@@ -23,7 +25,7 @@ export const Contact: React.FC<{}> = () => {
       </div>
       <br></br>
       <br></br>
-      <div className="text-xl">
+      <div className="text-xl font-bold">
         Please leave your name, contact info, and a brief description of your
         request.
         <br></br>
