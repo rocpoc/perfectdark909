@@ -1,13 +1,13 @@
 import { Container } from "../components/Container";
 
-export const DJs: React.FC<{}> = () => {
+export const Artists: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-lg m-auto pt-8">
         {/* <div className="text-4xl font-bold">ABOUT US</div> */}
         <div className="px-11 grow flex justify-center gap-2">
           <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
-            OUR DJs
+            OUR ARTISTS
           </span>
         </div>
         <br></br>

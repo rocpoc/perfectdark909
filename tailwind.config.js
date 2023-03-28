@@ -18,5 +18,8 @@ module.exports = {
       },
     },
     plugins: [],
+    rotate: {
+      17: "17deg",
+    },
   },
 };

@@ -7,8 +7,8 @@ enum Routes {
   ABOUT = "/about",
   CONTACT = "/contact",
   MUSIC = "/music",
-  MERCH = "/merch",
-  LINKS = "/links",
+  // MERCH = "/merch",
+  // LINKS = "/links",
 }
 
 export const Container: React.FC<{

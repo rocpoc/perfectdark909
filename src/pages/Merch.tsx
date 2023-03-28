@@ -1,4 +1,7 @@
 import { Container } from "../components/Container";
+import pd_90_logo from "../img/PD - 90_s type-01.png";
+import pd_spiral_logo from "../img/PD - Spiral-01.png";
+import pd_heart_logo from "../img/PD_Special Heart-01.png";
 
 export const Merch: React.FC<{}> = () => {
   return (
@@ -21,6 +24,35 @@ export const Merch: React.FC<{}> = () => {
           HERE{" "}
         </a>
         TO VISIT OUR BANDCAMP STORE
+      </div>
+      <div className="flex justify-center absolute inset-x-0 bottom-4 max-w-lg m-auto">
+        <div>
+          <img
+            src={pd_heart_logo}
+            alt="Logo"
+            className="max-w-lg m-auto"
+            width="50"
+            height="50"
+          />
+        </div>
+        <div>
+          <img
+            src={pd_90_logo}
+            alt="Logo"
+            className="max-w-lg m-auto"
+            width="50"
+            height="50 "
+          />
+        </div>
+        <div>
+          <img
+            src={pd_spiral_logo}
+            alt="Logo"
+            className="max-w-lg m-auto"
+            width="50"
+            height="50 "
+          />
+        </div>
       </div>
     </Container>
   );

@@ -7,16 +7,12 @@ export const Links: React.FC<{}> = () => {
       <div className="flex flex-col justify-center max-w-lg m-auto pt-8">
         {/* <div className="text-4xl font-bold">ABOUT US</div> */}
         <div className="px-11 grow flex justify-center gap-2">
-          <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
-            LINKS
-          </span>
-        </div>
-        <br></br>
-        <div className="px-11 grow flex justify-center gap-2">
-          <span className="text-xl font-bold">
+          <span className="text-2xl font-bold can-hover:hover:bg-violet-600">
             CLICK FOR TICKETS / MORE INFO
           </span>
         </div>
+        <br></br>
+
         <br></br>
         <div className="text-xl p-2  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a href="https://ra.co/events/1652757" target="_blank">
