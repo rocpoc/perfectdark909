@@ -36,7 +36,7 @@ export const About: React.FC<{}> = () => {
             </a>
           </span>
         </div>
-        <div className="flex justify-center absolute inset-x-0 bottom-4 max-w-lg m-auto">
+        <div className="flex justify-center py-4 inset-x-0 bottom-4 max-w-lg m-auto">
           <div>
             <img
               src={pd_heart_logo}

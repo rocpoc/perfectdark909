@@ -59,7 +59,7 @@ export const Home: React.FC<{}> = () => {
           </div>
           <div className="px-2">
             <a
-              href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=54750008287e43a6"
+              href="https://open.spotify.com/playlist/7wC505QRPfL4imOZcGrJTe?si=570f1ceee6094d42"
               target="_blank"
             >
               <img
@@ -85,7 +85,7 @@ export const Home: React.FC<{}> = () => {
         </div>
         {/* <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
           <a
-            href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=MvOScfjfRjmm6TkxQne8PQ&nd=1"
+            href=""
             target="_blank"
           >
             Perfect Dark Selects Spotify Playlist
@@ -94,40 +94,40 @@ export const Home: React.FC<{}> = () => {
         <br></br>
         <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
           <a
-            href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=MvOScfjfRjmm6TkxQne8PQ&nd=1"
+            href="https://open.spotify.com/album/35HoZzRuVcIJVuRPJFdNNZ?si=ddardGGnQIas_-gz6TLozQ"
             target="_blank"
           >
             Dilate - Forgotten Places EP
           </a>
         </div>
-        <div className="flex justify-center absolute inset-x-0 bottom-4 max-w-lg m-auto">
-          <div>
-            <img
-              src={pd_heart_logo}
-              alt="Logo"
-              className="max-w-lg m-auto"
-              width="50"
-              height="50"
-            />
-          </div>
-          <div>
-            <img
-              src={pd_90_logo}
-              alt="Logo"
-              className="max-w-lg m-auto"
-              width="50"
-              height="50 "
-            />
-          </div>
-          <div>
-            <img
-              src={pd_spiral_logo}
-              alt="Logo"
-              className="max-w-lg m-auto"
-              width="50"
-              height="50"
-            />
-          </div>
+      </div>
+      <div className="flex justify-center py-4 inset-x-0 bottom-5 max-w-lg m-auto">
+        <div>
+          <img
+            src={pd_heart_logo}
+            alt="Logo"
+            className="max-w-lg m-auto"
+            width="50"
+            height="50"
+          />
+        </div>
+        <div>
+          <img
+            src={pd_90_logo}
+            alt="Logo"
+            className="max-w-lg m-auto"
+            width="50"
+            height="50 "
+          />
+        </div>
+        <div>
+          <img
+            src={pd_spiral_logo}
+            alt="Logo"
+            className="max-w-lg m-auto"
+            width="50"
+            height="50"
+          />
         </div>
       </div>
     </Container>

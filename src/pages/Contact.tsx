@@ -34,7 +34,7 @@ export const Contact: React.FC<{}> = () => {
           <br></br>
         </div>
       </div>
-      <div className="flex justify-center absolute inset-x-0 bottom-4 max-w-lg m-auto">
+      <div className="flex justify-center py-4 inset-x- bottom-4 max-w-lg m-auto">
         <div>
           <img
             src={pd_heart_logo}
