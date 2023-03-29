@@ -23,7 +23,7 @@ export const Home: React.FC<{}> = () => {
           />
         </div>
         <br></br>
-        <div className="flex justify-center max-w-lg m-auto">
+        <div className="flex justify-center max-w-lg m-auto ">
           <div className="px-2">
             <a href="https://soundcloud.com/perfectdark909" target="_blank">
               <img
