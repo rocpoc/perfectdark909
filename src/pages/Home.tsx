@@ -77,10 +77,9 @@ export const Home: React.FC<{}> = () => {
           LATEST
         </div> */}
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:rotate-[10deg]">
-          <a href="https://ra.co/events/1652757" target="_blank">
-            TICKETS 3.31 - Direct to Earth with Ø[Phase], Project 313, Adra and
-            Perfect Dark
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+          <a href="https://perfectdark909.bandcamp.com/" target="_blank">
+            TRACKS FOR TREES
           </a>
         </div>
         {/* <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
@@ -92,7 +91,7 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div> */}
         <br></br>
-        <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
+        <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a
             href="https://open.spotify.com/album/35HoZzRuVcIJVuRPJFdNNZ?si=ddardGGnQIas_-gz6TLozQ"
             target="_blank"
