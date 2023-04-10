@@ -77,9 +77,16 @@ export const Home: React.FC<{}> = () => {
           LATEST
         </div> */}
         <br></br>
+
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+          <a href="https://ra.co/events/1666389" target="_blank">
+            PERFECT DARK x BCCO: MAY 13 TICKETS
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-green-800 can-hover:hover:line-through">
           <a href="https://perfectdark909.bandcamp.com/" target="_blank">
-            TRACKS FOR TREES
+            🌲 TRACKS FOR TREES 🌲
           </a>
         </div>
         {/* <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
