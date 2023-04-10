@@ -1,7 +1,24 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Home, About, Contact, Music, Merch, Links, Artists } from "./pages";
+import { useEffect } from "react";
 import ScrollToTop from "./components/Scroll";
+
+function redirectToExternalUrl(url: string) {
+  window.location.href = url;
+}
+
+interface RedirectToExternalUrlProps {
+  url: string;
+}
+
+function RedirectToExternalUrl({ url }: RedirectToExternalUrlProps) {
+  useEffect(() => {
+    redirectToExternalUrl(url);
+  }, [url]);
+
+  return null;
+}
 
 function App() {
   return (
@@ -13,8 +30,11 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
         <Route path="merch" element={<Merch />} />
-        {/* <Route path="links" element={<Links />} /> */}
         <Route path="artists" element={<Artists />} />
+        <Route
+          path="bcco"
+          element={<RedirectToExternalUrl url="https://ra.co/events/1666389" />}
+        />
       </Routes>
     </BrowserRouter>
   );
