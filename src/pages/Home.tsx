@@ -84,6 +84,12 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div>
         <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+          <a href="https://soundcloud.com/HZmUXH93qsa5R9sH8" target="_blank">
+            Freeman 713 x Barbosa - Whetstone
+          </a>
+        </div>
+        <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-green-800 can-hover:hover:line-through">
           <a href="https://perfectdark909.bandcamp.com/" target="_blank">
             🌲 TRACKS FOR TREES 🌲
