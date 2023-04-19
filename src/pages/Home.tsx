@@ -85,16 +85,25 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+          <a
+            href="https://www.beatport.com/release/lifeforce/4071530"
+            target="_blank"
+          >
+            Luvr Boy - Lifeforce EP (Beatport Preorder)
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a href="https://on.soundcloud.com/up9mKLAizhxsuNUJ9" target="_blank">
             Freeman 713 x Barbosa - Whetstone
           </a>
         </div>
-        <br></br>
+        {/* <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-green-800 can-hover:hover:line-through">
           <a href="https://perfectdark909.bandcamp.com/" target="_blank">
             🌲 TRACKS FOR TREES 🌲
           </a>
-        </div>
+        </div> */}
         {/* <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
           <a
             href=""
@@ -104,7 +113,7 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div> */}
         <br></br>
-        <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a
             href="https://open.spotify.com/album/35HoZzRuVcIJVuRPJFdNNZ?si=ddardGGnQIas_-gz6TLozQ"
             target="_blank"
