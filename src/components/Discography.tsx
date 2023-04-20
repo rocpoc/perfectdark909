@@ -2,12 +2,17 @@ import MusicElement from "./MusicElement";
 
 const releases = [
   {
-    title: "Pain Reinforcement",
+    title: "Luvr Boy - Lifeforce EP",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=2315407880/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/lifeforce",
+  },
+  {
+    title: "Dilate - Forgotten Places EP",
     src: "https://bandcamp.com/EmbeddedPlayer/album=1180745057/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
     link: "https://perfectdark909.bandcamp.com/album/forgotten-places-ep",
   },
   {
-    title: "Pain Reinforcement",
+    title: "Sticktalk - Pain Reinforcement EP",
     src: "https://bandcamp.com/EmbeddedPlayer/album=2815161335/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
     link: "https://perfectdark909.bandcamp.com/album/pain-reinforcement",
   },

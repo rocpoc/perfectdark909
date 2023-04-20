@@ -73,45 +73,41 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
-        {/* <div className="text-4xl font-bold can-hover:hover:underline decoration-violet-600	">
-          LATEST
-        </div> */}
         <br></br>
-
+        <div className="text-4xl font-bold">SHOWS</div>
+        <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a href="https://ra.co/events/1666389" target="_blank">
-            PERFECT DARK x BCCO: MAY 13 TICKETS
+            PD x BCCO: MAY 13 TICKETS
           </a>
         </div>
+        <br></br>
+        <br></br>
+        <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a
-            href="https://www.beatport.com/release/lifeforce/4071530"
+            href="https://perfectdark909.bandcamp.com/album/lifeforce"
             target="_blank"
           >
-            Luvr Boy - Lifeforce EP (Beatport Preorder)
+            Luvr Boy - Lifeforce EP (Purchase)
           </a>
         </div>
+        {/* <br></br> */}
+        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+          <a
+            href="https://open.spotify.com/album/4jyBP9vkUF4WuQQ1mDWtpp?si=E_7C07aaTiqnCaJeTM0pbQ"
+            target="_blank"
+          >
+            Luvr Boy - Lifeforce EP (Streaming)
+          </a>
+        </div> */}
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a href="https://on.soundcloud.com/up9mKLAizhxsuNUJ9" target="_blank">
             Freeman 713 x Barbosa - Whetstone
           </a>
         </div>
-        {/* <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-green-800 can-hover:hover:line-through">
-          <a href="https://perfectdark909.bandcamp.com/" target="_blank">
-            🌲 TRACKS FOR TREES 🌲
-          </a>
-        </div> */}
-        {/* <div className="text-2xl p-2 font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through can-hover:hover:-rotate-[10deg]">
-          <a
-            href=""
-            target="_blank"
-          >
-            Perfect Dark Selects Spotify Playlist
-          </a>
-        </div> */}
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
           <a
@@ -122,6 +118,8 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div>
       </div>
+      <br></br>
+      <br></br>
       <div className="flex justify-center py-4 inset-x-0 bottom-5 max-w-lg m-auto">
         <div>
           <img

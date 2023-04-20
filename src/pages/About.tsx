@@ -25,7 +25,7 @@ export const About: React.FC<{}> = () => {
           through inclusive events that celebrate life, friendship, mother
           earth, and music with soul.
         </div>
-        <div className="px-11 grow flex justify-center gap-2 py-3">
+        <div className="px-11 grow flex justify-center gap-2">
           <span className="text-xl ">
             You can check out our artists{" "}
             <a
