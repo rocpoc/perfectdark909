@@ -8,6 +8,8 @@ import bc_logo from "../img/icons bc.png";
 import ig_logo from "../img/icons-insta-01.png";
 import spotify_logo from "../img/icons-spotify-01.png";
 import soundcloud_logo from "../img/icons-soundcloud-01.png";
+import sticker_pack from "../img/sticker-pack.png";
+import special from "../img/eseip.png";
 
 export const Home: React.FC<{}> = () => {
   return (
@@ -73,19 +75,27 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
+        <div className="text-4xl font-bold">LATEST</div>
         <br></br>
-        <div className="text-4xl font-bold">SHOWS</div>
-        <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
-          <a href="https://ra.co/events/1666389" target="_blank">
-            PD x BCCO: MAY 13 TICKETS
+        <div className="text-2xl font-bold  can-hover:hover:bg-green-800">
+          <a href="https://perfectdark909.bandcamp.com/merch" target="_blank">
+            PERFECT DARK SUMMER 23 DROP
           </a>
         </div>
+        <br></br>
+        {/* add a link to the img */}
+        <a href="https://perfectdark909.bandcamp.com/merch">
+          <img
+            src={sticker_pack}
+            alt="Sticker Pack"
+            className="max-w-xs max-h-xs justify-center m-auto"
+          />
+        </a>
         <br></br>
         <br></br>
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a
             href="https://perfectdark909.bandcamp.com/album/lifeforce"
             target="_blank"
@@ -103,13 +113,13 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div> */}
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://on.soundcloud.com/up9mKLAizhxsuNUJ9" target="_blank">
             Freeman 713 x Barbosa - Whetstone
           </a>
         </div>
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600 can-hover:hover:line-through">
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600h">
           <a
             href="https://open.spotify.com/album/35HoZzRuVcIJVuRPJFdNNZ?si=ddardGGnQIas_-gz6TLozQ"
             target="_blank"
