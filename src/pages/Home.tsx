@@ -75,32 +75,36 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
+        <br></br>
         <div className="text-4xl font-bold">LATEST</div>
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-green-800">
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a href="https://ra.co/events/1722060" target="_blank">
+            SuperSecret x Perfect Dark present Silent Servant (Tickets)
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://perfectdark909.bandcamp.com/merch" target="_blank">
-            PERFECT DARK SUMMER 23 DROP
+            PD Summer 2023 Merch Drop
           </a>
         </div>
         <br></br>
         {/* add a link to the img */}
-        <a href="https://perfectdark909.bandcamp.com/merch">
+        {/* <a href="https://perfectdark909.bandcamp.com/merch">
           <img
             src={sticker_pack}
             alt="Sticker Pack"
             className="max-w-xs max-h-xs justify-center m-auto"
           />
-        </a>
+        </a> */}
         <br></br>
         <br></br>
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a
-            href="https://perfectdark909.bandcamp.com/album/lifeforce"
-            target="_blank"
-          >
-            Luvr Boy - Lifeforce EP (Purchase)
+          <a href="https://fanlink.to/i6Dy            " target="_blank">
+            Luvr Boy - Lifeforce EP
           </a>
         </div>
         {/* <br></br> */}
@@ -113,17 +117,14 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div> */}
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://on.soundcloud.com/up9mKLAizhxsuNUJ9" target="_blank">
             Freeman 713 x Barbosa - Whetstone
           </a>
-        </div>
-        <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600h">
-          <a
-            href="https://open.spotify.com/album/35HoZzRuVcIJVuRPJFdNNZ?si=ddardGGnQIas_-gz6TLozQ"
-            target="_blank"
-          >
+        </div> */}
+        {/* <br></br> */}
+        <div className="text-2xl font-bold can-hover:hover:bg-violet-600">
+          <a href="https://fanlink.to/i6DB" target="_blank">
             Dilate - Forgotten Places EP
           </a>
         </div>

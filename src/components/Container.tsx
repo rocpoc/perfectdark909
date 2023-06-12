@@ -55,7 +55,7 @@ export const Container: React.FC<{
                         underline:
                           isCurrentPath[Object.values(Routes).indexOf(path)],
                       },
-                      "can-hover:hover:bg-violet-600 active:bg-violet-600 can-hover:hover:line-through"
+                      "can-hover:hover:bg-violet-600 active:bg-violet-600"
                     )}
                     to={path}
                   >

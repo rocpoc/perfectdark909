@@ -29,11 +29,13 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
-        <Route path="merch" element={<Merch />} />
+        {/* <Route path="merch" element={<Merch />} /> */}
         <Route path="artists" element={<Artists />} />
         <Route
-          path="bcco"
-          element={<RedirectToExternalUrl url="https://ra.co/events/1666389" />}
+          path="merch"
+          element={
+            <RedirectToExternalUrl url="https:perfectdark909.bandcamp.com/merch" />
+          }
         />
       </Routes>
     </BrowserRouter>
