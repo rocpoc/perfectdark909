@@ -29,12 +29,11 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
-        {/* <Route path="merch" element={<Merch />} /> */}
         <Route path="artists" element={<Artists />} />
         <Route
           path="merch"
           element={
-            <RedirectToExternalUrl url="https:perfectdark909.bandcamp.com/merch" />
+            <RedirectToExternalUrl url="https://perfectdark909.bandcamp.com" />
           }
         />
       </Routes>
