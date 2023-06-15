@@ -79,8 +79,14 @@ export const Home: React.FC<{}> = () => {
         <div className="text-4xl font-bold">LATEST</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a href="https://ra.co/events/1726093" target="_blank">
+            RINSED.SF x Perfect Dark: Julia Govor
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
-            SuperSecret x Perfect Dark present Silent Servant (Tickets)
+            SuperSecret x Perfect Dark present Silent Servant
           </a>
         </div>
         <br></br>
