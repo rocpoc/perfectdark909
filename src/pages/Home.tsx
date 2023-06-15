@@ -76,7 +76,7 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br></br>
         <br></br>
-        <div className="text-4xl font-bold">LATEST</div>
+        <div className="text-4xl font-bold">UPCOMING</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1726093" target="_blank">
