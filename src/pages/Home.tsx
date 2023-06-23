@@ -85,6 +85,12 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a href="https://ra.co/events/1728987" target="_blank">
+            HydeFM with Perfect Dark and DOMAIN presents: KYRUH
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
             SuperSecret x Perfect Dark present Silent Servant
           </a>
