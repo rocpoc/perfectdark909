@@ -80,25 +80,25 @@ export const Home: React.FC<{}> = () => {
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1726093" target="_blank">
-            RINSED.SF x Perfect Dark: Julia Govor
+            JULY 7: RINSED.SF x Perfect Dark: Julia Govor
           </a>
         </div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1728987" target="_blank">
-            HydeFM with Perfect Dark and DOMAIN presents: KYRUH
+            JULY 21: HydeFM with Perfect Dark and DOMAIN presents: KYRUH
           </a>
         </div>
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
             SuperSecret x Perfect Dark present Silent Servant
           </a>
         </div>
-        <br></br>
+        <br></br> */}
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://perfectdark909.bandcamp.com/merch" target="_blank">
-            PD Summer 2023 Merch Drop
+            Summer 2023 Merch Drop
           </a>
         </div>
         <br></br>
