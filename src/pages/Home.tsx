@@ -96,11 +96,11 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div>
         <br></br> */}
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://perfectdark909.bandcamp.com/merch" target="_blank">
             Summer 2023 Merch Drop
           </a>
-        </div>
+        </div> */}
         <br></br>
         {/* add a link to the img */}
         {/* <a href="https://perfectdark909.bandcamp.com/merch">

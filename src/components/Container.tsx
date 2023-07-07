@@ -7,7 +7,7 @@ enum Routes {
   ABOUT = "/about",
   CONTACT = "/contact",
   MUSIC = "/music",
-  // MERCH = "/merch",
+  MERCH = "/merch",
   // LINKS = "/links",
 }
 
