@@ -77,12 +77,12 @@ export const Home: React.FC<{}> = () => {
         <br></br>
         <br></br>
         <div className="text-4xl font-bold">UPCOMING</div>
-        <br></br>
+        {/* <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1726093" target="_blank">
             JULY 7: RINSED.SF x Perfect Dark: Julia Govor
           </a>
-        </div>
+        </div> */}
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1728987" target="_blank">
