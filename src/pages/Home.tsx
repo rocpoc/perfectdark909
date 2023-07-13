@@ -75,7 +75,6 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
-        <br></br>
         <div className="text-4xl font-bold">UPCOMING</div>
         {/* <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
@@ -101,7 +100,7 @@ export const Home: React.FC<{}> = () => {
             Summer 2023 Merch Drop
           </a>
         </div> */}
-        <br></br>
+        {/* <br></br> */}
         {/* add a link to the img */}
         {/* <a href="https://perfectdark909.bandcamp.com/merch">
           <img
@@ -111,8 +110,14 @@ export const Home: React.FC<{}> = () => {
           />
         </a> */}
         <br></br>
-        <br></br>
+        {/* <br></br> */}
         <div className="text-4xl font-bold">RELEASES</div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a href="https://fanlink.to/jfbD           " target="_blank">
+            Brick x Luvr Boy - Pole Shift
+          </a>
+        </div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://fanlink.to/i6Dy            " target="_blank">
