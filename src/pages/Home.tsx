@@ -85,7 +85,7 @@ export const Home: React.FC<{}> = () => {
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1745168" target="_blank">
-            8.17: Perfect Dark at Envelop
+            8.17: Perfect Dark at Envelop SF
           </a>
         </div>
         <br></br>
