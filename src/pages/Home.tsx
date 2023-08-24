@@ -74,21 +74,21 @@ export const Home: React.FC<{}> = () => {
             </a>
           </div>
         </div>
-        <br></br>
-        <div className="text-4xl font-bold">UPCOMING</div>
+        {/* <br></br> */}
+        {/* <div className="text-4xl font-bold">UPCOMING</div> */}
         {/* <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1726093" target="_blank">
             JULY 7: RINSED.SF x Perfect Dark: Julia Govor
           </a>
         </div> */}
-        <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+        {/* <br></br> */}
+        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1745168" target="_blank">
             8.17: Perfect Dark at Envelop SF
           </a>
-        </div>
-        <br></br>
+        </div> */}
+        {/* <br></br> */}
         {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
             SuperSecret x Perfect Dark present Silent Servant
@@ -112,6 +112,12 @@ export const Home: React.FC<{}> = () => {
         <br></br>
         {/* <br></br> */}
         <div className="text-4xl font-bold">RELEASES</div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a href="https://fanlink.to/dont-trip           " target="_blank">
+            Brick x Zero Idea - Don't Trip EP
+          </a>
+        </div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://fanlink.to/jfbD           " target="_blank">
