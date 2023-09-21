@@ -74,21 +74,15 @@ export const Home: React.FC<{}> = () => {
             </a>
           </div>
         </div>
-        {/* <br></br> */}
-        {/* <div className="text-4xl font-bold">UPCOMING</div> */}
-        {/* <br></br>
+        <br></br>
+        <div className="text-4xl font-bold">UPCOMING</div>
+        <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://ra.co/events/1726093" target="_blank">
-            JULY 7: RINSED.SF x Perfect Dark: Julia Govor
+          <a href="https://ra.co/events/1777394" target="_blank">
+            10.20: Perfect Dark at Underground SF
           </a>
-        </div> */}
-        {/* <br></br> */}
-        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://ra.co/events/1745168" target="_blank">
-            8.17: Perfect Dark at Envelop SF
-          </a>
-        </div> */}
-        {/* <br></br> */}
+        </div>
+        {/* <br></br>
         {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
             SuperSecret x Perfect Dark present Silent Servant
