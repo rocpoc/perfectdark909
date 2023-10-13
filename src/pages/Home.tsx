@@ -108,6 +108,15 @@ export const Home: React.FC<{}> = () => {
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a
+            href="https://fanlink.to/five-year-flight           "
+            target="_blank"
+          >
+            Realize - Five Year Flight EP
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://fanlink.to/dont-trip           " target="_blank">
             Brick x Zero Idea - Don't Trip EP
           </a>
