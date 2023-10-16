@@ -2,6 +2,21 @@ import MusicElement from "./MusicElement";
 
 const releases = [
   {
+    title: "Realize - Five Year Flight EP",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=3211415735/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/five-year-flight-ep",
+  },
+  {
+    title: "Brick x Zero Idea - Don't Trip EP",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=256512963/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/dont-trip-ep",
+  },
+  {
+    title: "Brick x Luvr Boy - Pole Shift",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=531051538/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/track/pole-shift",
+  },
+  {
     title: "Luvr Boy - Lifeforce EP",
     src: "https://bandcamp.com/EmbeddedPlayer/album=2315407880/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
     link: "https://perfectdark909.bandcamp.com/album/lifeforce",
