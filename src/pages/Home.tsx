@@ -75,13 +75,13 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
-        <div className="text-4xl font-bold">UPCOMING</div>
+        {/* <div className="text-4xl font-bold">UPCOMING</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1777394" target="_blank">
             10.20: Perfect Dark at Underground SF
           </a>
-        </div>
+        </div> */}
         {/* <br></br>
         {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
@@ -108,10 +108,13 @@ export const Home: React.FC<{}> = () => {
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a
-            href="https://fanlink.to/five-year-flight           "
-            target="_blank"
-          >
+          <a href="https://fanlink.to/dialogue-ep" target="_blank">
+            Dara Ashrafi - Dialogue EP
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a href="https://fanlink.to/five-year-flight" target="_blank">
             Realize - Five Year Flight EP
           </a>
         </div>
