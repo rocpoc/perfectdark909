@@ -78,8 +78,8 @@ export const Home: React.FC<{}> = () => {
         <div className="text-4xl font-bold">UPCOMING</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://ra.co/events/1814286" target="_blank">
-            12.16: HydeFM x Perfect Dark x Domain present: Madness Of
+          <a href="https://ra.co/events/1813373" target="_blank">
+            12.29.23 - DTE Season Closer with Adam X, MAEDON Perfect Dark
           </a>
         </div>
         {/* <br></br>
