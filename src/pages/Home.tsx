@@ -75,13 +75,13 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
-        <div className="text-4xl font-bold">UPCOMING</div>
+        {/* <div className="text-4xl font-bold">UPCOMING</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1813373" target="_blank">
             12.29.23 - DTE Season Closer with Adam X, MAEDON Perfect Dark
           </a>
-        </div>
+        </div> */}
         {/* <br></br>
         {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
           <a href="https://ra.co/events/1722060" target="_blank">
