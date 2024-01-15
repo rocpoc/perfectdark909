@@ -75,36 +75,7 @@ export const Home: React.FC<{}> = () => {
           </div>
         </div>
         <br></br>
-        {/* <div className="text-4xl font-bold">UPCOMING</div>
         <br></br>
-        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://ra.co/events/1813373" target="_blank">
-            12.29.23 - DTE Season Closer with Adam X, MAEDON Perfect Dark
-          </a>
-        </div> */}
-        {/* <br></br>
-        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://ra.co/events/1722060" target="_blank">
-            SuperSecret x Perfect Dark present Silent Servant
-          </a>
-        </div>
-        <br></br> */}
-        {/* <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://perfectdark909.bandcamp.com/merch" target="_blank">
-            Summer 2023 Merch Drop
-          </a>
-        </div> */}
-        {/* <br></br> */}
-        {/* add a link to the img */}
-        {/* <a href="https://perfectdark909.bandcamp.com/merch">
-          <img
-            src={sticker_pack}
-            alt="Sticker Pack"
-            className="max-w-xs max-h-xs justify-center m-auto"
-          />
-        </a> */}
-        <br></br>
-        {/* <br></br> */}
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
