@@ -2,6 +2,16 @@ import MusicElement from "./MusicElement";
 
 const releases = [
   {
+    title: "Fauna - Tiktaalik EP",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=1516748509/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/tiktaalik",
+  },
+  {
+    title: "Dara Ashrafi - Dialogue EP",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=416444181/size=large/bgcol=333333/linkcol=0f91ff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/dialogue-ep",
+  },
+  {
     title: "Realize - Five Year Flight EP",
     src: "https://bandcamp.com/EmbeddedPlayer/album=3211415735/size=large/bgcol=333333/linkcol=ffffff/minimal=true/transparent=true/",
     link: "https://perfectdark909.bandcamp.com/album/five-year-flight-ep",
