@@ -76,6 +76,18 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br></br>
         <br></br>
+        <div className="text-4xl font-bold">PITCH+</div>
+        <br></br>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a
+            href="https://youtu.be/CJROp5r5HPY?si=x6L2IBVDVtb1jxFY"
+            target="_blank"
+          >
+            Episode 1: hearthealer | Pitch+
+          </a>
+        </div>
+        <br></br>
+        <br></br>
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
