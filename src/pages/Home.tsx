@@ -91,7 +91,7 @@ export const Home: React.FC<{}> = () => {
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://fanlink.to/tiktaalik" target="_blank">
+          <a href="https://tr.ee/JUCy7vUK1h" target="_blank">
             Provider - Uncanny Valley EP
           </a>
         </div>
