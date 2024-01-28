@@ -8,6 +8,7 @@ enum Routes {
   CONTACT = "/contact",
   MUSIC = "/music",
   MERCH = "/merch",
+  ENVIRONMENT = "/environment",
   // LINKS = "/links",
 }
 

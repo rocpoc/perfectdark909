@@ -1,6 +1,15 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { Home, About, Contact, Music, Merch, Links, Artists } from "./pages";
+import {
+  Home,
+  About,
+  Contact,
+  Music,
+  Merch,
+  Links,
+  Artists,
+  Environment,
+} from "./pages";
 import { useEffect } from "react";
 import ScrollToTop from "./components/Scroll";
 
@@ -30,6 +39,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
         <Route path="artists" element={<Artists />} />
+        <Route path="environment" element={<Environment />} />
         <Route
           path="merch"
           element={

@@ -2,6 +2,11 @@ import MusicElement from "./MusicElement";
 
 const releases = [
   {
+    title: "Provider - Uncanny Valley EP",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=2291690602/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
+    link: "https://provider999.bandcamp.com/album/uncanny-valley",
+  },
+  {
     title: "Fauna - Tiktaalik EP",
     src: "https://bandcamp.com/EmbeddedPlayer/album=1516748509/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/transparent=true/",
     link: "https://perfectdark909.bandcamp.com/album/tiktaalik",
