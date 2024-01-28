@@ -2,6 +2,8 @@ import { Container } from "../components/Container";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
 import pd_heart_logo from "../img/PD_Special Heart-01.png";
+import earth_first from "../img/earth-first.png";
+import tracks_for_trees from "../img/tracks_for_trees.png";
 
 export const Environment: React.FC<{}> = () => {
   return (
