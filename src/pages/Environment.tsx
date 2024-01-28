@@ -18,8 +18,8 @@ export const Environment: React.FC<{}> = () => {
           {/* Section for Tracks for Trees */}
           <div>
             <p>
-              At Perfect Dark, every Bandcamp Friday becomes an opportunity to
-              aid reforestation through our "Tracks for Trees" initiative. Every
+              At Perfect Dark, Bandcamp Friday becomes an opportunity to aid
+              reforestation through our "Tracks for Trees" initiative. Every
               track purchase directly translates into a tree planted, allowing
               our fans to be part of a collective effort for a greener future.
             </p>
