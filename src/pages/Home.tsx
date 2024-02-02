@@ -83,6 +83,14 @@ export const Home: React.FC<{}> = () => {
             href="https://youtu.be/CJROp5r5HPY?si=x6L2IBVDVtb1jxFY"
             target="_blank"
           >
+            Episode 2: CRTR | Pitch+
+          </a>
+        </div>
+        <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
+          <a
+            href="https://youtu.be/CJROp5r5HPY?si=x6L2IBVDVtb1jxFY"
+            target="_blank"
+          >
             Episode 1: hearthealer | Pitch+
           </a>
         </div>
