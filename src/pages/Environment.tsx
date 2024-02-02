@@ -18,7 +18,7 @@ export const Environment: React.FC<{}> = () => {
           {/* Section for Tracks for Trees */}
           <div>
             <p>
-              In January of 2021, Perfect Dark saw an opportunity for Bandcamp
+              In January of 2023, Perfect Dark saw an opportunity for Bandcamp
               Fridays to make a positive, measurable impact on our shared
               environment. On the first Friday of the month, Perfect Dark track
               purchases aid in reforestation efforts through our "Tracks for
