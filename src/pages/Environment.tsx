@@ -18,10 +18,24 @@ export const Environment: React.FC<{}> = () => {
           {/* Section for Tracks for Trees */}
           <div>
             <p>
-              At Perfect Dark, Bandcamp Friday becomes an opportunity to aid
-              reforestation through our "Tracks for Trees" initiative. Every
-              track purchase directly translates into a tree planted, allowing
-              our fans to be part of a collective effort for a greener future.
+              In January of 2023, Perfect Dark saw an opportunity for Bandcamp
+              Fridays to make a positive, measurable impact on our shared
+              environment. On the first Friday of the month, Perfect Dark track
+              purchases aid in reforestation efforts through our "Tracks for
+              Trees" initiative.
+            </p>{" "}
+            <br></br>
+            <p>
+              By partnering with{" "}
+              <a
+                href="https://onetreeplanted.org"
+                className="text-emerald-300 hover:text-emerald-400"
+              >
+                One Tree Planted
+              </a>
+              , one track purchase = one tree planted. "Tracks for Trees" allows
+              our supporters to join in on a collective effort to co-create a
+              more regeneratively-minded tomorrow.
             </p>
             <br></br>
             <img
@@ -35,11 +49,23 @@ export const Environment: React.FC<{}> = () => {
           {/* Section for Earth First event */}
           <div>
             <p>
-              Our commitment extends into the local community with "EARTH
-              FIRST," an event supporting the Stop Valley’s Edge cause. By
-              joining us on February 10th at Duff's in Chico, you contribute to
-              sustainable housing efforts, with 40% of earnings going to the
-              cause.
+              Our commitment to regenerative future extends into local
+              communities that our members are part of. Perfect Dark has
+              partnered with Chico’s{" "}
+              <a
+                href="https://www.stopvalleysedge.org/"
+                className="text-emerald-300 hover:text-emerald-400"
+              >
+                Stop Valley’s Edge
+              </a>{" "}
+              initiative to host a benefit show intended to raise money and
+              bring awareness to the issues surrounding continued residential
+              development into the Sierra Nevadas foothills.
+            </p>
+            <br></br>
+            <p>
+              Join us on February 10, 2024 at Duffy’s in downtown Chico to help
+              raise money for Stop Valley’s Edge.
             </p>
             <br></br>
             <img
@@ -51,8 +77,16 @@ export const Environment: React.FC<{}> = () => {
           <br />
 
           <p>
-            Every action, every ticket, every track, contributes to a more
-            sustainable world. Join Perfect Dark in making a tangible impact.
+            How you do anything is how you do everything. We want to help create
+            a scene where actions, tickets, and tracks purchased contribute to a
+            more regenerative future. Join us on our journey!
+          </p>
+          <br></br>
+          <p>
+            <em>
+              "Individually, we are one drop. Together, we are an ocean." —
+              Ryunosuke Satoro
+            </em>
           </p>
           <br></br>
           <p className="text-2xl font-bold text-emerald-300">#RaveForAReason</p>
