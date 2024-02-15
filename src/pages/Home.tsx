@@ -93,12 +93,12 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div>
         <br></br>
-
+        <br></br>
         <div className="text-4xl font-bold">RELEASES</div>
         <br></br>
 
         <div className="text-2xl font-bold  can-hover:hover:bg-violet-600">
-          <a href="https://tr.ee/JUCy7vUK1h" target="_blank">
+          <a href="https://fanlink.to/pd038" target="_blank">
             Brick x Provider x Fauna - Can't Explain
           </a>
         </div>
