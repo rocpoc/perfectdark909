@@ -2,8 +2,13 @@ import MusicElement from "./MusicElement";
 
 const releases = [
   {
+    title: "Brick x Provider x Fauna - Can't Explain",
+    src: "https://bandcamp.com/EmbeddedPlayer/track=498838305/size=large/bgcol=333333/linkcol=0f91ff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/track/cant-explain",
+  },
+  {
     title: "Provider - Uncanny Valley EP",
-    src: "https://bandcamp.com/EmbeddedPlayer/album=2291690602/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=2291690602/size=large/bgcol=333333/linkcol=0687f5/tracklist=false/transparent=true/",
     link: "https://provider999.bandcamp.com/album/uncanny-valley",
   },
   {
