@@ -16,7 +16,6 @@ export const Home: React.FC<{}> = () => {
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
         <br></br>
-        <br></br>
         <div className="text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold can-hover:hover:text-emerald-300 can-hover:hover:line-through">
           LATEST RELEASES
         </div>
