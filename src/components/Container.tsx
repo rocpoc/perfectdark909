@@ -1,14 +1,15 @@
 import classnames from "classnames";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Marquee from "react-fast-marquee";
+import { Toolbar } from "./Toolbar";
 
-enum Routes {
+export enum Routes {
   ABOUT = "/about",
   CONTACT = "/contact",
   MUSIC = "/music",
   MERCH = "/merch",
-  ENVIRONMENT = "/environment",
+  EARTH = "/environment",
   // LINKS = "/links",
 }
 
@@ -17,13 +18,14 @@ export const Container: React.FC<{
   showToolbar: boolean;
 }> = ({ children, showToolbar }) => {
   const { pathname } = useLocation();
-  const isCurrentPath = Object.values(Routes).map((path) => path === pathname);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
       <Marquee
         gradient={false}
-        className="bg-black text-white uppercase text-xs b bottom-[.5px]"
+        className="bg-black text-white uppercase text-xs bottom-[.5px]"
         pauseOnHover={true}
         speed={50}
       >
@@ -32,43 +34,64 @@ export const Container: React.FC<{
         @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
         @perfectdark909 @perfectdark909
       </Marquee>
-      <div className="w-full">
-        {showToolbar && (
-          <div className="flex text-white p-4 sticky top-0 text-2xl font-bold bg-black z-20">
-            <div className="">
-              <Link
-                to="/"
-                className={classnames(
-                  // { underline: pathname === "/" },
-                  "active:bg-violet-600 can-hover:hover:bg-violet-600 text-4xl"
-                )}
-              >
-                PERFECT DARK
-              </Link>
-            </div>
-            <div className="grow flex justify-end gap-2 flex-wrap">
-              {Object.entries(Routes).map(([name, path]) => {
-                return (
-                  <Link
-                    key={path}
-                    className={classnames(
-                      {
-                        underline:
-                          isCurrentPath[Object.values(Routes).indexOf(path)],
-                      },
-                      "can-hover:hover:bg-violet-600 active:bg-violet-600"
-                    )}
-                    to={path}
-                  >
-                    {name}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
-        <div className="mx-auto text-center text-white">{children}</div>
+      <div className="w-full h-full">
+        {showToolbar && (
+          <Toolbar
+            onHamburgerClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
+            onTitleClick={() => {
+              setIsMenuOpen(false);
+            }}
+            currentPageName={
+              Object.entries(Routes).find(([, path]) => path === pathname)?.[0]
+            }
+          />
+        )}
+        <div className="hidden md:block fixed text-[.7rem]  origin-top-right right-8 translate-y-[760px] rotate-90  text-white w-[700px] ">
+          <p>
+            All rights reserved. Perfect Dark and the website is under
+            copyright. All the information on this website is published in good
+            faith and for general information purpose only. By using our
+            website, you hereby consent to our disclaimer and agree to its
+            terms.
+          </p>
+        </div>
+
+        {isMenuOpen ? (
+          <div
+            className="flex flex-col h-screen md:h-full"
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            {Object.entries(Routes).map(([name, path]) => {
+              return (
+                <Link
+                  target={path === Routes.MERCH ? "_blank" : ""}
+                  key={path}
+                  className={classnames(
+                    {
+                      "bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300":
+                        pathname === path,
+                    },
+                    {
+                      "text-white  can-hover:hover:text-emerald-300 active:text-emerald-300":
+                        pathname !== path,
+                    },
+                    " text-[9vh] leading-[7vh]  md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold w-fit p-2"
+                  )}
+                  to={path}
+                >
+                  {name}
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="mx-auto text-center text-white">{children}</div>
+        )}
       </div>
     </div>
   );
