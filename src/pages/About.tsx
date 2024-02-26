@@ -6,14 +6,15 @@ import pd_heart_logo from "../img/PD_Special Heart-01.png";
 export const About: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
-      <div className="flex flex-col justify-center max-w-lg m-auto">
+      <div className="flex flex-col justify-center max-w-2xl m-auto">
         {/* <div className="text-4xl font-bold">ABOUT US</div> */}
         <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
-            ABOUT US
+          <span className="text-4xl font-bold can-hover:hover:text-emerald-300">
+            ABOUT
           </span>
         </div>
-        <div className="text-xl p-8">
+        {/* <div className="text-xl p-8"> */}
+        <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
           Perfect Dark is a California based record label known for throwing
           high energy underground parties and releasing a variety of electronic
           music. Not bound by genre but unified by feeling.
@@ -25,12 +26,12 @@ export const About: React.FC<{}> = () => {
           through inclusive events that celebrate life, friendship, mother
           earth, and music with soul.
         </div>
-        <div className="px-11 grow flex justify-center gap-2">
-          <span className="text-xl ">
+        <div className="px-11 grow flex justify-center">
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl ">
             You can check out our artists{" "}
             <a
               href="/artists"
-              className="can-hover:hover: underline bg-violet-600 "
+              className="text-emerald-300 can-hover:hover:text-emerald-400"
             >
               here.
             </a>

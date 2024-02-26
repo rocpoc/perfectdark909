@@ -6,30 +6,30 @@ import pd_heart_logo from "../img/PD_Special Heart-01.png";
 export const Contact: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
-      <div className="flex flex-col justify-center max-w-lg m-auto">
+      <div className="flex flex-col justify-center max-w-2xl m-auto">
         <div className="px-11 grow flex justify-center gap-1">
           <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
             CONTACT
           </span>
         </div>
         <br></br>
-        <div className="text-2xl font-bold px-8 ">
+        {/* <div className="text-2xl font-bold px-8 "> */}
+        <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
           For booking inquries and demo submissions, please email us at:{" "}
           <br></br>
           <br></br>
           <a
-            className="className=text-4xl font-bold can-hover:hover:bg-violet-600 italic text-xl px-8"
+            className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-2"
             href="mailto:info@perfectdark909.com"
           >
             {" "}
             info@perfectdark909.com
           </a>
-        </div>
-        <br></br>
-        <div className="text-xl font-bold px-8">
-          Please leave your name, contact info, and a brief description of your
-          request.
-          <br></br>
+          <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
+            Please leave your name, contact info, and a brief description of
+            your request.
+            <br></br>
+          </div>
         </div>
       </div>
       <div className="flex justify-center py-4 inset-x- bottom-4 max-w-lg m-auto">

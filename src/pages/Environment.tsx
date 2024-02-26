@@ -3,18 +3,18 @@ import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
 import pd_heart_logo from "../img/PD_Special Heart-01.png";
 import earth_first from "../img/earth-first.png"; // Imported image for the Earth First event
-import tracks_for_trees from "../img/tracks-for-trees.png"; // Imported image for the Tracks for Trees initiative
+import tracks_for_trees from "../img/tracks-4-trees.jpeg"; // Imported image for the Tracks for Trees initiative
 
 export const Environment: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
-      <div className="flex flex-col justify-center max-w-lg m-auto">
+      <div className="flex flex-col justify-center max-w-2xl m-auto">
         <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
-            ENVIRONMENT
+          <span className="text-4xl font-bold can-hover:hover:text-emerald-300">
+            EARTH
           </span>
         </div>
-        <div className="text-xl p-8">
+        <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
           {/* Section for Tracks for Trees */}
           <div>
             <p>
@@ -29,7 +29,7 @@ export const Environment: React.FC<{}> = () => {
               By partnering with{" "}
               <a
                 href="https://onetreeplanted.org"
-                className="text-emerald-300 hover:text-emerald-400"
+                className="text-emerald-300  can-hover:hover:text-emerald-400"
               >
                 One Tree Planted
               </a>
@@ -89,7 +89,9 @@ export const Environment: React.FC<{}> = () => {
             </em>
           </p>
           <br></br>
-          <p className="text-2xl font-bold text-emerald-300">#RaveForAReason</p>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-4 font-bold text-emerald-300">
+            #RaveForAReason
+          </p>
         </div>
         <div className="flex justify-center py-4 inset-x-0 bottom-4 max-w-lg m-auto">
           {/* Logo Images */}
