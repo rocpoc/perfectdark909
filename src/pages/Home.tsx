@@ -15,65 +15,8 @@ export const Home: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-lg m-auto px-3">
-        <div>
-          <img
-            src={logo_cropped}
-            alt="Logo"
-            className="can-hover:hover:shadow-inner can-hover:hover:blur-sm transition duration-200 max-w-lg m-auto"
-            width="240"
-            height="240"
-          />
-        </div>
         <br></br>
-        <div className="flex justify-center max-w-lg m-auto ">
-          <div className="px-2">
-            <a href="https://soundcloud.com/perfectdark909" target="_blank">
-              <img
-                src={soundcloud_logo}
-                alt="Logo"
-                className="max-w-lg m-auto"
-                width="40"
-                height="40"
-              />
-            </a>
-          </div>
-          <div className="px-2">
-            <a href="https://perfectdark909.bandcamp.com" target="_blank">
-              <img
-                src={bc_logo}
-                alt="Logo"
-                className="max-w-lg m-auto"
-                width="40"
-                height="40"
-              />
-            </a>
-          </div>
-          <div className="px-2">
-            <a href="https://instagram.com/perfectdark909" target="_blank">
-              <img
-                src={ig_logo}
-                alt="Logo"
-                className="max-w-lg m-auto"
-                width="40"
-                height="40"
-              />
-            </a>
-          </div>
-          <div className="px-2">
-            <a
-              href="https://open.spotify.com/playlist/7wC505QRPfL4imOZcGrJTe?si=570f1ceee6094d42"
-              target="_blank"
-            >
-              <img
-                src={spotify_logo}
-                alt="Logo"
-                className="max-w-lg m-auto"
-                width="40"
-                height="40"
-              />
-            </a>
-          </div>
-        </div>
+
         <br></br>
         <br></br>
         <div className="text-4xl font-bold">PITCH+</div>
@@ -168,6 +111,55 @@ export const Home: React.FC<{}> = () => {
       </div>
       <br></br>
       <br></br>
+      <div className="flex justify-center max-w-lg m-auto ">
+        <div className="px-2">
+          <a href="https://soundcloud.com/perfectdark909" target="_blank">
+            <img
+              src={soundcloud_logo}
+              alt="Logo"
+              className="max-w-lg m-auto"
+              width="40"
+              height="40"
+            />
+          </a>
+        </div>
+        <div className="px-2">
+          <a href="https://perfectdark909.bandcamp.com" target="_blank">
+            <img
+              src={bc_logo}
+              alt="Logo"
+              className="max-w-lg m-auto"
+              width="40"
+              height="40"
+            />
+          </a>
+        </div>
+        <div className="px-2">
+          <a href="https://instagram.com/perfectdark909" target="_blank">
+            <img
+              src={ig_logo}
+              alt="Logo"
+              className="max-w-lg m-auto"
+              width="40"
+              height="40"
+            />
+          </a>
+        </div>
+        <div className="px-2">
+          <a
+            href="https://open.spotify.com/playlist/7wC505QRPfL4imOZcGrJTe?si=570f1ceee6094d42"
+            target="_blank"
+          >
+            <img
+              src={spotify_logo}
+              alt="Logo"
+              className="max-w-lg m-auto"
+              width="40"
+              height="40"
+            />
+          </a>
+        </div>
+      </div>
       <div className="flex justify-center py-4 inset-x-0 bottom-5 max-w-lg m-auto">
         <div>
           <img

@@ -16,10 +16,14 @@ module.exports = {
           "100%": { opacity: 1 },
         },
       },
+      fontFamily: {
+        helvetica: ["Helvetica", "Arial", "sans-serif"],
+      },
+
+      rotate: {
+        17: "17deg",
+      },
     },
     plugins: [],
-    rotate: {
-      17: "17deg",
-    },
   },
 };
