@@ -8,7 +8,7 @@ export const Contact: React.FC<{}> = () => {
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto">
         <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-4xl font-bold can-hover:hover:bg-violet-600">
+          <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
             CONTACT
           </span>
         </div>
@@ -27,7 +27,8 @@ export const Contact: React.FC<{}> = () => {
           </a>
           <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
             Please leave your name, contact info, and a brief description of
-            your request.
+            your request. <br></br>
+            <br></br> Thank you!
             <br></br>
           </div>
         </div>

@@ -9,7 +9,7 @@ export const About: React.FC<{}> = () => {
       <div className="flex flex-col justify-center max-w-2xl m-auto">
         {/* <div className="text-4xl font-bold">ABOUT US</div> */}
         <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-4xl font-bold can-hover:hover:text-emerald-300">
+          <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
             ABOUT
           </span>
         </div>
