@@ -16,10 +16,19 @@ export const Home: React.FC<{}> = () => {
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
         <div className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
-          LATEST RELEASES
+          LATEST
         </div>
         <br></br>
-        <div className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        <div className="text-base xs:text-6xl sm:text-6xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+          <a
+            href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=24d808e9e59441d0"
+            target="_blank"
+          >
+            Perfect Dark Originals (Spotify)
+          </a>
+        </div>
+        <br></br>
+        <div className="text-base xs:text-6xl sm:text-6xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.to/pd038" target="_blank">
             Brick x Provider x Fauna - Can't Explain
           </a>
