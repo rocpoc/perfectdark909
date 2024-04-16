@@ -69,7 +69,11 @@ export const Home: React.FC<{}> = () => {
       </div>
       <br />
       <div className="text-2xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold text">
-        <a href="http://eepurl.com/iNSzKo" target="_blank">
+        <a
+          className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
+          href="http://eepurl.com/iNSzKo"
+          target="_blank"
+        >
           𝓮𝓶𝓪𝓲𝓵 𝓵𝓲𝓼𝓽 𝓼𝓲𝓰𝓷𝓾𝓹
         </a>
       </div>
