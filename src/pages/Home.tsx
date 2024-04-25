@@ -35,7 +35,7 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br />
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://fanlink.to/pd038" target="_blank">
+          <a href="https://fanlink.tv/pd038" target="_blank">
             Brick x Provider x Fauna - Can't Explain
           </a>
         </div>
