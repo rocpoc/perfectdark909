@@ -15,13 +15,13 @@ export const Home: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-        <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300 can-hover:hover:line-through">
+        <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold">
           LATEST
         </div>
         <br />
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://ra.co/events/1936677" target="_blank">
-            Perfect Dark: Fem Takeover (Tickets)
+          <a href="https://ra.co/events/1947517" target="_blank">
+            Perfect Dark: LA
           </a>
         </div>
         <br />
@@ -64,7 +64,7 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br />
         <br />
-        <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300 can-hover:hover:line-through">
+        <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold">
           PITCH+
         </div>
         <br />
@@ -145,7 +145,7 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div>
       </div>
-      <div className="flex justify-center py-4 inset-x-0 bottom-5 max-w-lg m-auto">
+      {/* <div className="flex justify-center py-4 inset-x-0 bottom-5 max-w-lg m-auto">
         <div>
           <img
             src={pd_heart_logo}
@@ -173,7 +173,7 @@ export const Home: React.FC<{}> = () => {
             height="50"
           />
         </div>
-      </div>
+      </div> */}
     </Container>
   );
 };
