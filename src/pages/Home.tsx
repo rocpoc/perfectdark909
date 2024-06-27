@@ -21,7 +21,7 @@ export const Home: React.FC<{}> = () => {
         <br />
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://ra.co/events/1947517" target="_blank">
-            Perfect Dark: LA
+            Perfect Dark: LAAAAA
           </a>
         </div>
         <br />
