@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Home,
   About,
@@ -10,24 +10,9 @@ import {
   Artists,
   Environment,
 } from "./pages";
-import { useEffect } from "react";
 import ScrollToTop from "./components/Scroll";
-
-function redirectToExternalUrl(url: string) {
-  window.location.href = url;
-}
-
-interface RedirectToExternalUrlProps {
-  url: string;
-}
-
-function RedirectToExternalUrl({ url }: RedirectToExternalUrlProps) {
-  useEffect(() => {
-    redirectToExternalUrl(url);
-  }, [url]);
-
-  return null;
-}
+import ArtistRedirect from "./ArtistRedirect";
+import RedirectToExternalUrl from "./RedirectToExternalUrl";
 
 function App() {
   return (
@@ -39,6 +24,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
         <Route path="artists" element={<Artists />} />
+        <Route path="artists/:artistId" element={<ArtistRedirect />} />
         <Route path="environment" element={<Environment />} />
         <Route
           path="merch"

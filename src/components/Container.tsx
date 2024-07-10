@@ -6,11 +6,11 @@ import { Toolbar } from "./Toolbar";
 
 export enum Routes {
   ABOUT = "/about",
+  ARTISTS = "/artists",
   CONTACT = "/contact",
   MUSIC = "/music",
-  MERCH = "/merch",
   EARTH = "/environment",
-  // LINKS = "/links",
+  MERCH = "/merch",
 }
 
 export const Container: React.FC<{
