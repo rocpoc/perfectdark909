@@ -18,6 +18,12 @@ export const Home: React.FC<{}> = () => {
         <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold">
           LATEST
         </div>
+        <br />
+        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+          <a href="https://ra.co/events/1947517" target="_blank">
+            Perfect Dark: LA
+          </a>
+        </div>
         <br></br>
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd040" target="_blank">
@@ -33,12 +39,7 @@ export const Home: React.FC<{}> = () => {
             Perfect Vitamin Recordings
           </a>
         </div>
-        <br />
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://ra.co/events/1947517" target="_blank">
-            Perfect Dark: LA
-          </a>
-        </div>
+
         <br />
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd039" target="_blank">

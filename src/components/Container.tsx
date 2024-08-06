@@ -51,10 +51,10 @@ export const Container: React.FC<{
         )}
         <div className="hidden md:block fixed text-[.7rem]  origin-top-right right-8 translate-y-[760px] rotate-90  text-white w-[700px] ">
           <p>
-            ©2024 Perfect Dark. All rights reserved. This website's content,
+            ©2024 Perfect Dark 909. All rights reserved. This website's content,
             including texts and images, is for informational purposes only and
-            is not legal or professional advice. ©2024 Perfect Dark. All rights
-            reserved.
+            is not legal or professional advice. ©2024 Perfect Dark 909. All
+            rights reserved.
           </p>
         </div>
 
