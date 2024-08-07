@@ -15,23 +15,23 @@ export const Home: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-        <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold">
+        <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
           LATEST
-        </div>
+        </span>
         <br />
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://ra.co/events/1947517" target="_blank">
-            Perfect Dark: LA
+            Perfect Dark: LA (Tickets)
           </a>
         </div>
         <br></br>
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd040" target="_blank">
             Wyllie - Nine to Five
           </a>
         </div>
         <br />
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a
             href="https://www.youtube.com/watch?v=qGJZOUwg2RA&list=PLzlkeOj6IYhAh-ExgPFdh-mmnMq4EULSr"
             target="_blank"
@@ -41,21 +41,20 @@ export const Home: React.FC<{}> = () => {
         </div>
 
         <br />
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd039" target="_blank">
             Apellum - Scenes of Water
           </a>
         </div>
-        <br />
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        {/* <br /> */}
+        {/* <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a
             href="https://soundcloud.com/perfectdark909/sets/perfect-dark-live-at-club-eternal-051124"
             target="_blank"
           >
-            PD @ Club Eternal (Mixes)
+            Club Eternal (Mixes)
           </a>
-        </div>
-
+        </div> */}
         {/* <br />
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://ra.co/events/1927056" target="_blank">
@@ -64,7 +63,7 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br /> */}
         <br />
-        <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a
             href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=24d808e9e59441d0"
             target="_blank"
@@ -72,7 +71,7 @@ export const Home: React.FC<{}> = () => {
             Perfect Dark Originals (Spotify)
           </a>
         </div>
-        <br />
+        {/* <br />
         <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd038" target="_blank">
             Brick x Provider x Fauna - Can't Explain
@@ -83,10 +82,10 @@ export const Home: React.FC<{}> = () => {
           <a href="https://tr.ee/JUCy7vUK1h" target="_blank">
             Provider - Uncanny Valley EP
           </a>
-        </div>
-        <br />
-        <br />
-        <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold">
+        </div> */}
+        {/* <br /> */}
+        {/* <br /> */}
+        {/* <div className="text-2xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold">
           PITCH+
         </div>
         <br />
@@ -103,11 +102,11 @@ export const Home: React.FC<{}> = () => {
           <a href="https://www.youtube.com/watch?v=BaZ7X8BFYyY" target="_blank">
             Episode 2: CRTR | Pitch+
           </a>
-        </div>
+        </div> */}
         <br />
       </div>
       <br />
-      <div className="text-2xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold text">
+      <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
         <a
           className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
           href="http://eepurl.com/iNSzKo"

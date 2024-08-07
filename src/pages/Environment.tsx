@@ -9,12 +9,12 @@ export const Environment: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto">
-        <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+        <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
+          <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
             EARTH
           </span>
         </div>
-        <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
+        <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-8">
           {/* Section for Tracks for Trees */}
           <div>
             <p>
@@ -61,11 +61,6 @@ export const Environment: React.FC<{}> = () => {
               initiative to host a benefit show intended to raise money and
               bring awareness to the issues surrounding continued residential
               development into the Sierra Nevadas foothills.
-            </p>
-            <br></br>
-            <p>
-              Join us on February 10, 2024 at Duffy’s in downtown Chico to help
-              raise money for Stop Valley’s Edge.
             </p>
             <br></br>
             <img

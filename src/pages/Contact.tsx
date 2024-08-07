@@ -7,25 +7,24 @@ export const Contact: React.FC<{}> = () => {
   return (
     <Container showToolbar={true}>
       <div className="flex flex-col justify-center max-w-2xl m-auto">
-        <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+        <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
+          <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
             CONTACT
           </span>
         </div>
-        <br></br>
         {/* <div className="text-2xl font-bold px-8 "> */}
-        <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
+        <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-4">
           For booking inquries and demo submissions, please email us at:{" "}
           <br></br>
           <br></br>
           <a
-            className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-2"
+            className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300 text-lg xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-2"
             href="mailto:info@perfectdark909.com"
           >
             {" "}
             info@perfectdark909.com
           </a>
-          <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
+          <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-8">
             Please leave your name, contact info, and a brief description of
             your request. <br></br>
             <br></br> Thank you!
@@ -33,7 +32,7 @@ export const Contact: React.FC<{}> = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center py-4 inset-x- bottom-4 max-w-lg m-auto">
+      {/* <div className="flex justify-center py-4 inset-x- bottom-4 max-w-lg m-auto">
         <div>
           <img
             src={pd_heart_logo}
@@ -61,7 +60,7 @@ export const Contact: React.FC<{}> = () => {
             height="50 "
           />
         </div>
-      </div>
+      </div> */}
     </Container>
   );
 };

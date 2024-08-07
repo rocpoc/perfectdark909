@@ -2,6 +2,16 @@ import MusicElement from "./MusicElement";
 
 const releases = [
   {
+    title: "Wyllie - Nine to Five",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=930418096/size=large/bgcol=333333/linkcol=0f91ff/minimal=true/transparent=true",
+    link: "https://perfectdark909.bandcamp.com/album/nine-to-five",
+  },
+  {
+    title: "Apellum - Scenes of Water",
+    src: "https://bandcamp.com/EmbeddedPlayer/album=4217683846/size=large/bgcol=333333/linkcol=0f91ff/minimal=true/transparent=true/",
+    link: "https://perfectdark909.bandcamp.com/album/scenes-of-water",
+  },
+  {
     title: "Brick x Provider x Fauna - Can't Explain",
     src: "https://bandcamp.com/EmbeddedPlayer/track=498838305/size=large/bgcol=333333/linkcol=0f91ff/minimal=true/transparent=true/",
     link: "https://perfectdark909.bandcamp.com/track/cant-explain",
