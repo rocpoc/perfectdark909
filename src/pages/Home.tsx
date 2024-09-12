@@ -26,6 +26,15 @@ export const Home: React.FC<{}> = () => {
         </div> */}
         <br></br>
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+          <a
+            href="https://perfectdark909.bandcamp.com/album/bliss"
+            target="_blank"
+          >
+            Oat M - Bliss EP (Pre-order)
+          </a>
+        </div>
+        <br></br>
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd040" target="_blank">
             Wyllie - Nine to Five
           </a>
