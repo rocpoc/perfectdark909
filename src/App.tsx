@@ -23,15 +23,15 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
-        <Route path="artists" element={<Artists />} />
-        <Route path="artists/:artistId" element={<ArtistRedirect />} />
-        <Route path="environment" element={<Environment />} />
         <Route
           path="merch"
           element={
             <RedirectToExternalUrl url="https://perfectdark909.myshopify.com/" />
           }
         />
+        <Route path="artists" element={<Artists />} />
+        <Route path="artists/:artistId" element={<ArtistRedirect />} />
+        <Route path="environment" element={<Environment />} />
       </Routes>
     </BrowserRouter>
   );
