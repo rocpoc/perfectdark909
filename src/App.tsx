@@ -29,7 +29,7 @@ function App() {
         <Route
           path="merch"
           element={
-            <RedirectToExternalUrl url="https://perfectdark909.bandcamp.com/merch" />
+            <RedirectToExternalUrl url="https://perfectdark909.myshopify.com/" />
           }
         />
       </Routes>
