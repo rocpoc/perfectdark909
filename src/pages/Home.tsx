@@ -19,6 +19,14 @@ export const Home: React.FC<{}> = () => {
           LATEST
         </span>
         <br />
+        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+          <a
+            href="https://youtu.be/tZ48fQyQyTs?si=y1yybFXFCKVARjKp"
+            target="_blank"
+          >
+            Kanyon (Live) | Perfect Dark LA (YouTube)
+          </a>
+        </div>
         <br></br>
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://perfectdark909.myshopify.com/" target="_blank">
