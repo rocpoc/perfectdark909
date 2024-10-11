@@ -61,12 +61,12 @@ export const Home: React.FC<{}> = () => {
           </a>
         </div>
 
-        <br />
+        {/* <br />
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd039" target="_blank">
             Apellum - Scenes of Water
           </a>
-        </div>
+        </div> */}
         {/* <br /> */}
         {/* <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a
@@ -130,7 +130,7 @@ export const Home: React.FC<{}> = () => {
       <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
         <a
           className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
-          href="http://eepurl.com/iNSzKo"
+          href="https://perfect-dark.ck.page/044179ba9e"
           target="_blank"
         >
           𝓮𝓶𝓪𝓲𝓵 𝓵𝓲𝓼𝓽 𝓼𝓲𝓰𝓷𝓾𝓹
