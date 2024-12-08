@@ -20,12 +20,6 @@ export const Home: React.FC<{}> = () => {
         </span>
         <br />
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://ra.co/events/2044193" target="_blank">
-            Fake & Gay x Vitamin1000 x Perfect Dark: Public Works (Tickets)
-          </a>
-        </div>
-        <br />
-        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd11" target="_blank">
             Saroc - Paralysis EP
           </a>
@@ -33,19 +27,19 @@ export const Home: React.FC<{}> = () => {
         <br />
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://www.youtube.com/watch?v=t-275yXiA2U" target="_blank">
-            Carmine | Duffys - Chico, CA
+            Carmine | Duffys, Chico
           </a>
         </div>
         <br />
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://www.youtube.com/watch?v=KtDFBk1b_DM" target="_blank">
-            Fauna | Duffys - Chico, CA
+            Fauna | Duffys, Chico
           </a>
         </div>
         <br />
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://www.youtube.com/watch?v=iIVWeaOS7R4" target="_blank">
-            Lavender Persuasion x Freeman 713 Duffys - Chico, CA
+            Lavender Persuasion x Freeman 713 Duffys, Chico
           </a>
         </div>
         <br />
