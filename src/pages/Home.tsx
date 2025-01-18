@@ -26,32 +26,8 @@ export const Home: React.FC<{}> = () => {
         </div>
         <br />
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://www.youtube.com/watch?v=78L5mKgGxnM" target="_blank">
-            Brick | Duffys, Chico
-          </a>
-        </div>
-        <br />
-        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://www.youtube.com/watch?v=t-275yXiA2U" target="_blank">
-            Carmine | Duffys, Chico
-          </a>
-        </div>
-        <br />
-        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://www.youtube.com/watch?v=KtDFBk1b_DM" target="_blank">
-            Fauna | Duffys, Chico
-          </a>
-        </div>
-        <br />
-        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd11" target="_blank">
             Saroc - Paralysis EP
-          </a>
-        </div>
-        <br />
-        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a href="https://www.youtube.com/watch?v=iIVWeaOS7R4" target="_blank">
-            Lavender Persuasion x Freeman 713 Duffys, Chico
           </a>
         </div>
         <br />
@@ -75,13 +51,14 @@ export const Home: React.FC<{}> = () => {
             Fall 24 Merch
           </a>
         </div>
-        <br></br>
+        <br />
+        {/* <br></br>
         <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd41" target="_blank">
             Oat M - Bliss EP
           </a>
         </div>
-        <br></br>
+        <br></br> */}
         {/* <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
           <a href="https://fanlink.tv/pd040" target="_blank">
             Wyllie - Nine to Five EP
