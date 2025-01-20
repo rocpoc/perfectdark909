@@ -240,10 +240,10 @@ const releases = [
 
 const Discography = () => {
   return (
-    <div className="flex flex-wrap p-4 mx-auto max-w-6xl">
-      {releases.map((release) => {
-        return <MusicElement release={release} />;
-      })}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center items-center mx-auto max-w-7xl">
+      {releases.map((release, index) => (
+        <MusicElement key={index} release={release} />
+      ))}
     </div>
   );
 };

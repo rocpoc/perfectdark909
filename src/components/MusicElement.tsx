@@ -26,7 +26,9 @@ const MusicElement = ({
 
   return (
     <div
-      className={classNames({ "motion-safe:animate-fadeIn": isVisible })}
+      className={classNames("p-4 flex justify-center items-center", {
+        "motion-safe:animate-fadeIn": isVisible,
+      })}
       ref={domRef}
     >
       <iframe
