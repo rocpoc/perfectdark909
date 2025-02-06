@@ -40,8 +40,8 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://ra.co/events/2077095",
-      text: "Perfect Dark ☆ Underground SF \nFEM TAKEOVER (Tickets)",
+      href: "https://perfectdark909.bandcamp.com/album/isolation-seeker",
+      text: "Provider - Isolation Seeker (Preorder)",
     },
     {
       href: "https://fanlink.tv/pd11",
@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
     },
     {
       href: "https://perfectdark909.myshopify.com/",
-      text: "Fall 24 Merch",
+      text: "Merch",
     },
     {
       href: "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=24d808e9e59441d0",
