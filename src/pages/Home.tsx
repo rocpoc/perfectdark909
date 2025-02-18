@@ -40,6 +40,10 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
+      href: "https://perfectdark909.bandcamp.com/album/isolation-seeker",
+      text: "Provider - Isolation Seeker",
+    },
+    {
       href: "https://youtu.be/KVwyvPVrV94?si=SLnL_Q97i333YN7-",
       text: "Brick - Underground SF (YouTube)",
     },
