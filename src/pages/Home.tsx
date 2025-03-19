@@ -40,6 +40,10 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
+      href: "https://perfectdark909.bandcamp.com/album/weapons-fully-reloaded",
+      text: "Freeman 713 - Weapons: Fully Reloaded",
+    },
+    {
       href: "https://perfectdark909.bandcamp.com/album/isolation-seeker",
       text: "Provider - Isolation Seeker",
     },
@@ -55,10 +59,10 @@ export const Home: React.FC = () => {
       href: "https://fanlink.tv/pd11",
       text: "Saroc - Paralysis EP",
     },
-    {
-      href: "https://www.youtube.com/watch?v=5hcD6uNPPnw",
-      text: "Disfu - Perfect Dark LA",
-    },
+    // {
+    //   href: "https://www.youtube.com/watch?v=5hcD6uNPPnw",
+    //   text: "Disfu - Perfect Dark LA",
+    // },
     {
       href: "https://youtu.be/tZ48fQyQyTs?si=y1yybFXFCKVARjKp",
       text: "Kanyon (Live) | Perfect Dark LA",
