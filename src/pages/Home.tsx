@@ -40,6 +40,10 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
+      href: "https://ra.co/events/2102224",
+      text: "Perfect Dark ☆ Underground SF ☆ May 30 (RA)",
+    },
+    {
       href: "https://perfectdark909.bandcamp.com/album/weapons-fully-reloaded",
       text: "Freeman 713 - Weapons: Fully Reloaded",
     },
