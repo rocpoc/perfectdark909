@@ -13,11 +13,12 @@ import {
 import ScrollToTop from "./components/Scroll";
 import ArtistRedirect from "./ArtistRedirect";
 import RedirectToExternalUrl from "./RedirectToExternalUrl";
+import SmsOptIn from "./pages/sms-opt-in";
 
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop /> {/* Scroll to top on route change */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
@@ -32,6 +33,11 @@ function App() {
         <Route path="artists" element={<Artists />} />
         <Route path="artists/:artistId" element={<ArtistRedirect />} />
         <Route path="environment" element={<Environment />} />
+
+        {/* ────────────────────────────────────────────────── */}
+        {/*   NEW ROUTE: Proof-of-consent page for Twilio      */}
+        {/* ────────────────────────────────────────────────── */}
+        <Route path="sms-opt-in" element={<SmsOptIn />} />
       </Routes>
     </BrowserRouter>
   );

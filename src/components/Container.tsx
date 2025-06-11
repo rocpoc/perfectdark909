@@ -11,6 +11,7 @@ export enum Routes {
   ARTISTS = "/artists",
   CONTACT = "/contact",
   EARTH = "/environment",
+  // *Don’t* add /sms-opt-in here—this keeps it off the nav menu
 }
 
 export const Container: React.FC<{
@@ -18,72 +19,70 @@ export const Container: React.FC<{
   showToolbar: boolean;
 }> = ({ children, showToolbar }) => {
   const { pathname } = useLocation();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // True only on the redirect page
+  const isSmsOptIn = pathname === "/sms-opt-in";
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
-      <Marquee
-        gradient={false}
-        className="bg-black text-white uppercase text-xs bottom-[.5px]"
-        pauseOnHover={true}
-        speed={50}
-      >
-        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
-        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
-        @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
-        @perfectdark909 @perfectdark909
-      </Marquee>
+      {/* Hide the marquee on the opt-in redirect page */}
+      {!isSmsOptIn && (
+        <Marquee
+          gradient={false}
+          className="bg-black text-white uppercase text-xs bottom-[.5px]"
+          pauseOnHover
+          speed={50}
+        >
+          @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+          @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+          @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
+          @perfectdark909 @perfectdark909
+        </Marquee>
+      )}
 
       <div className="w-full h-full">
-        {showToolbar && (
+        {/* Hide toolbar + burger menu on the opt-in page */}
+        {showToolbar && !isSmsOptIn && (
           <Toolbar
-            onHamburgerClick={() => {
-              setIsMenuOpen(!isMenuOpen);
-            }}
-            onTitleClick={() => {
-              setIsMenuOpen(false);
-            }}
+            onHamburgerClick={() => setIsMenuOpen(!isMenuOpen)}
+            onTitleClick={() => setIsMenuOpen(false)}
             currentPageName={
               Object.entries(Routes).find(([, path]) => path === pathname)?.[0]
             }
           />
         )}
-        <div className="hidden md:block fixed text-[.7rem]  origin-top-right right-8 translate-y-[760px] rotate-90  text-white w-[700px] ">
-          <p>xoxo, perfect dark :)</p>
-        </div>
+
+        {/* Little rotating signature—also skip for opt-in */}
+        {!isSmsOptIn && (
+          <div className="hidden md:block fixed text-[.7rem] origin-top-right right-8 translate-y-[760px] rotate-90 text-white w-[700px]">
+            <p>xoxo, perfect dark :)</p>
+          </div>
+        )}
 
         {isMenuOpen ? (
           <div
             className="flex flex-col h-screen md:h-full"
-            onClick={() => {
-              setIsMenuOpen(false);
-            }}
+            onClick={() => setIsMenuOpen(false)}
           >
-            {Object.entries(Routes).map(([name, path]) => {
-              return (
-                <Link
-                  target={path === Routes.MERCH ? "_blank" : ""}
-                  key={path}
-                  className={classnames(
-                    {
-                      "bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300":
-                        pathname === path,
-                    },
-                    {
-                      "text-white  can-hover:hover:text-emerald-300 active:text-emerald-300":
-                        pathname !== path,
-                    },
-                    " text-[9vh] leading-[7vh]  md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold w-fit p-2"
-                  )}
-                  to={path}
-                >
-                  {name}
-                </Link>
-              );
-            })}
+            {Object.entries(Routes).map(([name, path]) => (
+              <Link
+                key={path}
+                to={path}
+                target={path === Routes.MERCH ? "_blank" : undefined}
+                className={classnames(
+                  pathname === path
+                    ? "bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
+                    : "text-white can-hover:hover:text-emerald-300 active:text-emerald-300",
+                  "text-[9vh] leading-[7vh] md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold w-fit p-2"
+                )}
+              >
+                {name}
+              </Link>
+            ))}
           </div>
         ) : (
+          // On /sms-opt-in this is all the visitor ever sees while JS redirects
           <div className="mx-auto text-center text-white">{children}</div>
         )}
       </div>
