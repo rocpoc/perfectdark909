@@ -1,17 +1,14 @@
 // src/pages/SecretVenue.tsx
-// Passcode‑gated page: guests enter a one‑word code in an input box to reveal
-// the private venue address (and optional Google Drive link). No query string
-// needed.
+// Passcode‑gated page: guests enter a one‑word code to reveal a PNG flyer
+// (instead of inline text). No query string needed.
 
 import { useState } from "react";
+import VenueImage from "../img/Perfect-Damage-Instructions.png"; // ⬅️ adjust filename if needed
 
 /**
  * Adjust these constants before deploying.
  */
-const ACCESS_CODE = "fuckcops909"; // DM/email this one‑word code to ticket holders
-const VENUE_ADDRESS = "Roy G. Guerro Park";
-const SHOW_DATE = "Friday, June 13, 2025. 10 PM-Late";
-const GOOGLE_DRIVE_URL = ""; // optional: link to map/PDF; leave "" to hide
+const ACCESS_CODE = "fuckcops909"; // DM/email this one-word code to ticket holders
 
 const SecretVenue: React.FC = () => {
   const [input, setInput] = useState("");
@@ -31,30 +28,12 @@ const SecretVenue: React.FC = () => {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white p-6 font-sans space-y-10">
       {verified ? (
-        <section className="space-y-6 text-center animate-fade-in px-6 py-16 bg-black/20 rounded-lg backdrop-blur-sm max-w-md w-full">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-wide">
-            Perfect Damage ✧ Address Drop
-          </h1>
-          <p className="text-lg md:text-xl font-semibold text-emerald-300 break-words">
-            {SHOW_DATE}
-          </p>
-          <p className="text-xl md:text-2xl font-mono break-words">
-            {VENUE_ADDRESS}
-          </p>
-          {GOOGLE_DRIVE_URL && (
-            <a
-              href={GOOGLE_DRIVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:no-underline text-emerald-300"
-            >
-              View Map / Directions
-            </a>
-          )}
-          <p className="text-xs opacity-70 pt-4">
-            Don’t share this page or code publicly — see you on the dance floor
-            ✨
-          </p>
+        <section className="animate-fade-in max-w-[90vw] md:max-w-xl">
+          <img
+            src={VenueImage}
+            alt="Event details flyer"
+            className="w-full h-auto rounded-lg shadow-lg"
+          />
         </section>
       ) : (
         <section className="space-y-6 text-center max-w-sm w-full bg-black/30 p-8 rounded-lg backdrop-blur-sm">
@@ -83,7 +62,7 @@ const SecretVenue: React.FC = () => {
             )}
           </form>
           <p className="text-xs opacity-80">
-            You’ll find the one‑word code in your DM.
+            You’ll find the one‑word code in your DM or confirmation email.
           </p>
         </section>
       )}
