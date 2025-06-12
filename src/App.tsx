@@ -15,6 +15,7 @@ import ArtistRedirect from "./ArtistRedirect";
 import RedirectToExternalUrl from "./RedirectToExternalUrl";
 import SmsOptIn from "./pages/sms-opt-in";
 import SecretVenue from "./pages/SecretVenue";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="environment" element={<Environment />} />
         <Route path="damage" element={<SecretVenue />} />
         <Route path="sms-opt-in" element={<SmsOptIn />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
