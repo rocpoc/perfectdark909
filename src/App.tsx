@@ -14,6 +14,7 @@ import ScrollToTop from "./components/Scroll";
 import ArtistRedirect from "./ArtistRedirect";
 import RedirectToExternalUrl from "./RedirectToExternalUrl";
 import SmsOptIn from "./pages/sms-opt-in";
+import SecretVenue from "./pages/SecretVenue";
 
 function App() {
   return (
@@ -33,10 +34,7 @@ function App() {
         <Route path="artists" element={<Artists />} />
         <Route path="artists/:artistId" element={<ArtistRedirect />} />
         <Route path="environment" element={<Environment />} />
-
-        {/* ────────────────────────────────────────────────── */}
-        {/*   NEW ROUTE: Proof-of-consent page for Twilio      */}
-        {/* ────────────────────────────────────────────────── */}
+        <Route path="damage" element={<SecretVenue />} />
         <Route path="sms-opt-in" element={<SmsOptIn />} />
       </Routes>
     </BrowserRouter>
