@@ -10,7 +10,7 @@ import { useState } from "react";
  */
 const ACCESS_CODE = "fuckcops909"; // DM/email this one‑word code to ticket holders
 const VENUE_ADDRESS = "Roy G. Guerro Park";
-const SHOW_DATE = "Friday – June 13, 2025 – 10 PM‑Late";
+const SHOW_DATE = "Friday. June 13, 2025.10 PM - Late";
 const GOOGLE_DRIVE_URL = ""; // optional: link to map/PDF; leave "" to hide
 
 const SecretVenue: React.FC = () => {
