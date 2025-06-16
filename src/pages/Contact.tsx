@@ -14,7 +14,7 @@ export const Contact: React.FC<{}> = () => {
         </div>
         {/* <div className="text-2xl font-bold px-8 "> */}
         <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-4">
-          For booking inquries and demo submissions, please email us at:{" "}
+          For booking inquiries and demo submissions, please email us at:{" "}
           <br></br>
           <br></br>
           <a
