@@ -40,8 +40,8 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://ra.co/events/2102224",
-      text: "Perfect Dark ☆ Underground SF ☆ May 30 (RA)",
+      href: "https://www.tickettailor.com/checkout/view-event/id/6155977/chk/4f82?nc=1751409801",
+      text: "Perfect Dark ☆ Argus, Chico ☆ July 12",
     },
     {
       href: "https://perfectdark909.bandcamp.com/album/weapons-fully-reloaded",
