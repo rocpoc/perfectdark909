@@ -9,6 +9,7 @@ import {
   Links,
   Artists,
   Environment,
+  Archive,
 } from "./pages";
 import ScrollToTop from "./components/Scroll";
 import ArtistRedirect from "./ArtistRedirect";
@@ -22,19 +23,20 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="music" element={<Music />} />
-        <Route
-          path="merch"
-          element={
-            <RedirectToExternalUrl url="https://perfectdark909.myshopify.com/" />
-          }
-        />
-        <Route path="artists" element={<Artists />} />
-        <Route path="artists/:artistId" element={<ArtistRedirect />} />
-        <Route path="environment" element={<Environment />} />
-        <Route path="sms-opt-in" element={<SmsOptIn />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/music" element={<Music />} />
+        <Route path="/merch" element={<Merch />} />
+        <Route path="/links" element={<Links />} />
+        <Route path="/artists" element={<Artists />} />
+        <Route path="/environment" element={<Environment />} />
+        <Route path="/archive" element={<Archive />} />
+
+        {/* keep your existing special routes */}
+        <Route path="/artist" element={<ArtistRedirect />} />
+        {/* <Route path="/go/:slug" element={<RedirectToExternalUrl />} /> */}
+        <Route path="/sms-opt-in" element={<SmsOptIn />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
