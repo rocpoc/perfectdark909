@@ -85,23 +85,24 @@ export const Home: React.FC = () => {
             LATEST
           </span>
           <div className="h-4" />
+
           {newsItems.map((item, index) => (
             <div key={index} className="mb-3">
               <NewsItem href={item.href}>{item.text}</NewsItem>
             </div>
           ))}
         </section>
+
+        {/* Fixed icons bar in black area above footer (hide when menu open) */}
+        <div className="fixed left-0 right-0 bottom-28 flex justify-center z-50">
+          {socialLinks.map((link, index) => (
+            <SocialLink key={index} {...link} />
+          ))}
+        </div>
       </Container>
 
-      {/* Fixed icons bar in black area above footer */}
-      <div className="fixed left-0 right-0 bottom-28 flex justify-center z-50">
-        {socialLinks.map((link, index) => (
-          <SocialLink key={index} {...link} />
-        ))}
-      </div>
-
-      {/* Fixed footer with responsive layout */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#333333] border-t border-gray-700 z-40">
+      {/* Footer stays visible regardless of menu state */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
             <div className="flex items-center justify-center md:justify-start">
@@ -109,23 +110,23 @@ export const Home: React.FC = () => {
                 href="https://perfect-dark.kit.com/044179ba9e"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-2 border border-gray-500 rounded text-sm text-white bg-transparent hover:bg-white hover:text-gray-900 transition-colors"
+                className="px-4 py-2 border border-black rounded text-sm text-black bg-transparent hover:bg-black hover:text-white transition-colors"
               >
                 Subscribe
               </a>
             </div>
-            <div className="text-center md:text-right text-xs text-gray-300 space-x-6 md:space-x-6">
-              <a href="/about" className="hover:text-white">
+            <div className="text-center md:text-right text-xs text-gray-900 space-x-6 md:space-x-6">
+              <a href="/about" className="hover:text-black">
                 ABOUT
               </a>
-              <a href="/contact" className="hover:text-white">
+              <a href="/contact" className="hover:text-black">
                 CONTACT
               </a>
               <a
                 href="https://instagram.com/perfectdark909"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-white"
+                className="hover:text-black"
               >
                 INSTAGRAM
               </a>

@@ -35,7 +35,10 @@ export const Toolbar = ({
             onClick={() => {
               onTitleClick && onTitleClick();
             }}
-            className={classnames("can-hover:hover:opacity-90 block")}
+            className={classnames(
+              "can-hover:hover:opacity-90 block cursor-pointer"
+            )}
+            aria-label="Perfect Dark — Home"
           >
             <img
               src={pdWordmark}
