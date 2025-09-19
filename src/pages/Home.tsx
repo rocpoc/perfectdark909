@@ -40,44 +40,16 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://www.tickettailor.com/checkout/view-event/id/6155977/chk/4f82?nc=1751409801",
-      text: "Perfect Dark ☆ Argus, Chico ☆ July 12",
+      href: "https://perfectdark909.bandcamp.com/album/night-drive",
+      text: "Solitaire — Night Drive",
     },
     {
-      href: "https://perfectdark909.bandcamp.com/album/weapons-fully-reloaded",
-      text: "Freeman 713 - Weapons: Fully Reloaded",
-    },
-    {
-      href: "https://perfectdark909.bandcamp.com/album/isolation-seeker",
-      text: "Provider - Isolation Seeker",
-    },
-    {
-      href: "https://youtu.be/KVwyvPVrV94?si=SLnL_Q97i333YN7-",
-      text: "Brick - Underground SF (YouTube)",
-    },
-    {
-      href: "https://perfectdark909.bandcamp.com/album/isolation-seeker",
-      text: "Provider - Isolation Seeker (Preorder)",
-    },
-    {
-      href: "https://fanlink.tv/pd11",
-      text: "Saroc - Paralysis EP",
-    },
-    // {
-    //   href: "https://www.youtube.com/watch?v=5hcD6uNPPnw",
-    //   text: "Disfu - Perfect Dark LA",
-    // },
-    {
-      href: "https://youtu.be/tZ48fQyQyTs?si=y1yybFXFCKVARjKp",
-      text: "Kanyon (Live) | Perfect Dark LA",
+      href: "https://ra.co/events/2262010",
+      text: "DJ Fuckoff & X-Coast - Perfect Dark x Public Works",
     },
     {
       href: "https://perfectdark909.myshopify.com/",
-      text: "Merch",
-    },
-    {
-      href: "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=24d808e9e59441d0",
-      text: "Perfect Dark Originals (Spotify)",
+      text: "Fall 25 Merch 🍁",
     },
   ];
 
@@ -105,40 +77,63 @@ export const Home: React.FC = () => {
   ];
 
   return (
-    <Container showToolbar={true}>
-      <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-        <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
-          LATEST
-        </span>
-        <br />
+    <div className="min-h-screen flex flex-col">
+      <Container showToolbar={true}>
+        {/* Centered section (leave headroom for fixed footer & icons) */}
+        <section className="min-h-[60vh] flex flex-col items-center justify-center px-3 mx-auto max-w-2xl">
+          <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+            LATEST
+          </span>
+          <div className="h-4" />
 
-        {newsItems.map((item, index) => (
-          <React.Fragment key={index}>
-            <NewsItem href={item.href}>{item.text}</NewsItem>
-            <br />
-          </React.Fragment>
-        ))}
+          {newsItems.map((item, index) => (
+            <div key={index} className="mb-3">
+              <NewsItem href={item.href}>{item.text}</NewsItem>
+            </div>
+          ))}
+        </section>
 
-        <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
-          <a
-            className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
-            href="https://perfect-dark.ck.page/044179ba9e"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            𝓮𝓶𝓪𝓲𝓵 𝓵𝓲𝓼𝓽 𝓼𝓲𝓰𝓷𝓾𝓹
-          </a>
-        </div>
-
-        <br />
-        <br />
-
-        <div className="flex justify-center max-w-lg m-auto">
+        {/* Fixed icons bar in black area above footer (hide when menu open) */}
+        <div className="fixed left-0 right-0 bottom-28 flex justify-center z-50">
           {socialLinks.map((link, index) => (
             <SocialLink key={index} {...link} />
           ))}
         </div>
-      </div>
-    </Container>
+      </Container>
+
+      {/* Footer stays visible regardless of menu state */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
+            <div className="flex items-center justify-center md:justify-start">
+              <a
+                href="https://perfect-dark.kit.com/044179ba9e"
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 border border-black rounded text-sm text-black bg-transparent hover:bg-black hover:text-white transition-colors"
+              >
+                Subscribe
+              </a>
+            </div>
+            <div className="text-center md:text-right text-xs text-gray-900 space-x-6 md:space-x-6">
+              <a href="/about" className="hover:text-black">
+                ABOUT
+              </a>
+              <a href="/contact" className="hover:text-black">
+                CONTACT
+              </a>
+              <a
+                href="https://instagram.com/perfectdark909"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-black"
+              >
+                INSTAGRAM
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
