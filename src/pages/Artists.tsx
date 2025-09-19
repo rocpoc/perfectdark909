@@ -17,53 +17,47 @@ export const Artists: React.FC<{}> = () => {
   ];
 
   return (
-    <Container showToolbar={true}>
-      <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-        <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
-          ARTISTS
-        </span>
-        <br></br>
-        {artistList.map((artist) => (
-          <div className="px-11 grow flex justify-center gap-2" key={artist.id}>
-            <Link
-              to={`/artists/${artist.id}`}
-              className="py-2 text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-semibold can-hover:hover:text-emerald-300"
-            >
-              {artist.name}
-            </Link>
+    <>
+      <Container showToolbar={true}>
+        <div className="flex flex-col justify-center max-w-2xl m-auto px-3 pb-20">
+          <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+            ARTISTS
+          </span>
+          <br></br>
+          {artistList.map((artist) => (
+            <div className="px-11 grow flex justify-center gap-2" key={artist.id}>
+              <Link
+                to={`/artists/${artist.id}`}
+                className="py-2 text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-semibold can-hover:hover:text-emerald-300"
+              >
+                {artist.name}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </Container>
+
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
+            <div className="flex items-center justify-center md:justify-start">
+              <a
+                href="https://perfect-dark.kit.com/044179ba9e"
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 border border-black rounded text-sm text-black bg-transparent hover:bg-black hover:text-white transition-colors"
+              >
+                Subscribe
+              </a>
+            </div>
+            <div className="text-center md:text-right text-xs text-gray-900 space-x-6 md:space-x-6">
+              <a href="/about" className="hover:text-black">ABOUT</a>
+              <a href="/contact" className="hover:text-black">CONTACT</a>
+              <a href="https://instagram.com/perfectdark909" target="_blank" rel="noreferrer" className="hover:text-black">INSTAGRAM</a>
+            </div>
           </div>
-        ))}
-      </div>
-      <div className="flex justify-center py-4 inset-x- bottom-4 max-w-lg m-auto">
-        <br></br>
-        <div>
-          <img
-            src={pd_heart_logo}
-            alt="Logo"
-            className="max-w-lg m-auto"
-            width="50"
-            height="50"
-          />
         </div>
-        <div>
-          <img
-            src={pd_90_logo}
-            alt="Logo"
-            className="max-w-lg m-auto"
-            width="50"
-            height="50 "
-          />
-        </div>
-        <div>
-          <img
-            src={pd_spiral_logo}
-            alt="Logo"
-            className="max-w-lg m-auto"
-            width="50"
-            height="50 "
-          />
-        </div>
-      </div>
-    </Container>
+      </footer>
+    </>
   );
 };
