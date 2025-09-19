@@ -49,7 +49,7 @@ export const Home: React.FC = () => {
     },
     {
       href: "https://perfectdark909.myshopify.com/",
-      text: "Merch",
+      text: "Fall 25 Merch 🍁",
     },
   ];
 
@@ -79,22 +79,18 @@ export const Home: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Container showToolbar={true}>
-        <div className="flex flex-col justify-center max-w-2xl m-auto px-3 pb-28">
+        {/* Centered section (leave headroom for fixed footer & icons) */}
+        <section className="min-h-[60vh] flex flex-col items-center justify-center px-3 mx-auto max-w-2xl">
           <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
             LATEST
           </span>
-          <br />
-
+          <div className="h-4" />
           {newsItems.map((item, index) => (
-            <React.Fragment key={index}>
+            <div key={index} className="mb-3">
               <NewsItem href={item.href}>{item.text}</NewsItem>
-              <br />
-            </React.Fragment>
+            </div>
           ))}
-
-          <br />
-          <br />
-        </div>
+        </section>
       </Container>
 
       {/* Fixed icons bar in black area above footer */}
@@ -104,35 +100,36 @@ export const Home: React.FC = () => {
         ))}
       </div>
 
-      {/* Fixed footer with Subscribe button */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#f5f5dc] border-t border-gray-300 z-40">
+      {/* Fixed footer with responsive layout */}
+      <footer className="fixed bottom-0 left-0 right-0 bg-[#333333] border-t border-gray-700 z-40">
         <div className="max-w-6xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-center">
-            <a
-              href="https://perfect-dark.kit.com/044179ba9e"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2 border border-gray-500 rounded text-sm text-gray-800 bg-transparent hover:bg-gray-800 hover:text-white transition-colors"
-            >
-              Subscribe
-            </a>
-          </div>
-          {/* Bottom links */}
-          <div className="mt-3 text-center text-xs text-gray-700 space-x-6">
-            <a href="/about" className="hover:underline">
-              ABOUT
-            </a>
-            <a href="/contact" className="hover:underline">
-              CONTACT
-            </a>
-            <a
-              href="https://instagram.com/perfectdark909"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:underline"
-            >
-              INSTAGRAM
-            </a>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
+            <div className="flex items-center justify-center md:justify-start">
+              <a
+                href="https://perfect-dark.kit.com/044179ba9e"
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 border border-gray-500 rounded text-sm text-white bg-transparent hover:bg-white hover:text-gray-900 transition-colors"
+              >
+                Subscribe
+              </a>
+            </div>
+            <div className="text-center md:text-right text-xs text-gray-300 space-x-6 md:space-x-6">
+              <a href="/about" className="hover:text-white">
+                ABOUT
+              </a>
+              <a href="/contact" className="hover:text-white">
+                CONTACT
+              </a>
+              <a
+                href="https://instagram.com/perfectdark909"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-white"
+              >
+                INSTAGRAM
+              </a>
+            </div>
           </div>
         </div>
       </footer>
