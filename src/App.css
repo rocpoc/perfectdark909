@@ -107,6 +107,21 @@
   position: relative; z-index: 1; height: 100%;
   display: grid; place-items: end start; padding: 24px;
 }
+.pd-hero__promo {
+  position: absolute; top: 24px; left: 24px;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  color: #0b0b0b; text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.12);
+  backdrop-filter: blur(6px);
+}
+.pd-hero__promo-title { font-size: 13px; font-weight: 600; letter-spacing: .04em; }
+.pd-hero__promo-cta {
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.22);
+}
+.pd-hero__promo:hover { transform: translateY(-1px); background: #fff; }
 .pd-hero__headline { color: #fff; font-size: clamp(28px, 6vw, 64px); line-height: .95; font-weight: 800; text-transform: lowercase; letter-spacing: .01em; }
 .pd-hero__sub { font-size: clamp(12px, 2vw, 16px); opacity: .85; margin-top: 6px; }
 

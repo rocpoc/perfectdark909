@@ -126,9 +126,19 @@ export const Home: React.FC = () => {
 
       {/* Full-Screen Hero Video */}
       <HeroSection
-        sources={["/assets/hero1.mp4", "/assets/hero2.mp4"]}
+        sources={["/assets/hero2.mp4", "/assets/hero3.mp4"]}
         poster="/assets/hero_poster.jpg"
       >
+        <a
+          href="https://perfectdark909.bandcamp.com/album/night-drive"
+          target="_blank"
+          rel="noreferrer"
+          className="pd-hero__promo"
+          aria-label="Solitaire — Night Drive (Bandcamp)"
+        >
+          <span className="pd-hero__promo-title">Solitaire — Night Drive</span>
+          <span className="pd-hero__promo-cta">Listen</span>
+        </a>
         <div className="pd-hero__headline">
           <div>perfect dark</div>
           <div className="pd-hero__sub">label • parties • community</div>
