@@ -17,8 +17,8 @@ export const About: React.FC<{}> = () => {
           <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-8">
             {/* <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8"> */}
             Perfect Dark is a California based record label known for throwing
-            high energy underground parties and releasing a variety of electronic
-            music. Not bound by genre but unified by feeling.
+            high energy underground parties and releasing a variety of
+            electronic music. Not bound by genre but unified by feeling.
             <br></br>
             <br></br>
             We are a collective of friends. We're interested in cultivating a
@@ -41,8 +41,8 @@ export const About: React.FC<{}> = () => {
         </div>
       </Container>
 
-      {/* Persistent footer */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
+      {/* Footer should not overlap content; show after scrolling */}
+      <footer className="mt-8 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
             <div className="flex items-center justify-center md:justify-start">
@@ -56,9 +56,20 @@ export const About: React.FC<{}> = () => {
               </a>
             </div>
             <div className="text-center md:text-right text-xs text-gray-900 space-x-6 md:space-x-6">
-              <a href="/about" className="hover:text-black">ABOUT</a>
-              <a href="/contact" className="hover:text-black">CONTACT</a>
-              <a href="https://instagram.com/perfectdark909" target="_blank" rel="noreferrer" className="hover:text-black">INSTAGRAM</a>
+              <a href="/about" className="hover:text-black">
+                ABOUT
+              </a>
+              <a href="/contact" className="hover:text-black">
+                CONTACT
+              </a>
+              <a
+                href="https://instagram.com/perfectdark909"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-black"
+              >
+                INSTAGRAM
+              </a>
             </div>
           </div>
         </div>

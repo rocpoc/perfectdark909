@@ -116,7 +116,7 @@ export const Environment: React.FC<{}> = () => {
         </div>
       </Container>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
+      <footer className="mt-8 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
             <div className="flex items-center justify-center md:justify-start">
