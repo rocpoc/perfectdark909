@@ -44,8 +44,12 @@ export const Home: React.FC = () => {
       text: "Solitaire — Night Drive",
     },
     {
+      href: "https://www.argusvenue.com/",
+      text: "Fauna & Lavender Persuasion, Argus Chico 9.26",
+    },
+    {
       href: "https://ra.co/events/2262010",
-      text: "DJ Fuckoff & X-Coast - Perfect Dark x Public Works",
+      text: "DJ Fuckoff & X-Coast - Perfect Dark x Public Works — 11.8",
     },
     {
       href: "https://perfectdark909.myshopify.com/",
