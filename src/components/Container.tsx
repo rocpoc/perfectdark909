@@ -7,7 +7,7 @@ import { Toolbar } from "./Toolbar";
 export enum Routes {
   ABOUT = "/about",
   MUSIC = "/music",
-  MERCH = "/merch",
+  SHOP = "/shop",
   ARTISTS = "/artists",
   CONTACT = "/contact",
   EARTH = "/environment",
@@ -69,7 +69,7 @@ export const Container: React.FC<{
               <Link
                 key={path}
                 to={path}
-                target={path === Routes.MERCH ? "_blank" : undefined}
+                target={path === Routes.SHOP ? "_blank" : undefined}
                 className={classnames(
                   pathname === path
                     ? "bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"

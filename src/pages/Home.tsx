@@ -52,7 +52,7 @@ export const Home: React.FC = () => {
       text: "Solitaire — Night Drive",
     },
     {
-      href: "https://perfectdark909.myshopify.com/",
+      href: "https://shop.perfectdark909.com",
       text: "Fall 25 Merch 🍁",
     },
   ];
