@@ -5,7 +5,6 @@ import {
   About,
   Contact,
   Music,
-  Merch,
   Links,
   Artists,
   Environment,
@@ -26,9 +25,9 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
         <Route
-          path="merch"
+          path="shop"
           element={
-            <RedirectToExternalUrl url="https://perfectdark909.myshopify.com/" />
+            <RedirectToExternalUrl url="https://shop.perfectdark909.com" />
           }
         />
         <Route path="artists" element={<Artists />} />
