@@ -40,10 +40,6 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://ra.co/events/2268331",
-      text: "Perfect Dark ☆ Dark Italo — 11.1",
-    },
-    {
       href: "https://ra.co/events/2262010",
       text: "DJ Fuckoff & X-Coast - Perfect Dark x Public Works — 11.8",
     },
