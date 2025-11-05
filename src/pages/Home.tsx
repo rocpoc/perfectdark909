@@ -119,9 +119,11 @@ export const Home: React.FC = () => {
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const latestSectionRef = useRef<HTMLDivElement | null>(null);
+  const latestTriggerRef = useRef<HTMLDivElement | null>(null);
   const footerRef = useRef<HTMLDivElement | null>(null);
   const footerSentinelRef = useRef<HTMLDivElement | null>(null);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const [isBeforeLatest, setIsBeforeLatest] = useState(true);
 
   useEffect(() => {
     const sentinel = footerSentinelRef.current;
@@ -141,6 +143,24 @@ export const Home: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const trigger = latestTriggerRef.current;
+    if (!trigger) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsBeforeLatest(entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: "-120px 0px 0px 0px" }
+    );
+
+    observer.observe(trigger);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const handleNavBlur = (event: React.FocusEvent<HTMLDivElement>) => {
     if (isMenuOpen) {
       return;
@@ -153,17 +173,17 @@ export const Home: React.FC = () => {
 
   const navLinks: { label: string; href: string; external?: boolean }[] = [
     {
-      label: "store",
+      label: "STORE",
       href: "https://shop.perfectdark909.com",
       external: true,
     },
     {
-      label: "label",
+      label: "LABEL",
       href: "https://perfectdark909.bandcamp.com",
       external: true,
     },
-    { label: "artists", href: "/artists" },
-    { label: "info", href: "/about" },
+    { label: "ARTISTS", href: "/artists" },
+    { label: "INFO", href: "/about" },
   ];
 
   const galleryLink = "https://shop.perfectdark909.com/collections/all";
@@ -171,7 +191,7 @@ export const Home: React.FC = () => {
   const isNavSolid = isNavActive || isMenuOpen;
   const navBgClass = isNavSolid ? "bg-black/90" : "bg-transparent";
   const navLinkClass =
-    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] lowercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
@@ -323,14 +343,12 @@ export const Home: React.FC = () => {
       </header>
 
       <section className="relative w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px] md:min-h-screen md:h-screen overflow-hidden">
-        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(200px,1fr)] md:auto-rows-[1fr]">
-          <GalleryTile
-            src="/images/ATX 25.jpg"
-            alt="Perfect Dark apparel in forest canopy"
-            href={galleryLink}
-            className="col-span-2 row-span-2 md:col-span-5 md:row-span-2"
-          />
-        </div>
+        <GalleryTile
+          src="/images/ATX 25.jpg"
+          alt="Perfect Dark apparel in forest canopy"
+          href={galleryLink}
+          className="w-full h-full"
+        />
       </section>
 
       <section className="relative w-full bg-[#e4ebc6] md:min-h-screen md:h-screen overflow-hidden">
@@ -402,6 +420,8 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
+      <div ref={latestTriggerRef} className="h-1" />
+
       <Container showToolbar={false} showMarquee={false}>
         {/* Centered section (leave headroom for fixed footer & icons) */}
         <section
@@ -422,7 +442,10 @@ export const Home: React.FC = () => {
         </section>
 
         <div className="pointer-events-none">
-          <div className="fixed left-0 right-0 bottom-28 flex justify-center z-10 pointer-events-auto">
+          <div
+            className="fixed left-0 right-0 flex justify-center z-10 pointer-events-auto transition-all duration-500"
+            style={{ bottom: isBeforeLatest ? "0.75rem" : "1rem" }}
+          >
             {socialLinks.map((link, index) => (
               <SocialLink key={index} {...link} />
             ))}
@@ -439,7 +462,7 @@ export const Home: React.FC = () => {
           isFooterVisible ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 py-3">
+        <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
             <div className="flex items-center justify-center md:justify-start">
               <a
@@ -452,11 +475,21 @@ export const Home: React.FC = () => {
               </a>
             </div>
             <div className="text-center md:text-right text-xs text-white space-x-6 md:space-x-6">
-              <a href="/about" className="hover:text-emerald-200">
-                ABOUT
+              <a
+                href="https://soundcloud.com/perfectdark909"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-emerald-200"
+              >
+                SOUNDCLOUD
               </a>
-              <a href="/contact" className="hover:text-emerald-200">
-                CONTACT
+              <a
+                href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=3ec803cb982644a3"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-emerald-200"
+              >
+                SPOTIFY
               </a>
               <a
                 href="https://instagram.com/perfectdark909"

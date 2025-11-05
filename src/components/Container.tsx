@@ -75,10 +75,10 @@ export const Container: React.FC<{
                   pathname === path
                     ? "bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
                     : "text-white can-hover:hover:text-emerald-300 active:text-emerald-300",
-                  "text-[9vh] leading-[7vh] md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold w-fit p-2"
+                  "text-[9vh] leading-[7vh] md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold uppercase w-fit p-2"
                 )}
               >
-                {name}
+                {name.toUpperCase()}
               </Link>
             ))}
           </div>
