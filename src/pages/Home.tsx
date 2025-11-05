@@ -107,7 +107,7 @@ export const Home: React.FC = () => {
   const isNavSolid = isNavActive || isMenuOpen;
   const navBgClass = isNavSolid ? "bg-black/90" : "bg-transparent";
   const navLinkClass =
-    "relative px-1 py-2 text-[0.75rem] tracking-[0.3em] lowercase text-white transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    "relative px-1 py-2 text-[0.75rem] tracking-[0.3em] lowercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
@@ -168,7 +168,7 @@ export const Home: React.FC = () => {
               aria-label="Toggle navigation"
               aria-expanded={isMenuOpen}
               aria-controls="pd-mobile-nav"
-              className="md:hidden inline-flex h-12 w-12 items-center justify-center rounded border border-white/30 bg-black/40 text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              className="md:hidden inline-flex h-12 w-12 items-center justify-center rounded border border-white/30 bg-black/40 text-white font-helvetica font-bold transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               onClick={() => {
                 setIsMenuOpen((prev) => {
                   const next = !prev;
@@ -209,7 +209,7 @@ export const Home: React.FC = () => {
                   <li key={`mobile-${label}`}>
                     <a
                       href={href}
-                      className="block px-6 py-4 text-sm tracking-[0.25em] lowercase transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                      className="block px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                       onClick={() => setIsMenuOpen(false)}
                       {...(external
                         ? { target: "_blank", rel: "noreferrer" }
@@ -249,7 +249,7 @@ export const Home: React.FC = () => {
       </Container>
 
       {/* Footer stays visible regardless of menu state */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-[#f6f6f2] border-t border-gray-300 z-40 text-black">
+      <footer className="fixed bottom-0 left-0 right-0 bg-black border-t border-white/20 z-40 text-white font-helvetica font-bold">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
             <div className="flex items-center justify-center md:justify-start">
@@ -257,23 +257,23 @@ export const Home: React.FC = () => {
                 href="https://perfect-dark.kit.com/044179ba9e"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-2 border border-black rounded text-sm text-black bg-transparent hover:bg-black hover:text-white transition-colors"
+                className="px-4 py-2 border border-white rounded text-sm text-white font-helvetica font-bold bg-transparent hover:bg-white hover:text-black transition-colors"
               >
                 Subscribe
               </a>
             </div>
-            <div className="text-center md:text-right text-xs text-gray-900 space-x-6 md:space-x-6">
-              <a href="/about" className="hover:text-black">
+            <div className="text-center md:text-right text-xs text-white space-x-6 md:space-x-6">
+              <a href="/about" className="hover:text-emerald-200">
                 ABOUT
               </a>
-              <a href="/contact" className="hover:text-black">
+              <a href="/contact" className="hover:text-emerald-200">
                 CONTACT
               </a>
               <a
                 href="https://instagram.com/perfectdark909"
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-black"
+                className="hover:text-emerald-200"
               >
                 INSTAGRAM
               </a>
