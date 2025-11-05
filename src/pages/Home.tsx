@@ -213,7 +213,7 @@ export const Home: React.FC = () => {
        */}
 
       <header
-        className={`fixed inset-x-0 top-0 z-[60] border-b border-white/20 transition-colors duration-300 ${navBgClass}`}
+        className={`fixed inset-x-0 top-0 z-[60] transition-colors duration-300 ${navBgClass}`}
         onMouseEnter={() => setIsNavActive(true)}
         onMouseLeave={() => {
           if (!isMenuOpen) {
