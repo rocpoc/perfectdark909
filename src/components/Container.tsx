@@ -17,7 +17,8 @@ export enum Routes {
 export const Container: React.FC<{
   children?: ReactNode;
   showToolbar: boolean;
-}> = ({ children, showToolbar }) => {
+  showMarquee?: boolean;
+}> = ({ children, showToolbar, showMarquee = true }) => {
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,7 +28,7 @@ export const Container: React.FC<{
   return (
     <div className="flex flex-col min-h-screen bg-black">
       {/* Hide the marquee on the opt-in redirect page */}
-      {!isSmsOptIn && (
+      {!isSmsOptIn && showMarquee && (
         <Marquee
           gradient={false}
           className="bg-black text-white uppercase text-xs bottom-[.5px]"
@@ -74,10 +75,10 @@ export const Container: React.FC<{
                   pathname === path
                     ? "bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300"
                     : "text-white can-hover:hover:text-emerald-300 active:text-emerald-300",
-                  "text-[9vh] leading-[7vh] md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold w-fit p-2"
+                  "text-[9vh] leading-[7vh] md:text-[18vh] md:leading-[16vh] font-helvetica font-semibold uppercase w-fit p-2"
                 )}
               >
-                {name}
+                {name.toUpperCase()}
               </Link>
             ))}
           </div>
