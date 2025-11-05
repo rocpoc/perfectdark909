@@ -37,6 +37,46 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
   </div>
 );
 
+const GalleryTile: React.FC<{
+  src: string;
+  alt: string;
+  href?: string;
+  className?: string;
+}> = ({ src, alt, href, className }) => {
+  const tileClasses = `group relative block h-full w-full overflow-hidden bg-transparent ${
+    className ?? ""
+  }`;
+
+  const content = (
+    <>
+      <img
+        src={src}
+        alt={alt}
+        className="h-full w-full object-cover transition duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-focus-within:scale-105"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-white/0 transition duration-300 group-hover:bg-white/10 group-focus-within:bg-white/10"
+        aria-hidden="true"
+      />
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={`${tileClasses} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70`}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return <div className={tileClasses}>{content}</div>;
+};
+
 export const Home: React.FC = () => {
   const newsItems = [
     {
@@ -104,10 +144,12 @@ export const Home: React.FC = () => {
     { label: "info", href: "/about" },
   ];
 
+  const galleryLink = "https://shop.perfectdark909.com/collections/all";
+
   const isNavSolid = isNavActive || isMenuOpen;
   const navBgClass = isNavSolid ? "bg-black/90" : "bg-transparent";
   const navLinkClass =
-    "relative px-1 py-2 text-[0.75rem] tracking-[0.3em] lowercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] lowercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
@@ -148,7 +190,7 @@ export const Home: React.FC = () => {
             <nav className="hidden md:block">
               <ul className="flex items-center gap-6 md:gap-8">
                 {navLinks.map(({ label, href, external }) => (
-                  <li key={label}>
+                  <li key={label} className="group">
                     <a
                       href={href}
                       className={navLinkClass}
@@ -157,7 +199,21 @@ export const Home: React.FC = () => {
                         ? { target: "_blank", rel: "noreferrer" }
                         : {})}
                     >
-                      {label}
+                      <span className="whitespace-nowrap">{label}</span>
+                      <span className="relative flex h-4 w-4 items-center justify-center">
+                        <span
+                          aria-hidden="true"
+                          className="text-base leading-none transition-opacity duration-200 group-hover:opacity-0 group-focus-within:opacity-0"
+                        >
+                          +
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="absolute text-base leading-none opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+                        >
+                          -
+                        </span>
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -206,21 +262,89 @@ export const Home: React.FC = () => {
             <nav>
               <ul className="flex flex-col divide-y divide-white/10">
                 {navLinks.map(({ label, href, external }) => (
-                  <li key={`mobile-${label}`}>
+                  <li key={`mobile-${label}`} className="group">
                     <a
                       href={href}
-                      className="block px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                      className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                       onClick={() => setIsMenuOpen(false)}
                       {...(external
                         ? { target: "_blank", rel: "noreferrer" }
                         : {})}
                     >
-                      {label}
+                      <span>{label}</span>
+                      <span className="relative flex h-4 w-4 items-center justify-center">
+                        <span
+                          aria-hidden="true"
+                          className="text-base leading-none transition-opacity duration-200 group-hover:opacity-0 group-focus-within:opacity-0"
+                        >
+                          +
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="absolute text-base leading-none opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+                        >
+                          -
+                        </span>
+                      </span>
                     </a>
                   </li>
                 ))}
               </ul>
             </nav>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative h-screen w-full bg-[#dbe3b8]">
+        <div className="grid h-full w-full md:grid-cols-5">
+          <div className="grid h-full md:col-span-2 grid-rows-2">
+            <GalleryTile
+              src="/images/ATX 25.jpg"
+              alt="Perfect Dark apparel in forest canopy"
+              href={galleryLink}
+              className="h-full"
+            />
+            <GalleryTile
+              src="/images/ATX 25 (1).jpg"
+              alt="Perfect Dark long sleeve detail"
+              href={galleryLink}
+              className="h-full"
+            />
+          </div>
+          <div className="md:col-span-3">
+            <GalleryTile
+              src="/images/ATX 25 (2).jpg"
+              alt="Perfect Dark web graphic close-up"
+              href={galleryLink}
+              className="h-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative h-screen w-full bg-[#e4ebc6]">
+        <div className="grid h-full w-full md:grid-cols-5">
+          <div className="md:col-span-3">
+            <GalleryTile
+              src="/images/ATX 25 (3).jpg"
+              alt="Perfect Dark nature walk lookbook"
+              href={galleryLink}
+              className="h-full"
+            />
+          </div>
+          <div className="grid h-full md:col-span-2 grid-rows-2">
+            <GalleryTile
+              src="/images/ATX 25 (4).jpg"
+              alt="Perfect Dark botanical graphics detail"
+              href={galleryLink}
+              className="h-full"
+            />
+            <GalleryTile
+              src="/images/ATX 25 R1 08039 005A.JPG"
+              alt="Perfect Dark cap back embroidery"
+              href={galleryLink}
+              className="h-full"
+            />
           </div>
         </div>
       </section>
