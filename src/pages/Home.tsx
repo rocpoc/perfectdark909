@@ -119,6 +119,27 @@ export const Home: React.FC = () => {
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const latestSectionRef = useRef<HTMLDivElement | null>(null);
+  const footerRef = useRef<HTMLDivElement | null>(null);
+  const footerSentinelRef = useRef<HTMLDivElement | null>(null);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const sentinel = footerSentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsFooterVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleNavBlur = (event: React.FocusEvent<HTMLDivElement>) => {
     if (isMenuOpen) {
@@ -302,24 +323,12 @@ export const Home: React.FC = () => {
       </header>
 
       <section className="relative w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px] md:min-h-screen md:h-screen overflow-hidden">
-        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
+        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(200px,1fr)] md:auto-rows-[1fr]">
           <GalleryTile
             src="/images/ATX 25.jpg"
             alt="Perfect Dark apparel in forest canopy"
             href={galleryLink}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-1"
-          />
-          <GalleryTile
-            src="/images/ATX 25 (1).jpg"
-            alt="Perfect Dark long sleeve detail"
-            href={galleryLink}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-2"
-          />
-          <GalleryTile
-            src="/images/ATX 25 (2).jpg"
-            alt="Perfect Dark web graphic close-up"
-            href={galleryLink}
-            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-3"
+            className="col-span-2 row-span-2 md:col-span-5 md:row-span-2"
           />
         </div>
       </section>
@@ -327,11 +336,28 @@ export const Home: React.FC = () => {
       <section className="relative w-full bg-[#e4ebc6] md:min-h-screen md:h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
+            src="/images/ATX 25 (1).jpg"
+            alt="Perfect Dark long sleeve detail"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-1"
+          />
+          <GalleryTile
+            src="/images/ATX 25 (2).jpg"
+            alt="Perfect Dark web graphic close-up"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-2"
+          />
+          <GalleryTile
             src="/images/ATX 25 (3).jpg"
             alt="Perfect Dark nature walk lookbook"
             href={galleryLink}
-            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:row-start-1"
+            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-3"
           />
+        </div>
+      </section>
+
+      <section className="relative w-full bg-[#d6e1ad] md:min-h-screen md:h-screen overflow-hidden">
+        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
             src="/images/ATX 25 (4).jpg"
             alt="Perfect Dark botanical graphics detail"
@@ -344,10 +370,16 @@ export const Home: React.FC = () => {
             href={galleryLink}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
           />
+          <GalleryTile
+            src="/images/ATX 25 R1 0001.JPG"
+            alt="Perfect Dark forest polaroid"
+            href={galleryLink}
+            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-1"
+          />
         </div>
       </section>
 
-      <section className="relative w-full bg-[#d6e1ad] md:min-h-screen md:h-screen overflow-hidden">
+      <section className="relative w-full bg-[#cfe0b2] md:min-h-screen md:h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
             src="/images/show-010.jpg"
@@ -374,18 +406,17 @@ export const Home: React.FC = () => {
         {/* Centered section (leave headroom for fixed footer & icons) */}
         <section
           ref={latestSectionRef}
-          className="relative z-50 min-h-[60vh] w-full bg-black flex flex-col items-center justify-center px-3"
+          className="relative z-40 w-full bg-black px-6 pt-14 pb-12 mt-20 mb-20"
         >
-          <div className="mx-auto max-w-2xl flex flex-col items-center">
+          <div className="mx-auto max-w-2xl flex flex-col items-center text-center gap-4">
             <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
               LATEST
             </span>
-            <div className="h-4" />
 
             {newsItems.map((item, index) => (
-              <div key={index} className="mb-3">
-                <NewsItem href={item.href}>{item.text}</NewsItem>
-              </div>
+              <NewsItem key={index} href={item.href}>
+                {item.text}
+              </NewsItem>
             ))}
           </div>
         </section>
@@ -399,8 +430,15 @@ export const Home: React.FC = () => {
         </div>
       </Container>
 
+      <div ref={footerSentinelRef} className="h-32" />
+
       {/* Footer stays visible regardless of menu state */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-black border-t border-white/20 z-40 text-white font-helvetica font-bold">
+      <footer
+        ref={footerRef}
+        className={`fixed bottom-0 left-0 right-0 bg-black border-t border-white/20 z-40 text-white font-helvetica font-bold transition-transform duration-500 ${
+          isFooterVisible ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
             <div className="flex items-center justify-center md:justify-start">
