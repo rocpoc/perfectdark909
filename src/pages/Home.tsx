@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container } from "../components/Container";
 import logo from "../img/logo.jpg";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
@@ -118,6 +118,7 @@ export const Home: React.FC = () => {
 
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const latestSectionRef = useRef<HTMLDivElement | null>(null);
 
   const handleNavBlur = (event: React.FocusEvent<HTMLDivElement>) => {
     if (isMenuOpen) {
@@ -171,7 +172,7 @@ export const Home: React.FC = () => {
        */}
 
       <header
-        className={`fixed inset-x-0 top-0 z-30 border-b border-white/20 transition-colors duration-300 ${navBgClass}`}
+        className={`fixed inset-x-0 top-0 z-[60] border-b border-white/20 transition-colors duration-300 ${navBgClass}`}
         onMouseEnter={() => setIsNavActive(true)}
         onMouseLeave={() => {
           if (!isMenuOpen) {
@@ -354,26 +355,32 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <Container showToolbar={false}>
+      <Container showToolbar={false} showMarquee={false}>
         {/* Centered section (leave headroom for fixed footer & icons) */}
-        <section className="min-h-[60vh] flex flex-col items-center justify-center px-3 mx-auto max-w-2xl">
-          <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
-            LATEST
-          </span>
-          <div className="h-4" />
+        <section
+          ref={latestSectionRef}
+          className="relative z-50 min-h-[60vh] w-full bg-black flex flex-col items-center justify-center px-3"
+        >
+          <div className="mx-auto max-w-2xl flex flex-col items-center">
+            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+              LATEST
+            </span>
+            <div className="h-4" />
 
-          {newsItems.map((item, index) => (
-            <div key={index} className="mb-3">
-              <NewsItem href={item.href}>{item.text}</NewsItem>
-            </div>
-          ))}
+            {newsItems.map((item, index) => (
+              <div key={index} className="mb-3">
+                <NewsItem href={item.href}>{item.text}</NewsItem>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* Fixed icons bar in black area above footer (hide when menu open) */}
-        <div className="fixed left-0 right-0 bottom-28 flex justify-center z-50">
-          {socialLinks.map((link, index) => (
-            <SocialLink key={index} {...link} />
-          ))}
+        <div className="pointer-events-none">
+          <div className="fixed left-0 right-0 bottom-28 flex justify-center z-10 pointer-events-auto">
+            {socialLinks.map((link, index) => (
+              <SocialLink key={index} {...link} />
+            ))}
+          </div>
         </div>
       </Container>
 

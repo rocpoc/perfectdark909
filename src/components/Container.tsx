@@ -17,7 +17,8 @@ export enum Routes {
 export const Container: React.FC<{
   children?: ReactNode;
   showToolbar: boolean;
-}> = ({ children, showToolbar }) => {
+  showMarquee?: boolean;
+}> = ({ children, showToolbar, showMarquee = true }) => {
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -27,7 +28,7 @@ export const Container: React.FC<{
   return (
     <div className="flex flex-col min-h-screen bg-black">
       {/* Hide the marquee on the opt-in redirect page */}
-      {!isSmsOptIn && (
+      {!isSmsOptIn && showMarquee && (
         <Marquee
           gradient={false}
           className="bg-black text-white uppercase text-xs bottom-[.5px]"
