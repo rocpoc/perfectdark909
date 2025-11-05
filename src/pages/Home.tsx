@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "../components/Container";
 import logo from "../img/logo.jpg";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
@@ -76,6 +76,39 @@ export const Home: React.FC = () => {
     },
   ];
 
+  const [isNavActive, setIsNavActive] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    if (isMenuOpen) {
+      return;
+    }
+    const nextFocus = event.relatedTarget as Node | null;
+    if (!nextFocus || !event.currentTarget.contains(nextFocus)) {
+      setIsNavActive(false);
+    }
+  };
+
+  const navLinks: { label: string; href: string; external?: boolean }[] = [
+    {
+      label: "store",
+      href: "https://shop.perfectdark909.com",
+      external: true,
+    },
+    {
+      label: "label",
+      href: "https://perfectdark909.bandcamp.com",
+      external: true,
+    },
+    { label: "artists", href: "/artists" },
+    { label: "info", href: "/about" },
+  ];
+
+  const isNavSolid = isNavActive || isMenuOpen;
+  const navBgClass = isNavSolid ? "bg-black/90" : "bg-transparent";
+  const navLinkClass =
+    "relative px-1 py-2 text-[0.75rem] tracking-[0.3em] lowercase text-white transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+
   return (
     <div className="min-h-screen flex flex-col bg-black">
       <section className="relative h-screen w-full overflow-hidden">
@@ -89,18 +122,110 @@ export const Home: React.FC = () => {
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
-        <div className="relative z-10 flex h-full w-full flex-col">
-          <div className="pointer-events-none flex justify-center pt-10">
-            <img
-              src={pdWordmark}
-              alt="Perfect Dark"
-              className="h-16 w-auto max-w-[75vw] drop-shadow-[0_8px_20px_rgba(0,0,0,0.55)]"
-            />
+        <div
+          className={`absolute top-0 left-0 right-0 z-20 border-b border-white/20 transition-colors duration-300 ${navBgClass}`}
+          onMouseEnter={() => setIsNavActive(true)}
+          onMouseLeave={() => {
+            if (!isMenuOpen) {
+              setIsNavActive(false);
+            }
+          }}
+          onFocus={() => setIsNavActive(true)}
+          onBlur={handleNavBlur}
+        >
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-white">
+            <a
+              href="/"
+              aria-label="Perfect Dark — Home"
+              className="flex items-center gap-3 shrink-0"
+            >
+              <img
+                src={pdWordmark}
+                alt="Perfect Dark"
+                className="h-10 w-auto max-w-[180px] drop-shadow-[0_6px_16px_rgba(0,0,0,0.6)] md:h-12"
+              />
+            </a>
+            <nav className="hidden md:block">
+              <ul className="flex items-center gap-6 md:gap-8">
+                {navLinks.map(({ label, href, external }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className={navLinkClass}
+                      onClick={() => setIsMenuOpen(false)}
+                      {...(external
+                        ? { target: "_blank", rel: "noreferrer" }
+                        : {})}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <button
+              type="button"
+              aria-label="Toggle navigation"
+              aria-expanded={isMenuOpen}
+              aria-controls="pd-mobile-nav"
+              className="md:hidden inline-flex h-12 w-12 items-center justify-center rounded border border-white/30 bg-black/40 text-white transition hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              onClick={() => {
+                setIsMenuOpen((prev) => {
+                  const next = !prev;
+                  setIsNavActive(next);
+                  return next;
+                });
+              }}
+            >
+              <span className="sr-only">Toggle navigation</span>
+              <span className="flex flex-col items-center justify-center gap-1.5">
+                <span
+                  className={`h-[2px] w-6 bg-white transition-transform duration-300 ${
+                    isMenuOpen ? "translate-y-[7px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`h-[2px] w-6 bg-white transition-opacity duration-300 ${
+                    isMenuOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+                <span
+                  className={`h-[2px] w-6 bg-white transition-transform duration-300 ${
+                    isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
+          <div
+            id="pd-mobile-nav"
+            className={`md:hidden overflow-hidden border-t border-white/15 bg-black/95 text-white transition-[max-height,opacity] duration-300 ${
+              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            <nav>
+              <ul className="flex flex-col divide-y divide-white/10">
+                {navLinks.map(({ label, href, external }) => (
+                  <li key={`mobile-${label}`}>
+                    <a
+                      href={href}
+                      className="block px-6 py-4 text-sm tracking-[0.25em] lowercase transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                      onClick={() => setIsMenuOpen(false)}
+                      {...(external
+                        ? { target: "_blank", rel: "noreferrer" }
+                        : {})}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
       </section>
 
-      <Container showToolbar={true}>
+      <Container showToolbar={false}>
         {/* Centered section (leave headroom for fixed footer & icons) */}
         <section className="min-h-[60vh] flex flex-col items-center justify-center px-3 mx-auto max-w-2xl">
           <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
