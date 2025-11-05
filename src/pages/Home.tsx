@@ -301,57 +301,72 @@ export const Home: React.FC = () => {
         </div>
       </header>
 
-      <section className="relative min-h-screen w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px]">
-        <div className="grid min-h-screen w-full md:grid-cols-5">
-          <div className="grid h-full md:col-span-2 grid-rows-2">
-            <GalleryTile
-              src="/images/ATX 25.jpg"
-              alt="Perfect Dark apparel in forest canopy"
-              href={galleryLink}
-              className="h-full"
-            />
-            <GalleryTile
-              src="/images/ATX 25 (1).jpg"
-              alt="Perfect Dark long sleeve detail"
-              href={galleryLink}
-              className="h-full"
-            />
-          </div>
-          <div className="md:col-span-3">
-            <GalleryTile
-              src="/images/ATX 25 (2).jpg"
-              alt="Perfect Dark web graphic close-up"
-              href={galleryLink}
-              className="h-full"
-            />
-          </div>
+      <section className="relative w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px] md:min-h-screen md:h-screen overflow-hidden">
+        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
+          <GalleryTile
+            src="/images/ATX 25.jpg"
+            alt="Perfect Dark apparel in forest canopy"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-1"
+          />
+          <GalleryTile
+            src="/images/ATX 25 (1).jpg"
+            alt="Perfect Dark long sleeve detail"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-2"
+          />
+          <GalleryTile
+            src="/images/ATX 25 (2).jpg"
+            alt="Perfect Dark web graphic close-up"
+            href={galleryLink}
+            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-3"
+          />
         </div>
       </section>
 
-      <section className="relative min-h-screen w-full bg-[#e4ebc6]">
-        <div className="grid min-h-screen w-full md:grid-cols-5">
-          <div className="md:col-span-3">
-            <GalleryTile
-              src="/images/ATX 25 (3).jpg"
-              alt="Perfect Dark nature walk lookbook"
-              href={galleryLink}
-              className="h-full"
-            />
-          </div>
-          <div className="grid h-full md:col-span-2 grid-rows-2">
-            <GalleryTile
-              src="/images/ATX 25 (4).jpg"
-              alt="Perfect Dark botanical graphics detail"
-              href={galleryLink}
-              className="h-full"
-            />
-            <GalleryTile
-              src="/images/ATX 25 R1 08039 005A.JPG"
-              alt="Perfect Dark cap back embroidery"
-              href={galleryLink}
-              className="h-full"
-            />
-          </div>
+      <section className="relative w-full bg-[#e4ebc6] md:min-h-screen md:h-screen overflow-hidden">
+        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
+          <GalleryTile
+            src="/images/ATX 25 (3).jpg"
+            alt="Perfect Dark nature walk lookbook"
+            href={galleryLink}
+            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:row-start-1"
+          />
+          <GalleryTile
+            src="/images/ATX 25 (4).jpg"
+            alt="Perfect Dark botanical graphics detail"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-1"
+          />
+          <GalleryTile
+            src="/images/ATX 25 R1 08039 005A.JPG"
+            alt="Perfect Dark cap back embroidery"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
+          />
+        </div>
+      </section>
+
+      <section className="relative w-full bg-[#d6e1ad] md:min-h-screen md:h-screen overflow-hidden">
+        <div className="grid h-full w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
+          <GalleryTile
+            src="/images/show-010.jpg"
+            alt="Perfect Dark live show crowd"
+            href={galleryLink}
+            className="col-span-2 row-span-2 md:col-span-2 md:row-span-2"
+          />
+          <GalleryTile
+            src="/images/show-011.jpg"
+            alt="Perfect Dark performer close-up"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-1"
+          />
+          <GalleryTile
+            src="/images/show-012.jpg"
+            alt="Perfect Dark booth detail"
+            href={galleryLink}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-2"
+          />
         </div>
       </section>
 
