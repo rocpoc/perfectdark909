@@ -4,7 +4,7 @@ import logo from "../img/logo.jpg";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
 import pd_heart_logo from "../img/PD_Special Heart-01.png";
-import logo_cropped from "../img/logo_cropped.png";
+import pdWordmark from "../img/PD Logo White.png";
 import bc_logo from "../img/icons bc.png";
 import ig_logo from "../img/icons-insta-01.png";
 import spotify_logo from "../img/icons-spotify-01.png";
@@ -77,7 +77,29 @@ export const Home: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-black">
+      <section className="relative h-screen w-full overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/videos/hero1.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
+        <div className="relative z-10 flex h-full w-full flex-col">
+          <div className="pointer-events-none flex justify-center pt-10">
+            <img
+              src={pdWordmark}
+              alt="Perfect Dark"
+              className="h-16 w-auto max-w-[75vw] drop-shadow-[0_8px_20px_rgba(0,0,0,0.55)]"
+            />
+          </div>
+        </div>
+      </section>
+
       <Container showToolbar={true}>
         {/* Centered section (leave headroom for fixed footer & icons) */}
         <section className="min-h-[60vh] flex flex-col items-center justify-center px-3 mx-auto max-w-2xl">
