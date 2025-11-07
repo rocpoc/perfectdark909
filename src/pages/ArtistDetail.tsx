@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Container } from "../components/Container";
+import { FooterSubscribe } from "../components/FooterSubscribe";
 import brickPdf from "../img/artists/brick/brick-epk.pdf";
 
 const ArtistDetail = () => {
@@ -12,7 +13,8 @@ const ArtistDetail = () => {
   }
 
   return (
-    <Container showToolbar={true}>
+    <>
+      <Container showToolbar={true} showMarquee={false}>
       <div className="flex flex-col justify-center max-w-2xl m-auto">
         <div className="px-11 grow flex justify-center gap-1">
           <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
@@ -33,7 +35,11 @@ const ArtistDetail = () => {
           </a>
         </div>
       </div>
-    </Container>
+      </Container>
+      <footer className="mt-24 bg-black border-t border-white/20 text-white">
+        <FooterSubscribe />
+      </footer>
+    </>
   );
 };
 
