@@ -36,7 +36,7 @@ const ArtistDetail = () => {
         </div>
       </div>
       </Container>
-      <footer className="mt-24 bg-black border-t border-white/20 text-white">
+      <footer className="bg-black border-t border-white/20 text-white">
         <FooterSubscribe />
       </footer>
     </>

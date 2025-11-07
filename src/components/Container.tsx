@@ -33,7 +33,9 @@ export const Container: React.FC<{
 
       <div className="w-full h-full">
         {/* Shared header (skip on opt-in redirect) */}
-        {shouldShowHeader && <SiteHeader />}
+        {shouldShowHeader && (
+          <SiteHeader forceSolid={pathname !== "/"} />
+        )}
 
         {/* Little rotating signature—also skip for opt-in */}
         {!isSmsOptIn && (
@@ -45,7 +47,7 @@ export const Container: React.FC<{
         <div
           className={`mx-auto text-center text-white ${
             shouldShowHeader ? "pt-28 md:pt-32" : ""
-          }`}
+          } pb-32`}
         >
           {children}
         </div>

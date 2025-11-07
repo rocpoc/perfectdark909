@@ -9,6 +9,7 @@ interface NavLinkConfig {
 
 interface SiteHeaderProps {
   className?: string;
+  forceSolid?: boolean;
 }
 
 const NAV_LINKS: NavLinkConfig[] = [
@@ -26,19 +27,26 @@ const NAV_LINKS: NavLinkConfig[] = [
   { label: "INFO", href: "/about" },
 ];
 
-export const SiteHeader: React.FC<SiteHeaderProps> = ({ className }) => {
+export const SiteHeader: React.FC<SiteHeaderProps> = ({
+  className,
+  forceSolid = false,
+}) => {
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navClasses = useMemo(() => {
-    const isNavSolid = isNavActive || isMenuOpen;
-    const navBgClass = isNavSolid ? "bg-black/90" : "bg-transparent";
+    const isNavSolid = forceSolid || isNavActive || isMenuOpen;
+    const navBgClass = forceSolid
+      ? "bg-black"
+      : isNavSolid
+      ? "bg-black/90"
+      : "bg-transparent";
     return `fixed inset-x-0 top-0 z-[60] transition-colors duration-300 ${navBgClass} ${className ?? ""}`;
-  }, [className, isMenuOpen, isNavActive]);
+  }, [className, forceSolid, isMenuOpen, isNavActive]);
 
   const handleNavBlur = useCallback(
     (event: React.FocusEvent<HTMLDivElement>) => {
-      if (isMenuOpen) {
+      if (isMenuOpen || forceSolid) {
         return;
       }
       const nextFocus = event.relatedTarget as Node | null;
@@ -46,7 +54,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ className }) => {
         setIsNavActive(false);
       }
     },
-    [isMenuOpen]
+    [forceSolid, isMenuOpen]
   );
 
   const navLinkClass =
@@ -55,13 +63,21 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ className }) => {
   return (
     <header
       className={navClasses}
-      onMouseEnter={() => setIsNavActive(true)}
+      onMouseEnter={() => {
+        if (!forceSolid) {
+          setIsNavActive(true);
+        }
+      }}
       onMouseLeave={() => {
-        if (!isMenuOpen) {
+        if (!isMenuOpen && !forceSolid) {
           setIsNavActive(false);
         }
       }}
-      onFocus={() => setIsNavActive(true)}
+      onFocus={() => {
+        if (!forceSolid) {
+          setIsNavActive(true);
+        }
+      }}
       onBlur={handleNavBlur}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-white">
