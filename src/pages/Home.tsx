@@ -43,16 +43,25 @@ const GalleryTile: React.FC<{
   href?: string;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLDivElement>;
-}> = ({ src, alt, href, className, onClick }) => {
+  srcSet?: string;
+  sizes?: string;
+  loading?: "lazy" | "eager";
+}> = ({ src, alt, href, className, onClick, srcSet, sizes, loading }) => {
   const tileClasses = `group relative block h-full w-full overflow-hidden bg-transparent ${
     className ?? ""
   }`;
+
+  const imageLoading = loading ?? "lazy";
 
   const content = (
     <>
       <img
         src={src}
         alt={alt}
+        loading={imageLoading}
+        decoding="async"
+        srcSet={srcSet}
+        sizes={sizes}
         className="h-full w-full object-cover transition duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-focus-within:scale-105"
       />
       <div
@@ -193,6 +202,9 @@ export const Home: React.FC = () => {
   ];
 
   const galleryLink = "https://shop.perfectdark909.com/collections/all";
+  const heroTileSizes = "100vw";
+  const merchTileSizes =
+    "(max-width: 767px) 50vw, (max-width: 1279px) 33vw, 20vw";
 
   const handleMerchTileClick = useCallback(
     (tileLabel: string) =>
@@ -366,7 +378,10 @@ export const Home: React.FC = () => {
 
       <section className="relative w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px] md:min-h-screen md:h-screen overflow-hidden">
         <GalleryTile
-          src="/images/ATX 25.jpg"
+          src="/images/optimized/merch-hero.jpg"
+          srcSet="/images/optimized/merch-hero@800.jpg 800w, /images/optimized/merch-hero.jpg 1600w"
+          sizes={heroTileSizes}
+          loading="eager"
           alt="Perfect Dark apparel in forest canopy"
           href={galleryLink}
           onClick={handleMerchTileClick(
@@ -379,21 +394,27 @@ export const Home: React.FC = () => {
       <section className="relative w-full bg-[#e4ebc6] md:min-h-screen md:h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
-            src="/images/ATX 25 (1).jpg"
+            src="/images/optimized/merch-1.jpg"
+            srcSet="/images/optimized/merch-1@800.jpg 800w, /images/optimized/merch-1.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark long sleeve detail"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark long sleeve detail")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-1"
           />
           <GalleryTile
-            src="/images/ATX 25 (2).jpg"
+            src="/images/optimized/merch-2.jpg"
+            srcSet="/images/optimized/merch-2@800.jpg 800w, /images/optimized/merch-2.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark web graphic close-up"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark web graphic close-up")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-2"
           />
           <GalleryTile
-            src="/images/ATX 25 (3).jpg"
+            src="/images/optimized/merch-3.jpg"
+            srcSet="/images/optimized/merch-3@800.jpg 800w, /images/optimized/merch-3.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark nature walk lookbook"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark nature walk lookbook")}
@@ -405,7 +426,9 @@ export const Home: React.FC = () => {
       <section className="relative w-full bg-[#d6e1ad] md:min-h-screen md:h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
-            src="/images/ATX 25 (4).jpg"
+            src="/images/optimized/merch-4.jpg"
+            srcSet="/images/optimized/merch-4@800.jpg 800w, /images/optimized/merch-4.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark botanical graphics detail"
             href={galleryLink}
             onClick={handleMerchTileClick(
@@ -414,14 +437,18 @@ export const Home: React.FC = () => {
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-1"
           />
           <GalleryTile
-            src="/images/ATX 25 R1 08039 005A.JPG"
+            src="/images/optimized/merch-6.jpg"
+            srcSet="/images/optimized/merch-6@800.jpg 800w, /images/optimized/merch-6.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark cap back embroidery"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark cap back embroidery")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
           />
           <GalleryTile
-            src="/images/ATX 25 R1 0001.JPG"
+            src="/images/optimized/merch-5.jpg"
+            srcSet="/images/optimized/merch-5@800.jpg 800w, /images/optimized/merch-5.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark forest polaroid"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark forest polaroid")}
@@ -433,21 +460,27 @@ export const Home: React.FC = () => {
       <section className="relative w-full bg-[#cfe0b2] md:min-h-screen md:h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
-            src="/images/show-010.jpg"
+            src="/images/optimized/show-010.jpg"
+            srcSet="/images/optimized/show-010@800.jpg 800w, /images/optimized/show-010.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark live show crowd"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark live show crowd")}
             className="col-span-2 row-span-2 md:col-span-2 md:row-span-2"
           />
           <GalleryTile
-            src="/images/show-011.jpg"
+            src="/images/optimized/show-011.jpg"
+            srcSet="/images/optimized/show-011@800.jpg 800w, /images/optimized/show-011.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark performer close-up"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark performer close-up")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-1"
           />
           <GalleryTile
-            src="/images/show-012.jpg"
+            src="/images/optimized/show-012.jpg"
+            srcSet="/images/optimized/show-012@800.jpg 800w, /images/optimized/show-012.jpg 1600w"
+            sizes={merchTileSizes}
             alt="Perfect Dark booth detail"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark booth detail")}
