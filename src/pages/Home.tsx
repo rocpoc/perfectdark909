@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "../components/Container";
 import logo from "../img/logo.jpg";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
@@ -42,7 +42,8 @@ const GalleryTile: React.FC<{
   alt: string;
   href?: string;
   className?: string;
-}> = ({ src, alt, href, className }) => {
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLDivElement>;
+}> = ({ src, alt, href, className, onClick }) => {
   const tileClasses = `group relative block h-full w-full overflow-hidden bg-transparent ${
     className ?? ""
   }`;
@@ -68,13 +69,18 @@ const GalleryTile: React.FC<{
         target="_blank"
         rel="noreferrer"
         className={`${tileClasses} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70`}
+        onClick={onClick}
       >
         {content}
       </a>
     );
   }
 
-  return <div className={tileClasses}>{content}</div>;
+  return (
+    <div className={tileClasses} onClick={onClick}>
+      {content}
+    </div>
+  );
 };
 
 export const Home: React.FC = () => {
@@ -187,6 +193,22 @@ export const Home: React.FC = () => {
   ];
 
   const galleryLink = "https://shop.perfectdark909.com/collections/all";
+
+  const handleMerchTileClick = useCallback(
+    (tileLabel: string) =>
+      (_event: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+        if (typeof window !== "undefined" && typeof window.fbq === "function") {
+          window.fbq("track", "ViewContent", {
+            content_name: tileLabel,
+            content_category: "Merch Gallery",
+            content_type: "product_group",
+            content_ids: ["home-merch-gallery"],
+            destination_url: galleryLink,
+          });
+        }
+      },
+    [galleryLink]
+  );
 
   const isNavSolid = isNavActive || isMenuOpen;
   const navBgClass = isNavSolid ? "bg-black/90" : "bg-transparent";
@@ -347,6 +369,9 @@ export const Home: React.FC = () => {
           src="/images/ATX 25.jpg"
           alt="Perfect Dark apparel in forest canopy"
           href={galleryLink}
+          onClick={handleMerchTileClick(
+            "Perfect Dark apparel in forest canopy"
+          )}
           className="w-full h-full"
         />
       </section>
@@ -357,18 +382,21 @@ export const Home: React.FC = () => {
             src="/images/ATX 25 (1).jpg"
             alt="Perfect Dark long sleeve detail"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark long sleeve detail")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-1"
           />
           <GalleryTile
             src="/images/ATX 25 (2).jpg"
             alt="Perfect Dark web graphic close-up"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark web graphic close-up")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-2"
           />
           <GalleryTile
             src="/images/ATX 25 (3).jpg"
             alt="Perfect Dark nature walk lookbook"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark nature walk lookbook")}
             className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-3"
           />
         </div>
@@ -380,18 +408,23 @@ export const Home: React.FC = () => {
             src="/images/ATX 25 (4).jpg"
             alt="Perfect Dark botanical graphics detail"
             href={galleryLink}
+            onClick={handleMerchTileClick(
+              "Perfect Dark botanical graphics detail"
+            )}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-1"
           />
           <GalleryTile
             src="/images/ATX 25 R1 08039 005A.JPG"
             alt="Perfect Dark cap back embroidery"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark cap back embroidery")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
           />
           <GalleryTile
             src="/images/ATX 25 R1 0001.JPG"
             alt="Perfect Dark forest polaroid"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark forest polaroid")}
             className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-1"
           />
         </div>
@@ -403,18 +436,21 @@ export const Home: React.FC = () => {
             src="/images/show-010.jpg"
             alt="Perfect Dark live show crowd"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark live show crowd")}
             className="col-span-2 row-span-2 md:col-span-2 md:row-span-2"
           />
           <GalleryTile
             src="/images/show-011.jpg"
             alt="Perfect Dark performer close-up"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark performer close-up")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-1"
           />
           <GalleryTile
             src="/images/show-012.jpg"
             alt="Perfect Dark booth detail"
             href={galleryLink}
+            onClick={handleMerchTileClick("Perfect Dark booth detail")}
             className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-2"
           />
         </div>
