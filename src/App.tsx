@@ -1,14 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {
-  Home,
-  About,
-  Contact,
-  Music,
-  Links,
-  Artists,
-  Environment,
-} from "./pages";
+import { Home, Info, Contact, Music, Links, Artists, Environment } from "./pages";
 import ScrollToTop from "./components/Scroll";
 import ArtistRedirect from "./ArtistRedirect";
 import RedirectToExternalUrl from "./RedirectToExternalUrl";
@@ -21,7 +13,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route path="info" element={<Info />} />
         <Route path="contact" element={<Contact />} />
         <Route path="music" element={<Music />} />
         <Route
