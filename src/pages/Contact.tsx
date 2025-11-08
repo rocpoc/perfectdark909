@@ -6,8 +6,13 @@ import pd_heart_logo from "../img/PD_Special Heart-01.png";
 
 export const Contact: React.FC<{}> = () => {
   return (
-    <>
-      <Container showToolbar={true} showMarquee={false}>
+    <div className="flex flex-col min-h-screen bg-black">
+      <Container
+        showToolbar={true}
+        showMarquee={false}
+        fullHeight={false}
+        padBottom={false}
+      >
         <div className="flex flex-col justify-center max-w-2xl m-auto">
           <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
             <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
@@ -36,9 +41,9 @@ export const Contact: React.FC<{}> = () => {
         </div>
       </Container>
 
-      <footer className="bg-black border-t border-white/20 text-white">
+      <footer className="mt-auto bg-black border-t border-white/20 text-white">
         <FooterSubscribe />
       </footer>
-    </>
+    </div>
   );
 };

@@ -4,8 +4,13 @@ import logo from "../img/logo.jpg";
 
 export const Links: React.FC<{}> = () => {
   return (
-    <>
-      <Container showToolbar={true} showMarquee={false}>
+    <div className="flex flex-col min-h-screen bg-black">
+      <Container
+        showToolbar={true}
+        showMarquee={false}
+        fullHeight={false}
+        padBottom={false}
+      >
         <div className="flex flex-col justify-center max-w-lg m-auto pt-8">
           {/* <div className="text-4xl font-bold">ABOUT US</div> */}
           <div className="px-11 grow flex justify-center gap-2">
@@ -35,9 +40,9 @@ export const Links: React.FC<{}> = () => {
           <br></br>
         </div>
       </Container>
-      <footer className="bg-black border-t border-white/20 text-white">
+      <footer className="mt-auto bg-black border-t border-white/20 text-white">
         <FooterSubscribe />
       </footer>
-    </>
+    </div>
   );
 };

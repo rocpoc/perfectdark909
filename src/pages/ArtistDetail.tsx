@@ -13,33 +13,38 @@ const ArtistDetail = () => {
   }
 
   return (
-    <>
-      <Container showToolbar={true} showMarquee={false}>
-      <div className="flex flex-col justify-center max-w-2xl m-auto">
-        <div className="px-11 grow flex justify-center gap-1">
-          <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
-            {artistData.name}
-          </span>
+    <div className="flex flex-col min-h-screen bg-black">
+      <Container
+        showToolbar={true}
+        showMarquee={false}
+        fullHeight={false}
+        padBottom={false}
+      >
+        <div className="flex flex-col justify-center max-w-2xl m-auto">
+          <div className="px-11 grow flex justify-center gap-1">
+            <span className="text-base sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+              {artistData.name}
+            </span>
+          </div>
+          <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
+            {artistData.epk.bio}
+          </div>
+          <div className="flex justify-center py-4 inset-x-0 bottom-4 max-w-lg m-auto">
+            <a
+              href={brickPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-300 can-hover:hover:text-emerald-400"
+            >
+              View EPK (PDF)
+            </a>
+          </div>
         </div>
-        <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-8">
-          {artistData.epk.bio}
-        </div>
-        <div className="flex justify-center py-4 inset-x-0 bottom-4 max-w-lg m-auto">
-          <a
-            href={brickPdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-emerald-300 can-hover:hover:text-emerald-400"
-          >
-            View EPK (PDF)
-          </a>
-        </div>
-      </div>
       </Container>
-      <footer className="bg-black border-t border-white/20 text-white">
+      <footer className="mt-auto bg-black border-t border-white/20 text-white">
         <FooterSubscribe />
       </footer>
-    </>
+    </div>
   );
 };
 

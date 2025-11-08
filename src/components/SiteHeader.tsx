@@ -24,7 +24,7 @@ const NAV_LINKS: NavLinkConfig[] = [
     external: true,
   },
   { label: "ARTISTS", href: "/artists" },
-  { label: "INFO", href: "/about" },
+  { label: "INFO", href: "/info" },
 ];
 
 export const SiteHeader: React.FC<SiteHeaderProps> = ({

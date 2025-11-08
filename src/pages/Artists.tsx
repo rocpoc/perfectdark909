@@ -7,19 +7,24 @@ import pd_heart_logo from "../img/PD_Special Heart-01.png";
 
 export const Artists: React.FC<{}> = () => {
   const artistList = [
-    { id: "brick", name: "BRICK" },
-    { id: "freeman-713", name: "FREEMAN 713" },
-    { id: "provider", name: "PROVIDER" },
-    { id: "fauna", name: "FAUNA" },
-    { id: "carmine", name: "CARMINE" },
-    { id: "dogtooth", name: "DOGTOOTH" },
-    { id: "disfu", name: "DISFU" },
-    { id: "lavender-persuasion", name: "LAVENDER PERSUASION" },
+    { id: "brick", name: "Brick" },
+    { id: "freeman-713", name: "Freeman 713" },
+    { id: "provider", name: "Provider" },
+    { id: "fauna", name: "Fauna" },
+    { id: "carmine", name: "Carmine" },
+    { id: "dogtooth", name: "Dogtooth" },
+    { id: "disfu", name: "Disfu" },
+    { id: "lavender-persuasion", name: "Lavender Persuasion" },
   ];
 
   return (
-    <>
-      <Container showToolbar={true} showMarquee={false}>
+    <div className="flex flex-col min-h-screen bg-black">
+      <Container
+        showToolbar={true}
+        showMarquee={false}
+        fullHeight={false}
+        padBottom={false}
+      >
         <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
           <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
             ARTISTS
@@ -32,7 +37,7 @@ export const Artists: React.FC<{}> = () => {
             >
               <Link
                 to={`/artists/${artist.id}`}
-                className="py-2 text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-semibold can-hover:hover:text-emerald-300"
+                className="py-2 text-xl xxs:text-lg xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl font-semibold can-hover:hover:text-emerald-300"
               >
                 {artist.name}
               </Link>
@@ -41,9 +46,9 @@ export const Artists: React.FC<{}> = () => {
         </div>
       </Container>
 
-      <footer className="bg-black border-t border-white/20 text-white">
+      <footer className="mt-auto bg-black border-t border-white/20 text-white">
         <FooterSubscribe />
       </footer>
-    </>
+    </div>
   );
 };
