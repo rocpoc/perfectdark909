@@ -87,21 +87,6 @@ const artistData: ArtistData[] = [
     ],
   },
   {
-    id: "carmine",
-    name: "Carmine",
-    agents: ["mila@perfectdark909.com"],
-    basedIn: "San Francisco, US",
-    setType: "DJ",
-    bio: "Carmine is a San Francisco-based DJ who's known for his dynamic blend of eclectic and underground influences that resonate across a spectrum of house and techno. Carmine's sets effortlessly traverse these genres and styles, which has earned him a reputation as a versatile and skilled DJ.",
-    image: carmineHeadshot,
-    epk: carminePdf,
-    socialLinks: [
-      { platform: "Instagram", url: "https://www.instagram.com/carmine__909/" },
-      { platform: "SoundCloud", url: "https://soundcloud.com/carmine" },
-      { platform: "Resident Advisor", url: "https://ra.co/dj/carmine" },
-    ],
-  },
-  {
     id: "dogtooth",
     name: "Dogtooth",
     agents: ["mila@perfectdark909.com"],
@@ -130,6 +115,21 @@ const artistData: ArtistData[] = [
       { platform: "SoundCloud", url: "https://soundcloud.com/disfu" },
       { platform: "Bandcamp", url: "https://disfu.bandcamp.com/" },
       { platform: "Spotify", url: "https://open.spotify.com/artist/disfu" },
+    ],
+  },
+  {
+    id: "carmine",
+    name: "Carmine",
+    agents: ["mila@perfectdark909.com"],
+    basedIn: "San Francisco, US",
+    setType: "DJ",
+    bio: "Carmine is a San Francisco-based DJ who's known for his dynamic blend of eclectic and underground influences that resonate across a spectrum of house and techno. Carmine's sets effortlessly traverse these genres and styles, which has earned him a reputation as a versatile and skilled DJ.",
+    image: carmineHeadshot,
+    epk: carminePdf,
+    socialLinks: [
+      { platform: "Instagram", url: "https://www.instagram.com/carmine__909/" },
+      { platform: "SoundCloud", url: "https://soundcloud.com/carmine" },
+      { platform: "Resident Advisor", url: "https://ra.co/dj/carmine" },
     ],
   },
   {
@@ -208,43 +208,53 @@ export const Artists: React.FC = () => {
   }, [selectedArtistId, handleKeyDown]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-screen bg-black text-white">
       <Container
         showToolbar={true}
         showMarquee={false}
         fullHeight={false}
         padBottom={false}
+        className="!bg-black"
+        contentClassName="max-w-6xl w-full text-left text-white px-6 sm:px-10 pt-16 md:pt-20"
       >
-        <div className="flex flex-col lg:flex-row min-h-[calc(100vh-200px)] relative">
-          {/* Left Side - Artist List */}
-          <div className="flex flex-col justify-start lg:justify-center max-w-2xl lg:max-w-none lg:w-1/2 xl:w-2/5 px-6 lg:px-12 py-4 lg:py-8 z-10">
-            <div className="space-y-1">
-              {artistData.map((artist) => (
-                <button
-                  key={artist.id}
-                  onClick={() => handleArtistClick(artist.id)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      handleArtistClick(artist.id);
-                    }
-                  }}
-                  className={`w-full text-left py-3 px-4 text-xl xxs:text-lg xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica uppercase ${
-                    selectedArtistId === artist.id
-                      ? "text-emerald-300"
-                      : "text-white/80 can-hover:hover:text-white can-hover:hover:text-emerald-300"
-                  }`}
-                  aria-label={`View ${artist.name} profile`}
-                  aria-pressed={selectedArtistId === artist.id}
-                >
-                  {artist.name}
-                </button>
-              ))}
-            </div>
+        <div className="flex justify-center py-16 relative">
+          {/* Artist List - Two Columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-5xl">
+            {artistData.map((artist) => (
+              <button
+                key={artist.id}
+                onClick={() => handleArtistClick(artist.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleArtistClick(artist.id);
+                  }
+                }}
+                className={`w-full text-left bg-black border transition-all duration-300 p-4 md:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica ${
+                  selectedArtistId === artist.id
+                    ? "border-emerald-300 bg-emerald-300/5"
+                    : "border-white/10 hover:border-white/30 hover:bg-white/5"
+                }`}
+                aria-label={`View ${artist.name} profile`}
+                aria-pressed={selectedArtistId === artist.id}
+              >
+                <div className="space-y-2">
+                  <div className="text-xs uppercase tracking-wider text-white/70 font-helvetica">
+                    ARTIST
+                  </div>
+                  <h3
+                    className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase font-helvetica transition-colors duration-300 ${
+                      selectedArtistId === artist.id
+                        ? "text-emerald-300"
+                        : "text-white"
+                    }`}
+                  >
+                    {artist.name}
+                  </h3>
+                </div>
+              </button>
+            ))}
           </div>
-
-          {/* Right Side - Reserved for Modal Overlay */}
-          <div className="hidden lg:block lg:w-1/2 xl:w-3/5"></div>
         </div>
       </Container>
 
