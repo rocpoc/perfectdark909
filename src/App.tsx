@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home, Info, Contact, Music, Links, Artists, Environment } from "./pages";
+import { Home, Info, Contact, Music, Links, Artists, ArtistCards, Environment } from "./pages";
 import ScrollToTop from "./components/Scroll";
 import ArtistRedirect from "./ArtistRedirect";
 import RedirectToExternalUrl from "./RedirectToExternalUrl";
@@ -23,6 +23,7 @@ function App() {
           }
         />
         <Route path="artists" element={<Artists />} />
+        <Route path="artist-cards" element={<ArtistCards />} />
         <Route path="artists/:artistId" element={<ArtistRedirect />} />
         <Route path="environment" element={<Environment />} />
         <Route path="sms-opt-in" element={<SmsOptIn />} />

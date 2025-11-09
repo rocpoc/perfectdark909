@@ -36,7 +36,7 @@ export const Artists: React.FC<{}> = () => {
               key={artist.id}
             >
               <Link
-                to={`/artists/${artist.id}`}
+                to={`/artist-cards#${artist.id}`}
                 className="py-2 text-xl xxs:text-lg xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl font-semibold can-hover:hover:text-emerald-300"
               >
                 {artist.name}
