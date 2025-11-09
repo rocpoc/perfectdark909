@@ -11,18 +11,26 @@ import carmineHeadshot from "../img/artists/headshots/carmine-headshot.jpg";
 import dogtoothHeadshot from "../img/artists/headshots/dogtooth-headshot.jpg";
 import disfuHeadshot from "../img/artists/headshots/disfu-headshot.jpg";
 import lavenderPersuasionHeadshot from "../img/artists/headshots/lavender-persuasion-headshot.jpg";
+import brickPdf from "../img/artists/brick/brick-epk.pdf";
+import carminePdf from "../img/artists/carmine/carmine-epk.pdf";
+import disfuPdf from "../img/artists/disfu/disfu-epk.pdf";
+import dogtoothPdf from "../img/artists/dogtooth/dogtooth-epk.pdf";
+import faunaPdf from "../img/artists/fauna/fauna-epk.pdf";
+import freeman713Pdf from "../img/artists/freeman-713/freeman-713.pdf";
+import lavenderPersuasionPdf from "../img/artists/lavender-persuasion/lavender-persuasion-epk.pdf";
+import providerPdf from "../img/artists/provider/provider-epk.pdf";
 
-// Placeholder artist data matching reference site format
+// Artist data matching reference site format
 const artistData: ArtistData[] = [
   {
     id: "brick",
     name: "Brick",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "San Francisco, US",
     setType: "DJ/Live",
-    type: "Mgmt + Bookings",
     bio: "Brick is a producer and DJ based in San Francisco. His sound blends techno, dub, and tribal influences into stripped-back, driving rhythms built around movement and groove. Drawing inspiration from 90s rave culture, his performances balance precision, emotion, and flow. As a co-founder of Perfect Dark and Capp Street Project, Brick has become a central figure in the West Coast scene, shaping its sound through events, releases, and collaborations.",
     image: brickHeadshot,
+    epk: brickPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/brick.909/" },
       { platform: "SoundCloud", url: "https://soundcloud.com/brick909" },
@@ -33,12 +41,12 @@ const artistData: ArtistData[] = [
   {
     id: "freeman-713",
     name: "Freeman 713",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "Los Angeles, US",
     setType: "DJ/Live",
-    type: "Bookings",
     bio: "Freeman 713 is a Los Angeles-based DJ and producer fusing tribal grooves with high-energy techno, with performances spanning the US underground and a 2024 debut at Berlin's RSO. Their productions have earned international support from artists including Anetha, D.Dan, LSDXOXO, VTSS, and Daria Kolosova.",
     image: freemanHeadshot,
+    epk: freeman713Pdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/Freeman_713/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/freeman713" },
@@ -49,12 +57,12 @@ const artistData: ArtistData[] = [
   {
     id: "provider",
     name: "Provider",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "Austin, Texas, US",
     setType: "DJ",
-    type: "Mgmt + Bookings",
-    bio: "Provider is a co-founder of Perfect Dark and a California-based DJ and producer whose sound draws from trance, industrial, and melodic techno. Known for high-energy sets and emotionally driven productions, he is shaping the new wave of U.S. underground harder sounds while building community through the Perfect Dark collective.",
+    bio: "Provider's sound takes inspiration from ambient, textural, and dubbed out electronic music and presents it in the dancefloor friendly form of groove focused techno, breaks, and electro. Expect atmospheric soundscapes and cutting edge sound design that transports you across genre lines.",
     image: providerHeadshot,
+    epk: providerPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/provider.999/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/provider" },
@@ -65,12 +73,12 @@ const artistData: ArtistData[] = [
   {
     id: "fauna",
     name: "Fauna",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "Northern California, US",
     setType: "DJ",
-    type: "Bookings",
-    bio: "Fauna is a Northern California-born DJ and producer on Perfect Dark. With a style rooted in harder techno, she crafts immersive journeys that balance raw intensity with emotional depth, captivating audiences with a relentless drive and distinctive sound.",
+    bio: "Hailing from the mountains of Northern California, Perfect Dark's Fauna is a dynamic DJ and producer known for her electrifying sets. Drawing inspiration from the harder styles of techno, Fauna's music is a blend of heavy bass kicks, trance-like breakdowns, and trippy, ethereal vocals. Her performances are a journey through sound, creating an atmosphere of raw intensity and emotional depth. Each set is meticulously crafted to keep the energy levels soaring, captivating audiences with a relentless drive and a unique touch that stands out in the techno scene.",
     image: faunaHeadshot,
+    epk: faunaPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/fauna.999/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/fauna" },
@@ -81,12 +89,12 @@ const artistData: ArtistData[] = [
   {
     id: "carmine",
     name: "Carmine",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "San Francisco, US",
     setType: "DJ",
-    type: "Bookings",
-    bio: "Carmine (@carmine__909) is an Oakland, CA-based DJ who's known for his dynamic blend of eclectic and underground influences that resonate across a spectrum of house and techno. Carmine's sets effortlessly traverse these genres and styles, which has earned him a reputation as a versatile and skilled DJ. He is also a driving force behind Perfect Dark, a record label and collective dedicated to nurturing connections through a shared passion for electronic music.",
+    bio: "Carmine is a San Francisco-based DJ who's known for his dynamic blend of eclectic and underground influences that resonate across a spectrum of house and techno. Carmine's sets effortlessly traverse these genres and styles, which has earned him a reputation as a versatile and skilled DJ.",
     image: carmineHeadshot,
+    epk: carminePdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/carmine__909/" },
       { platform: "SoundCloud", url: "https://soundcloud.com/carmine" },
@@ -96,12 +104,12 @@ const artistData: ArtistData[] = [
   {
     id: "dogtooth",
     name: "Dogtooth",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "San Francisco, US",
     setType: "DJ",
-    type: "Mgmt + Bookings",
     bio: "Dogtooth is an SF based DJ. Reigning as a DJ for four years, she has continuously explored new sounds, often switching genres mid-set. They are attracted to music that is high energy, dark, and groovy. Genres they play but are not limited to are: techno, dark groove, acid, UKG, and house. She is always trying to push the limit of her artistic abilities and grow their skills. They are a resident DJ of Perfect Dark. Perfect Dark is a record label and collective dedicated to nurturing connections through a shared passion for electronic music",
     image: dogtoothHeadshot,
+    epk: dogtoothPdf,
     socialLinks: [
       { platform: "Instagram", url: "#" },
       { platform: "SoundCloud", url: "#" },
@@ -110,12 +118,12 @@ const artistData: ArtistData[] = [
   {
     id: "disfu",
     name: "Disfu",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "Los Angeles, US",
     setType: "DJ",
-    type: "Bookings",
     bio: "LA-born Disfu blends futuristic rave sounds, alternative influences, and the infectious rhythms of Latin music. His innovative fusion of Latin club styles with hard-edged techno creates a fresh, high-energy sound that's both nostalgic and forward-looking.",
     image: disfuHeadshot,
+    epk: disfuPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/disfu96/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/disfu" },
@@ -127,12 +135,12 @@ const artistData: ArtistData[] = [
   {
     id: "lavender-persuasion",
     name: "Lavender Persuasion",
-    agents: ["Mila Voss"],
+    agents: ["mila@perfectdark909.com"],
     basedIn: "Northern California, US",
     setType: "DJ",
-    type: "Mgmt + Bookings",
-    bio: "Lavender Persuasion creates ethereal soundscapes that blend ambient textures with driving rhythms. Their live performances are known for their emotional depth and technical precision.",
+    bio: "Lavender Persuasion joined forces with record label Perfect Dark in 2018 after showcasing his unique, enchanted style as a special guest during the late-night slots of Perfect Dark's initial DIY events. His free-spirited track selection ranges from whimsical progressive house, to sassy, tongue-and cheek-techno, eccentric, lush breakbeats, and deep, dubby electronica. Lavender Persuasion has a reputation for refusing to conform to a specific genre and regularly excites crowds across Northern California through deranged, energetic, deeply compassionate and nuanced track selection.",
     image: lavenderPersuasionHeadshot,
+    epk: lavenderPersuasionPdf,
     socialLinks: [
       { platform: "Instagram", url: "#" },
       { platform: "SoundCloud", url: "#" },
@@ -209,10 +217,7 @@ export const ArtistCards: React.FC = () => {
       >
         <div className="flex flex-col lg:flex-row min-h-[calc(100vh-200px)] relative">
           {/* Left Side - Artist List */}
-          <div className="flex flex-col justify-start lg:justify-center max-w-2xl lg:max-w-none lg:w-1/2 xl:w-2/5 px-6 lg:px-12 py-8 lg:py-16 z-10">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold mb-8 lg:mb-12 font-helvetica uppercase">
-              ARTISTS
-            </span>
+          <div className="flex flex-col justify-start lg:justify-center max-w-2xl lg:max-w-none lg:w-1/2 xl:w-2/5 px-6 lg:px-12 py-4 lg:py-8 z-10">
             <div className="space-y-1">
               {artistData.map((artist) => (
                 <button

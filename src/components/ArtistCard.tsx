@@ -7,9 +7,9 @@ export interface ArtistData {
   agents: string[];
   basedIn: string;
   setType: string; // "DJ", "Live", "DJ/Live"
-  type: string; // "Bookings", "Mgmt + Bookings", "Management"
   bio: string;
   image?: string;
+  epk?: string;
   socialLinks: { platform: string; url: string }[];
 }
 
@@ -143,9 +143,13 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                   </div>
                   <div className="space-y-1">
                     {artist.agents.map((agent, idx) => (
-                      <div key={idx} className="text-sm md:text-base font-helvetica">
+                      <a
+                        key={idx}
+                        href={`mailto:${agent}`}
+                        className="text-sm md:text-base font-helvetica hover:text-emerald-300 transition-colors duration-200"
+                      >
                         {agent}
-                      </div>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -169,14 +173,6 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                     {artist.setType}
                   </div>
                 </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-white/70 mb-1 font-helvetica">
-                    TYPE
-                  </div>
-                  <div className="text-sm md:text-base font-helvetica">
-                    {artist.type}
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -189,9 +185,20 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 
             {/* Call to Action & Social Links */}
             <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 pt-6">
-              <button className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-emerald-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica">
-                VIEW EPK
-              </button>
+              {artist.epk ? (
+                <a
+                  href={artist.epk}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-emerald-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica inline-block text-center"
+                >
+                  VIEW EPK
+                </a>
+              ) : (
+                <button className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-emerald-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica">
+                  VIEW EPK
+                </button>
+              )}
               <div className="flex gap-2">
                 {artist.socialLinks.map((link, idx) => (
                   <a
@@ -202,7 +209,9 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                     className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-emerald-300 hover:bg-emerald-300/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                     aria-label={`${link.platform} profile`}
                   >
-                    <span className="text-xs text-white/70">{link.platform[0]}</span>
+                    <span className="text-xs text-white/70">
+                      {link.platform[0]}
+                    </span>
                   </a>
                 ))}
               </div>
@@ -230,4 +239,3 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     </div>
   );
 };
-
