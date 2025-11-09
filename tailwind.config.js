@@ -21,9 +21,14 @@ module.exports = {
       },
       colors: {
         accent: {
-          DEFAULT: "#34d399", // emerald-400 - lighter emerald
-          light: "#6ee7b7", // emerald-300 - very light emerald
-          dark: "#10b981", // emerald-500 - medium emerald
+          DEFAULT: "#565656", // custom grey
+          light: "#737373", // lighter grey
+          dark: "#404040", // darker grey
+        },
+        "artist-highlight": {
+          DEFAULT: "#ffff00", // yellow
+          light: "#ffff66", // lighter yellow
+          dark: "#cccc00", // darker yellow
         },
       },
 

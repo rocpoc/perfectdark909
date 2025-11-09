@@ -59,6 +59,37 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     [forceSolid, isMenuOpen]
   );
 
+  // Generate click sound using Web Audio API
+  const playClickSound = useCallback(() => {
+    try {
+      const audioContext = new (window.AudioContext ||
+        (window as any).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      // Create a short, sharp click sound
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(
+        200,
+        audioContext.currentTime + 0.05
+      );
+
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(
+        0.01,
+        audioContext.currentTime + 0.05
+      );
+
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.05);
+    } catch (error) {
+      // Silently fail if audio context can't be created
+    }
+  }, []);
+
   const navLinkClass =
     "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
 
@@ -102,6 +133,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 <a
                   href={href}
                   className={navLinkClass}
+                  onMouseEnter={playClickSound}
                   onClick={() => setIsMenuOpen(false)}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
@@ -172,6 +204,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 <a
                   href={href}
                   className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                  onMouseEnter={playClickSound}
                   onClick={() => setIsMenuOpen(false)}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
