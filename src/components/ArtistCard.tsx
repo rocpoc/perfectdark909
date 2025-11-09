@@ -112,7 +112,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="text-xs uppercase tracking-wider text-white hover:text-emerald-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica"
+            className="text-xs uppercase tracking-wider text-white hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica"
             aria-label="Close artist profile"
           >
             CLOSE
@@ -146,7 +146,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                       <a
                         key={idx}
                         href={`mailto:${agent}`}
-                        className="text-sm md:text-base font-helvetica hover:text-emerald-300 transition-colors duration-200"
+                        className="text-sm md:text-base font-helvetica hover:text-accent transition-colors duration-200"
                       >
                         {agent}
                       </a>
@@ -190,12 +190,12 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                   href={artist.epk}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-emerald-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica inline-block text-center"
+                  className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica inline-block text-center"
                 >
                   VIEW EPK
                 </a>
               ) : (
-                <button className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-emerald-300 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica">
+                <button className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica">
                   VIEW EPK
                 </button>
               )}
@@ -206,7 +206,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-emerald-300 hover:bg-emerald-300/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                    className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                     aria-label={`${link.platform} profile`}
                   >
                     <span className="text-xs text-white/70">

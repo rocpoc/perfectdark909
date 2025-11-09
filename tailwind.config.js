@@ -19,6 +19,13 @@ module.exports = {
       fontFamily: {
         helvetica: ["Helvetica", "Arial", "sans-serif"],
       },
+      colors: {
+        accent: {
+          DEFAULT: "#34d399", // emerald-400 - lighter emerald
+          light: "#6ee7b7", // emerald-300 - very light emerald
+          dark: "#10b981", // emerald-500 - medium emerald
+        },
+      },
 
       rotate: {
         17: "17deg",

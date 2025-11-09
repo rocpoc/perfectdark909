@@ -60,7 +60,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   );
 
   const navLinkClass =
-    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
 
   return (
     <header
@@ -171,7 +171,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               <li key={`mobile-${label}`} className="group">
                 <a
                   href={href}
-                  className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                  className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                   onClick={() => setIsMenuOpen(false)}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >

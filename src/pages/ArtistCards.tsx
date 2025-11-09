@@ -217,9 +217,9 @@ export const ArtistCards: React.FC = () => {
         className="!bg-black"
         contentClassName="max-w-6xl w-full text-left text-white px-6 sm:px-10 pt-16 md:pt-20"
       >
-        <div className="flex justify-center py-16 relative">
+        <div className="flex justify-center pt-4 pb-16 relative">
           {/* Artist List - Two Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 w-full max-w-5xl">
             {artistData.map((artist) => (
               <button
                 key={artist.id}
@@ -230,22 +230,22 @@ export const ArtistCards: React.FC = () => {
                     handleArtistClick(artist.id);
                   }
                 }}
-                className={`w-full text-left bg-black border transition-all duration-300 p-4 md:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica ${
+                className={`group w-full text-left bg-black border transition-all duration-150 p-3 md:p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica ${
                   selectedArtistId === artist.id
-                    ? "border-emerald-300 bg-emerald-300/5"
+                    ? "border-accent bg-accent/5"
                     : "border-white/10 hover:border-white/30 hover:bg-white/5"
                 }`}
                 aria-label={`View ${artist.name} profile`}
                 aria-pressed={selectedArtistId === artist.id}
               >
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <div className="text-xs uppercase tracking-wider text-white/70 font-helvetica">
                     ARTIST
                   </div>
-                  <h3 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase font-helvetica transition-colors duration-300 ${
+                  <h3 className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase font-helvetica transition-colors duration-150 ${
                     selectedArtistId === artist.id
-                      ? "text-emerald-300"
-                      : "text-white"
+                      ? "text-accent"
+                      : "text-white group-hover:text-accent"
                   }`}>
                     {artist.name}
                   </h3>
