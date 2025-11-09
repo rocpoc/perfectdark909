@@ -90,7 +90,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-end lg:justify-center lg:items-center bg-black/80 backdrop-blur-sm pt-20 lg:pt-0"
+      className="fixed inset-0 z-50 flex items-start justify-end lg:justify-center lg:items-center bg-black/80 backdrop-blur-sm pt-20 lg:pt-0 overflow-hidden"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -98,7 +98,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl lg:max-w-5xl mx-4 lg:mx-8 bg-black border border-white/10 p-6 md:p-8 lg:p-10 text-white shadow-2xl"
+        className="relative w-full max-w-4xl lg:max-w-5xl mx-4 lg:mx-8 my-4 lg:my-8 bg-black border border-white/10 p-6 md:p-8 lg:p-10 text-white shadow-2xl max-h-[calc(100vh-6rem)] lg:max-h-[calc(100vh-4rem)] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

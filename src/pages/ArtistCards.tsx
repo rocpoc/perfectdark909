@@ -3,6 +3,14 @@ import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { ArtistCard, ArtistData } from "../components/ArtistCard";
 import { useLocation } from "react-router-dom";
+import brickHeadshot from "../img/artists/headshots/brick-headshot.jpg";
+import freemanHeadshot from "../img/artists/headshots/freeman-headshot.jpg";
+import providerHeadshot from "../img/artists/headshots/provider-headshot.jpg";
+import faunaHeadshot from "../img/artists/headshots/fauna-headshot.jpg";
+import carmineHeadshot from "../img/artists/headshots/carmine-headshot.jpg";
+import dogtoothHeadshot from "../img/artists/headshots/dogtooth-headshot.jpg";
+import disfuHeadshot from "../img/artists/headshots/disfu-headshot.jpg";
+import lavenderPersuasionHeadshot from "../img/artists/headshots/lavender-persuasion-headshot.jpg";
 
 // Placeholder artist data matching reference site format
 const artistData: ArtistData[] = [
@@ -14,6 +22,7 @@ const artistData: ArtistData[] = [
     setType: "DJ/Live",
     type: "Mgmt + Bookings",
     bio: "Brick is a producer and DJ based in San Francisco. His sound blends techno, dub, and tribal influences into stripped-back, driving rhythms built around movement and groove. Drawing inspiration from 90s rave culture, his performances balance precision, emotion, and flow. As a co-founder of Perfect Dark and Capp Street Project, Brick has become a central figure in the West Coast scene, shaping its sound through events, releases, and collaborations.",
+    image: brickHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/brick.909/" },
       { platform: "SoundCloud", url: "https://soundcloud.com/brick909" },
@@ -29,6 +38,7 @@ const artistData: ArtistData[] = [
     setType: "DJ/Live",
     type: "Bookings",
     bio: "Freeman 713 is a Los Angeles-based DJ and producer fusing tribal grooves with high-energy techno, with performances spanning the US underground and a 2024 debut at Berlin's RSO. Their productions have earned international support from artists including Anetha, D.Dan, LSDXOXO, VTSS, and Daria Kolosova.",
+    image: freemanHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/Freeman_713/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/freeman713" },
@@ -44,6 +54,7 @@ const artistData: ArtistData[] = [
     setType: "DJ",
     type: "Mgmt + Bookings",
     bio: "Provider is a co-founder of Perfect Dark and a California-based DJ and producer whose sound draws from trance, industrial, and melodic techno. Known for high-energy sets and emotionally driven productions, he is shaping the new wave of U.S. underground harder sounds while building community through the Perfect Dark collective.",
+    image: providerHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/provider.999/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/provider" },
@@ -59,6 +70,7 @@ const artistData: ArtistData[] = [
     setType: "DJ",
     type: "Bookings",
     bio: "Fauna is a Northern California-born DJ and producer on Perfect Dark. With a style rooted in harder techno, she crafts immersive journeys that balance raw intensity with emotional depth, captivating audiences with a relentless drive and distinctive sound.",
+    image: faunaHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/fauna.999/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/fauna" },
@@ -74,6 +86,7 @@ const artistData: ArtistData[] = [
     setType: "DJ",
     type: "Bookings",
     bio: "Carmine (@carmine__909) is an Oakland, CA-based DJ who's known for his dynamic blend of eclectic and underground influences that resonate across a spectrum of house and techno. Carmine's sets effortlessly traverse these genres and styles, which has earned him a reputation as a versatile and skilled DJ. He is also a driving force behind Perfect Dark, a record label and collective dedicated to nurturing connections through a shared passion for electronic music.",
+    image: carmineHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/carmine__909/" },
       { platform: "SoundCloud", url: "https://soundcloud.com/carmine" },
@@ -87,7 +100,8 @@ const artistData: ArtistData[] = [
     basedIn: "San Francisco, US",
     setType: "DJ",
     type: "Mgmt + Bookings",
-    bio: 'the future of dogtooth is to solidify a bouncy y2k high energy sound with dark undertones. every time I finish a set I want a gay guy or a girlie to run up to me and say my set was "sooo cunty". Bounce. Techno. Ghetto Tech. Acid. Trance. "dogtooth- you\'ll know it when you hear it"',
+    bio: "Dogtooth is an SF based DJ. Reigning as a DJ for four years, she has continuously explored new sounds, often switching genres mid-set. They are attracted to music that is high energy, dark, and groovy. Genres they play but are not limited to are: techno, dark groove, acid, UKG, and house. She is always trying to push the limit of her artistic abilities and grow their skills. They are a resident DJ of Perfect Dark. Perfect Dark is a record label and collective dedicated to nurturing connections through a shared passion for electronic music",
+    image: dogtoothHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "#" },
       { platform: "SoundCloud", url: "#" },
@@ -101,6 +115,7 @@ const artistData: ArtistData[] = [
     setType: "DJ",
     type: "Bookings",
     bio: "LA-born Disfu blends futuristic rave sounds, alternative influences, and the infectious rhythms of Latin music. His innovative fusion of Latin club styles with hard-edged techno creates a fresh, high-energy sound that's both nostalgic and forward-looking.",
+    image: disfuHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/disfu96/" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/disfu" },
@@ -117,6 +132,7 @@ const artistData: ArtistData[] = [
     setType: "DJ",
     type: "Mgmt + Bookings",
     bio: "Lavender Persuasion creates ethereal soundscapes that blend ambient textures with driving rhythms. Their live performances are known for their emotional depth and technical precision.",
+    image: lavenderPersuasionHeadshot,
     socialLinks: [
       { platform: "Instagram", url: "#" },
       { platform: "SoundCloud", url: "#" },
