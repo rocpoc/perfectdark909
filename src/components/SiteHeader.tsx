@@ -41,7 +41,9 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
       : isNavSolid
       ? "bg-black/90"
       : "bg-transparent";
-    return `fixed inset-x-0 top-0 z-[60] transition-colors duration-300 ${navBgClass} ${className ?? ""}`;
+    return `fixed inset-x-0 top-0 z-[60] transition-colors duration-300 ${navBgClass} ${
+      className ?? ""
+    }`;
   }, [className, forceSolid, isMenuOpen, isNavActive]);
 
   const handleNavBlur = useCallback(
@@ -197,5 +199,3 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     </header>
   );
 };
-
-

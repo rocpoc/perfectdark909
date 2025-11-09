@@ -49,11 +49,11 @@ export const Info: React.FC = () => {
                     </a>{" "}
                     with all order inquiries
                   </p>
-                  <p>orders may take up to 7 days to ship</p>
-                  <p>please double check your size and address</p>
+                  <p>orders may take up to two weeks to ship</p>
+                  <p>only ships to the United States</p>
                   <p>no refunds or exchanges</p>
                   <p>
-                    reach out within 20 days if you have any issues or questions
+                    reach out within 30 days if you have any issues or questions
                   </p>
                 </div>
               </section>
