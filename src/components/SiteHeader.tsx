@@ -41,7 +41,9 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
       : isNavSolid
       ? "bg-black/90"
       : "bg-transparent";
-    return `fixed inset-x-0 top-0 z-[60] transition-colors duration-300 ${navBgClass} ${className ?? ""}`;
+    return `fixed inset-x-0 top-0 z-[60] transition-colors duration-300 ${navBgClass} ${
+      className ?? ""
+    }`;
   }, [className, forceSolid, isMenuOpen, isNavActive]);
 
   const handleNavBlur = useCallback(
@@ -57,8 +59,38 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     [forceSolid, isMenuOpen]
   );
 
+  // Play hover sound from audio file
+  const playHoverSound = useCallback(() => {
+    try {
+      const audio = new Audio(
+        "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
+      );
+      audio.volume = 0.4; // Adjust volume (0.0 to 1.0)
+      audio.play().catch(() => {
+        // Silently fail if audio can't play (user interaction required, etc.)
+      });
+    } catch (error) {
+      // Silently fail if audio can't be created
+    }
+  }, []);
+
+  // Play click sound from audio file
+  const playClickSound = useCallback(() => {
+    try {
+      const audio = new Audio(
+        "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
+      );
+      audio.volume = 0.4; // Adjust volume (0.0 to 1.0)
+      audio.play().catch(() => {
+        // Silently fail if audio can't play (user interaction required, etc.)
+      });
+    } catch (error) {
+      // Silently fail if audio can't be created
+    }
+  }, []);
+
   const navLinkClass =
-    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
 
   return (
     <header
@@ -100,7 +132,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 <a
                   href={href}
                   className={navLinkClass}
-                  onClick={() => setIsMenuOpen(false)}
+                  onMouseEnter={playHoverSound}
+                  onClick={(e) => {
+                    playClickSound();
+                    setIsMenuOpen(false);
+                  }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
                   <span className="whitespace-nowrap">{label}</span>
@@ -169,8 +205,12 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               <li key={`mobile-${label}`} className="group">
                 <a
                   href={href}
-                  className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                  onMouseEnter={playHoverSound}
+                  onClick={(e) => {
+                    playClickSound();
+                    setIsMenuOpen(false);
+                  }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
                   <span>{label}</span>
@@ -197,5 +237,3 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     </header>
   );
 };
-
-

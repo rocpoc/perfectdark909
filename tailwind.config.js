@@ -19,6 +19,18 @@ module.exports = {
       fontFamily: {
         helvetica: ["Helvetica", "Arial", "sans-serif"],
       },
+      colors: {
+        accent: {
+          DEFAULT: "#565656", // custom grey
+          light: "#737373", // lighter grey
+          dark: "#404040", // darker grey
+        },
+        "artist-highlight": {
+          DEFAULT: "#ffff00", // yellow
+          light: "#ffff66", // lighter yellow
+          dark: "#cccc00", // darker yellow
+        },
+      },
 
       rotate: {
         17: "17deg",

@@ -4,4 +4,6 @@ export { Home } from "./Home";
 export { Music } from "./Music";
 export { Links } from "./Links";
 export { Artists } from "./Artists";
+export { ArtistCards } from "./ArtistCards";
 export { Environment } from "./Environment";
+export { Mixer } from "./Mixer";

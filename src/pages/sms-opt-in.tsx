@@ -15,7 +15,7 @@ const SmsOptIn: React.FC = () => (
     <header className="space-y-2 text-center">
       <h1 className="text-2xl font-semibold">Perfect Dark — SMS Opt-In</h1>
       <p className="max-w-md mx-auto text-sm opacity-80 leading-relaxed">
-        Text <span className="font-bold text-emerald-300">DARK</span> to
+        Text <span className="font-bold text-accent">DARK</span> to
         <br />
         <span className="font-mono text-base">{TWILIO_NUMBER}</span>
         <br />

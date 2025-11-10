@@ -17,7 +17,7 @@ export const Environment: React.FC<{}> = () => {
       >
         <div className="flex flex-col justify-center max-w-2xl m-auto">
           <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
               EARTH
             </span>
           </div>
@@ -36,7 +36,7 @@ export const Environment: React.FC<{}> = () => {
                 By partnering with{" "}
                 <a
                   href="https://onetreeplanted.org"
-                  className="text-emerald-300  can-hover:hover:text-emerald-400"
+                  className="text-accent  can-hover:hover:text-accent-light"
                 >
                   One Tree Planted
                 </a>
@@ -61,7 +61,7 @@ export const Environment: React.FC<{}> = () => {
                 partnered with Chico’s{" "}
                 <a
                   href="https://www.stopvalleysedge.org/"
-                  className="text-emerald-300 hover:text-emerald-400"
+                  className="text-accent hover:text-accent-light"
                 >
                   Stop Valley’s Edge
                 </a>{" "}
@@ -91,7 +91,7 @@ export const Environment: React.FC<{}> = () => {
               </em>
             </p>
             <br></br>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-4 font-bold text-emerald-300">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-4 font-bold text-accent">
               #RaveForAReason
             </p>
           </div>

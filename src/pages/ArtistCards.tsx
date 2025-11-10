@@ -148,7 +148,7 @@ const artistData: ArtistData[] = [
   },
 ];
 
-export const Artists: React.FC = () => {
+export const ArtistCards: React.FC = () => {
   const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
   const location = useLocation();
 
@@ -258,13 +258,11 @@ export const Artists: React.FC = () => {
                   <div className="text-xs uppercase tracking-wider text-white/70 font-helvetica">
                     ARTIST
                   </div>
-                  <h3
-                    className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase font-helvetica transition-colors duration-150 ${
-                      selectedArtistId === artist.id
-                        ? "text-artist-highlight"
-                        : "text-white group-hover:text-artist-highlight"
-                    }`}
-                  >
+                  <h3 className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase font-helvetica transition-colors duration-150 ${
+                    selectedArtistId === artist.id
+                      ? "text-artist-highlight"
+                      : "text-white group-hover:text-artist-highlight"
+                  }`}>
                     {artist.name}
                   </h3>
                 </div>

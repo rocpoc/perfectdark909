@@ -31,7 +31,7 @@ const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
   href,
   children,
 }) => (
-  <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-emerald-300">
+  <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-accent">
     <a href={href} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
@@ -339,7 +339,7 @@ export const Home: React.FC = () => {
           className="relative z-40 w-full bg-black px-6 py-28 mt-28 mb-28 min-h-[65vh] flex items-center justify-center"
         >
           <div className="mx-auto max-w-2xl flex flex-col items-center text-center gap-4">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
               LATEST
             </span>
 
@@ -350,17 +350,6 @@ export const Home: React.FC = () => {
             ))}
           </div>
         </section>
-
-        <div className="pointer-events-none">
-          <div
-            className="fixed left-0 right-0 flex justify-center z-10 pointer-events-auto transition-all duration-500"
-            style={{ bottom: isBeforeLatest ? "0.75rem" : "1rem" }}
-          >
-            {socialLinks.map((link, index) => (
-              <SocialLink key={index} {...link} />
-            ))}
-          </div>
-        </div>
       </Container>
 
       <div ref={footerSentinelRef} className="h-32" />

@@ -15,7 +15,7 @@ export const Contact: React.FC<{}> = () => {
       >
         <div className="flex flex-col justify-center max-w-2xl m-auto">
           <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-emerald-300">
+            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
               CONTACT
             </span>
           </div>
@@ -25,7 +25,7 @@ export const Contact: React.FC<{}> = () => {
             <br></br>
             <br></br>
             <a
-              className="font-bold italic bg-white text-black can-hover:hover:bg-emerald-300 active:bg-emerald-300 text-lg xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-2"
+              className="font-bold italic bg-white text-black can-hover:hover:bg-accent active:bg-accent text-lg xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-2"
               href="mailto:info@perfectdark909.com"
             >
               {" "}

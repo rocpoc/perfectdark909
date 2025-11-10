@@ -18,7 +18,7 @@ export const FooterSubscribe: React.FC = () => (
           href="https://soundcloud.com/perfectdark909"
           target="_blank"
           rel="noreferrer"
-          className="hover:text-emerald-200"
+          className="hover:text-accent-light"
         >
           SOUNDCLOUD
         </a>
@@ -26,7 +26,7 @@ export const FooterSubscribe: React.FC = () => (
           href="https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=3ec803cb982644a3"
           target="_blank"
           rel="noreferrer"
-          className="hover:text-emerald-200"
+          className="hover:text-accent-light"
         >
           SPOTIFY
         </a>
@@ -34,7 +34,7 @@ export const FooterSubscribe: React.FC = () => (
           href="https://instagram.com/perfectdark909"
           target="_blank"
           rel="noreferrer"
-          className="hover:text-emerald-200"
+          className="hover:text-accent-light"
         >
           INSTAGRAM
         </a>
