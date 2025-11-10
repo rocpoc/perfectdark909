@@ -175,6 +175,21 @@ export const ArtistCards: React.FC = () => {
     window.history.replaceState(null, "", location.pathname);
   };
 
+  // Play hover sound for artist names
+  const playArtistHoverSound = useCallback(() => {
+    try {
+      const audio = new Audio(
+        "/audio/UI Sounds/ESM_Alien_Button_Game_Organic_Cartoon_Sci_Fi_User_Interface.wav"
+      );
+      audio.volume = 0.3; // Adjust volume (0.0 to 1.0)
+      audio.play().catch(() => {
+        // Silently fail if audio can't play (user interaction required, etc.)
+      });
+    } catch (error) {
+      // Silently fail if audio can't be created
+    }
+  }, []);
+
   // Keyboard navigation
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -224,6 +239,7 @@ export const ArtistCards: React.FC = () => {
               <button
                 key={artist.id}
                 onClick={() => handleArtistClick(artist.id)}
+                onMouseEnter={playArtistHoverSound}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();

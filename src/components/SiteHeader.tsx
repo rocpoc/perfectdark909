@@ -59,34 +59,33 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     [forceSolid, isMenuOpen]
   );
 
-  // Generate click sound using Web Audio API
+  // Play hover sound from audio file
+  const playHoverSound = useCallback(() => {
+    try {
+      const audio = new Audio(
+        "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
+      );
+      audio.volume = 0.4; // Adjust volume (0.0 to 1.0)
+      audio.play().catch(() => {
+        // Silently fail if audio can't play (user interaction required, etc.)
+      });
+    } catch (error) {
+      // Silently fail if audio can't be created
+    }
+  }, []);
+
+  // Play click sound from audio file
   const playClickSound = useCallback(() => {
     try {
-      const audioContext = new (window.AudioContext ||
-        (window as any).webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-
-      // Create a short, sharp click sound
-      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(
-        200,
-        audioContext.currentTime + 0.05
+      const audio = new Audio(
+        "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
       );
-
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(
-        0.01,
-        audioContext.currentTime + 0.05
-      );
-
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.05);
+      audio.volume = 0.4; // Adjust volume (0.0 to 1.0)
+      audio.play().catch(() => {
+        // Silently fail if audio can't play (user interaction required, etc.)
+      });
     } catch (error) {
-      // Silently fail if audio context can't be created
+      // Silently fail if audio can't be created
     }
   }, []);
 
@@ -133,8 +132,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 <a
                   href={href}
                   className={navLinkClass}
-                  onMouseEnter={playClickSound}
-                  onClick={() => setIsMenuOpen(false)}
+                  onMouseEnter={playHoverSound}
+                  onClick={(e) => {
+                    playClickSound();
+                    setIsMenuOpen(false);
+                  }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
                   <span className="whitespace-nowrap">{label}</span>
@@ -204,8 +206,11 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                 <a
                   href={href}
                   className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                  onMouseEnter={playClickSound}
-                  onClick={() => setIsMenuOpen(false)}
+                  onMouseEnter={playHoverSound}
+                  onClick={(e) => {
+                    playClickSound();
+                    setIsMenuOpen(false);
+                  }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >
                   <span>{label}</span>
