@@ -19,3 +19,40 @@
       100% { background-position: 0% 50%; }
     }
 }
+
+@layer components {
+  /* Range slider styling for audio mixer */
+  input[type="range"].slider {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  input[type="range"].slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  input[type="range"].slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+  
+  input[type="range"].slider::-webkit-slider-track {
+    height: 8px;
+    border-radius: 4px;
+  }
+  
+  input[type="range"].slider::-moz-range-track {
+    height: 8px;
+    border-radius: 4px;
+  }
+}
