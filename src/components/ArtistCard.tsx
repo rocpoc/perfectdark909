@@ -1,4 +1,9 @@
 import React, { useEffect, useRef } from "react";
+import instagramLogo from "../img/icons-insta-01.png";
+import soundcloudLogo from "../img/icons-soundcloud-01.png";
+import bandcampLogo from "../img/icons bc.png";
+import spotifyLogo from "../img/icons-spotify-01.png";
+import raLogo from "../img/RA logo.png";
 
 export interface ArtistData {
   id: string;
@@ -6,7 +11,7 @@ export interface ArtistData {
   alias?: string;
   agents: string[];
   basedIn: string;
-  setType: string; // "DJ", "Live", "DJ/Live"
+  setType: string; // "DJ", "Live", "DJ + Live"
   bio: string;
   image?: string;
   epk?: string;
@@ -86,6 +91,21 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     }
   };
 
+  // Helper function to get logo for platform
+  const getPlatformLogo = (platform: string): string | null => {
+    const platformLower = platform.toLowerCase();
+    if (platformLower.includes("instagram")) return instagramLogo;
+    if (platformLower.includes("soundcloud")) return soundcloudLogo;
+    if (platformLower.includes("bandcamp")) return bandcampLogo;
+    if (platformLower.includes("spotify")) return spotifyLogo;
+    if (
+      platformLower.includes("resident advisor") ||
+      platformLower.includes("resident")
+    )
+      return raLogo;
+    return null;
+  };
+
   if (!isOpen || !artist) return null;
 
   return (
@@ -139,7 +159,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
               <div className="space-y-4">
                 <div>
                   <div className="text-xs uppercase tracking-wider text-white/70 mb-1 font-helvetica">
-                    AGENT(S)
+                    BOOKINGS
                   </div>
                   <div className="space-y-1">
                     {artist.agents.map((agent, idx) => (
@@ -200,20 +220,33 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                 </button>
               )}
               <div className="flex gap-2">
-                {artist.socialLinks.map((link, idx) => (
-                  <a
-                    key={idx}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                    aria-label={`${link.platform} profile`}
-                  >
-                    <span className="text-xs text-white/70">
-                      {link.platform[0]}
-                    </span>
-                  </a>
-                ))}
+                {artist.socialLinks.map((link, idx) => {
+                  const logo = getPlatformLogo(link.platform);
+                  return (
+                    <a
+                      key={idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                      aria-label={`${link.platform} profile`}
+                    >
+                      {logo ? (
+                        <img
+                          src={logo}
+                          alt={link.platform}
+                          className={`w-6 h-6 object-contain ${
+                            logo === raLogo ? "invert" : ""
+                          }`}
+                        />
+                      ) : (
+                        <span className="text-xs text-white/70">
+                          {link.platform[0]}
+                        </span>
+                      )}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>

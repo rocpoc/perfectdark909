@@ -96,10 +96,6 @@ const GalleryTile: React.FC<{
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://ra.co/events/2262010",
-      text: "DJ Fuckoff & X-Coast - Perfect Dark x Public Works — 11.8",
-    },
-    {
       href: "https://perfectdark909.bandcamp.com/album/night-drive",
       text: "Solitaire — Night Drive",
     },
@@ -220,7 +216,7 @@ export const Home: React.FC = () => {
       <section className="relative w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px] md:min-h-screen md:h-screen overflow-hidden">
         <GalleryTile
           src="/images/optimized/merch-hero.jpg"
-          srcSet="/images/optimized/merch-hero@800.jpg 800w, /images/optimized/merch-hero.jpg 1600w"
+          srcSet="/images/optimized/merch-hero@800.jpg 1000w, /images/optimized/merch-hero.jpg 2000w"
           sizes={heroTileSizes}
           loading="eager"
           alt="Perfect Dark apparel in forest canopy"
@@ -236,7 +232,7 @@ export const Home: React.FC = () => {
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
             src="/images/optimized/merch-1.jpg"
-            srcSet="/images/optimized/merch-1@800.jpg 800w, /images/optimized/merch-1.jpg 1600w"
+            srcSet="/images/optimized/merch-1@800.jpg 1000w, /images/optimized/merch-1.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark long sleeve detail"
             href={galleryLink}
@@ -245,7 +241,7 @@ export const Home: React.FC = () => {
           />
           <GalleryTile
             src="/images/optimized/merch-2.jpg"
-            srcSet="/images/optimized/merch-2@800.jpg 800w, /images/optimized/merch-2.jpg 1600w"
+            srcSet="/images/optimized/merch-2@800.jpg 1000w, /images/optimized/merch-2.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark web graphic close-up"
             href={galleryLink}
@@ -254,7 +250,7 @@ export const Home: React.FC = () => {
           />
           <GalleryTile
             src="/images/optimized/merch-3.jpg"
-            srcSet="/images/optimized/merch-3@800.jpg 800w, /images/optimized/merch-3.jpg 1600w"
+            srcSet="/images/optimized/merch-3@800.jpg 1000w, /images/optimized/merch-3.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark nature walk lookbook"
             href={galleryLink}
@@ -268,7 +264,7 @@ export const Home: React.FC = () => {
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
             src="/images/optimized/merch-4.jpg"
-            srcSet="/images/optimized/merch-4@800.jpg 800w, /images/optimized/merch-4.jpg 1600w"
+            srcSet="/images/optimized/merch-4@800.jpg 1000w, /images/optimized/merch-4.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark botanical graphics detail"
             href={galleryLink}
@@ -279,7 +275,7 @@ export const Home: React.FC = () => {
           />
           <GalleryTile
             src="/images/optimized/merch-6.jpg"
-            srcSet="/images/optimized/merch-6@800.jpg 800w, /images/optimized/merch-6.jpg 1600w"
+            srcSet="/images/optimized/merch-6@800.jpg 1000w, /images/optimized/merch-6.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark cap back embroidery"
             href={galleryLink}
@@ -288,7 +284,7 @@ export const Home: React.FC = () => {
           />
           <GalleryTile
             src="/images/optimized/merch-5.jpg"
-            srcSet="/images/optimized/merch-5@800.jpg 800w, /images/optimized/merch-5.jpg 1600w"
+            srcSet="/images/optimized/merch-5@800.jpg 1000w, /images/optimized/merch-5.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark forest polaroid"
             href={galleryLink}
@@ -302,7 +298,7 @@ export const Home: React.FC = () => {
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
             src="/images/optimized/show-010.jpg"
-            srcSet="/images/optimized/show-010@800.jpg 800w, /images/optimized/show-010.jpg 1600w"
+            srcSet="/images/optimized/show-010@800.jpg 1000w, /images/optimized/show-010.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark live show crowd"
             href={galleryLink}
@@ -311,7 +307,7 @@ export const Home: React.FC = () => {
           />
           <GalleryTile
             src="/images/optimized/show-011.jpg"
-            srcSet="/images/optimized/show-011@800.jpg 800w, /images/optimized/show-011.jpg 1600w"
+            srcSet="/images/optimized/show-011@800.jpg 1000w, /images/optimized/show-011.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark performer close-up"
             href={galleryLink}
@@ -320,7 +316,7 @@ export const Home: React.FC = () => {
           />
           <GalleryTile
             src="/images/optimized/show-012.jpg"
-            srcSet="/images/optimized/show-012@800.jpg 800w, /images/optimized/show-012.jpg 1600w"
+            srcSet="/images/optimized/show-012@800.jpg 1000w, /images/optimized/show-012.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark booth detail"
             href={galleryLink}
