@@ -77,6 +77,35 @@ export const Info: React.FC = () => {
                   reach out within 30 days if you have any issues or questions
                 </p>
               </div>
+
+              {/* EARTH Section */}
+              <div className="mt-12 pt-12 border-t border-white/20">
+                <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase text-white font-helvetica mb-6">
+                  EARTH
+                </h2>
+                <div className="space-y-6 text-base sm:text-lg leading-relaxed text-white/90 font-normal">
+                  <p>
+                    we source our clothing from Los Angeles Apparel, a
+                    manufacturer with a transparent and locally rooted
+                    sustainability model. This allows us to reduce transport
+                    emissions, ensure fair-wage labor, and maintain
+                    environmental standards throughout the supply chain.
+                  </p>
+                  <p>
+                    by choosing garments crafted with recycled fibers,
+                    water-conscious dyeing, and long lasting construction, our
+                    merch becomes part of a slower, more intentional cycle. this
+                    curation lets our community wear pieces that reflect a
+                    shared commitment to ethical manufacturing and a more
+                    sustainable future.
+                  </p>
+                  <p className="italic">
+                    perfect dark ships our merch in compostable mailers, crafted
+                    from plant-based materials with a smaller environmental
+                    footprint than conventional mailers.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
