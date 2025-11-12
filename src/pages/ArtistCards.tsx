@@ -175,8 +175,11 @@ export const ArtistCards: React.FC = () => {
     window.history.replaceState(null, "", location.pathname);
   };
 
-  // Play hover sound for artist names
+  // Play hover sound for artist names (desktop only)
   const playArtistHoverSound = useCallback(() => {
+    // Don't play on mobile devices
+    if (window.innerWidth < 768 || 'ontouchstart' in window) return;
+    
     try {
       const audio = new Audio(
         "/audio/UI Sounds/ESM_Alien_Button_Game_Organic_Cartoon_Sci_Fi_User_Interface.wav"

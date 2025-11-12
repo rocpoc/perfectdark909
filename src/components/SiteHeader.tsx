@@ -59,8 +59,15 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     [forceSolid, isMenuOpen]
   );
 
-  // Play hover sound from audio file
+  // Check if device is mobile
+  const isMobile = useCallback(() => {
+    return window.innerWidth < 768 || "ontouchstart" in window;
+  }, []);
+
+  // Play hover sound from audio file (desktop only)
   const playHoverSound = useCallback(() => {
+    if (isMobile()) return; // Don't play on mobile
+
     try {
       const audio = new Audio(
         "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
@@ -72,7 +79,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     } catch (error) {
       // Silently fail if audio can't be created
     }
-  }, []);
+  }, [isMobile]);
 
   // Play click sound from audio file
   const playClickSound = useCallback(() => {
