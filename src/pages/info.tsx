@@ -50,6 +50,9 @@ export const Info: React.FC = () => {
                       info@perfectdark909.com
                     </a>
                   </p>
+                  <p></p>
+                  please include your name, contact info, and a brief bio. send
+                  Souncloud links if available.
                 </div>
               </div>
             </div>

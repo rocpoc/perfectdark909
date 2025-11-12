@@ -96,10 +96,6 @@ const GalleryTile: React.FC<{
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://ra.co/events/2262010",
-      text: "DJ Fuckoff & X-Coast - Perfect Dark x Public Works — 11.8",
-    },
-    {
       href: "https://perfectdark909.bandcamp.com/album/night-drive",
       text: "Solitaire — Night Drive",
     },
