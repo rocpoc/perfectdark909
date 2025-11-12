@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState, useRef } from "react";
 import pdWordmark from "../img/PD Logo White.png";
 
 interface NavLinkConfig {
@@ -33,6 +33,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastHoverSoundTime = useRef<number>(0);
 
   const navClasses = useMemo(() => {
     const isNavSolid = forceSolid || isNavActive || isMenuOpen;
@@ -68,6 +69,13 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
   const playHoverSound = useCallback(() => {
     if (isMobile()) return; // Don't play on mobile
 
+    // Debounce: prevent playing if sound was played recently (within 200ms)
+    const now = Date.now();
+    if (now - lastHoverSoundTime.current < 200) {
+      return;
+    }
+    lastHoverSoundTime.current = now;
+
     try {
       const audio = new Audio(
         "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
@@ -80,21 +88,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
       // Silently fail if audio can't be created
     }
   }, [isMobile]);
-
-  // Play click sound from audio file
-  const playClickSound = useCallback(() => {
-    try {
-      const audio = new Audio(
-        "/audio/UI Sounds/ESM_Scifi_UI_Button_2_Glitch_Morph_Mechanism_Texture_Futuristic.wav"
-      );
-      audio.volume = 0.4; // Adjust volume (0.0 to 1.0)
-      audio.play().catch(() => {
-        // Silently fail if audio can't play (user interaction required, etc.)
-      });
-    } catch (error) {
-      // Silently fail if audio can't be created
-    }
-  }, []);
 
   const navLinkClass =
     "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
@@ -141,7 +134,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   className={navLinkClass}
                   onMouseEnter={playHoverSound}
                   onClick={(e) => {
-                    playClickSound();
                     setIsMenuOpen(false);
                   }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
@@ -215,7 +207,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                   onMouseEnter={playHoverSound}
                   onClick={(e) => {
-                    playClickSound();
                     setIsMenuOpen(false);
                   }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
