@@ -49,6 +49,7 @@ export const Container: React.FC<{
 
       <div className="w-full h-full">
         {/* Shared header (skip on opt-in redirect) */}
+        {/* Transparent nav bar on home page only; solid on others */}
         {shouldShowHeader && <SiteHeader forceSolid={pathname !== "/"} />}
 
         {/* Little rotating signature—also skip for opt-in */}

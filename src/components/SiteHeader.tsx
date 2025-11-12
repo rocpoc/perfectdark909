@@ -1,4 +1,11 @@
-import React, { useCallback, useMemo, useState, useRef } from "react";
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
+import { useLocation } from "react-router-dom";
 import pdWordmark from "../img/PD Logo White.png";
 
 interface NavLinkConfig {
@@ -33,7 +40,32 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const [isNavActive, setIsNavActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const lastHoverSoundTime = useRef<number>(0);
+  const navigationBlockRef = useRef<boolean>(false);
+  const location = useLocation();
+  const navRef = useRef<HTMLElement>(null);
+
+  // Clear hover states when navigating to a new page
+  useEffect(() => {
+    setHoveredLink(null);
+    setIsNavActive(false);
+    // Block hover for a brief moment after navigation to prevent immediate re-hover
+    navigationBlockRef.current = true;
+    setTimeout(() => {
+      navigationBlockRef.current = false;
+    }, 100);
+
+    // Blur all links to clear focus/hover states
+    if (navRef.current) {
+      const allLinks = navRef.current.querySelectorAll("a");
+      allLinks.forEach((link) => {
+        if (link instanceof HTMLElement) {
+          link.blur();
+        }
+      });
+    }
+  }, [location.pathname]);
 
   const navClasses = useMemo(() => {
     const isNavSolid = forceSolid || isNavActive || isMenuOpen;
@@ -89,14 +121,19 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
     }
   }, [isMobile]);
 
-  const navLinkClass =
-    "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+  const getNavLinkClass = (linkHref: string) => {
+    const baseClass =
+      "inline-flex items-center gap-3 px-1 py-2 text-[0.75rem] tracking-[0.3em] uppercase text-white font-helvetica font-bold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+    const hoverClass = hoveredLink === linkHref ? "text-accent-light" : "";
+    return `${baseClass} ${hoverClass}`;
+  };
 
   return (
     <header
+      ref={navRef}
       className={navClasses}
       onMouseEnter={() => {
-        if (!forceSolid) {
+        if (!forceSolid && !navigationBlockRef.current) {
           setIsNavActive(true);
         }
       }}
@@ -117,7 +154,15 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
           href="/"
           aria-label="Perfect Dark — Home"
           className="flex items-center gap-3 shrink-0"
-          onClick={() => setIsMenuOpen(false)}
+          onMouseEnter={() => {
+            if (!navigationBlockRef.current) {
+              setHoveredLink("/");
+            }
+          }}
+          onMouseLeave={() => setHoveredLink(null)}
+          onClick={() => {
+            setIsMenuOpen(false);
+          }}
         >
           <img
             src={pdWordmark}
@@ -131,9 +176,17 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
               <li key={label} className="group">
                 <a
                   href={href}
-                  className={navLinkClass}
-                  onMouseEnter={playHoverSound}
-                  onClick={(e) => {
+                  className={getNavLinkClass(href)}
+                  onMouseEnter={() => {
+                    if (!navigationBlockRef.current) {
+                      setHoveredLink(href);
+                      playHoverSound();
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredLink(null);
+                  }}
+                  onClick={() => {
                     setIsMenuOpen(false);
                   }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
@@ -142,13 +195,17 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   <span className="relative flex h-4 w-4 items-center justify-center">
                     <span
                       aria-hidden="true"
-                      className="text-base leading-none transition-opacity duration-200 group-hover:opacity-0 group-focus-within:opacity-0"
+                      className={`text-base leading-none transition-opacity duration-200 ${
+                        hoveredLink === href ? "opacity-0" : ""
+                      } group-focus-within:opacity-0`}
                     >
                       +
                     </span>
                     <span
                       aria-hidden="true"
-                      className="absolute text-base leading-none opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+                      className={`absolute text-base leading-none transition-opacity duration-200 ${
+                        hoveredLink === href ? "opacity-100" : "opacity-0"
+                      } group-focus-within:opacity-100`}
                     >
                       -
                     </span>
@@ -206,8 +263,12 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
                   href={href}
                   className="flex items-center justify-between px-6 py-4 text-sm tracking-[0.25em] lowercase font-helvetica font-bold transition-colors duration-200 hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
                   onMouseEnter={playHoverSound}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.blur();
+                  }}
                   onClick={(e) => {
                     setIsMenuOpen(false);
+                    e.currentTarget.blur();
                   }}
                   {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
                 >

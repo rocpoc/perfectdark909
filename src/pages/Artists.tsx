@@ -27,14 +27,18 @@ const artistData: ArtistData[] = [
     name: "Brick",
     agents: ["mila@perfectdark909.com"],
     basedIn: "San Francisco, US",
-    setType: "DJ/Live",
+    setType: "DJ + Live",
     bio: "Brick is a producer and DJ based in San Francisco. His sound blends techno, dub, and tribal influences into stripped-back, driving rhythms built around movement and groove. Drawing inspiration from 90s rave culture, his performances balance precision, emotion, and flow. As a co-founder of Perfect Dark and Capp Street Project, Brick has become a central figure in the West Coast scene, shaping its sound through events, releases, and collaborations.",
     image: brickHeadshot,
     epk: brickPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/brick.909/" },
-      { platform: "SoundCloud", url: "https://soundcloud.com/brick909" },
       { platform: "Bandcamp", url: "https://brick.bandcamp.com/" },
+      {
+        platform: "Spotify",
+        url: "https://open.spotify.com/artist/3hA5ZrOPV9bemqxzKxHufr?si=V5KRP2iQSaKKMS_mdvEOYw",
+      },
+      { platform: "SoundCloud", url: "https://soundcloud.com/brick909" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/brickus" },
     ],
   },
@@ -43,15 +47,19 @@ const artistData: ArtistData[] = [
     name: "Freeman 713",
     agents: ["mila@perfectdark909.com"],
     basedIn: "Los Angeles, US",
-    setType: "DJ/Live",
+    setType: "DJ + Live",
     bio: "Freeman 713 is a Los Angeles-based DJ and producer fusing tribal grooves with high-energy techno, with performances spanning the US underground and a 2024 debut at Berlin's RSO. Their productions have earned international support from artists including Anetha, D.Dan, LSDXOXO, VTSS, and Daria Kolosova.",
     image: freemanHeadshot,
     epk: freeman713Pdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/Freeman_713/" },
-      { platform: "Resident Advisor", url: "https://ra.co/dj/freeman713" },
-      { platform: "SoundCloud", url: "https://soundcloud.com/freeman713" },
       { platform: "Bandcamp", url: "https://freeman713.bandcamp.com/" },
+      {
+        platform: "Spotify",
+        url: "https://open.spotify.com/artist/6boig61fpWOOmraTJ5M945?si=MEb5SmiLQ8G-5GqCunJ0VQ",
+      },
+      { platform: "SoundCloud", url: "https://soundcloud.com/freeman713" },
+      { platform: "Resident Advisor", url: "https://ra.co/dj/freeman713" },
     ],
   },
   {
@@ -59,15 +67,19 @@ const artistData: ArtistData[] = [
     name: "Provider",
     agents: ["mila@perfectdark909.com"],
     basedIn: "Austin, Texas, US",
-    setType: "DJ",
+    setType: "DJ + Live",
     bio: "Provider's sound takes inspiration from ambient, textural, and dubbed out electronic music and presents it in the dancefloor friendly form of groove focused techno, breaks, and electro. Expect atmospheric soundscapes and cutting edge sound design that transports you across genre lines.",
     image: providerHeadshot,
     epk: providerPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/provider.999/" },
-      { platform: "Resident Advisor", url: "https://ra.co/dj/provider" },
+      { platform: "Bandcamp", url: "http://provider999.bandcamp.com/" },
+      {
+        platform: "Spotify",
+        url: "https://open.spotify.com/artist/7bYkaqLLuw9UqVuVyTH4OS?si=R8EFRV7BRM6VzhltZvTlvQ",
+      },
       { platform: "SoundCloud", url: "https://soundcloud.com/provider999" },
-      { platform: "Spotify", url: "https://open.spotify.com/artist/" },
+      { platform: "Resident Advisor", url: "https://ra.co/dj/provider" },
     ],
   },
   {
@@ -81,9 +93,9 @@ const artistData: ArtistData[] = [
     epk: faunaPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/fauna.999/" },
-      { platform: "Resident Advisor", url: "https://ra.co/dj/fauna" },
-      { platform: "SoundCloud", url: "https://soundcloud.com/fauna" },
       { platform: "Spotify", url: "https://open.spotify.com/artist/fauna" },
+      { platform: "SoundCloud", url: "https://soundcloud.com/fauna" },
+      { platform: "Resident Advisor", url: "https://ra.co/dj/fauna" },
     ],
   },
   {
@@ -111,10 +123,10 @@ const artistData: ArtistData[] = [
     epk: disfuPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/disfu96/" },
-      { platform: "Resident Advisor", url: "https://ra.co/dj/disfu" },
-      { platform: "SoundCloud", url: "https://soundcloud.com/disfu" },
-      { platform: "Bandcamp", url: "https://disfu.bandcamp.com/" },
+      { platform: "Bandcamp", url: "https://disfu96.bandcamp.com/" },
       { platform: "Spotify", url: "https://open.spotify.com/artist/disfu" },
+      { platform: "SoundCloud", url: "https://soundcloud.com/disfu" },
+      { platform: "Resident Advisor", url: "https://ra.co/dj/disfu" },
     ],
   },
   {
@@ -226,13 +238,14 @@ export const Artists: React.FC = () => {
   }, [selectedArtistId, handleKeyDown]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
+    <div className="flex flex-col min-h-screen bg-black text-white relative">
+      <div className="animated-bg" />
       <Container
         showToolbar={true}
         showMarquee={false}
         fullHeight={false}
         padBottom={false}
-        className="!bg-black"
+        className="!bg-transparent relative z-10"
         contentClassName="max-w-6xl w-full text-left text-white px-6 sm:px-10 pt-16 md:pt-20"
       >
         <div className="flex justify-center pt-4 pb-16 relative">
@@ -249,10 +262,10 @@ export const Artists: React.FC = () => {
                     handleArtistClick(artist.id);
                   }
                 }}
-                className={`group w-full text-left bg-black border transition-all duration-150 p-3 md:p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica ${
+                className={`group w-full text-left border transition-all duration-150 p-3 md:p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica ${
                   selectedArtistId === artist.id
                     ? "border-accent bg-accent/5"
-                    : "border-white/10 hover:border-white/30 hover:bg-white/5"
+                    : "border-white/10 hover:border-white/30"
                 }`}
                 aria-label={`View ${artist.name} profile`}
                 aria-pressed={selectedArtistId === artist.id}
@@ -284,7 +297,7 @@ export const Artists: React.FC = () => {
         onClose={handleClose}
       />
 
-      <footer className="mt-auto bg-black border-t border-white/20 text-white">
+      <footer className="mt-auto bg-black border-t border-white/20 text-white relative z-10">
         <FooterSubscribe />
       </footer>
     </div>
