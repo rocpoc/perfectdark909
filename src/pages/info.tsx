@@ -1,9 +1,16 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
+import { SEO } from "../components/SEO";
 
 export const Info: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white relative">
+      <SEO
+        title="About Us | Perfect Dark | Electronic Music Label California"
+        description="Learn about Perfect Dark, a California-based electronic music label. Submit demos, order techno merch, and discover our mission in the West Coast techno scene."
+        keywords="Perfect Dark, electronic music label california, techno merch, demo submissions"
+        canonical="/info"
+      />
       <div className="animated-bg" />
       <Container
         showToolbar

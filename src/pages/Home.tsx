@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "../components/Container";
 import { SiteHeader } from "../components/SiteHeader";
 import { FooterSubscribe } from "../components/FooterSubscribe";
+import { SEO } from "../components/SEO";
 import logo from "../img/logo.jpg";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
@@ -192,8 +193,76 @@ export const Home: React.FC = () => {
     [galleryLink]
   );
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: "Perfect Dark",
+    description:
+      "Perfect Dark is a California-based electronic music label and collective specializing in techno, hosting underground events, and releasing cutting-edge electronic music.",
+    url: "https://perfectdark909.com",
+    logo: "https://perfectdark909.com/logo512.png",
+    sameAs: [
+      "https://perfectdark909.bandcamp.com",
+      "https://soundcloud.com/perfectdark909",
+      "https://instagram.com/perfectdark909",
+      "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi",
+    ],
+    foundingLocation: {
+      "@type": "Place",
+      name: "Chico, California",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "California, United States",
+    },
+    genre: ["Techno", "Electronic Music", "Dance Music"],
+  };
+
+  const brandStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    name: "Perfect Dark",
+    description:
+      "Perfect Dark is an independent techno clothing brand and record label based in California. We create underground fashion and electronic music apparel for the techno community.",
+    url: "https://perfectdark909.com",
+    logo: "https://perfectdark909.com/logo512.png",
+    sameAs: [
+      "https://shop.perfectdark909.com",
+      "https://perfectdark909.bandcamp.com",
+      "https://soundcloud.com/perfectdark909",
+      "https://instagram.com/perfectdark909",
+    ],
+    category: [
+      "Clothing",
+      "Streetwear",
+      "Electronic Music Apparel",
+      "Techno Fashion",
+      "Underground Fashion",
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <SEO
+        title="Perfect Dark | Electronic Music Label & Collective | California Techno"
+        description="Perfect Dark is a record label, clothing brand, and artist collective."
+        keywords="Perfect Dark, Perfect Dark techno, electronic music label california, california techno, west-coast techno, techno merch, techno streetwear, electronic music apparel, underground fashion, Perfect Dark clothing, techno clothing brand"
+        canonical="/"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(brandStructuredData),
+        }}
+      />
+      {/* SEO: H1 heading for search engines */}
+      <h1 className="sr-only">
+        Perfect Dark - Record Label, Clothing Brand, and Artist Collective
+      </h1>
       {/* Hero video temporarily disabled */}
       {/**
        * <section className="relative h-screen w-full overflow-hidden">
@@ -332,7 +401,7 @@ export const Home: React.FC = () => {
         {/* Centered section (leave headroom for fixed footer & icons) */}
         <section
           ref={latestSectionRef}
-          className="relative z-40 w-full bg-black px-6 py-28 mt-28 mb-28 min-h-[65vh] flex items-center justify-center"
+          className="relative z-40 w-full bg-black px-6 min-h-screen flex items-center justify-center pt-64"
         >
           <div className="mx-auto max-w-2xl flex flex-col items-center text-center gap-4">
             <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
