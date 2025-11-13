@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "../components/Container";
 import { SiteHeader } from "../components/SiteHeader";
 import { FooterSubscribe } from "../components/FooterSubscribe";
+import { SEO } from "../components/SEO";
 import logo from "../img/logo.jpg";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
@@ -192,8 +193,43 @@ export const Home: React.FC = () => {
     [galleryLink]
   );
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: "Perfect Dark",
+    description:
+      "Perfect Dark is a California-based electronic music label and collective specializing in techno, hosting underground events, and releasing cutting-edge electronic music.",
+    url: "https://perfectdark909.com",
+    logo: "https://perfectdark909.com/logo512.png",
+    sameAs: [
+      "https://perfectdark909.bandcamp.com",
+      "https://soundcloud.com/perfectdark909",
+      "https://instagram.com/perfectdark909",
+      "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi",
+    ],
+    foundingLocation: {
+      "@type": "Place",
+      name: "Chico, California",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "California, United States",
+    },
+    genre: ["Techno", "Electronic Music", "Dance Music"],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-black">
+      <SEO
+        title="Perfect Dark | Electronic Music Label & Collective | California Techno"
+        description="Perfect Dark is a record label, clothing brand, and artist collective."
+        keywords="Perfect Dark, Perfect Dark techno, electronic music label california, california techno, west-coast techno, techno merch"
+        canonical="/"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* Hero video temporarily disabled */}
       {/**
        * <section className="relative h-screen w-full overflow-hidden">

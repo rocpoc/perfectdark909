@@ -1,10 +1,17 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
+import { SEO } from "../components/SEO";
 import logo from "../img/logo.jpg";
 
 export const Links: React.FC<{}> = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black">
+      <SEO
+        title="Links | Perfect Dark | Events & Tickets"
+        description="Find links to Perfect Dark events, tickets, and upcoming techno shows. Stay connected with California's electronic music scene."
+        keywords="Perfect Dark events, Perfect Dark tickets, techno events california, electronic music events"
+        canonical="/links"
+      />
       <Container
         showToolbar={true}
         showMarquee={false}

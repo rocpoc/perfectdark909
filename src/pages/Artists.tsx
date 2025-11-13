@@ -3,6 +3,7 @@ import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { ArtistCard, ArtistData } from "../components/ArtistCard";
 import { useLocation } from "react-router-dom";
+import { SEO } from "../components/SEO";
 import brickHeadshot from "../img/artists/headshots/brick-headshot.jpg";
 import freemanHeadshot from "../img/artists/headshots/freeman-headshot.jpg";
 import providerHeadshot from "../img/artists/headshots/provider-headshot.jpg";
@@ -237,8 +238,39 @@ export const Artists: React.FC = () => {
     }
   }, [selectedArtistId, handleKeyDown]);
 
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://perfectdark909.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Artists",
+        item: "https://perfectdark909.com/artists",
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-black text-white relative">
+      <SEO
+        title="Artists | Perfect Dark | California Techno Label"
+        description="Discover artists on Perfect Dark, a California techno label featuring Freeman 713, Fauna, Brick, Provider, and more. West Coast electronic music."
+        keywords="Perfect Dark artists, california techno artists, west-coast techno"
+        canonical="/artists"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData),
+        }}
+      />
       <div className="animated-bg" />
       <Container
         showToolbar={true}

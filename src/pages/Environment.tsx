@@ -1,5 +1,6 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
+import { SEO } from "../components/SEO";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
 import pd_heart_logo from "../img/PD_Special Heart-01.png";
@@ -9,6 +10,12 @@ import tracks_for_trees from "../img/tracks-4-trees.jpeg"; // Imported image for
 export const Environment: React.FC<{}> = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black">
+      <SEO
+        title="Environment | Perfect Dark | Climate Activism"
+        description="Learn about Perfect Dark's environmental initiatives including Tracks for Trees and Earth First events. Supporting climate activism through electronic music."
+        keywords="Perfect Dark environment, climate activism, tracks for trees, environmental music label"
+        canonical="/environment"
+      />
       <Container
         showToolbar={true}
         showMarquee={false}

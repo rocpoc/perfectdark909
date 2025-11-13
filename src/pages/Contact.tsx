@@ -1,5 +1,6 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
+import { SEO } from "../components/SEO";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
 import pd_heart_logo from "../img/PD_Special Heart-01.png";
@@ -7,6 +8,12 @@ import pd_heart_logo from "../img/PD_Special Heart-01.png";
 export const Contact: React.FC<{}> = () => {
   return (
     <div className="flex flex-col min-h-screen bg-black">
+      <SEO
+        title="Contact | Perfect Dark | Booking & Demo Submissions"
+        description="Contact Perfect Dark for booking inquiries and demo submissions. Email info@perfectdark909.com for California techno label collaborations."
+        keywords="Perfect Dark contact, Perfect Dark booking, demo submissions, techno label contact"
+        canonical="/contact"
+      />
       <Container
         showToolbar={true}
         showMarquee={false}
