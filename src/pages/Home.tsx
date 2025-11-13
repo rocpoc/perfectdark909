@@ -218,18 +218,51 @@ export const Home: React.FC = () => {
     genre: ["Techno", "Electronic Music", "Dance Music"],
   };
 
+  const brandStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    name: "Perfect Dark",
+    description:
+      "Perfect Dark is an independent techno clothing brand and record label based in California. We create underground fashion and electronic music apparel for the techno community.",
+    url: "https://perfectdark909.com",
+    logo: "https://perfectdark909.com/logo512.png",
+    sameAs: [
+      "https://shop.perfectdark909.com",
+      "https://perfectdark909.bandcamp.com",
+      "https://soundcloud.com/perfectdark909",
+      "https://instagram.com/perfectdark909",
+    ],
+    category: [
+      "Clothing",
+      "Streetwear",
+      "Electronic Music Apparel",
+      "Techno Fashion",
+      "Underground Fashion",
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-black">
       <SEO
         title="Perfect Dark | Electronic Music Label & Collective | California Techno"
         description="Perfect Dark is a record label, clothing brand, and artist collective."
-        keywords="Perfect Dark, Perfect Dark techno, electronic music label california, california techno, west-coast techno, techno merch"
+        keywords="Perfect Dark, Perfect Dark techno, electronic music label california, california techno, west-coast techno, techno merch, techno streetwear, electronic music apparel, underground fashion, Perfect Dark clothing, techno clothing brand"
         canonical="/"
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(brandStructuredData),
+        }}
+      />
+      {/* SEO: H1 heading for search engines */}
+      <h1 className="sr-only">
+        Perfect Dark - Record Label, Clothing Brand, and Artist Collective
+      </h1>
       {/* Hero video temporarily disabled */}
       {/**
        * <section className="relative h-screen w-full overflow-hidden">
