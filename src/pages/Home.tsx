@@ -401,7 +401,7 @@ export const Home: React.FC = () => {
         {/* Centered section (leave headroom for fixed footer & icons) */}
         <section
           ref={latestSectionRef}
-          className="relative z-40 w-full bg-black px-6 py-28 mt-28 mb-28 min-h-[65vh] flex items-center justify-center"
+          className="relative z-40 w-full bg-black px-6 min-h-screen flex items-center justify-center pt-64"
         >
           <div className="mx-auto max-w-2xl flex flex-col items-center text-center gap-4">
             <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
