@@ -5,9 +5,7 @@ export const FooterSubscribe: React.FC = () => (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-3">
       <div className="flex items-center justify-center md:justify-start">
         <a
-          href="https://perfect-dark.kit.com/044179ba9e"
-          target="_blank"
-          rel="noreferrer"
+          href="/subscribe"
           className="px-4 py-2 border border-white rounded text-sm text-white font-helvetica font-bold bg-transparent hover:bg-white hover:text-black transition-colors"
         >
           Subscribe
@@ -42,5 +40,3 @@ export const FooterSubscribe: React.FC = () => (
     </div>
   </div>
 );
-
-

@@ -16,6 +16,7 @@ import ScrollToTop from "./components/Scroll";
 import ArtistRedirect from "./ArtistRedirect";
 import RedirectToExternalUrl from "./RedirectToExternalUrl";
 import SmsOptIn from "./pages/sms-opt-in";
+import EmailSignup from "./pages/email-signup";
 import NotFound from "./pages/NotFound";
 import { BPMProvider } from "./contexts/BPMContext";
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="environment" element={<Environment />} />
             <Route path="mixer" element={<Mixer />} />
             <Route path="sms-opt-in" element={<SmsOptIn />} />
+            <Route path="subscribe" element={<EmailSignup />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

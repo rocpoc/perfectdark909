@@ -24,7 +24,8 @@ export const Container: React.FC<{
 
   // True only on the redirect page
   const isSmsOptIn = pathname === "/sms-opt-in";
-  const shouldShowHeader = showToolbar && !isSmsOptIn;
+  const isEmailSignup = pathname === "/subscribe";
+  const shouldShowHeader = showToolbar && !isSmsOptIn && !isEmailSignup;
 
   return (
     <div
@@ -33,7 +34,7 @@ export const Container: React.FC<{
       } bg-black ${className}`}
     >
       {/* Hide the marquee on the opt-in redirect page */}
-      {!isSmsOptIn && showMarquee && (
+      {!isSmsOptIn && !isEmailSignup && showMarquee && (
         <Marquee
           gradient={false}
           className="bg-black text-white uppercase text-xs bottom-[.5px]"

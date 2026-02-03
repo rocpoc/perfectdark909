@@ -332,24 +332,13 @@ export const Home: React.FC = () => {
       <section className="relative w-full bg-[#d6e1ad] md:min-h-screen md:h-screen overflow-hidden">
         <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
           <GalleryTile
-            src="/images/optimized/merch-4.jpg"
-            srcSet="/images/optimized/merch-4@800.jpg 1000w, /images/optimized/merch-4.jpg 2000w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark botanical graphics detail"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Perfect Dark botanical graphics detail"
-            )}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-1"
-          />
-          <GalleryTile
             src="/images/optimized/merch-6.jpg"
             srcSet="/images/optimized/merch-6@800.jpg 1000w, /images/optimized/merch-6.jpg 2000w"
             sizes={merchTileSizes}
             alt="Perfect Dark cap back embroidery"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark cap back embroidery")}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
+            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-1"
           />
           <GalleryTile
             src="/images/optimized/merch-5.jpg"
@@ -358,39 +347,18 @@ export const Home: React.FC = () => {
             alt="Perfect Dark forest polaroid"
             href={galleryLink}
             onClick={handleMerchTileClick("Perfect Dark forest polaroid")}
-            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-1"
-          />
-        </div>
-      </section>
-
-      <section className="relative w-full bg-[#cfe0b2] md:min-h-screen md:h-screen overflow-hidden">
-        <div className="grid h-full w-full grid-cols-2 md:grid-cols-4 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
-          <GalleryTile
-            src="/images/optimized/show-010.jpg"
-            srcSet="/images/optimized/show-010@800.jpg 1000w, /images/optimized/show-010.jpg 2000w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark live show crowd"
-            href={galleryLink}
-            onClick={handleMerchTileClick("Perfect Dark live show crowd")}
-            className="col-span-2 row-span-2 md:col-span-2 md:row-span-2"
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-1"
           />
           <GalleryTile
-            src="/images/optimized/show-011.jpg"
-            srcSet="/images/optimized/show-011@800.jpg 1000w, /images/optimized/show-011.jpg 2000w"
+            src="/images/optimized/merch-4.jpg"
+            srcSet="/images/optimized/merch-4@800.jpg 1000w, /images/optimized/merch-4.jpg 2000w"
             sizes={merchTileSizes}
-            alt="Perfect Dark performer close-up"
+            alt="Perfect Dark botanical graphics detail"
             href={galleryLink}
-            onClick={handleMerchTileClick("Perfect Dark performer close-up")}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-1"
-          />
-          <GalleryTile
-            src="/images/optimized/show-012.jpg"
-            srcSet="/images/optimized/show-012@800.jpg 1000w, /images/optimized/show-012.jpg 2000w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark booth detail"
-            href={galleryLink}
-            onClick={handleMerchTileClick("Perfect Dark booth detail")}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-3 md:row-start-2"
+            onClick={handleMerchTileClick(
+              "Perfect Dark botanical graphics detail"
+            )}
+            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
           />
         </div>
       </section>
