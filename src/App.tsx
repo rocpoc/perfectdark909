@@ -6,7 +6,6 @@ import {
   Info,
   Contact,
   Music,
-  Links,
   Artists,
   ArtistCards,
   Environment,
