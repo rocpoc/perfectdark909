@@ -1,9 +1,6 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
-import pd_90_logo from "../img/PD - 90_s type-01.png";
-import pd_spiral_logo from "../img/PD - Spiral-01.png";
-import pd_heart_logo from "../img/PD_Special Heart-01.png";
 
 export const Contact: React.FC<{}> = () => {
   return (
