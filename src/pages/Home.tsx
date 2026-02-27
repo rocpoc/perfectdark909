@@ -73,12 +73,8 @@ const GalleryTile: React.FC<{
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://perfectdark909.bandcamp.com/album/night-drive",
-      text: "Solitaire — Night Drive",
-    },
-    {
-      href: "https://shop.perfectdark909.com",
-      text: "Fall 25 Merch 🍁",
+      href: "https://ra.co/events/2353021",
+      text: "Bunker - Turin. 06.March.26",
     },
   ];
 
