@@ -3,30 +3,6 @@ import { Container } from "../components/Container";
 import { SiteHeader } from "../components/SiteHeader";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
-import logo from "../img/logo.jpg";
-import pd_90_logo from "../img/PD - 90_s type-01.png";
-import pd_spiral_logo from "../img/PD - Spiral-01.png";
-import pd_heart_logo from "../img/PD_Special Heart-01.png";
-import bc_logo from "../img/icons bc.png";
-import ig_logo from "../img/icons-insta-01.png";
-import spotify_logo from "../img/icons-spotify-01.png";
-import soundcloud_logo from "../img/icons-soundcloud-01.png";
-import sticker_pack from "../img/sticker-pack.png";
-import special from "../img/eseip.png";
-
-interface SocialLinkProps {
-  href: string;
-  icon: string;
-  alt: string;
-}
-
-const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, alt }) => (
-  <div className="px-2">
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      <img src={icon} alt={alt} className="w-10 h-10" />
-    </a>
-  </div>
-);
 
 const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
   href,
@@ -106,35 +82,10 @@ export const Home: React.FC = () => {
     },
   ];
 
-  const socialLinks = [
-    {
-      href: "https://soundcloud.com/perfectdark909",
-      icon: soundcloud_logo,
-      alt: "SoundCloud",
-    },
-    {
-      href: "https://perfectdark909.bandcamp.com",
-      icon: bc_logo,
-      alt: "Bandcamp",
-    },
-    {
-      href: "https://instagram.com/perfectdark909",
-      icon: ig_logo,
-      alt: "Instagram",
-    },
-    {
-      href: "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi?si=3ec803cb982644a3",
-      icon: spotify_logo,
-      alt: "Spotify",
-    },
-  ];
-
   const latestSectionRef = useRef<HTMLDivElement | null>(null);
-  const latestTriggerRef = useRef<HTMLDivElement | null>(null);
   const footerRef = useRef<HTMLDivElement | null>(null);
   const footerSentinelRef = useRef<HTMLDivElement | null>(null);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
-  const [isBeforeLatest, setIsBeforeLatest] = useState(true);
 
   useEffect(() => {
     const sentinel = footerSentinelRef.current;
@@ -148,24 +99,6 @@ export const Home: React.FC = () => {
     );
 
     observer.observe(sentinel);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    const trigger = latestTriggerRef.current;
-    if (!trigger) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsBeforeLatest(entry.isIntersecting);
-      },
-      { threshold: 0, rootMargin: "-120px 0px 0px 0px" }
-    );
-
-    observer.observe(trigger);
 
     return () => {
       observer.disconnect();
@@ -363,7 +296,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <div ref={latestTriggerRef} className="h-1" />
+      <div className="h-1" />
 
       <Container showToolbar={false} showMarquee={false}>
         {/* Centered section (leave headroom for fixed footer & icons) */}

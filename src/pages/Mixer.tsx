@@ -21,7 +21,6 @@ export const Mixer: React.FC = () => {
   const loopCheckIntervalRef = useRef<number | null>(null);
   const audioDurationsRef = useRef<{ [key: string]: number }>({});
   const masterTimeRef = useRef<number>(0);
-  const beatSyncRef = useRef<number | null>(null);
   const [volumes, setVolumes] = useState<{ [key: string]: number }>({
     Kick: 0,
     Top: 0,
@@ -495,4 +494,3 @@ export const Mixer: React.FC = () => {
     </Container>
   );
 };
-
