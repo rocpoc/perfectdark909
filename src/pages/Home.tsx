@@ -73,8 +73,8 @@ const GalleryTile: React.FC<{
 export const Home: React.FC = () => {
   const newsItems = [
     {
-      href: "https://ra.co/events/2353021",
-      text: "Bunker - Turin. 06.March.26",
+      href: "https://www.submithub.com/link/jr2k-puma-ep",
+      text: "JR2k - Puma EP",
     },
   ];
 
