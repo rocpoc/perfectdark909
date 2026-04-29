@@ -12,8 +12,8 @@ try {
     { path: '/info', priority: '0.8', changefreq: 'monthly' },
     { path: '/music', priority: '0.7', changefreq: 'monthly' },
     { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-    { path: '/links', priority: '0.7', changefreq: 'monthly' },
     { path: '/environment', priority: '0.7', changefreq: 'monthly' },
+    { path: '/mixer', priority: '0.6', changefreq: 'monthly' },
   ];
 
   const baseUrl = 'https://perfectdark909.com';
@@ -52,4 +52,3 @@ try {
   // Don't fail the build if sitemap generation fails
   process.exit(0);
 }
-

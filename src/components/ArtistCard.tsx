@@ -31,6 +31,9 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const availableSocialLinks = artist?.socialLinks.filter(
+    (link) => link.url && link.url !== "#"
+  ) ?? [];
 
   // Handle Escape key
   useEffect(() => {
@@ -219,35 +222,37 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                   VIEW EPK
                 </button>
               )}
-              <div className="flex gap-2">
-                {artist.socialLinks.map((link, idx) => {
-                  const logo = getPlatformLogo(link.platform);
-                  return (
-                    <a
-                      key={idx}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-                      aria-label={`${link.platform} profile`}
-                    >
-                      {logo ? (
-                        <img
-                          src={logo}
-                          alt={link.platform}
-                          className={`w-6 h-6 object-contain ${
-                            logo === raLogo ? "invert" : ""
-                          }`}
-                        />
-                      ) : (
-                        <span className="text-xs text-white/70">
-                          {link.platform[0]}
-                        </span>
-                      )}
-                    </a>
-                  );
-                })}
-              </div>
+              {availableSocialLinks.length > 0 && (
+                <div className="flex gap-2">
+                  {availableSocialLinks.map((link, idx) => {
+                    const logo = getPlatformLogo(link.platform);
+                    return (
+                      <a
+                        key={idx}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                        aria-label={`${link.platform} profile`}
+                      >
+                        {logo ? (
+                          <img
+                            src={logo}
+                            alt={link.platform}
+                            className={`w-6 h-6 object-contain ${
+                              logo === raLogo ? "invert" : ""
+                            }`}
+                          />
+                        ) : (
+                          <span className="text-xs text-white/70">
+                            {link.platform[0]}
+                          </span>
+                        )}
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 
