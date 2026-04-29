@@ -19,6 +19,10 @@ export const Mixer: React.FC = () => {
   const audioBuffersRef = useRef<{ [key: string]: { primary: HTMLAudioElement | null; secondary: HTMLAudioElement | null; active: 'primary' | 'secondary' } }>({});
   const syncIntervalRef = useRef<number | null>(null);
   const loopCheckIntervalRef = useRef<number | null>(null);
+  const playbackTimeoutRef = useRef<number | null>(null);
+  const playbackRafRefs = useRef<number[]>([]);
+  const isStartingRef = useRef(false);
+  const isMountedRef = useRef(false);
   const audioDurationsRef = useRef<{ [key: string]: number }>({});
   const masterTimeRef = useRef<number>(0);
   const [volumes, setVolumes] = useState<{ [key: string]: number }>({
@@ -118,12 +122,7 @@ export const Mixer: React.FC = () => {
     // Reset and preload the inactive buffer
     inactiveBuffer.currentTime = 0;
     inactiveBuffer.volume = volumes[trackName] * 0.5;
-    
-    // Pre-warm by playing and immediately pausing
-    inactiveBuffer.play().then(() => {
-      inactiveBuffer.pause();
-      inactiveBuffer.currentTime = 0;
-    }).catch(() => {});
+    inactiveBuffer.load();
   }, [volumes]);
 
   // Switch to next buffer (seamless loop)
@@ -183,8 +182,87 @@ export const Mixer: React.FC = () => {
     }
   }, []);
 
+  const cancelScheduledPlayback = useCallback(() => {
+    if (playbackTimeoutRef.current !== null) {
+      clearTimeout(playbackTimeoutRef.current);
+      playbackTimeoutRef.current = null;
+    }
+
+    playbackRafRefs.current.forEach((rafId) => cancelAnimationFrame(rafId));
+    playbackRafRefs.current = [];
+    isStartingRef.current = false;
+  }, []);
+
+  const waitForAudioReady = useCallback(async () => {
+    await Promise.all(
+      TRACKS.flatMap((track) => {
+        const buffer = audioBuffersRef.current[track.name];
+        if (!buffer) return [];
+
+        return [buffer.primary, buffer.secondary].map((audio) => {
+          return new Promise<void>((resolve) => {
+            if (!audio || audio.readyState >= 4) {
+              resolve();
+              return;
+            }
+
+            const resolveOnce = () => resolve();
+            audio.addEventListener("canplaythrough", resolveOnce, { once: true });
+            audio.addEventListener("loadeddata", resolveOnce, { once: true });
+            audio.load();
+          });
+        });
+      })
+    );
+  }, []);
+
+  const schedulePlayback = useCallback(() => {
+    cancelScheduledPlayback();
+    isStartingRef.current = true;
+
+    const timeToNextBeat = getTimeToNextBeat();
+    const delayMs = Math.max(0, timeToNextBeat * 1000 - 50);
+
+    playbackTimeoutRef.current = window.setTimeout(() => {
+      playbackTimeoutRef.current = null;
+      const firstRaf = requestAnimationFrame(() => {
+        const secondRaf = requestAnimationFrame(async () => {
+          playbackRafRefs.current = [];
+          if (!isMountedRef.current) return;
+
+          try {
+            await Promise.all(
+              TRACKS.map(async (track) => {
+                const buffer = audioBuffersRef.current[track.name];
+                if (!buffer?.primary) return;
+
+                buffer.active = 'primary';
+                buffer.primary.currentTime = 0;
+                await buffer.primary.play();
+              })
+            );
+
+            masterTimeRef.current = 0;
+            setIsPlaying(true);
+            setHasUserInteracted(true);
+            startSyncMonitoring();
+            startLoopCheck();
+          } catch (error) {
+            setIsPlaying(false);
+          } finally {
+            isStartingRef.current = false;
+          }
+        });
+        playbackRafRefs.current.push(secondRaf);
+      });
+      playbackRafRefs.current.push(firstRaf);
+    }, delayMs);
+  }, [cancelScheduledPlayback, getTimeToNextBeat, startLoopCheck, startSyncMonitoring]);
+
   // Initialize audio elements with double buffering
   useEffect(() => {
+    isMountedRef.current = true;
+
     // Create double buffers for each track
     TRACKS.forEach((track) => {
       const primary = new Audio(track.path);
@@ -214,95 +292,10 @@ export const Mixer: React.FC = () => {
       });
     });
 
-    // Wait for all audio to load before attempting to play
-    const attemptAutoplay = async () => {
-      try {
-        // Wait for all audio buffers to be fully ready
-        await Promise.all(
-          TRACKS.flatMap((track) => {
-            const buffer = audioBuffersRef.current[track.name];
-            if (!buffer) return [];
-            
-            return [buffer.primary, buffer.secondary].map((audio) => {
-              return new Promise<void>((resolve) => {
-                if (!audio) {
-                  resolve();
-                  return;
-                }
-
-                const checkReady = () => {
-                  if (audio.readyState >= 4) {
-                    resolve();
-                  } else {
-                    audio.addEventListener("canplaythrough", checkReady, { once: true });
-                    audio.addEventListener("loadeddata", checkReady, { once: true });
-                  }
-                };
-                
-                checkReady();
-                audio.load();
-              });
-            });
-          })
-        );
-
-        // Pre-warm all buffers
-        TRACKS.forEach((track) => {
-          const buffer = audioBuffersRef.current[track.name];
-          if (buffer) {
-            [buffer.primary, buffer.secondary].forEach((audio) => {
-              if (audio) {
-                audio.currentTime = 0;
-                audio.play().then(() => {
-                  audio.pause();
-                  audio.currentTime = 0;
-                }).catch(() => {});
-              }
-            });
-          }
-        });
-
-        // Preload secondary buffers for seamless looping
-        TRACKS.forEach((track) => {
-          preloadNextBuffer(track.name);
-        });
-
-        // Wait for next beat boundary with precise timing
-        const schedulePlayback = () => {
-          const timeToNextBeat = getTimeToNextBeat();
-          const delayMs = Math.max(0, timeToNextBeat * 1000 - 50);
-          
-          setTimeout(() => {
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                // Reset and start all primary buffers
-                TRACKS.forEach((track) => {
-                  const buffer = audioBuffersRef.current[track.name];
-                  if (buffer && buffer.primary) {
-                    buffer.primary.currentTime = 0;
-                    buffer.primary.play().catch(() => {});
-                  }
-                });
-                
-                masterTimeRef.current = 0;
-                setIsPlaying(true);
-                startSyncMonitoring();
-                startLoopCheck();
-              });
-            });
-          }, delayMs);
-        };
-
-        schedulePlayback();
-      } catch (error) {
-        setIsPlaying(false);
-      }
-    };
-
-    attemptAutoplay();
-
     // Cleanup
     return () => {
+      isMountedRef.current = false;
+      cancelScheduledPlayback();
       stopSyncMonitoring();
       stopLoopCheck();
       TRACKS.forEach((track) => {
@@ -322,45 +315,18 @@ export const Mixer: React.FC = () => {
         }
       });
     };
-  }, [startSyncMonitoring, stopSyncMonitoring, startLoopCheck, stopLoopCheck, getTimeToNextBeat, preloadNextBuffer]);
+  }, [cancelScheduledPlayback, stopSyncMonitoring, stopLoopCheck]);
 
   // Handle user interaction to start playback with sync to BPM
   const handleUserInteraction = useCallback(async () => {
-    if (!hasUserInteracted && !isPlaying && startTime !== null) {
+    if (!hasUserInteracted && !isPlaying && !isStartingRef.current && startTime !== null) {
+      isStartingRef.current = true;
       try {
-        // Ensure all buffers are ready
-        await Promise.all(
-          TRACKS.flatMap((track) => {
-            const buffer = audioBuffersRef.current[track.name];
-            if (!buffer) return [];
-            
-            return [buffer.primary, buffer.secondary].map((audio) => {
-              return new Promise<void>((resolve) => {
-                if (!audio || audio.readyState >= 4) {
-                  resolve();
-                  return;
-                }
-                audio.addEventListener("canplaythrough", () => resolve(), { once: true });
-              });
-            });
-          })
-        );
-
-        // Pre-warm all buffers
-        TRACKS.forEach((track) => {
-          const buffer = audioBuffersRef.current[track.name];
-          if (buffer) {
-            [buffer.primary, buffer.secondary].forEach((audio) => {
-              if (audio) {
-                audio.currentTime = 0;
-                audio.play().then(() => {
-                  audio.pause();
-                  audio.currentTime = 0;
-                }).catch(() => {});
-              }
-            });
-          }
-        });
+        await waitForAudioReady();
+        if (!isMountedRef.current) {
+          isStartingRef.current = false;
+          return;
+        }
 
         // Preload secondary buffers
         TRACKS.forEach((track) => {
@@ -368,33 +334,13 @@ export const Mixer: React.FC = () => {
         });
 
         // Schedule playback on next beat boundary
-        const timeToNextBeat = getTimeToNextBeat();
-        const delayMs = Math.max(0, timeToNextBeat * 1000 - 50);
-        
-        setTimeout(() => {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              TRACKS.forEach((track) => {
-                const buffer = audioBuffersRef.current[track.name];
-                if (buffer && buffer.primary) {
-                  buffer.primary.currentTime = 0;
-                  buffer.primary.play().catch(() => {});
-                }
-              });
-              
-              masterTimeRef.current = 0;
-              setIsPlaying(true);
-              setHasUserInteracted(true);
-              startSyncMonitoring();
-              startLoopCheck();
-            });
-          });
-        }, delayMs);
+        schedulePlayback();
       } catch (error) {
+        isStartingRef.current = false;
         console.error("Failed to start playback:", error);
       }
     }
-  }, [hasUserInteracted, isPlaying, startTime, getTimeToNextBeat, startSyncMonitoring, startLoopCheck, preloadNextBuffer]);
+  }, [hasUserInteracted, isPlaying, startTime, preloadNextBuffer, schedulePlayback, waitForAudioReady]);
 
   // Manual sync button handler
   const handleSync = useCallback(() => {
