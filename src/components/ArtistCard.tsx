@@ -11,11 +11,12 @@ export interface ArtistData {
   alias?: string;
   agents: string[];
   basedIn: string;
-  setType: string; // "DJ", "Live", "DJ + Live"
+  setType: string;
   bio: string;
   image?: string;
   epk?: string;
   socialLinks: { platform: string; url: string }[];
+  imageClassName?: string;
 }
 
 interface ArtistCardProps {
@@ -31,32 +32,28 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const availableSocialLinks = artist?.socialLinks.filter(
-    (link) => link.url && link.url !== "#"
-  ) ?? [];
+  const availableSocialLinks =
+    artist?.socialLinks.filter((link) => link.url && link.url !== "#") ?? [];
 
-  // Handle Escape key
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
         onClose();
       }
     };
 
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
-      // Focus the close button when modal opens
-      setTimeout(() => {
-        closeButtonRef.current?.focus();
-      }, 100);
+      document.body.style.overflow = "hidden";
+      setTimeout(() => closeButtonRef.current?.focus(), 100);
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
     };
   }, [isOpen, onClose]);
 
-  // Focus trap
   useEffect(() => {
     if (!isOpen || !modalRef.current) return;
 
@@ -67,19 +64,15 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
-    const handleTab = (e: KeyboardEvent) => {
-      if (e.key !== "Tab") return;
+    const handleTab = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
 
-      if (e.shiftKey) {
-        if (document.activeElement === firstElement) {
-          e.preventDefault();
-          lastElement?.focus();
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement?.focus();
-        }
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement?.focus();
       }
     };
 
@@ -87,14 +80,12 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     return () => modal.removeEventListener("keydown", handleTab);
   }, [isOpen]);
 
-  // Handle click outside
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
       onClose();
     }
   };
 
-  // Helper function to get logo for platform
   const getPlatformLogo = (platform: string): string | null => {
     const platformLower = platform.toLowerCase();
     if (platformLower.includes("instagram")) return instagramLogo;
@@ -104,8 +95,9 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     if (
       platformLower.includes("resident advisor") ||
       platformLower.includes("resident")
-    )
+    ) {
       return raLogo;
+    }
     return null;
   };
 
@@ -113,7 +105,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-end lg:justify-center lg:items-center bg-black/80 backdrop-blur-sm pt-20 lg:pt-0 overflow-hidden"
+      className="fixed inset-0 z-[80] flex items-center justify-center overflow-y-auto bg-black/70 px-4 py-20 text-white backdrop-blur-sm md:px-8"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -121,132 +113,93 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl lg:max-w-5xl mx-4 lg:mx-8 my-4 lg:my-8 bg-black border border-white/10 p-6 md:p-8 lg:p-10 text-white shadow-2xl max-h-[calc(100vh-6rem)] lg:max-h-[calc(100vh-4rem)] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-[1180px] border border-white/15 bg-black p-6 shadow-2xl md:p-8 lg:p-10"
+        onClick={(event) => event.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex justify-between items-start mb-6">
-          <h2
-            id="artist-profile-title"
-            className="text-xs uppercase tracking-wider text-white/70 font-helvetica"
-          >
-            ARTIST PROFILE
+        <div className="mb-8 flex items-start justify-between gap-6">
+          <h2 id="artist-profile-title" className="pd-kicker">
+            Artist Profile
           </h2>
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="text-xs uppercase tracking-wider text-white hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica"
+            className="pd-header-link focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
             aria-label="Close artist profile"
           >
-            CLOSE
+            Close
           </button>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 lg:gap-8">
-          {/* Left Column - Text Content */}
-          <div className="space-y-6">
-            {/* Artist Name */}
-            <div>
-              <div className="text-xs uppercase tracking-wider text-white/70 mb-2 font-helvetica">
-                ARTIST / ALIAS
-              </div>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase font-helvetica">
-                {artist.name}
-              </h3>
-            </div>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,360px)] lg:items-start">
+          <div>
+            <span className="pd-kicker">Artist / Alias</span>
+            <h3 className="pd-heading-lg uppercase">{artist.name}</h3>
 
-            {/* Metadata Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {/* Left Column */}
-              <div className="space-y-4">
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-white/70 mb-1 font-helvetica">
-                    BOOKINGS
-                  </div>
-                  <div className="space-y-1">
-                    {artist.agents.map((agent, idx) => (
-                      <a
-                        key={idx}
-                        href={`mailto:${agent}`}
-                        className="text-sm md:text-base font-helvetica hover:text-accent transition-colors duration-200"
-                      >
-                        {agent}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-white/70 mb-1 font-helvetica">
-                    BASED IN
-                  </div>
-                  <div className="text-sm md:text-base font-helvetica">
-                    {artist.basedIn}
-                  </div>
+            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div>
+                <span className="pd-kicker">Bookings</span>
+                <div className="grid gap-1">
+                  {artist.agents.map((agent) => (
+                    <a
+                      key={agent}
+                      href={`mailto:${agent}`}
+                      className="hover:underline"
+                    >
+                      {agent}
+                    </a>
+                  ))}
                 </div>
               </div>
-
-              {/* Right Column */}
-              <div className="space-y-4">
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-white/70 mb-1 font-helvetica">
-                    SET TYPE
-                  </div>
-                  <div className="text-sm md:text-base font-helvetica">
-                    {artist.setType}
-                  </div>
-                </div>
+              <div>
+                <span className="pd-kicker">Set Type</span>
+                <span>{artist.setType}</span>
+              </div>
+              <div className="sm:col-span-2">
+                <span className="pd-kicker">Based In</span>
+                <span>{artist.basedIn}</span>
               </div>
             </div>
 
-            {/* Biography */}
-            <div className="pt-2">
-              <div className="text-sm md:text-base leading-relaxed text-white font-helvetica">
-                {artist.bio}
-              </div>
-            </div>
+            <p className="max-w-3xl text-base leading-relaxed md:text-lg">
+              {artist.bio}
+            </p>
 
-            {/* Call to Action & Social Links */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 pt-6">
+            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               {artist.epk ? (
                 <a
                   href={artist.epk}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica inline-block text-center"
+                  className="pd-button"
                 >
-                  VIEW EPK
+                  View EPK
                 </a>
               ) : (
-                <button className="px-8 py-3 bg-white text-black uppercase text-xs tracking-wider font-bold hover:bg-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica">
-                  VIEW EPK
-                </button>
+                <button className="pd-button">View EPK</button>
               )}
               {availableSocialLinks.length > 0 && (
-                <div className="flex gap-2">
-                  {availableSocialLinks.map((link, idx) => {
+                <div className="flex flex-wrap gap-2">
+                  {availableSocialLinks.map((link) => {
                     const logo = getPlatformLogo(link.platform);
                     return (
                       <a
-                        key={idx}
+                        key={link.platform}
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 bg-white/5 hover:border-accent hover:bg-accent/10 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
                         aria-label={`${link.platform} profile`}
                       >
                         {logo ? (
                           <img
                             src={logo}
                             alt={link.platform}
-                            className={`w-6 h-6 object-contain ${
+                            className={`h-5 w-5 object-contain ${
                               logo === raLogo ? "invert" : ""
                             }`}
                           />
                         ) : (
-                          <span className="text-xs text-white/70">
-                            {link.platform[0]}
-                          </span>
+                          <span className="text-xs">{link.platform[0]}</span>
                         )}
                       </a>
                     );
@@ -256,18 +209,22 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
             </div>
           </div>
 
-          {/* Right Column - Image */}
-          <div className="lg:flex lg:justify-end">
-            <div className="w-full lg:w-[300px] aspect-square bg-white/10 border border-white/20 flex items-center justify-center">
+          <div>
+            <div
+              className={`pd-media-tile aspect-[4/5] ${
+                artist.imageClassName ?? ""
+              }`}
+            >
               {artist.image ? (
                 <img
                   src={artist.image}
                   alt={artist.name}
-                  className="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
                 />
               ) : (
-                <div className="text-white/30 text-sm uppercase font-helvetica">
-                  Artist Image
+                <div className="flex h-full items-center justify-center text-white/40">
+                  {artist.name}
                 </div>
               )}
             </div>

@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
-import Marquee from "react-fast-marquee";
 import { SiteHeader } from "./SiteHeader";
 
 export const Container: React.FC<{
@@ -22,44 +21,25 @@ export const Container: React.FC<{
 }) => {
   const { pathname } = useLocation();
 
-  // True only on the redirect page
   const isSmsOptIn = pathname === "/sms-opt-in";
   const isEmailSignup = pathname === "/subscribe";
   const shouldShowHeader = showToolbar && !isSmsOptIn && !isEmailSignup;
 
   return (
     <div
-      className={`flex flex-col ${
+      className={`pd-page flex flex-col ${
         fullHeight ? "min-h-screen" : ""
-      } bg-black ${className}`}
+      } ${className}`}
     >
-      {/* Hide the marquee on the opt-in redirect page */}
-      {!isSmsOptIn && !isEmailSignup && showMarquee && (
-        <Marquee
-          gradient={false}
-          className="bg-black text-white uppercase text-xs bottom-[.5px]"
-          pauseOnHover
-          speed={50}
-        >
-          @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
-          @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
-          @perfectdark909 @perfectdark909 @perfectdark909 @perfectdark909
-          @perfectdark909 @perfectdark909
-        </Marquee>
-      )}
-
       <div className="w-full h-full">
-        {/* Shared header (skip on opt-in redirect) */}
-        {/* Transparent nav bar on home page only; solid on others */}
         {shouldShowHeader && <SiteHeader forceSolid={pathname !== "/"} />}
 
-        {/* Little rotating signature—also skip for opt-in */}
-        {/* Previously a rotated signature; removed for cleaner layout */}
-
         <div
-          className={`mx-auto text-center text-white ${
-            shouldShowHeader ? "pt-28 md:pt-32" : ""
-          } ${padBottom ? "pb-32" : "pb-8 md:pb-12"} ${contentClassName}`}
+          className={`mx-auto text-white ${
+            shouldShowHeader ? "pt-[78px] md:pt-[76px]" : ""
+          } ${padBottom ? "pb-24 md:pb-28" : "pb-10 md:pb-14"} ${
+            showMarquee ? "" : ""
+          } ${contentClassName}`}
         >
           {children}
         </div>

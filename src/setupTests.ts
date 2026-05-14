@@ -22,6 +22,13 @@ class MockIntersectionObserver {
   disconnect = vi.fn();
 }
 
+class MockResizeObserver {
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+}
+
 Object.assign(globalThis, {
   IntersectionObserver: MockIntersectionObserver,
+  ResizeObserver: MockResizeObserver,
 });

@@ -1,159 +1,117 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Container } from "../components/Container";
+import React, { useCallback } from "react";
+import Marquee from "react-fast-marquee";
 import { SiteHeader } from "../components/SiteHeader";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
-import { EventTicketTicker } from "../components/EventTicketTicker";
+import lionBackImage from "../img/film images/000033260035.jpg";
+import bunkerImage from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher.jpg";
+import bunkerImageOne from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher (1).jpg";
+import bunkerImageTwo from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher (2).jpg";
+import crowdImage from "../img/film images/000033270026.jpg";
 
-const NewsItem: React.FC<{ href: string; children: React.ReactNode }> = ({
-  href,
-  children,
-}) => (
-  <div className="text-2xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl font-bold can-hover:hover:text-accent">
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  </div>
-);
-
-const GalleryTile: React.FC<{
+interface GalleryItem {
   src: string;
   alt: string;
-  href?: string;
+  href: string;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLDivElement>;
-  srcSet?: string;
-  sizes?: string;
-  loading?: "lazy" | "eager";
-}> = ({ src, alt, href, className, onClick, srcSet, sizes, loading }) => {
-  const tileClasses = `group relative block h-full w-full overflow-hidden bg-transparent ${
-    className ?? ""
-  }`;
+}
 
-  const imageLoading = loading ?? "lazy";
+const galleryItems: GalleryItem[] = [
+  {
+    src: "/images/optimized/film-hero.jpg",
+    alt: "Perfect Dark shirt overlooking snow-covered mountains",
+    href: "https://shop.perfectdark909.com/products/energy-systems-tee-charcoal",
+    className: "sm:col-span-1 sm:row-span-2 lg:col-span-4 lg:row-span-2",
+  },
+  {
+    src: lionBackImage,
+    alt: "Perfect Dark shirt facing a lion on film",
+    href: "https://shop.perfectdark909.com/products/rules-of-the-rave-hoodie",
+    className: "pd-rotate-left lg:col-span-4",
+  },
+  {
+    src: "/images/optimized/film-2.jpg",
+    alt: "Perfect Dark black hoodie graphic detail on film",
+    href: "https://shop.perfectdark909.com/products/rules-of-the-rave-hoodie",
+    className: "lg:col-span-4",
+  },
+  {
+    src: "/images/optimized/film-3.jpg",
+    alt: "Perfect Dark mountain portrait on film",
+    href: "https://shop.perfectdark909.com/products/energy-systems-tee-charcoal",
+    className: "lg:col-span-4",
+  },
+  {
+    src: "/images/optimized/film-4.jpg",
+    alt: "Snow-covered mountain landscape on film",
+    href: "https://shop.perfectdark909.com/collections/all",
+    className: "lg:col-span-4",
+  },
+  {
+    src: crowdImage,
+    alt: "Perfect Dark event crowd on film",
+    href: "https://shop.perfectdark909.com/products/energy-systems-tee-limited-edition-arctic-glacier-blue",
+    className: "lg:col-span-6",
+  },
+  {
+    src: bunkerImageOne,
+    alt: "Bunker March 6 SIAH x Perfect Dark x Bit Crusher event photo",
+    href: "https://shop.perfectdark909.com/products/energy-systems-tee-limited-edition-arctic-glacier-blue",
+    className: "lg:col-span-3",
+  },
+  {
+    src: bunkerImageTwo,
+    alt: "Bunker March 6 SIAH x Perfect Dark x Bit Crusher crowd photo",
+    href: "https://shop.perfectdark909.com/collections/all",
+    className: "lg:col-span-3",
+  },
+  {
+    src: bunkerImage,
+    alt: "Bunker March 6 SIAH x Perfect Dark x Bit Crusher dance floor",
+    href: "https://shop.perfectdark909.com/collections/all",
+    className: "sm:col-span-2 lg:col-span-12",
+  },
+];
 
-  const content = (
-    <>
-      <img
-        src={src}
-        alt={alt}
-        loading={imageLoading}
-        decoding="async"
-        srcSet={srcSet}
-        sizes={sizes}
-        className="h-full w-full object-cover transition duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-focus-within:scale-105"
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-white/0 transition duration-300 group-hover:bg-white/10 group-focus-within:bg-white/10"
-        aria-hidden="true"
-      />
-    </>
-  );
+const modularHeroItems = galleryItems.slice(0, 3);
+const splitGalleryItems = galleryItems.slice(3, 5);
+const modularSecondItems = galleryItems.slice(5, 8);
+const featureGalleryItem = galleryItems[8];
 
-  if (href) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        className={`${tileClasses} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70`}
-        onClick={onClick}
-      >
-        {content}
-      </a>
-    );
-  }
+const ticketUrl = "https://ra.co/events/2440881";
+const ticketText =
+  "PERFECT DARK // RESURRECTION // LOS ANGELES // RESIDENT ADVISOR";
+
+const GalleryTile: React.FC<GalleryItem> = ({ src, alt, href, className }) => {
+  const handleClick = useCallback(() => {
+    if (typeof window !== "undefined" && typeof window.fbq === "function") {
+      window.fbq("track", "ViewContent", {
+        content_name: alt,
+        content_category: "Merch Gallery",
+        content_type: "product_group",
+        destination_url: href,
+      });
+    }
+  }, [alt, href]);
 
   return (
-    <div className={tileClasses} onClick={onClick}>
-      {content}
-    </div>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={handleClick}
+      className={`pd-media-tile focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white ${className ?? ""}`}
+    >
+      <img src={src} alt={alt} loading="lazy" decoding="async" />
+    </a>
   );
 };
 
 export const Home: React.FC = () => {
-  const newsItems = [
-    {
-      href: "https://www.submithub.com/link/jr2k-puma-ep",
-      text: "JR2k - Puma EP",
-    },
-  ];
-
-  const latestSectionRef = useRef<HTMLDivElement | null>(null);
-  const footerRef = useRef<HTMLDivElement | null>(null);
-  const footerSentinelRef = useRef<HTMLDivElement | null>(null);
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
-
-  useEffect(() => {
-    const sentinel = footerSentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsFooterVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(sentinel);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  const galleryLink = "https://shop.perfectdark909.com/collections/all";
-  const heroTileSizes = "100vw";
-  const merchTileSizes =
-    "(max-width: 767px) 50vw, (max-width: 1279px) 33vw, 20vw";
-
-  const handleMerchTileClick = useCallback(
-    (tileLabel: string) =>
-      (_event: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
-        if (typeof window !== "undefined" && typeof window.fbq === "function") {
-          window.fbq("track", "ViewContent", {
-            content_name: tileLabel,
-            content_category: "Merch Gallery",
-            content_type: "product_group",
-            content_ids: ["home-merch-gallery"],
-            destination_url: galleryLink,
-          });
-        }
-      },
-    [galleryLink]
-  );
-
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "MusicGroup",
+    "@type": "Organization",
     name: "Perfect Dark",
-    description:
-      "Perfect Dark is a California-based electronic music label and collective specializing in techno, hosting underground events, and releasing cutting-edge electronic music.",
-    url: "https://perfectdark909.com",
-    logo: "https://perfectdark909.com/logo512.png",
-    sameAs: [
-      "https://perfectdark909.bandcamp.com",
-      "https://soundcloud.com/perfectdark909",
-      "https://instagram.com/perfectdark909",
-      "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi",
-    ],
-    foundingLocation: {
-      "@type": "Place",
-      name: "Chico, California",
-    },
-    areaServed: {
-      "@type": "Place",
-      name: "California, United States",
-    },
-    genre: ["Techno", "Electronic Music", "Dance Music"],
-  };
-
-  const brandStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "Brand",
-    name: "Perfect Dark",
-    description:
-      "Perfect Dark is an independent techno clothing brand and record label based in California. We create underground fashion and electronic music apparel for the techno community.",
     url: "https://perfectdark909.com",
     logo: "https://perfectdark909.com/logo512.png",
     sameAs: [
@@ -162,179 +120,85 @@ export const Home: React.FC = () => {
       "https://soundcloud.com/perfectdark909",
       "https://instagram.com/perfectdark909",
     ],
-    category: [
-      "Clothing",
-      "Streetwear",
-      "Electronic Music Apparel",
-      "Techno Fashion",
-      "Underground Fashion",
-    ],
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-black">
+    <div className="pd-page min-h-screen">
       <SEO
-        title="Perfect Dark | Electronic Music Label & Collective | California Techno"
+        title="Perfect Dark | Electronic Music Label & Collective"
         description="Perfect Dark is a record label, clothing brand, and artist collective."
-        keywords="Perfect Dark, Perfect Dark techno, electronic music label california, california techno, west-coast techno, techno merch, techno streetwear, electronic music apparel, underground fashion, Perfect Dark clothing, techno clothing brand"
+        keywords="Perfect Dark, techno merch, electronic music label, underground fashion"
         canonical="/"
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(brandStructuredData),
-        }}
-      />
-      {/* SEO: H1 heading for search engines */}
       <h1 className="sr-only">
         Perfect Dark - Record Label, Clothing Brand, and Artist Collective
       </h1>
-      {/* Hero video temporarily disabled */}
-      {/**
-       * <section className="relative h-screen w-full overflow-hidden">
-       *   <video
-       *     className="absolute inset-0 h-full w-full object-cover"
-       *     src="/videos/hero1.mp4"
-       *     autoPlay
-       *     loop
-       *     muted
-       *     playsInline
-       *     aria-hidden="true"
-       *   />
-       *   <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
-       *   {...nav overlay previously here}
-       * </section>
-       */}
 
       <SiteHeader />
-      <EventTicketTicker />
 
-      <section className="relative w-full bg-[#dbe3b8] -mt-[84px] pt-[84px] md:-mt-[96px] md:pt-[96px] md:min-h-screen md:h-screen overflow-hidden">
-        <GalleryTile
-          src="/images/optimized/film-hero.jpg"
-          srcSet="/images/optimized/film-hero@800.jpg 1000w, /images/optimized/film-hero.jpg 2000w"
-          sizes={heroTileSizes}
-          loading="eager"
-          alt="Perfect Dark shirt overlooking snow-covered mountains"
-          href={galleryLink}
-          onClick={handleMerchTileClick(
-            "Perfect Dark shirt overlooking snow-covered mountains"
-          )}
-          className="w-full h-full"
-        />
-      </section>
-
-      <section className="relative w-full bg-[#e4ebc6] md:min-h-screen md:h-screen overflow-hidden">
-        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
-          <GalleryTile
-            src="/images/optimized/film-1.jpg"
-            srcSet="/images/optimized/film-1@800.jpg 663w, /images/optimized/film-1.jpg 1326w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark black hoodie portrait on film"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Perfect Dark black hoodie portrait on film"
-            )}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-1"
-          />
-          <GalleryTile
-            src="/images/optimized/film-2.jpg"
-            srcSet="/images/optimized/film-2@800.jpg 663w, /images/optimized/film-2.jpg 1326w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark black hoodie graphic detail on film"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Perfect Dark black hoodie graphic detail on film"
-            )}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:row-start-2"
-          />
-          <GalleryTile
-            src="/images/optimized/film-3.jpg"
-            srcSet="/images/optimized/film-3@800.jpg 663w, /images/optimized/film-3.jpg 1326w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark mountain portrait on film"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Perfect Dark mountain portrait on film"
-            )}
-            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-3"
-          />
-        </div>
-      </section>
-
-      <section className="relative w-full bg-[#d6e1ad] md:min-h-screen md:h-screen overflow-hidden">
-        <div className="grid h-full w-full grid-cols-2 md:grid-cols-5 md:grid-rows-2 auto-rows-[minmax(160px,1fr)] md:auto-rows-[1fr] grid-flow-dense">
-          <GalleryTile
-            src="/images/optimized/film-4.jpg"
-            srcSet="/images/optimized/film-4@800.jpg 1000w, /images/optimized/film-4.jpg 2000w"
-            sizes={merchTileSizes}
-            alt="Snow-covered mountain landscape on film"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Snow-covered mountain landscape on film"
-            )}
-            className="col-span-2 row-span-2 md:col-span-3 md:row-span-2 md:col-start-1"
-          />
-          <GalleryTile
-            src="/images/optimized/film-5.jpg"
-            srcSet="/images/optimized/film-5@800.jpg 663w, /images/optimized/film-5.jpg 1326w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark gray tee portrait on film"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Perfect Dark gray tee portrait on film"
-            )}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-1"
-          />
-          <GalleryTile
-            src="/images/optimized/film-6.jpg"
-            srcSet="/images/optimized/film-6@800.jpg 663w, /images/optimized/film-6.jpg 1326w"
-            sizes={merchTileSizes}
-            alt="Perfect Dark gray tee back graphic on film"
-            href={galleryLink}
-            onClick={handleMerchTileClick(
-              "Perfect Dark gray tee back graphic on film"
-            )}
-            className="col-span-1 row-span-1 md:col-span-2 md:row-span-1 md:col-start-4 md:row-start-2"
-          />
-        </div>
-      </section>
-
-      <div className="h-1" />
-
-      <Container showToolbar={false} showMarquee={false}>
-        {/* Centered section (leave headroom for fixed footer & icons) */}
-        <section
-          ref={latestSectionRef}
-          className="relative z-40 w-full bg-black px-6 min-h-screen flex items-center justify-center pt-64"
-        >
-          <div className="mx-auto max-w-2xl flex flex-col items-center text-center gap-4">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
-              LATEST
-            </span>
-
-            {newsItems.map((item, index) => (
-              <NewsItem key={index} href={item.href}>
-                {item.text}
-              </NewsItem>
+      <main>
+        <section className="pt-[54px] md:pt-[52px]">
+          <div className="pd-ev-modular">
+            {modularHeroItems.map((item, index) => (
+              <GalleryTile
+                key={item.alt}
+                {...item}
+                className={
+                  index === 1 ? "pd-ev-span-large" : "pd-ev-span-small"
+                }
+              />
             ))}
           </div>
+
+          <div className="pd-ev-split">
+            {splitGalleryItems.map((item) => (
+              <GalleryTile
+                key={item.alt}
+                {...item}
+                className="pd-ev-split-tile"
+              />
+            ))}
+          </div>
+
+          <div className="pd-ev-modular">
+            {modularSecondItems.map((item, index) => (
+              <GalleryTile
+                key={item.alt}
+                {...item}
+                className={
+                  index === 1 ? "pd-ev-span-large" : "pd-ev-span-small"
+                }
+              />
+            ))}
+          </div>
+
+          <div className="pd-ev-feature">
+            <GalleryTile
+              {...featureGalleryItem}
+              className="pd-ev-feature-tile"
+            />
+          </div>
         </section>
-      </Container>
 
-      <div ref={footerSentinelRef} className="h-32" />
+        <section className="pd-ticket-ticker-wrap" aria-label="Event tickets">
+          <a
+            href={ticketUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="pd-ticket-ticker"
+          >
+            <Marquee gradient={false} speed={105} autoFill>
+              <span className="pd-ticket-text">{ticketText}</span>
+            </Marquee>
+          </a>
+        </section>
+      </main>
 
-      {/* Footer stays visible regardless of menu state */}
-      <footer
-        ref={footerRef}
-        className={`fixed bottom-0 left-0 right-0 bg-black border-t border-white/20 z-40 text-white font-helvetica font-bold transition-transform duration-500 ${
-          isFooterVisible ? "translate-y-0" : "translate-y-full"
-        }`}
-      >
+      <footer className="pd-footer">
         <FooterSubscribe />
       </footer>
     </div>

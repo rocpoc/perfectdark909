@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 const EmailSignup: React.FC = () => {
   useEffect(() => {
-    window.location.replace("/subscribe/index.html");
+    window.location.replace(`/subscribe/index.html${window.location.search}`);
   }, []);
   return null;
 };
