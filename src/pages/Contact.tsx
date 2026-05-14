@@ -2,50 +2,62 @@ import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
 
-export const Contact: React.FC<{}> = () => {
+export const Contact: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="pd-page flex min-h-screen flex-col">
       <SEO
         title="Contact | Perfect Dark | Booking & Demo Submissions"
-        description="Contact Perfect Dark for booking inquiries and demo submissions. Email info@perfectdark909.com for California techno label collaborations."
+        description="Contact Perfect Dark for booking inquiries, demos, collaborations, and order support."
         keywords="Perfect Dark contact, Perfect Dark booking, demo submissions, techno label contact"
         canonical="/contact"
       />
+
       <Container
-        showToolbar={true}
+        showToolbar
         showMarquee={false}
         fullHeight={false}
         padBottom={false}
+        contentClassName="pd-wrapper"
       >
-        <div className="flex flex-col justify-center max-w-2xl m-auto">
-          <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
-              CONTACT
-            </span>
+        <main className="pd-section-tight">
+          <h1 className="pd-heading-xl mb-12">Contact</h1>
+
+          <div className="pd-body grid max-w-3xl gap-4 text-white/70">
+            <p>
+              For bookings/event inquiries:{" "}
+              <a
+                href="mailto:mila@perfectdark909.com"
+                className="underline underline-offset-2 hover:text-[#8ceb8f]"
+              >
+                mila@perfectdark909.com
+              </a>
+            </p>
+            <p>
+              Shop/general inquiries:{" "}
+              <a
+                href="mailto:info@perfectdark909.com"
+                className="underline underline-offset-2 hover:text-[#8ceb8f]"
+              >
+                info@perfectdark909.com
+              </a>
+            </p>
+            <p>
+              Demo submissions:{" "}
+              <a
+                href="mailto:info@perfectdark909.com"
+                className="underline underline-offset-2 hover:text-[#8ceb8f]"
+              >
+                info@perfectdark909.com
+              </a>{" "}
+              <span className="text-white/50">
+                Note: we only listen to private SoundCloud links.
+              </span>
+            </p>
           </div>
-          {/* <div className="text-2xl font-bold px-8 "> */}
-          <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-4">
-            For booking inquiries and demo submissions, please email us at:{" "}
-            <br></br>
-            <br></br>
-            <a
-              className="font-bold italic bg-white text-black can-hover:hover:bg-accent active:bg-accent text-lg xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-2"
-              href="mailto:info@perfectdark909.com"
-            >
-              {" "}
-              info@perfectdark909.com
-            </a>
-            <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-8">
-              Please leave your name, contact info, and a brief description of
-              your request. <br></br>
-              <br></br> Thank you!
-              <br></br>
-            </div>
-          </div>
-        </div>
+        </main>
       </Container>
 
-      <footer className="mt-auto bg-black border-t border-white/20 text-white">
+      <footer className="pd-footer mt-auto">
         <FooterSubscribe />
       </footer>
     </div>

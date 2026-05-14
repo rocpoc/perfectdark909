@@ -4,132 +4,103 @@ import { SEO } from "../components/SEO";
 import pd_90_logo from "../img/PD - 90_s type-01.png";
 import pd_spiral_logo from "../img/PD - Spiral-01.png";
 import pd_heart_logo from "../img/PD_Special Heart-01.png";
-import earth_first from "../img/earth-first.png"; // Imported image for the Earth First event
-import tracks_for_trees from "../img/tracks-4-trees.jpeg"; // Imported image for the Tracks for Trees initiative
+import earth_first from "../img/earth-first.png";
+import tracks_for_trees from "../img/tracks-4-trees.jpeg";
 
-export const Environment: React.FC<{}> = () => {
+export const Environment: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="pd-page flex min-h-screen flex-col">
       <SEO
         title="Environment | Perfect Dark | Climate Activism"
-        description="Learn about Perfect Dark's environmental initiatives including Tracks for Trees and Earth First events. Supporting climate activism through electronic music."
+        description="Learn about Perfect Dark's environmental initiatives including Tracks for Trees and Earth First events."
         keywords="Perfect Dark environment, climate activism, tracks for trees, environmental music label"
         canonical="/environment"
       />
+
       <Container
-        showToolbar={true}
+        showToolbar
         showMarquee={false}
         fullHeight={false}
         padBottom={false}
+        contentClassName="pd-wrapper"
       >
-        <div className="flex flex-col justify-center max-w-2xl m-auto">
-          <div className="flex flex-col justify-center max-w-2xl m-auto px-3">
-            <span className="text-3xl xxs:text-3xl xs:text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold can-hover:hover:text-accent">
-              EARTH
-            </span>
-          </div>
-          <div className="text-xl xxs:text-xl xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-4xl p-8">
-            {/* Section for Tracks for Trees */}
-            <div>
-              <p>
-                In January of 2023, Perfect Dark saw an opportunity for Bandcamp
-                Fridays to make a positive, measurable impact on our shared
-                environment. On the first Friday of the month, Perfect Dark
-                track purchases aid in reforestation efforts through our "Tracks
-                for Trees" initiative.
-              </p>{" "}
-              <br></br>
-              <p>
-                By partnering with{" "}
-                <a
-                  href="https://onetreeplanted.org"
-                  className="text-accent  can-hover:hover:text-accent-light"
-                >
-                  One Tree Planted
-                </a>
-                , one track purchase = one tree planted. "Tracks for Trees"
-                allows our supporters to join in on a collective effort to
-                co-create a more regeneratively-minded tomorrow.
-              </p>
-              <br></br>
+        <main>
+          <section className="pd-section-tight">
+            <h1 className="pd-heading-xl">Earth</h1>
+          </section>
+
+          <section className="pd-grid-12 pd-section-tight">
+            <div className="lg:col-span-7">
               <img
                 src={tracks_for_trees}
                 alt="Tracks for Trees initiative"
-                className="w-full h-auto mb-4"
+                className="w-full object-cover"
               />
             </div>
-            <br />
-
-            {/* Section for Earth First event */}
-            <div>
+            <div className="pd-rte lg:col-span-5">
+              <span className="pd-kicker">Tracks for Trees</span>
+              <p className="pd-body-large">
+                In January of 2023, Perfect Dark saw an opportunity for
+                Bandcamp Fridays to make a positive, measurable impact on our
+                shared environment.
+              </p>
               <p>
-                Our commitment to regenerative future extends into local
-                communities that our members are part of. Perfect Dark has
-                partnered with Chico’s{" "}
-                <a
-                  href="https://www.stopvalleysedge.org/"
-                  className="text-accent hover:text-accent-light"
-                >
-                  Stop Valley’s Edge
+                On the first Friday of the month, Perfect Dark track purchases
+                aid in reforestation efforts through our Tracks for Trees
+                initiative. By partnering with{" "}
+                <a href="https://onetreeplanted.org">One Tree Planted</a>, one
+                track purchase equals one tree planted.
+              </p>
+            </div>
+          </section>
+
+          <section className="pd-grid-12 pd-section pd-border-top">
+            <div className="pd-rte lg:col-span-5">
+              <span className="pd-kicker">Community Action</span>
+              <p className="pd-body-large">
+                Our commitment to a regenerative future extends into the local
+                communities our members are part of.
+              </p>
+              <p>
+                Perfect Dark has partnered with Chico's{" "}
+                <a href="https://www.stopvalleysedge.org/">
+                  Stop Valley's Edge
                 </a>{" "}
                 initiative to host a benefit show intended to raise money and
-                bring awareness to the issues surrounding continued residential
-                development into the Sierra Nevadas foothills.
+                bring awareness to continued residential development into the
+                Sierra Nevada foothills.
               </p>
-              <br></br>
+            </div>
+            <div className="lg:col-span-7">
               <img
                 src={earth_first}
                 alt="Earth First Event"
-                className="w-full h-auto mb-4"
+                className="w-full object-cover"
               />
             </div>
-            <br />
+          </section>
 
-            <p>
+          <section className="pd-section pd-border-top">
+            <p className="pd-heading-md max-w-5xl">
               How you do anything is how you do everything. We want to help
               create a scene where actions, tickets, and tracks purchased
-              contribute to a more regenerative future. Join us on our journey!
+              contribute to a more regenerative future.
             </p>
-            <br></br>
-            <p>
-              <em>
-                "Individually, we are one drop. Together, we are an ocean." —
-                Ryunosuke Satoro
-              </em>
+            <p className="pd-body-large mt-8 text-white/70">
+              "Individually, we are one drop. Together, we are an ocean." -
+              Ryunosuke Satoro
             </p>
-            <br></br>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl p-4 font-bold text-accent">
-              #RaveForAReason
-            </p>
-          </div>
-          <div className="flex justify-center py-4 inset-x-0 bottom-4 max-w-lg m-auto">
-            {/* Logo Images */}
-            <img
-              src={pd_heart_logo}
-              alt="Perfect Dark Special Heart Logo"
-              className="max-w-lg m-auto"
-              width="50"
-              height="50"
-            />
-            <img
-              src={pd_90_logo}
-              alt="Perfect Dark 90's Type Logo"
-              className="max-w-lg m-auto"
-              width="50"
-              height="50 "
-            />
-            <img
-              src={pd_spiral_logo}
-              alt="Perfect Dark Spiral Logo"
-              className="max-w-lg m-auto"
-              width="50"
-              height="50"
-            />
-          </div>
-        </div>
+            <p className="mt-6 text-[#8ceb8f]">#RaveForAReason</p>
+            <div className="mt-12 flex gap-4">
+              <img src={pd_heart_logo} alt="Perfect Dark heart logo" width="52" />
+              <img src={pd_90_logo} alt="Perfect Dark type logo" width="52" />
+              <img src={pd_spiral_logo} alt="Perfect Dark spiral logo" width="52" />
+            </div>
+          </section>
+        </main>
       </Container>
 
-      <footer className="mt-auto bg-black border-t border-white/20 text-white">
+      <footer className="pd-footer mt-auto">
         <FooterSubscribe />
       </footer>
     </div>

@@ -4,14 +4,6 @@ import { FooterSubscribe } from "../components/FooterSubscribe";
 import { ArtistCard, ArtistData } from "../components/ArtistCard";
 import { useLocation } from "react-router-dom";
 import { SEO } from "../components/SEO";
-import brickHeadshot from "../img/artists/headshots/brick-headshot.jpg";
-import freemanHeadshot from "../img/artists/headshots/freeman-headshot.jpg";
-import providerHeadshot from "../img/artists/headshots/provider-headshot.jpg";
-import faunaHeadshot from "../img/artists/headshots/fauna-headshot.jpg";
-import carmineHeadshot from "../img/artists/headshots/carmine-headshot.jpg";
-import dogtoothHeadshot from "../img/artists/headshots/dogtooth-headshot.jpg";
-import disfuHeadshot from "../img/artists/headshots/disfu-headshot.jpg";
-import lavenderPersuasionHeadshot from "../img/artists/headshots/lavender-persuasion-headshot.jpg";
 import brickPdf from "../img/artists/brick/brick-epk.pdf";
 import carminePdf from "../img/artists/carmine/carmine-epk.pdf";
 import disfuPdf from "../img/artists/disfu/disfu-epk.pdf";
@@ -21,6 +13,17 @@ import freeman713Pdf from "../img/artists/freeman-713/freeman-713.pdf";
 import lavenderPersuasionPdf from "../img/artists/lavender-persuasion/lavender-persuasion-epk.pdf";
 import providerPdf from "../img/artists/provider/provider-epk.pdf";
 
+const artistImages = {
+  brick: "/images/artists/brick-headshot.jpg",
+  freeman: "/images/artists/freeman-headshot.jpg",
+  provider: "/images/artists/provider-headshot.jpg",
+  fauna: "/images/artists/fauna-headshot.jpg",
+  carmine: "/images/artists/carmine-headshot.jpg",
+  dogtooth: "/images/artists/dogtooth-headshot.jpg",
+  disfu: "/images/artists/disfu-headshot.jpg",
+  lavenderPersuasion: "/images/artists/lavender-persuasion-headshot.jpg",
+};
+
 // Artist data matching reference site format
 const artistData: ArtistData[] = [
   {
@@ -29,8 +32,8 @@ const artistData: ArtistData[] = [
     agents: ["mila@perfectdark909.com"],
     basedIn: "San Francisco, US",
     setType: "DJ + Live",
-    bio: "Brick is a producer and DJ based in San Francisco. His sound blends techno, dub, and tribal influences into stripped-back, driving rhythms built around movement and groove. Drawing inspiration from 90s rave culture, his performances balance precision, emotion, and flow. As a co-founder of Perfect Dark and Capp Street Project, Brick has become a central figure in the West Coast scene, shaping its sound through events, releases, and collaborations.",
-    image: brickHeadshot,
+    bio: "Brick is a San Francisco-based producer and DJ blending techno, dub, and tribal influences into a modern and groove-driven sound. Rooted in 90s rave culture and contemporary club music, his productions and sets are stripped-back, percussive, and built for the club. As a co-founder of Perfect Dark and Capp Street Project, he’s part of a new wave shaping the West Coast underground through a focused, functional approach to modern techno and dance music.",
+    image: artistImages.brick,
     epk: brickPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/brick.909/" },
@@ -50,7 +53,7 @@ const artistData: ArtistData[] = [
     basedIn: "Los Angeles, US",
     setType: "DJ + Live",
     bio: "Freeman 713 is a Los Angeles-based DJ and producer fusing tribal grooves with high-energy techno, with performances spanning the US underground and a 2024 debut at Berlin's RSO. Their productions have earned international support from artists including Anetha, D.Dan, LSDXOXO, VTSS, and Daria Kolosova.",
-    image: freemanHeadshot,
+    image: artistImages.freeman,
     epk: freeman713Pdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/Freeman_713/" },
@@ -70,7 +73,7 @@ const artistData: ArtistData[] = [
     basedIn: "Austin, Texas, US",
     setType: "DJ + Live",
     bio: "Provider's sound takes inspiration from ambient, textural, and dubbed out electronic music and presents it in the dancefloor friendly form of groove focused techno, breaks, and electro. Expect atmospheric soundscapes and cutting edge sound design that transports you across genre lines.",
-    image: providerHeadshot,
+    image: artistImages.provider,
     epk: providerPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/provider.999/" },
@@ -90,7 +93,7 @@ const artistData: ArtistData[] = [
     basedIn: "Northern California, US",
     setType: "DJ",
     bio: "Hailing from the mountains of Northern California, Perfect Dark's Fauna is a dynamic DJ and producer known for her electrifying sets. Drawing inspiration from the harder styles of techno, Fauna's music is a blend of heavy bass kicks, trance-like breakdowns, and trippy, ethereal vocals. Her performances are a journey through sound, creating an atmosphere of raw intensity and emotional depth. Each set is meticulously crafted to keep the energy levels soaring, captivating audiences with a relentless drive and a unique touch that stands out in the techno scene.",
-    image: faunaHeadshot,
+    image: artistImages.fauna,
     epk: faunaPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/fauna.999/" },
@@ -100,13 +103,28 @@ const artistData: ArtistData[] = [
     ],
   },
   {
+    id: "lavender-persuasion",
+    name: "Lavender Persuasion",
+    agents: ["mila@perfectdark909.com"],
+    basedIn: "Northern California, US",
+    setType: "DJ",
+    bio: "Lavender Persuasion joined forces with record label Perfect Dark in 2018 after showcasing his unique, enchanted style as a special guest during the late-night slots of Perfect Dark's initial DIY events. His free-spirited track selection ranges from whimsical progressive house, to sassy, tongue-and cheek-techno, eccentric, lush breakbeats, and deep, dubby electronica. Lavender Persuasion has a reputation for refusing to conform to a specific genre and regularly excites crowds across Northern California through deranged, energetic, deeply compassionate and nuanced track selection.",
+    image: artistImages.lavenderPersuasion,
+    imageClassName: "pd-artist-image-lavender",
+    epk: lavenderPersuasionPdf,
+    socialLinks: [
+      { platform: "Instagram", url: "#" },
+      { platform: "SoundCloud", url: "#" },
+    ],
+  },
+  {
     id: "dogtooth",
     name: "Dogtooth",
     agents: ["mila@perfectdark909.com"],
     basedIn: "San Francisco, US",
     setType: "DJ",
     bio: "Dogtooth is an SF based DJ. Reigning as a DJ for four years, she has continuously explored new sounds, often switching genres mid-set. They are attracted to music that is high energy, dark, and groovy. Genres they play but are not limited to are: techno, dark groove, acid, UKG, and house. She is always trying to push the limit of her artistic abilities and grow their skills. They are a resident DJ of Perfect Dark. Perfect Dark is a record label and collective dedicated to nurturing connections through a shared passion for electronic music",
-    image: dogtoothHeadshot,
+    image: artistImages.dogtooth,
     epk: dogtoothPdf,
     socialLinks: [
       { platform: "Instagram", url: "#" },
@@ -120,7 +138,7 @@ const artistData: ArtistData[] = [
     basedIn: "Los Angeles, US",
     setType: "DJ",
     bio: "LA-born Disfu blends futuristic rave sounds, alternative influences, and the infectious rhythms of Latin music. His innovative fusion of Latin club styles with hard-edged techno creates a fresh, high-energy sound that's both nostalgic and forward-looking.",
-    image: disfuHeadshot,
+    image: artistImages.disfu,
     epk: disfuPdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/disfu96/" },
@@ -137,26 +155,12 @@ const artistData: ArtistData[] = [
     basedIn: "San Francisco, US",
     setType: "DJ",
     bio: "Carmine is a San Francisco-based DJ who's known for his dynamic blend of eclectic and underground influences that resonate across a spectrum of house and techno. Carmine's sets effortlessly traverse these genres and styles, which has earned him a reputation as a versatile and skilled DJ.",
-    image: carmineHeadshot,
+    image: artistImages.carmine,
     epk: carminePdf,
     socialLinks: [
       { platform: "Instagram", url: "https://www.instagram.com/carmine__909/" },
       { platform: "SoundCloud", url: "https://soundcloud.com/carmine" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/carmine" },
-    ],
-  },
-  {
-    id: "lavender-persuasion",
-    name: "Lavender Persuasion",
-    agents: ["mila@perfectdark909.com"],
-    basedIn: "Northern California, US",
-    setType: "DJ",
-    bio: "Lavender Persuasion joined forces with record label Perfect Dark in 2018 after showcasing his unique, enchanted style as a special guest during the late-night slots of Perfect Dark's initial DIY events. His free-spirited track selection ranges from whimsical progressive house, to sassy, tongue-and cheek-techno, eccentric, lush breakbeats, and deep, dubby electronica. Lavender Persuasion has a reputation for refusing to conform to a specific genre and regularly excites crowds across Northern California through deranged, energetic, deeply compassionate and nuanced track selection.",
-    image: lavenderPersuasionHeadshot,
-    epk: lavenderPersuasionPdf,
-    socialLinks: [
-      { platform: "Instagram", url: "#" },
-      { platform: "SoundCloud", url: "#" },
     ],
   },
 ];
@@ -188,31 +192,13 @@ export const Artists: React.FC = () => {
     window.history.replaceState(null, "", location.pathname);
   };
 
-  // Play hover sound for artist names (desktop only)
-  const playArtistHoverSound = useCallback(() => {
-    // Don't play on mobile devices
-    if (window.innerWidth < 768 || "ontouchstart" in window) return;
-
-    try {
-      const audio = new Audio(
-        "/audio/UI Sounds/ESM_Alien_Button_Game_Organic_Cartoon_Sci_Fi_User_Interface.wav"
-      );
-      audio.volume = 0.3; // Adjust volume (0.0 to 1.0)
-      audio.play().catch(() => {
-        // Silently fail if audio can't play (user interaction required, etc.)
-      });
-    } catch (error) {
-      // Silently fail if audio can't be created
-    }
-  }, []);
-
   // Keyboard navigation
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (!selectedArtistId) return;
 
       const currentIndex = artistData.findIndex(
-        (a) => a.id === selectedArtistId
+        (a) => a.id === selectedArtistId,
       );
 
       if (e.key === "ArrowLeft" && currentIndex > 0) {
@@ -228,7 +214,7 @@ export const Artists: React.FC = () => {
         handleArtistClick(nextArtist.id);
       }
     },
-    [selectedArtistId]
+    [selectedArtistId],
   );
 
   useEffect(() => {
@@ -237,6 +223,25 @@ export const Artists: React.FC = () => {
       return () => window.removeEventListener("keydown", handleKeyDown);
     }
   }, [selectedArtistId, handleKeyDown]);
+
+  useEffect(() => {
+    const preloadImages = () => {
+      artistData.forEach((artist) => {
+        if (!artist.image) return;
+        const image = new Image();
+        image.decoding = "async";
+        image.src = artist.image;
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(preloadImages);
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(preloadImages, 500);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   const breadcrumbStructuredData = {
     "@context": "https://schema.org",
@@ -258,7 +263,7 @@ export const Artists: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white relative">
+    <div className="pd-page flex min-h-screen flex-col">
       <SEO
         title="Artists | Perfect Dark | California Techno Label"
         description="Discover artists on Perfect Dark, a California techno label featuring Freeman 713, Fauna, Brick, Provider, and more. West Coast electronic music."
@@ -271,55 +276,64 @@ export const Artists: React.FC = () => {
           __html: JSON.stringify(breadcrumbStructuredData),
         }}
       />
-      <div className="animated-bg" />
       <Container
         showToolbar={true}
         showMarquee={false}
         fullHeight={false}
         padBottom={false}
-        className="!bg-transparent relative z-10"
-        contentClassName="max-w-6xl w-full text-left text-white px-6 sm:px-10 pt-16 md:pt-20"
+        contentClassName="pd-wrapper"
       >
-        <div className="flex justify-center pt-4 pb-16 relative">
-          {/* Artist List - Two Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 w-full max-w-5xl">
+        <main className="pd-section-tight">
+          <h1 className="pd-heading-xl mb-12">Artists</h1>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {artistData.map((artist) => (
               <button
                 key={artist.id}
                 onClick={() => handleArtistClick(artist.id)}
-                onMouseEnter={playArtistHoverSound}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     handleArtistClick(artist.id);
                   }
                 }}
-                className={`group w-full text-left border transition-all duration-150 p-3 md:p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 font-helvetica ${
+                className={`group w-full text-left transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white ${
                   selectedArtistId === artist.id
-                    ? "border-accent bg-accent/5"
-                    : "border-white/10 hover:border-white/30"
+                    ? "text-[#8ceb8f]"
+                    : "text-white hover:text-[#8ceb8f]"
                 }`}
                 aria-label={`View ${artist.name} profile`}
                 aria-pressed={selectedArtistId === artist.id}
               >
-                <div className="space-y-1">
-                  <div className="text-xs uppercase tracking-wider text-white/70 font-helvetica">
-                    ARTIST
-                  </div>
-                  <h3
-                    className={`text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase font-helvetica transition-colors duration-150 ${
-                      selectedArtistId === artist.id
-                        ? "text-artist-highlight"
-                        : "text-white group-hover:text-artist-highlight"
-                    }`}
-                  >
-                    {artist.name}
-                  </h3>
-                </div>
+                <span
+                  className={`pd-media-tile aspect-square ${
+                    artist.imageClassName ?? ""
+                  }`}
+                >
+                  {artist.image ? (
+                    <img
+                      src={artist.image}
+                      alt={artist.name}
+                      loading="eager"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span className="flex h-full items-center justify-center bg-white/10">
+                      {artist.name}
+                    </span>
+                  )}
+                </span>
+                <span className="pd-kicker mt-3">Artist</span>
+                <span className="block min-h-[3.25rem] text-2xl font-bold leading-none md:min-h-[4rem] md:text-3xl">
+                  {artist.name}
+                </span>
+                <span className="mt-2 block text-white/70">
+                  {artist.basedIn}
+                </span>
               </button>
             ))}
           </div>
-        </div>
+        </main>
       </Container>
 
       {/* Modal Card */}
@@ -329,7 +343,7 @@ export const Artists: React.FC = () => {
         onClose={handleClose}
       />
 
-      <footer className="mt-auto bg-black border-t border-white/20 text-white relative z-10">
+      <footer className="pd-footer mt-auto">
         <FooterSubscribe />
       </footer>
     </div>

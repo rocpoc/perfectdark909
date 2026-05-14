@@ -4,14 +4,14 @@
 import { Link } from "react-router-dom";
 
 const NotFound: React.FC = () => (
-  <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-6 space-y-6 font-sans">
-    <h1 className="text-4xl font-bold">404</h1>
-    <p className="text-lg opacity-80">Page not found</p>
+  <main className="pd-page pd-wrapper flex min-h-screen flex-col justify-center py-24">
+    <span className="pd-kicker">404</span>
+    <h1 className="pd-heading-xl">Page not found</h1>
     <Link
       to="/"
-      className="px-4 py-2 rounded bg-accent-dark font-semibold hover:bg-accent"
+      className="pd-button mt-8 w-fit"
     >
-      Take me home
+      Home
     </Link>
   </main>
 );

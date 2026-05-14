@@ -15,6 +15,37 @@
     ml('account', '2007128');
     </script>
     <!-- End MailerLite Universal -->
+    <script>
+      (function () {
+        const email = new URLSearchParams(window.location.search).get("email");
+        if (!email) return;
+
+        const fillEmail = () => {
+          const input = document.querySelector(
+            'input[type="email"], input[name="email"], input[name="fields[email]"]'
+          );
+
+          if (!input) return false;
+
+          input.value = email;
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+          input.focus();
+          return true;
+        };
+
+        const observer = new MutationObserver(() => {
+          if (fillEmail()) observer.disconnect();
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+          if (fillEmail()) return;
+          observer.observe(document.body, { childList: true, subtree: true });
+        });
+
+        window.setTimeout(() => observer.disconnect(), 10000);
+      })();
+    </script>
     <style>
       * { box-sizing: border-box; }
       body { margin: 0; min-height: 100vh; background: #000; color: #fff; font-family: system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; text-align: center; }

@@ -3,90 +3,574 @@
 @tailwind utilities;
 
 @layer base {
-    html, body, #root {
-      @apply h-full;
-      /* fallback solid */
-      background: #000000;
-      /* animated dark gradient */
-      background-image: linear-gradient(-45deg, #000000, #111111, #0a0a0a, #1a1a1a);
-      background-size: 400% 400%;
-      animation: gradientFlow 20s ease infinite;
-    }
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    background: #000;
+  }
 
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  body {
+    margin: 0;
+    color: #fff;
+    background: #000;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.2;
+    text-rendering: geometricPrecision;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  ::selection {
+    background: #8ceb8f;
+    color: #000;
+  }
 }
 
 @layer components {
-  /* Subtle animated background for Artists and Info pages */
-  .animated-bg {
+  .pd-page {
+    background: #000;
+    color: #fff;
+  }
+
+  .pd-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .pd-section {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .pd-section-tight {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .pd-grid-12 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 48px;
+  }
+
+  .pd-heading-xl {
+    font-size: clamp(3.25rem, 10vw, 8.5rem);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .pd-heading-lg {
+    font-size: clamp(2.1rem, 5.5vw, 5rem);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .pd-heading-md {
+    font-size: clamp(1.6rem, 3.4vw, 3rem);
+    line-height: 0.96;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .pd-body-large {
+    font-size: clamp(1.15rem, 2.1vw, 2rem);
+    line-height: 1.1;
+  }
+
+  .pd-body {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .pd-kicker {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .pd-header {
     position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    color: #fff;
+    transition: background-color 180ms ease, border-color 180ms ease;
+  }
+
+  .pd-header--overlay {
+    background: #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .pd-header--solid {
+    background: #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .pd-header:hover,
+  .pd-header:focus-within {
+    background: #000;
+  }
+
+  .pd-header-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    min-height: 54px;
+    gap: 1.25rem;
+  }
+
+  .pd-logo-link {
+    width: 55px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .pd-logo {
+    display: block;
+    width: 55px;
+    height: auto;
+  }
+
+  .pd-header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .pd-header-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .pd-header-link {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+  }
+
+  .pd-header-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+
+  .pd-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0);
+    transition: background-color 180ms ease;
+  }
+
+  .pd-drawer-backdrop.is-open {
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.72);
+  }
+
+  .pd-menu-drawer {
+    position: fixed;
+    z-index: 80;
     top: 0;
-    left: 0;
+    right: 0;
+    width: min(100vw, 420px);
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: #000;
+    color: #fff;
+    transform: translateX(100%);
+    transition: transform 220ms ease;
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .pd-menu-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  .pd-drawer-top {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .pd-drawer-nav {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 1.5rem;
+  }
+
+  .pd-drawer-nav .pd-header-link {
+    width: fit-content;
+    font-size: clamp(2.2rem, 12vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 700;
+  }
+
+  .pd-drawer-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .pd-button {
+    display: inline-flex;
+    min-height: 2.35rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    padding: 0.45rem 1.1rem;
+    background: transparent;
+    color: inherit;
+    font-size: 0.875rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .pd-button:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  .pd-input,
+  .pd-textarea {
+    width: 100%;
+    min-height: 2.5rem;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    padding: 0.5rem 0;
+    outline: none;
+  }
+
+  .pd-textarea {
+    min-height: 9rem;
+    resize: vertical;
+  }
+
+  .pd-input::placeholder,
+  .pd-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  .pd-footer {
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+  }
+
+  .pd-footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    padding: 0.75rem 24px;
+    color: #fff;
+    font-size: 0.875rem;
+    line-height: 1.2;
+  }
+
+  .pd-footer-message {
+    margin: 0;
+  }
+
+  .pd-footer-form {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+
+  .pd-footer-input {
+    min-width: 0;
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-right: 0;
+    background: transparent;
+    color: #fff;
+    padding: 0.55rem 0.7rem;
+    outline: none;
+  }
+
+  .pd-footer-input::placeholder {
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  .pd-footer-button {
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    background: transparent;
+    color: #fff;
+    padding: 0.55rem 0.9rem;
+    cursor: pointer;
+  }
+
+  .pd-footer-button:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  .pd-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0 1rem;
+  }
+
+  .pd-footer-links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+
+  .pd-ticket-ticker-wrap {
+    position: sticky;
+    bottom: 0;
+    z-index: 40;
+    width: 100%;
+    border-block: 1px solid rgba(255, 255, 255, 0.18);
+    background: #000;
+  }
+
+  .pd-ticket-ticker {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .pd-ticket-ticker:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  .pd-ticket-text {
+    display: inline-block;
+    padding-inline: 1.5rem;
+    white-space: nowrap;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: 0;
+  }
+
+  .pd-media-tile {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .pd-media-tile img {
     width: 100%;
     height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.35;
-    background: linear-gradient(
-      135deg,
-      rgba(20, 20, 30, 0.8) 0%,
-      rgba(10, 10, 20, 0.6) 25%,
-      rgba(15, 15, 25, 0.7) 50%,
-      rgba(5, 5, 15, 0.6) 75%,
-      rgba(20, 20, 30, 0.8) 100%
-    );
-    background-size: 400% 400%;
-    animation: subtleGradientFlow 25s ease infinite;
+    display: block;
+    object-fit: cover;
+    transition: transform 700ms ease;
   }
 
-  @keyframes subtleGradientFlow {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  .pd-media-tile:hover img {
+    transform: scale(1.025);
   }
 
-  /* Range slider styling for audio mixer */
+  .pd-media-tile.pd-artist-image-lavender img {
+    object-position: 32% 46%;
+  }
+
+  .pd-media-tile.pd-rotate-left img {
+    height: 100vw;
+    left: 50%;
+    max-width: none;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100vh;
+  }
+
+  .pd-media-tile.pd-rotate-left:hover img {
+    transform: translate(-50%, -50%) rotate(-90deg) scale(1.025);
+  }
+
+  .pd-ev-modular {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 120vw;
+    grid-auto-flow: dense;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .pd-ev-modular .pd-media-tile,
+  .pd-ev-split .pd-media-tile,
+  .pd-ev-feature .pd-media-tile {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pd-ev-split {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .pd-ev-split-tile,
+  .pd-ev-feature-tile {
+    aspect-ratio: 1.4;
+  }
+
+  .pd-ev-feature {
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .pd-border-top {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .pd-rte {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .pd-rte p + p,
+  .pd-rte p + ul,
+  .pd-rte ul + p {
+    margin-top: 1rem;
+  }
+
+  .pd-rte ul {
+    margin: 1rem 0 0;
+    padding-left: 1rem;
+  }
+
+  .pd-rte a {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+
+  .pd-rte a:hover {
+    color: #8ceb8f;
+  }
+
+  .animated-bg {
+    display: none;
+  }
+
   input[type="range"].slider {
-    -webkit-appearance: none;
     appearance: none;
   }
-  
+
   input[type="range"].slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
-    width: 16px;
-    height: 16px;
-    background: white;
-    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 9999px;
     cursor: pointer;
   }
-  
+
   input[type="range"].slider::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: white;
-    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 9999px;
     cursor: pointer;
-    border: none;
   }
-  
-  input[type="range"].slider::-webkit-slider-track {
-    height: 8px;
-    border-radius: 4px;
+
+  @media (min-width: 640px) {
+    .pd-ev-split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
-  
-  input[type="range"].slider::-moz-range-track {
-    height: 8px;
-    border-radius: 4px;
+
+  @media (min-width: 990px) {
+    .pd-grid-12 {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .pd-header-grid {
+      grid-template-columns: auto 1fr;
+      min-height: 52px;
+    }
+
+    .pd-header-grid nav {
+      justify-self: end;
+    }
+
+    .pd-header-actions {
+      display: none;
+    }
+
+    .pd-ev-modular {
+      grid-template-columns: repeat(12, minmax(0, calc(100vw / 12)));
+      grid-auto-rows: calc((100vw / 12) * 1.2);
+    }
+
+    .pd-ev-span-small {
+      grid-column: span 4;
+      grid-row: span 4;
+    }
+
+    .pd-ev-span-large {
+      grid-column: span 8;
+      grid-row: span 8;
+    }
+
+    .pd-footer-inner {
+      grid-template-columns: 3fr 6fr 3fr;
+      align-items: center;
+    }
+
+    .pd-footer-message {
+      text-align: center;
+    }
+
+    .pd-footer-links {
+      justify-content: flex-end;
+    }
+
+    .pd-ticket-ticker {
+      min-height: 88px;
+    }
+
+    .pd-ticket-text {
+      padding-inline: 2rem;
+      font-size: 3rem;
+    }
   }
 }

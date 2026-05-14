@@ -375,68 +375,60 @@ export const Mixer: React.FC = () => {
       showToolbar
       showMarquee={false}
       fullHeight={true}
-      padBottom={true}
-      className="!bg-black"
-      contentClassName="max-w-6xl w-full text-white px-6 sm:px-10 pt-16 md:pt-20"
+      padBottom={false}
+      contentClassName="pd-wrapper"
     >
-      <div className="flex flex-col items-center justify-center min-h-[60vh]">
-        <div className="flex flex-col items-center mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase mb-4 font-helvetica">
-            Audio Mixer
-          </h1>
+      <main className="pd-section-tight">
+        <div className="mb-12 flex items-start justify-between gap-6">
+          <div>
+            <h1 className="pd-heading-xl">Audio Mixer</h1>
+            {!isPlaying && !hasUserInteracted && (
+              <p className="pd-body mt-4 max-w-xl text-white/70">
+                Click any slider to start playback.
+              </p>
+            )}
+          </div>
           {isPlaying && (
             <button
               onClick={handleSync}
-              className="px-4 py-2 text-sm uppercase tracking-wider text-white/80 hover:text-white border border-white/30 hover:border-white/60 transition-colors duration-200 font-helvetica font-bold"
+              className="pd-button shrink-0"
             >
               Sync
             </button>
           )}
         </div>
 
-        {!isPlaying && !hasUserInteracted && (
-          <div className="mb-8 text-center text-white/70 text-sm md:text-base">
-            <p>Click any slider to start playback</p>
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-3 border-y border-white/20 py-8 md:grid-cols-3">
+          {TRACKS.map((track) => (
+            <div key={track.name} className="py-4">
+              <span className="pd-kicker">Stem</span>
+              <h2 className="pd-heading-md mb-8">{track.name}</h2>
 
-        <div className="w-full max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {TRACKS.map((track) => (
-              <div
-                key={track.name}
-                className="flex flex-col items-center space-y-4"
-              >
-                <h2 className="text-xl md:text-2xl font-bold uppercase font-helvetica">
-                  {track.name}
-                </h2>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={volumes[track.name] * 100}
+                onChange={(e) =>
+                  handleVolumeChange(track.name, Number(e.target.value))
+                }
+                className="slider h-2 w-full cursor-pointer appearance-none rounded-full bg-white/20 accent-white"
+                style={{
+                  background: `linear-gradient(to right, white 0%, white ${
+                    volumes[track.name] * 100
+                  }%, rgba(255,255,255,0.22) ${
+                    volumes[track.name] * 100
+                  }%, rgba(255,255,255,0.22) 100%)`,
+                }}
+              />
 
-                <div className="w-full flex flex-col items-center space-y-2">
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={volumes[track.name] * 100}
-                    onChange={(e) =>
-                      handleVolumeChange(track.name, Number(e.target.value))
-                    }
-                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white slider"
-                    style={{
-                      background: `linear-gradient(to right, white 0%, white ${
-                        volumes[track.name] * 100
-                      }%, rgba(255,255,255,0.2) ${volumes[track.name] * 100}%, rgba(255,255,255,0.2) 100%)`,
-                    }}
-                  />
-
-                  <div className="text-sm md:text-base text-white/80 font-helvetica">
-                    {Math.round(volumes[track.name] * 100)}%
-                  </div>
-                </div>
+              <div className="mt-4 text-white/70">
+                {Math.round(volumes[track.name] * 100)}%
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </main>
     </Container>
   );
 };
