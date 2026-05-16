@@ -4,20 +4,7 @@ import soundcloudLogo from "../img/icons-soundcloud-01.png";
 import bandcampLogo from "../img/icons bc.png";
 import spotifyLogo from "../img/icons-spotify-01.png";
 import raLogo from "../img/RA logo.png";
-
-export interface ArtistData {
-  id: string;
-  name: string;
-  alias?: string;
-  agents: string[];
-  basedIn: string;
-  setType: string;
-  bio: string;
-  image?: string;
-  epk?: string;
-  socialLinks: { platform: string; url: string }[];
-  imageClassName?: string;
-}
+import type { ArtistData } from "../types/artist";
 
 interface ArtistCardProps {
   artist: ArtistData | null;
@@ -218,6 +205,8 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
               {artist.image ? (
                 <img
                   src={artist.image}
+                  srcSet={artist.imageSrcSet}
+                  sizes={artist.imageSizes}
                   alt={artist.name}
                   loading="eager"
                   decoding="async"

@@ -8,6 +8,7 @@ import bunkerImage from "../img/film images/Bunker March 6 SIAH x Perfect Dark x
 import bunkerImageOne from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher (1).jpg";
 import bunkerImageTwo from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher (2).jpg";
 import crowdImage from "../img/film images/000033270026.jpg";
+import { SITE_NAME, SITE_URL, toAbsoluteUrl } from "../config/site";
 
 interface GalleryItem {
   src: string;
@@ -108,18 +109,52 @@ const GalleryTile: React.FC<GalleryItem> = ({ src, alt, href, className }) => {
 };
 
 export const Home: React.FC = () => {
-  const structuredData = {
+  const organizationStructuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Perfect Dark",
-    url: "https://perfectdark909.com",
-    logo: "https://perfectdark909.com/logo512.png",
+    name: SITE_NAME,
+    alternateName: "Perfect Dark 909",
+    description:
+      "Perfect Dark is a California-based electronic music label, clothing brand, and artist collective focused on underground techno, events, releases, and environmental initiatives.",
+    url: SITE_URL,
+    logo: toAbsoluteUrl("/logo512.png"),
     sameAs: [
-      "https://shop.perfectdark909.com",
       "https://perfectdark909.bandcamp.com",
       "https://soundcloud.com/perfectdark909",
       "https://instagram.com/perfectdark909",
+      "https://open.spotify.com/playlist/4qiTCCPzzGZfU2r4CvqHDi",
+      "https://shop.perfectdark909.com",
     ],
+    foundingLocation: {
+      "@type": "Place",
+      name: "Chico, California",
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "California, United States",
+    },
+    knowsAbout: [
+      "Techno",
+      "Electronic music",
+      "Underground events",
+      "Artist booking",
+      "Environmental music initiatives",
+      "Techno clothing",
+    ],
+  };
+
+  const websiteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description:
+      "Official website for Perfect Dark, a California electronic music label, clothing brand, and artist collective.",
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
   };
 
   return (
@@ -129,10 +164,7 @@ export const Home: React.FC = () => {
         description="Perfect Dark is a record label, clothing brand, and artist collective."
         keywords="Perfect Dark, techno merch, electronic music label, underground fashion"
         canonical="/"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        structuredData={[organizationStructuredData, websiteStructuredData]}
       />
       <h1 className="sr-only">
         Perfect Dark - Record Label, Clothing Brand, and Artist Collective

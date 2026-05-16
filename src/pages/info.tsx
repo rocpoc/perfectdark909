@@ -1,8 +1,50 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
+import { SITE_NAME, SITE_URL } from "../config/site";
+import { artistData } from "../data/artists";
 
 export const Info: React.FC = () => {
+  const aboutPageStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Perfect Dark",
+    description:
+      "Perfect Dark is a Northern California electronic music label, clothing brand, and artist collective focused on underground techno, events, and environmental initiatives.",
+    url: `${SITE_URL}/info`,
+    mainEntity: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      foundingLocation: {
+        "@type": "Place",
+        name: "Chico, California",
+      },
+      areaServed: [
+        {
+          "@type": "Place",
+          name: "San Francisco, California",
+        },
+        {
+          "@type": "Place",
+          name: "Los Angeles, California",
+        },
+        {
+          "@type": "Place",
+          name: "Austin, Texas",
+        },
+      ],
+      knowsAbout: [
+        "Electronic music",
+        "Techno",
+        "Underground events",
+        "Artist booking",
+        "Environmental music initiatives",
+        "Techno apparel",
+      ],
+    },
+  };
+
   return (
     <div className="pd-page flex min-h-screen flex-col">
       <SEO
@@ -10,6 +52,7 @@ export const Info: React.FC = () => {
         description="Learn about Perfect Dark, a California-based electronic music label, clothing brand, event collective, and climate-minded creative project."
         keywords="Perfect Dark, electronic music label california, techno merch, demo submissions"
         canonical="/info"
+        structuredData={aboutPageStructuredData}
       />
 
       <Container
@@ -79,6 +122,77 @@ export const Info: React.FC = () => {
                 </li>
               </ul>
             </div>
+          </section>
+
+          <section className="pd-grid-12 pd-section pd-border-top">
+            <div className="lg:col-span-4">
+              <h2 className="pd-heading-md">What We Do</h2>
+            </div>
+            <div className="pd-rte lg:col-span-8">
+              <p>
+                Music: Perfect Dark releases alternative electronic music with
+                an emphasis on techno, functional dance music, and artists with
+                a clear sonic point of view.
+              </p>
+              <p>
+                Events: the label builds community through shows, parties, and
+                workshops shaped by art-first direction, inclusive dance floors,
+                and west coast underground energy.
+              </p>
+              <p>
+                Nature: environmental work is part of the label's identity,
+                from Tracks for Trees to benefit events and choices around merch
+                production, packaging, and partners.
+              </p>
+            </div>
+          </section>
+
+          <section className="pd-grid-12 pd-section pd-border-top">
+            <div className="lg:col-span-4">
+              <h2 className="pd-heading-md">Artist Roster</h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
+              {artistData.map((artist) => (
+                <a
+                  key={artist.id}
+                  href={`/artists/${artist.id}`}
+                  className="border border-white/15 p-4 transition-colors hover:border-[#8ceb8f] hover:text-[#8ceb8f] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
+                >
+                  <span className="block text-xl font-bold uppercase">
+                    {artist.name}
+                  </span>
+                  <span className="mt-2 block text-sm text-white/70">
+                    {artist.basedIn} / {artist.setType}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section className="pd-grid-12 pd-section pd-border-top">
+            <div className="lg:col-span-4">
+              <h2 className="pd-heading-md">Quick Facts</h2>
+            </div>
+            <dl className="pd-rte lg:col-span-8">
+              <div>
+                <dt className="pd-kicker">Founded</dt>
+                <dd>2018 in Chico, California</dd>
+              </div>
+              <div>
+                <dt className="pd-kicker">Active In</dt>
+                <dd>
+                  Northern California, San Francisco, Los Angeles, and
+                  connected scenes across the United States
+                </dd>
+              </div>
+              <div>
+                <dt className="pd-kicker">Focus</dt>
+                <dd>
+                  Techno, electronic releases, underground events, artist
+                  community, merch, and environmental initiatives
+                </dd>
+              </div>
+            </dl>
           </section>
 
           <section className="pd-grid-12 pd-section pd-border-top">

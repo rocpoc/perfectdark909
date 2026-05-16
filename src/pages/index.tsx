@@ -3,6 +3,7 @@ export { Contact } from "./Contact";
 export { Home } from "./Home";
 export { Music } from "./Music";
 export { Artists } from "./Artists";
+export { ArtistDetail } from "./ArtistDetail";
 export { ArtistCards } from "./ArtistCards";
 export { Environment } from "./Environment";
 export { Mixer } from "./Mixer";

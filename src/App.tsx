@@ -7,6 +7,7 @@ import {
   Contact,
   Music,
   Artists,
+  ArtistDetail,
   ArtistCards,
   Environment,
   Mixer,
@@ -38,7 +39,8 @@ function App() {
             />
             <Route path="artists" element={<Artists />} />
             <Route path="artist-cards" element={<ArtistCards />} />
-            <Route path="artists/:artistId" element={<ArtistRedirect />} />
+            <Route path="artists/:artistId" element={<ArtistDetail />} />
+            <Route path="artists/:artistId/epk" element={<ArtistRedirect />} />
             <Route path="environment" element={<Environment />} />
             <Route path="mixer" element={<Mixer />} />
             <Route path="sms-opt-in" element={<SmsOptIn />} />

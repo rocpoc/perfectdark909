@@ -13,6 +13,7 @@ export const Music: React.FC = () => {
         description="Listen to Perfect Dark releases on Bandcamp. Discover techno, electronic music, and underground tracks from California-based label Perfect Dark."
         keywords="Perfect Dark music, Perfect Dark releases, techno music, electronic music, bandcamp"
         canonical="/music"
+        robots="noindex,follow"
       />
       <span className="pd-kicker">Music</span>
       <h1 className="pd-heading-xl">Redirecting</h1>
