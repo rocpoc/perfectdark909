@@ -4,20 +4,7 @@ import soundcloudLogo from "../img/icons-soundcloud-01.png";
 import bandcampLogo from "../img/icons bc.png";
 import spotifyLogo from "../img/icons-spotify-01.png";
 import raLogo from "../img/RA logo.png";
-
-export interface ArtistData {
-  id: string;
-  name: string;
-  alias?: string;
-  agents: string[];
-  basedIn: string;
-  setType: string;
-  bio: string;
-  image?: string;
-  epk?: string;
-  socialLinks: { platform: string; url: string }[];
-  imageClassName?: string;
-}
+import type { ArtistData } from "../types/artist";
 
 interface ArtistCardProps {
   artist: ArtistData | null;
@@ -45,6 +32,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       document.body.style.overflow = "hidden";
+      modalRef.current?.scrollTo({ top: 0 });
       setTimeout(() => closeButtonRef.current?.focus(), 100);
     }
 
@@ -105,7 +93,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex items-center justify-center overflow-y-auto bg-black/70 px-4 py-20 text-white backdrop-blur-sm md:px-8"
+      className="pd-artist-modal-backdrop"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -113,10 +101,10 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-[1180px] border border-white/15 bg-black p-6 shadow-2xl md:p-8 lg:p-10"
+        className="pd-artist-modal-panel"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="mb-8 flex items-start justify-between gap-6">
+        <div className="pd-artist-modal-header">
           <h2 id="artist-profile-title" className="pd-kicker">
             Artist Profile
           </h2>
@@ -130,12 +118,12 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,360px)] lg:items-start">
+        <div className="pd-artist-modal-content grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,360px)] lg:items-start lg:gap-8">
           <div>
             <span className="pd-kicker">Artist / Alias</span>
-            <h3 className="pd-heading-lg uppercase">{artist.name}</h3>
+            <h3 className="pd-artist-modal-name uppercase">{artist.name}</h3>
 
-            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="pd-artist-modal-meta grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <span className="pd-kicker">Bookings</span>
                 <div className="grid gap-1">
@@ -160,11 +148,11 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
               </div>
             </div>
 
-            <p className="max-w-3xl text-base leading-relaxed md:text-lg">
+            <p className="pd-artist-modal-bio">
               {artist.bio}
             </p>
 
-            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <div className="pd-artist-modal-actions">
               {artist.epk ? (
                 <a
                   href={artist.epk}
@@ -178,7 +166,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                 <button className="pd-button">View EPK</button>
               )}
               {availableSocialLinks.length > 0 && (
-                <div className="flex flex-wrap gap-2">
+                <div className="pd-artist-socials">
                   {availableSocialLinks.map((link) => {
                     const logo = getPlatformLogo(link.platform);
                     return (
@@ -187,7 +175,7 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
+                        className="pd-artist-social-link"
                         aria-label={`${link.platform} profile`}
                       >
                         {logo ? (
@@ -211,13 +199,15 @@ export const ArtistCard: React.FC<ArtistCardProps> = ({
 
           <div>
             <div
-              className={`pd-media-tile aspect-[4/5] ${
+              className={`pd-media-tile pd-artist-modal-image aspect-[4/5] ${
                 artist.imageClassName ?? ""
               }`}
             >
               {artist.image ? (
                 <img
                   src={artist.image}
+                  srcSet={artist.imageSrcSet}
+                  sizes={artist.imageSizes}
                   alt={artist.name}
                   loading="eager"
                   decoding="async"

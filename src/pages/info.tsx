@@ -1,8 +1,51 @@
 import { Container } from "../components/Container";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
+import { SITE_NAME, SITE_URL } from "../config/site";
+import { artistData } from "../data/artists";
+import { Link } from "react-router-dom";
 
 export const Info: React.FC = () => {
+  const aboutPageStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Perfect Dark",
+    description:
+      "Perfect Dark is a Northern California electronic music label, clothing brand, and artist collective focused on underground techno, events, and environmental initiatives.",
+    url: `${SITE_URL}/info`,
+    mainEntity: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      foundingLocation: {
+        "@type": "Place",
+        name: "Chico, California",
+      },
+      areaServed: [
+        {
+          "@type": "Place",
+          name: "San Francisco, California",
+        },
+        {
+          "@type": "Place",
+          name: "Los Angeles, California",
+        },
+        {
+          "@type": "Place",
+          name: "Austin, Texas",
+        },
+      ],
+      knowsAbout: [
+        "Electronic music",
+        "Techno",
+        "Underground events",
+        "Artist booking",
+        "Environmental music initiatives",
+        "Techno apparel",
+      ],
+    },
+  };
+
   return (
     <div className="pd-page flex min-h-screen flex-col">
       <SEO
@@ -10,6 +53,7 @@ export const Info: React.FC = () => {
         description="Learn about Perfect Dark, a California-based electronic music label, clothing brand, event collective, and climate-minded creative project."
         keywords="Perfect Dark, electronic music label california, techno merch, demo submissions"
         canonical="/info"
+        structuredData={aboutPageStructuredData}
       />
 
       <Container
@@ -24,16 +68,16 @@ export const Info: React.FC = () => {
             <h1 className="pd-heading-xl">Info</h1>
           </section>
 
-          <section className="pd-grid-12 pd-section-tight">
-            <div className="lg:col-span-6">
+          <section className="pd-info-intro pd-section-tight">
+            <div>
               <img
                 src="/images/optimized/film-4.jpg"
                 alt="Perfect Dark mountain landscape"
-                className="h-full min-h-[320px] w-full object-cover"
+                className="pd-info-intro-image"
               />
             </div>
 
-            <div className="pd-rte lg:col-span-6">
+            <div className="pd-rte">
               <h2 className="pd-heading-md mb-6">
                 Perfect Dark is a U.S.-based electronic music record label known
                 for throwing high energy parties around the north state,
@@ -78,6 +122,75 @@ export const Info: React.FC = () => {
                   through the art we output and the organizations we work with.
                 </li>
               </ul>
+            </div>
+          </section>
+
+          <section className="pd-grid-12 pd-section pd-border-top">
+            <div className="lg:col-span-4">
+              <h2 className="pd-heading-md">What We Do</h2>
+            </div>
+            <div className="pd-rte lg:col-span-8">
+              <p>
+                Music: Perfect Dark releases alternative electronic music with
+                an emphasis on techno, functional dance music, and artists with
+                a clear sonic point of view.
+              </p>
+              <p>
+                Events: the label builds community through shows, parties, and
+                workshops shaped by art-first direction, inclusive dance floors,
+                and west coast underground energy.
+              </p>
+              <p>
+                Nature: environmental work is part of the label's identity,
+                from Tracks for Trees to benefit events and choices around merch
+                production, packaging, and partners.
+              </p>
+            </div>
+          </section>
+
+          <section className="pd-info-roster pd-section pd-border-top">
+            <div>
+              <h2 className="pd-heading-md">Artist Roster</h2>
+            </div>
+            <div className="pd-info-roster-list">
+              {artistData.map((artist) => (
+                <Link
+                  key={artist.id}
+                  to={`/artists/${artist.id}`}
+                  state={{ from: "/info", fromLabel: "Info" }}
+                  className="pd-info-roster-card"
+                >
+                  <span
+                    className={`pd-media-tile aspect-square ${
+                      artist.imageClassName ?? ""
+                    }`}
+                  >
+                    {artist.image ? (
+                      <img
+                        src={artist.image}
+                        srcSet={artist.imageSrcSet}
+                        sizes={artist.imageSizes}
+                        alt={artist.name}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className="flex h-full items-center justify-center bg-white/10">
+                        {artist.name}
+                      </span>
+                    )}
+                  </span>
+                  <span className="block min-w-0">
+                    <span className="pd-kicker mb-1 sm:mt-3">Artist</span>
+                    <span className="block text-2xl font-bold uppercase leading-none sm:min-h-[3.25rem] md:min-h-[4rem] md:text-3xl">
+                      {artist.name}
+                    </span>
+                    <span className="mt-2 block text-sm text-white/70 sm:text-base">
+                      {artist.basedIn}
+                    </span>
+                  </span>
+                </Link>
+              ))}
             </div>
           </section>
 
