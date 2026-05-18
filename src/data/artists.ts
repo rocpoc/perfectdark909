@@ -129,6 +129,26 @@ export const artistData: ArtistData[] = [
     ],
   },
   {
+    id: "lavender-persuasion",
+    name: "Lavender Persuasion",
+    agents: ["mila@perfectdark909.com"],
+    basedIn: "Northern California, US",
+    setType: "DJ",
+    bio: "Lavender Persuasion joined forces with record label Perfect Dark in 2018 after showcasing his unique, enchanted style as a special guest during the late-night slots of Perfect Dark's initial DIY events. His free-spirited track selection ranges from whimsical progressive house, to sassy, tongue-and cheek-techno, eccentric, lush breakbeats, and deep, dubby electronica. Lavender Persuasion has a reputation for refusing to conform to a specific genre and regularly excites crowds across Northern California through deranged, energetic, deeply compassionate and nuanced track selection.",
+    image: lavenderPersuasionHeadshot,
+    imageSrcSet: makeSrcSet(
+      lavenderPersuasionHeadshot600,
+      lavenderPersuasionHeadshot
+    ),
+    imageSizes: artistImageSizes,
+    imageClassName: "pd-artist-image-lavender",
+    epk: lavenderPersuasionPdf,
+    socialLinks: [
+      { platform: "Instagram", url: "#" },
+      { platform: "SoundCloud", url: "#" },
+    ],
+  },
+  {
     id: "disfu",
     name: "Disfu",
     agents: ["mila@perfectdark909.com"],
@@ -162,26 +182,6 @@ export const artistData: ArtistData[] = [
       { platform: "Instagram", url: "https://www.instagram.com/carmine__909/" },
       { platform: "SoundCloud", url: "https://soundcloud.com/carmine" },
       { platform: "Resident Advisor", url: "https://ra.co/dj/carmine" },
-    ],
-  },
-  {
-    id: "lavender-persuasion",
-    name: "Lavender Persuasion",
-    agents: ["mila@perfectdark909.com"],
-    basedIn: "Northern California, US",
-    setType: "DJ",
-    bio: "Lavender Persuasion joined forces with record label Perfect Dark in 2018 after showcasing his unique, enchanted style as a special guest during the late-night slots of Perfect Dark's initial DIY events. His free-spirited track selection ranges from whimsical progressive house, to sassy, tongue-and cheek-techno, eccentric, lush breakbeats, and deep, dubby electronica. Lavender Persuasion has a reputation for refusing to conform to a specific genre and regularly excites crowds across Northern California through deranged, energetic, deeply compassionate and nuanced track selection.",
-    image: lavenderPersuasionHeadshot,
-    imageSrcSet: makeSrcSet(
-      lavenderPersuasionHeadshot600,
-      lavenderPersuasionHeadshot
-    ),
-    imageSizes: artistImageSizes,
-    imageClassName: "pd-artist-image-lavender",
-    epk: lavenderPersuasionPdf,
-    socialLinks: [
-      { platform: "Instagram", url: "#" },
-      { platform: "SoundCloud", url: "#" },
     ],
   },
 ];

@@ -169,16 +169,16 @@ export const Artists: React.FC = () => {
         <main className="pd-section-tight">
           <h1 className="pd-heading-xl mb-12">Artists</h1>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
             {artistData.map((artist) => (
               <a
                 key={artist.id}
                 href={`/artists/${artist.id}`}
                 onClick={(event) => handleArtistLinkClick(event, artist.id)}
-                className={`group w-full text-left transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white ${
+                className={`group grid w-full grid-cols-[72px_minmax(0,1fr)] items-center gap-3 border border-white/15 p-3 text-left transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white sm:block sm:border-0 sm:p-0 ${
                   selectedArtistId === artist.id
-                    ? "text-[#8ceb8f]"
-                    : "text-white hover:text-[#8ceb8f]"
+                    ? "border-[#8ceb8f] text-[#8ceb8f]"
+                    : "text-white hover:border-white/35 hover:text-[#8ceb8f]"
                 }`}
                 aria-label={`View ${artist.name} profile`}
               >
@@ -202,12 +202,14 @@ export const Artists: React.FC = () => {
                     </span>
                   )}
                 </span>
-                <span className="pd-kicker mt-3">Artist</span>
-                <span className="block min-h-[3.25rem] text-2xl font-bold leading-none md:min-h-[4rem] md:text-3xl">
-                  {artist.name}
-                </span>
-                <span className="mt-2 block text-white/70">
-                  {artist.basedIn}
+                <span className="block min-w-0">
+                  <span className="pd-kicker mb-1 sm:mt-3">Artist</span>
+                  <span className="block text-2xl font-bold uppercase leading-none sm:min-h-[3.25rem] md:min-h-[4rem] md:text-3xl">
+                    {artist.name}
+                  </span>
+                  <span className="mt-2 block text-sm text-white/70 sm:text-base">
+                    {artist.basedIn}
+                  </span>
                 </span>
               </a>
             ))}

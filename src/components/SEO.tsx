@@ -1,5 +1,4 @@
-import React from "react";
-import { Helmet } from "react-helmet-async";
+import React, { useEffect } from "react";
 import { DEFAULT_OG_IMAGE, SITE_NAME, toAbsoluteUrl } from "../config/site";
 
 type JsonLdValue =
@@ -48,41 +47,117 @@ export const SEO: React.FC<SEOProps> = ({
       ? structuredData
       : [structuredData]
     : [];
+  const structuredDataJson = JSON.stringify(structuredDataItems);
 
-  return (
-    <Helmet>
-      {/* Primary Meta Tags */}
-      <title>{fullTitle}</title>
-      <meta name="title" content={fullTitle} />
-      <meta name="description" content={description} />
-      {robots && <meta name="robots" content={robots} />}
-      {keywords && <meta name="keywords" content={keywords} />}
+  useEffect(() => {
+    const upsertMeta = (
+      selector: string,
+      attributes: Record<string, string>,
+      content: string
+    ) => {
+      let element = document.head.querySelector<HTMLMetaElement>(selector);
 
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImageUrl} />
-      <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="en_US" />
+      if (!element) {
+        element = document.createElement("meta");
+        Object.entries(attributes).forEach(([name, value]) => {
+          element?.setAttribute(name, value);
+        });
+        document.head.appendChild(element);
+      }
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={canonicalUrl} />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImageUrl} />
-      <meta name="twitter:site" content="@perfectdark909" />
+      element.setAttribute("content", content);
+      element.dataset.pdSeo = "true";
+    };
 
-      {/* Canonical URL */}
-      <link rel="canonical" href={canonicalUrl} />
+    const removeMeta = (selector: string) => {
+      document.head
+        .querySelectorAll<HTMLMetaElement>(`${selector}[data-pd-seo="true"]`)
+        .forEach((element) => element.remove());
+    };
 
-      {structuredDataItems.map((item, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(item)}
-        </script>
-      ))}
-    </Helmet>
-  );
+    document.title = fullTitle;
+
+    upsertMeta('meta[name="title"]', { name: "title" }, fullTitle);
+    upsertMeta(
+      'meta[name="description"]',
+      { name: "description" },
+      description
+    );
+
+    if (robots) {
+      upsertMeta('meta[name="robots"]', { name: "robots" }, robots);
+    } else {
+      removeMeta('meta[name="robots"]');
+    }
+
+    if (keywords) {
+      upsertMeta('meta[name="keywords"]', { name: "keywords" }, keywords);
+    } else {
+      removeMeta('meta[name="keywords"]');
+    }
+
+    upsertMeta('meta[property="og:type"]', { property: "og:type" }, ogType);
+    upsertMeta('meta[property="og:url"]', { property: "og:url" }, canonicalUrl);
+    upsertMeta('meta[property="og:title"]', { property: "og:title" }, fullTitle);
+    upsertMeta(
+      'meta[property="og:description"]',
+      { property: "og:description" },
+      description
+    );
+    upsertMeta('meta[property="og:image"]', { property: "og:image" }, ogImageUrl);
+    upsertMeta(
+      'meta[property="og:site_name"]',
+      { property: "og:site_name" },
+      SITE_NAME
+    );
+    upsertMeta('meta[property="og:locale"]', { property: "og:locale" }, "en_US");
+
+    upsertMeta(
+      'meta[name="twitter:card"]',
+      { name: "twitter:card" },
+      "summary_large_image"
+    );
+    upsertMeta('meta[name="twitter:url"]', { name: "twitter:url" }, canonicalUrl);
+    upsertMeta('meta[name="twitter:title"]', { name: "twitter:title" }, fullTitle);
+    upsertMeta(
+      'meta[name="twitter:description"]',
+      { name: "twitter:description" },
+      description
+    );
+    upsertMeta('meta[name="twitter:image"]', { name: "twitter:image" }, ogImageUrl);
+    upsertMeta('meta[name="twitter:site"]', { name: "twitter:site" }, "@perfectdark909");
+
+    let canonicalElement =
+      document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalElement) {
+      canonicalElement = document.createElement("link");
+      canonicalElement.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalElement);
+    }
+    canonicalElement.setAttribute("href", canonicalUrl);
+    canonicalElement.dataset.pdSeo = "true";
+
+    document.head
+      .querySelectorAll<HTMLScriptElement>('script[data-pd-seo-jsonld="true"]')
+      .forEach((element) => element.remove());
+
+    JSON.parse(structuredDataJson).forEach((item: JsonLd) => {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.dataset.pdSeoJsonld = "true";
+      script.textContent = JSON.stringify(item);
+      document.head.appendChild(script);
+    });
+  }, [
+    canonicalUrl,
+    description,
+    fullTitle,
+    keywords,
+    ogImageUrl,
+    ogType,
+    robots,
+    structuredDataJson,
+  ]);
+
+  return null;
 };

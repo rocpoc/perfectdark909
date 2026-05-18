@@ -2,8 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 try {
-  // Get current date in YYYY-MM-DD format
-  const currentDate = new Date().toISOString().split('T')[0];
+  // Get current site-local date in YYYY-MM-DD format.
+  const currentDate = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Los_Angeles',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
   const artistIds = [
     'brick',
     'freeman-713',
@@ -26,7 +31,6 @@ try {
     })),
     { path: '/info', priority: '0.8', changefreq: 'monthly' },
     { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-    { path: '/environment', priority: '0.7', changefreq: 'monthly' },
     { path: '/mixer', priority: '0.6', changefreq: 'monthly' },
   ];
 

@@ -62,9 +62,54 @@
 
   .pd-grid-12 {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     column-gap: 12px;
     row-gap: 48px;
+  }
+
+  .pd-info-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .pd-info-intro-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .pd-info-roster {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pd-info-roster-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .pd-info-roster-card {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.75rem;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+
+  .pd-info-roster-card:hover {
+    border-color: #8ceb8f;
+    color: #8ceb8f;
+  }
+
+  .pd-info-roster-card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px #fff;
   }
 
   .pd-heading-xl {
@@ -263,6 +308,112 @@
     color: #000;
   }
 
+  .pd-artist-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    padding: calc(env(safe-area-inset-top) + 0.75rem) 0.75rem
+      calc(env(safe-area-inset-bottom) + 0.75rem);
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    backdrop-filter: blur(8px);
+  }
+
+  .pd-artist-modal-panel {
+    width: 100%;
+    max-width: 1180px;
+    max-height: calc(
+      100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 1.5rem
+    );
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #000;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.72);
+  }
+
+  .pd-artist-modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    background: #000;
+  }
+
+  .pd-artist-modal-header .pd-kicker {
+    margin-bottom: 0;
+  }
+
+  .pd-artist-modal-content {
+    padding: 1rem;
+  }
+
+  .pd-artist-modal-name {
+    font-size: clamp(2.25rem, 12vw, 4.75rem);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .pd-artist-modal-meta {
+    margin: 1.5rem 0;
+  }
+
+  .pd-artist-modal-bio {
+    max-width: 48rem;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .pd-artist-modal-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .pd-artist-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pd-artist-social-link {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 9999px;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .pd-artist-social-link:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  .pd-artist-social-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px #fff;
+  }
+
+  .pd-artist-modal-image {
+    width: min(100%, 360px);
+    margin: 0 auto;
+  }
+
   .pd-input,
   .pd-textarea {
     width: 100%;
@@ -344,8 +495,10 @@
   .pd-footer-links {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 0 1rem;
+    text-align: center;
   }
 
   .pd-footer-links a:hover {
@@ -523,6 +676,44 @@
       grid-template-columns: repeat(12, minmax(0, 1fr));
     }
 
+    .pd-info-intro {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 12px;
+      row-gap: 48px;
+    }
+
+    .pd-info-intro > :first-child,
+    .pd-info-intro > :last-child {
+      grid-column: span 6;
+    }
+
+    .pd-info-intro-image {
+      height: 100%;
+      min-height: 320px;
+      aspect-ratio: auto;
+    }
+
+    .pd-info-roster {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 12px;
+      row-gap: 48px;
+    }
+
+    .pd-info-roster > :first-child {
+      grid-column: span 4;
+    }
+
+    .pd-info-roster-list {
+      grid-column: span 8;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pd-info-roster-card {
+      display: block;
+      border: 0;
+      padding: 0;
+    }
+
     .pd-header-grid {
       grid-template-columns: auto 1fr;
       min-height: 52px;
@@ -561,7 +752,44 @@
     }
 
     .pd-footer-links {
-      justify-content: flex-end;
+      justify-content: center;
+    }
+
+    .pd-artist-modal-backdrop {
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .pd-artist-modal-panel {
+      max-height: calc(100dvh - 4rem);
+    }
+
+    .pd-artist-modal-header {
+      padding: 1.5rem 2rem;
+    }
+
+    .pd-artist-modal-content {
+      padding: 2rem;
+    }
+
+    .pd-artist-modal-meta {
+      margin: 2rem 0;
+      gap: 1.5rem;
+    }
+
+    .pd-artist-modal-bio {
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+
+    .pd-artist-modal-actions {
+      flex-direction: row;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .pd-artist-modal-image {
+      width: 100%;
     }
 
     .pd-ticket-ticker {

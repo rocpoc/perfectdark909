@@ -82,3 +82,25 @@ Improve Perfect Dark's visibility and usefulness in Google Search generative AI 
 - Add crawlable first-party release and event pages with release notes, artist quotes, event context, photos, and documentation.
 - Validate deployed structured data and rendered routes with Google Search Console / Rich Results Test.
 - Consider separating large EPK PDFs from the client build if production hosting or caching makes those assets expensive.
+
+## Goal 60: Validate Production SEO After Deploy
+
+### Objective
+
+Confirm the deployed Perfect Dark site is visible to Google as intended after the generative AI search optimization pass, with rendered metadata, structured data, sitemap discovery, and mobile performance all verified through Google production tools.
+
+### Production Checklist
+
+- Deploy the current SEO update to production.
+- Run Google Rich Results Test for `/`, `/info`, `/artists`, and several `/artists/:artistId` pages, including at least `brick`, `fauna`, and `lavender-persuasion`.
+- Submit `https://perfectdark909.com/sitemap.xml` in Google Search Console.
+- Use Search Console URL Inspection after deploy to confirm Google sees rendered canonical URLs, meta descriptions, robots directives, and JSON-LD on the homepage, info page, artists page, and artist detail pages.
+- Run PageSpeed Insights on mobile for `/`, `/info`, `/artists`, and one representative artist detail page.
+- Record any validation errors, indexing issues, mobile performance issues, or structured data warnings as follow-up fixes.
+
+### Done When
+
+- Rich Results Test has no blocking structured data errors on the checked pages.
+- Search Console accepts the sitemap and URL Inspection shows rendered pages are indexable where intended.
+- `/environment` is absent from the sitemap and resolves as `noindex,follow` if requested.
+- Mobile PageSpeed/Core Web Vitals findings are reviewed and any high-priority regressions are triaged.

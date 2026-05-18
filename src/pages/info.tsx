@@ -3,6 +3,7 @@ import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
 import { SITE_NAME, SITE_URL } from "../config/site";
 import { artistData } from "../data/artists";
+import { Link } from "react-router-dom";
 
 export const Info: React.FC = () => {
   const aboutPageStructuredData = {
@@ -67,16 +68,16 @@ export const Info: React.FC = () => {
             <h1 className="pd-heading-xl">Info</h1>
           </section>
 
-          <section className="pd-grid-12 pd-section-tight">
-            <div className="lg:col-span-6">
+          <section className="pd-info-intro pd-section-tight">
+            <div>
               <img
                 src="/images/optimized/film-4.jpg"
                 alt="Perfect Dark mountain landscape"
-                className="h-full min-h-[320px] w-full object-cover"
+                className="pd-info-intro-image"
               />
             </div>
 
-            <div className="pd-rte lg:col-span-6">
+            <div className="pd-rte">
               <h2 className="pd-heading-md mb-6">
                 Perfect Dark is a U.S.-based electronic music record label known
                 for throwing high energy parties around the north state,
@@ -147,52 +148,50 @@ export const Info: React.FC = () => {
             </div>
           </section>
 
-          <section className="pd-grid-12 pd-section pd-border-top">
-            <div className="lg:col-span-4">
+          <section className="pd-info-roster pd-section pd-border-top">
+            <div>
               <h2 className="pd-heading-md">Artist Roster</h2>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
+            <div className="pd-info-roster-list">
               {artistData.map((artist) => (
-                <a
+                <Link
                   key={artist.id}
-                  href={`/artists/${artist.id}`}
-                  className="border border-white/15 p-4 transition-colors hover:border-[#8ceb8f] hover:text-[#8ceb8f] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white"
+                  to={`/artists/${artist.id}`}
+                  state={{ from: "/info", fromLabel: "Info" }}
+                  className="pd-info-roster-card"
                 >
-                  <span className="block text-xl font-bold uppercase">
-                    {artist.name}
+                  <span
+                    className={`pd-media-tile aspect-square ${
+                      artist.imageClassName ?? ""
+                    }`}
+                  >
+                    {artist.image ? (
+                      <img
+                        src={artist.image}
+                        srcSet={artist.imageSrcSet}
+                        sizes={artist.imageSizes}
+                        alt={artist.name}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className="flex h-full items-center justify-center bg-white/10">
+                        {artist.name}
+                      </span>
+                    )}
                   </span>
-                  <span className="mt-2 block text-sm text-white/70">
-                    {artist.basedIn} / {artist.setType}
+                  <span className="block min-w-0">
+                    <span className="pd-kicker mb-1 sm:mt-3">Artist</span>
+                    <span className="block text-2xl font-bold uppercase leading-none sm:min-h-[3.25rem] md:min-h-[4rem] md:text-3xl">
+                      {artist.name}
+                    </span>
+                    <span className="mt-2 block text-sm text-white/70 sm:text-base">
+                      {artist.basedIn}
+                    </span>
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
-          </section>
-
-          <section className="pd-grid-12 pd-section pd-border-top">
-            <div className="lg:col-span-4">
-              <h2 className="pd-heading-md">Quick Facts</h2>
-            </div>
-            <dl className="pd-rte lg:col-span-8">
-              <div>
-                <dt className="pd-kicker">Founded</dt>
-                <dd>2018 in Chico, California</dd>
-              </div>
-              <div>
-                <dt className="pd-kicker">Active In</dt>
-                <dd>
-                  Northern California, San Francisco, Los Angeles, and
-                  connected scenes across the United States
-                </dd>
-              </div>
-              <div>
-                <dt className="pd-kicker">Focus</dt>
-                <dd>
-                  Techno, electronic releases, underground events, artist
-                  community, merch, and environmental initiatives
-                </dd>
-              </div>
-            </dl>
           </section>
 
           <section className="pd-grid-12 pd-section pd-border-top">

@@ -47,28 +47,3 @@ test('renders first-party info page sections', () => {
     '/artists/brick'
   );
 });
-
-test('renders environmental initiative details and schema', async () => {
-  renderAtPath('/environment');
-
-  expect(
-    screen.getByRole('heading', { name: 'Tracks For Trees' })
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole('heading', { name: 'Earth First Benefit' })
-  ).toBeInTheDocument();
-
-  await waitFor(() => {
-    const jsonLd = Array.from(
-      document.querySelectorAll('script[type="application/ld+json"]')
-    ).map((script) => JSON.parse(script.textContent ?? '{}'));
-
-    expect(
-      jsonLd.some(
-        (item) =>
-          item['@type'] === 'WebPage' &&
-          item.name === 'Perfect Dark Environmental Initiatives'
-      )
-    ).toBe(true);
-  });
-});
