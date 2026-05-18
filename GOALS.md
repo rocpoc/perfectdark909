@@ -104,3 +104,24 @@ Confirm the deployed Perfect Dark site is visible to Google as intended after th
 - Search Console accepts the sitemap and URL Inspection shows rendered pages are indexable where intended.
 - `/environment` is absent from the sitemap and resolves as `noindex,follow` if requested.
 - Mobile PageSpeed/Core Web Vitals findings are reviewed and any high-priority regressions are triaged.
+
+## Goal 61: Close Code Review Regression Items
+
+### Objective
+
+Complete functional, code-focused updates for the current code review findings in priority order, with regression coverage across typechecking, generated SEO artifacts, rendered route metadata, routing fallbacks, and page-load performance.
+
+### Priority Order
+
+1. P1: Restore standalone TypeScript validation under the current TypeScript toolchain.
+2. P2: Harden known route fallbacks and true unknown-route 404 handling for static hosting.
+3. P2: Improve route SEO reliability through generated, testable build artifacts and rendered metadata checks.
+4. P2: Reduce homepage image delivery weight while preserving the current visual content.
+5. P3: Generate sitemap and routing artifacts from shared route utilities so artist route drift is caught by tests.
+
+### Regression Scope
+
+- TypeScript: `npm run typecheck`.
+- Unit/component: route metadata, artist detail rendering, not-found rendering, responsive image attributes, and build utility behavior.
+- Build artifacts: generated `public/sitemap.xml`, `public/_redirects`, and static `404.html` behavior.
+- Production build: `npm run build`.

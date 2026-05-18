@@ -16,6 +16,21 @@ Object.defineProperty(window, 'scrollTo', {
   writable: true,
 });
 
+Object.defineProperties(window.HTMLMediaElement.prototype, {
+  load: {
+    configurable: true,
+    value: vi.fn(),
+  },
+  pause: {
+    configurable: true,
+    value: vi.fn(),
+  },
+  play: {
+    configurable: true,
+    value: vi.fn(() => Promise.resolve()),
+  },
+});
+
 class MockIntersectionObserver {
   observe = vi.fn();
   unobserve = vi.fn();

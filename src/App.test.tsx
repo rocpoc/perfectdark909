@@ -11,6 +11,27 @@ test('renders app', () => {
   expect(container).toBeInTheDocument();
 });
 
+test('renders home gallery with optimized responsive images', () => {
+  renderAtPath('/');
+
+  const heroImage = screen.getByAltText(
+    'Perfect Dark shirt overlooking snow-covered mountains'
+  );
+
+  expect(heroImage).toHaveAttribute('src', '/images/optimized/film-hero.jpg');
+  expect(heroImage).toHaveAttribute(
+    'srcset',
+    expect.stringContaining('/images/optimized/film-hero@800.jpg 1000w')
+  );
+  expect(heroImage).toHaveAttribute('sizes', expect.stringContaining('100vw'));
+  expect(heroImage).toHaveAttribute('loading', 'eager');
+  expect(heroImage).toHaveAttribute('fetchpriority', 'high');
+
+  expect(
+    screen.getByAltText('Bunker March 6 SIAH x Perfect Dark x Bit Crusher dance floor')
+  ).toHaveAttribute('src', '/images/optimized/bunker-main.jpg');
+});
+
 test('renders crawlable artist detail metadata', async () => {
   renderAtPath('/artists/brick');
 
@@ -46,4 +67,36 @@ test('renders first-party info page sections', () => {
     'href',
     '/artists/brick'
   );
+});
+
+test('renders not-found metadata for unknown client routes', async () => {
+  renderAtPath('/does-not-exist');
+
+  expect(
+    screen.getByRole('heading', { name: 'Page not found' })
+  ).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(document.title).toBe('Page Not Found | Perfect Dark');
+  });
+
+  expect(
+    document.querySelector('meta[name="robots"]')?.getAttribute('content')
+  ).toBe('noindex,follow');
+});
+
+test('renders mixer metadata during client navigation', async () => {
+  renderAtPath('/mixer');
+
+  expect(
+    screen.getByRole('heading', { name: 'Audio Mixer' })
+  ).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(document.title).toBe('Audio Mixer | Perfect Dark');
+  });
+
+  expect(
+    document.querySelector('link[rel="canonical"]')?.getAttribute('href')
+  ).toBe('https://perfectdark909.com/mixer');
 });

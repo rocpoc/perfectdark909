@@ -3,71 +3,87 @@ import Marquee from "react-fast-marquee";
 import { SiteHeader } from "../components/SiteHeader";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
-import lionBackImage from "../img/film images/000033260035.jpg";
-import bunkerImage from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher.jpg";
-import bunkerImageOne from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher (1).jpg";
-import bunkerImageTwo from "../img/film images/Bunker March 6 SIAH x Perfect Dark x Bit Crusher (2).jpg";
-import crowdImage from "../img/film images/000033270026.jpg";
 import { SITE_NAME, SITE_URL, toAbsoluteUrl } from "../config/site";
 
 interface GalleryItem {
   src: string;
+  srcSet: string;
+  sizes: string;
   alt: string;
   href: string;
   className?: string;
+  fetchPriority?: "high" | "low" | "auto";
+  loading?: "eager" | "lazy";
 }
+
+const standardTileSizes =
+  "(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw";
+const featureTileSizes = "100vw";
+
+const optimizedImage = (
+  name: string,
+  smallWidth: number,
+  largeWidth: number,
+  sizes = standardTileSizes
+) => ({
+  src: `/images/optimized/${name}.jpg`,
+  srcSet: `/images/optimized/${name}@800.jpg ${smallWidth}w, /images/optimized/${name}.jpg ${largeWidth}w`,
+  sizes,
+});
 
 const galleryItems: GalleryItem[] = [
   {
-    src: "/images/optimized/film-hero.jpg",
+    ...optimizedImage("film-hero", 1000, 2000),
     alt: "Perfect Dark shirt overlooking snow-covered mountains",
     href: "https://shop.perfectdark909.com/products/energy-systems-tee-charcoal",
     className: "sm:col-span-1 sm:row-span-2 lg:col-span-4 lg:row-span-2",
+    fetchPriority: "high",
+    loading: "eager",
   },
   {
-    src: lionBackImage,
+    ...optimizedImage("film-6", 663, 1326),
     alt: "Perfect Dark shirt facing a lion on film",
     href: "https://shop.perfectdark909.com/products/rules-of-the-rave-hoodie",
     className: "pd-rotate-left lg:col-span-4",
   },
   {
-    src: "/images/optimized/film-2.jpg",
+    ...optimizedImage("film-2", 663, 1326),
     alt: "Perfect Dark black hoodie graphic detail on film",
     href: "https://shop.perfectdark909.com/products/rules-of-the-rave-hoodie",
     className: "lg:col-span-4",
   },
   {
-    src: "/images/optimized/film-3.jpg",
+    ...optimizedImage("film-3", 663, 1326),
     alt: "Perfect Dark mountain portrait on film",
     href: "https://shop.perfectdark909.com/products/energy-systems-tee-charcoal",
     className: "lg:col-span-4",
   },
   {
-    src: "/images/optimized/film-4.jpg",
+    ...optimizedImage("film-4", 1000, 2000),
     alt: "Snow-covered mountain landscape on film",
     href: "https://shop.perfectdark909.com/collections/all",
     className: "lg:col-span-4",
   },
   {
-    src: crowdImage,
+    ...optimizedImage("film-speakers", 663, 1060),
     alt: "Perfect Dark event crowd on film",
     href: "https://shop.perfectdark909.com/products/energy-systems-tee-limited-edition-arctic-glacier-blue",
     className: "lg:col-span-6",
   },
   {
-    src: bunkerImageOne,
+    ...optimizedImage("bunker-1", 1000, 1600),
     alt: "Bunker March 6 SIAH x Perfect Dark x Bit Crusher event photo",
     href: "https://shop.perfectdark909.com/products/energy-systems-tee-limited-edition-arctic-glacier-blue",
     className: "lg:col-span-3",
   },
   {
-    src: bunkerImageTwo,
+    ...optimizedImage("bunker-2", 1000, 1600),
     alt: "Bunker March 6 SIAH x Perfect Dark x Bit Crusher crowd photo",
     href: "https://shop.perfectdark909.com/collections/all",
     className: "lg:col-span-3",
   },
   {
-    src: bunkerImage,
+    ...optimizedImage("bunker-main", 1000, 1600, featureTileSizes),
     alt: "Bunker March 6 SIAH x Perfect Dark x Bit Crusher dance floor",
     href: "https://shop.perfectdark909.com/collections/all",
     className: "sm:col-span-2 lg:col-span-12",
@@ -83,7 +99,16 @@ const ticketUrl = "https://ra.co/events/2440881";
 const ticketText =
   "PERFECT DARK // RESURRECTION // LOS ANGELES // RESIDENT ADVISOR";
 
-const GalleryTile: React.FC<GalleryItem> = ({ src, alt, href, className }) => {
+const GalleryTile: React.FC<GalleryItem> = ({
+  src,
+  srcSet,
+  sizes,
+  alt,
+  href,
+  className,
+  fetchPriority,
+  loading,
+}) => {
   const handleClick = useCallback(() => {
     if (typeof window !== "undefined" && typeof window.fbq === "function") {
       window.fbq("track", "ViewContent", {
@@ -103,7 +128,15 @@ const GalleryTile: React.FC<GalleryItem> = ({ src, alt, href, className }) => {
       onClick={handleClick}
       className={`pd-media-tile focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white ${className ?? ""}`}
     >
-      <img src={src} alt={alt} loading="lazy" decoding="async" />
+      <img
+        src={src}
+        srcSet={srcSet}
+        sizes={sizes}
+        alt={alt}
+        loading={loading ?? "lazy"}
+        fetchPriority={fetchPriority}
+        decoding="async"
+      />
     </a>
   );
 };
