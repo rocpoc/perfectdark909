@@ -1,61 +1,24 @@
 const fs = require('fs');
 const path = require('path');
+const {
+  getArtistIds,
+  getSiteLocalDate,
+  getSitemapRoutes,
+  renderRedirects,
+  renderSitemap,
+} = require('./seo-build-utils');
 
 try {
-  // Get current site-local date in YYYY-MM-DD format.
-  const currentDate = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'America/Los_Angeles',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
-  const artistIds = [
-    'brick',
-    'freeman-713',
-    'provider',
-    'fauna',
-    'dogtooth',
-    'disfu',
-    'carmine',
-    'lavender-persuasion',
-  ];
-
-  // Define your routes with their priorities and change frequencies
-  const routes = [
-    { path: '/', priority: '1.0', changefreq: 'weekly' },
-    { path: '/artists', priority: '0.9', changefreq: 'weekly' },
-    ...artistIds.map((artistId) => ({
-      path: `/artists/${artistId}`,
-      priority: '0.8',
-      changefreq: 'monthly',
-    })),
-    { path: '/info', priority: '0.8', changefreq: 'monthly' },
-    { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-    { path: '/mixer', priority: '0.6', changefreq: 'monthly' },
-  ];
-
-  const baseUrl = 'https://perfectdark909.com';
-
-  // Generate sitemap XML
-  let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
-
-  routes.forEach((route) => {
-    sitemap += `  <url>
-    <loc>${baseUrl}${route.path}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>
-`;
+  const currentDate = getSiteLocalDate();
+  const artistIds = getArtistIds();
+  const sitemap = renderSitemap({
+    currentDate,
+    routes: getSitemapRoutes(artistIds),
   });
+  const redirects = renderRedirects(artistIds);
 
-  sitemap += `</urlset>
-`;
-
-  // Write to public/sitemap.xml
   const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
+  const redirectsPath = path.join(__dirname, '..', 'public', '_redirects');
   
   // Ensure directory exists
   const publicDir = path.dirname(sitemapPath);
@@ -64,9 +27,9 @@ try {
   }
   
   fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-  console.log(`✅ Sitemap generated with date: ${currentDate}`);
+  fs.writeFileSync(redirectsPath, redirects, 'utf8');
+  console.log(`Generated sitemap and redirects with date: ${currentDate}`);
 } catch (error) {
-  console.error('❌ Error generating sitemap:', error.message);
-  // Don't fail the build if sitemap generation fails
-  process.exit(0);
+  console.error('Error generating SEO build artifacts:', error.message);
+  process.exit(1);
 }

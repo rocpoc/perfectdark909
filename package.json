@@ -16,6 +16,8 @@
     "dev": "vite --host 0.0.0.0 --port 3000",
     "prebuild": "node scripts/generate-sitemap.js",
     "build": "vite build",
+    "postbuild": "node scripts/prerender-meta.js",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
   "devDependencies": {

@@ -100,8 +100,8 @@ export const Artists: React.FC = () => {
       return () => window.cancelIdleCallback(idleId);
     }
 
-    const timeoutId = window.setTimeout(preloadImages, 500);
-    return () => window.clearTimeout(timeoutId);
+    const timeoutId = setTimeout(preloadImages, 500);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const breadcrumbStructuredData = {

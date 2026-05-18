@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { Container } from "../components/Container";
+import { SEO } from "../components/SEO";
 import { useBPM } from "../contexts/BPMContext";
 
 interface TrackConfig {
@@ -378,6 +379,11 @@ export const Mixer: React.FC = () => {
       padBottom={false}
       contentClassName="pd-wrapper"
     >
+      <SEO
+        title="Audio Mixer | Perfect Dark"
+        description="Use the Perfect Dark browser audio mixer to blend label stems in sync."
+        canonical="/mixer"
+      />
       <main className="pd-section-tight">
         <div className="mb-12 flex items-start justify-between gap-6">
           <div>
