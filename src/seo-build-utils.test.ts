@@ -5,6 +5,7 @@ import { artistData } from "./data/artists";
 
 const require = createRequire(import.meta.url);
 const {
+  DEFAULT_OG_IMAGE,
   getArtistIds,
   getRouteSeoEntries,
   getSiteLocalDate,
@@ -31,37 +32,47 @@ describe("SEO build artifacts", () => {
 
   test("renders sitemap without deleted or redirect-only pages", () => {
     const sitemap = renderSitemap({
-      currentDate: "2026-05-17",
       routes: getSitemapRoutes(getArtistIds()),
     });
 
-    expect(sitemap).toContain("<lastmod>2026-05-17</lastmod>");
     expect(sitemap).toContain(
       "<loc>https://perfectdark909.com/artists/lavender-persuasion</loc>"
     );
+    expect(sitemap).not.toContain("<lastmod>");
     expect(sitemap).not.toContain("/environment");
     expect(sitemap).not.toContain("/music");
     expect(sitemap).not.toContain("/shop");
+    expect(sitemap).not.toContain("/mixer");
   });
 
-  test("renders known SPA fallbacks and true unknown-route 404 fallback", () => {
+  test("renders redirects, canonical slash normalization, and true unknown-route 404 fallback", () => {
     const redirects = renderRedirects(getArtistIds());
 
     expect(redirects).toContain(
       "/artists/brick    /artists/brick/index.html    200"
     );
     expect(redirects).toContain(
-      "/artists/brick/    /artists/brick/index.html    200"
+      "/artists/brick/    /artists/brick    301"
     );
     expect(redirects).toContain(
       "/artists/lavender-persuasion/epk    /index.html    200"
     );
     expect(redirects).toContain(
-      "/artists/lavender-persuasion/epk/    /index.html    200"
+      "/artists/lavender-persuasion/epk/    /artists/lavender-persuasion/epk    301"
+    );
+    expect(redirects).toContain(
+      "/music    https://perfectdark909.bandcamp.com    301"
+    );
+    expect(redirects).toContain(
+      "/shop    https://shop.perfectdark909.com    301"
+    );
+    expect(redirects).toContain(
+      "/sms-opt-in    /sms-opt-in/index.html    200"
     );
     expect(redirects).toContain("/*    /404.html    404");
     expect(redirects).not.toContain("/*    /index.html   200");
     expect(redirects).not.toContain("/environment");
+    expect(redirects).not.toContain("/mixer");
   });
 
   test("defines prerender metadata for durable crawlable routes", () => {
@@ -71,15 +82,39 @@ describe("SEO build artifacts", () => {
     );
 
     expect(entries.map((entry: { path: string }) => entry.path)).toEqual(
-      expect.arrayContaining(["/", "/info", "/artists", "/contact", "/mixer"])
+      expect.arrayContaining([
+        "/",
+        "/info",
+        "/artists",
+        "/contact",
+        "/sms-opt-in",
+      ])
+    );
+    expect(entries.map((entry: { path: string }) => entry.path)).not.toContain(
+      "/mixer"
     );
     expect(brickEntry).toMatchObject({
       title: "Brick | Perfect Dark Artist",
       canonical: "/artists/brick",
+      ogImage: "/images/artists/brick-headshot.jpg",
     });
     expect(brickEntry?.structuredData?.[0]).toMatchObject({
       "@type": "Person",
       name: "Brick",
+      image: "https://perfectdark909.com/images/artists/brick-headshot.jpg",
+    });
+    expect(brickEntry?.structuredData?.[0]?.sameAs).toContain(
+      "https://www.instagram.com/brick.909/"
+    );
+    expect(entries.find((entry: { path: string }) => entry.path === "/")).toHaveProperty(
+      "ogImage",
+      DEFAULT_OG_IMAGE
+    );
+    expect(
+      entries.find((entry: { path: string }) => entry.path === "/sms-opt-in")
+    ).toMatchObject({
+      canonical: "/sms-opt-in",
+      robots: "noindex,follow",
     });
   });
 

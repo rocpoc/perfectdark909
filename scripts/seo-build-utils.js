@@ -5,13 +5,13 @@ const ts = require("typescript");
 const SITE_URL = "https://perfectdark909.com";
 const ROOT_DIR = path.join(__dirname, "..");
 const DEFAULT_ARTISTS_FILE = path.join(ROOT_DIR, "src", "data", "artists.ts");
+const DEFAULT_OG_IMAGE = "/images/optimized/film-hero.jpg";
 
 const CORE_SITEMAP_ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/artists", priority: "0.9", changefreq: "weekly" },
   { path: "/info", priority: "0.8", changefreq: "monthly" },
   { path: "/contact", priority: "0.7", changefreq: "monthly" },
-  { path: "/mixer", priority: "0.6", changefreq: "monthly" },
 ];
 
 const CORE_SPA_ROUTES = [
@@ -19,11 +19,36 @@ const CORE_SPA_ROUTES = [
   "/artists",
   "/contact",
   "/info",
-  "/mixer",
-  "/music",
-  "/shop",
   "/sms-opt-in",
 ];
+
+const REDIRECT_ROUTES = [
+  { from: "/music", to: "https://perfectdark909.bandcamp.com", status: 301 },
+  { from: "/shop", to: "https://shop.perfectdark909.com", status: 301 },
+];
+
+const ARTIST_PUBLIC_IMAGE_OVERRIDES = {
+  "freeman-713": "/images/artists/freeman-headshot.jpg",
+};
+
+const toAbsoluteUrl = (pathOrUrl) => {
+  if (/^https?:\/\//i.test(pathOrUrl)) {
+    return pathOrUrl;
+  }
+
+  return `${SITE_URL}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
+};
+
+const getPublicArtistImage = (artistId) => {
+  const candidates = [
+    ARTIST_PUBLIC_IMAGE_OVERRIDES[artistId],
+    `/images/artists/${artistId}-headshot.jpg`,
+  ].filter(Boolean);
+
+  return candidates.find((candidate) =>
+    fs.existsSync(path.join(ROOT_DIR, "public", candidate.slice(1)))
+  );
+};
 
 const getSiteLocalDate = (date = new Date()) => {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -66,6 +91,33 @@ const getStringProperty = (node, propertyName) => {
     : undefined;
 };
 
+const getArrayProperty = (node, propertyName) => {
+  const property = node.properties.find((item) => {
+    if (!ts.isPropertyAssignment(item)) return false;
+    return getPropertyName(item.name) === propertyName;
+  });
+
+  if (
+    !property ||
+    !ts.isPropertyAssignment(property) ||
+    !ts.isArrayLiteralExpression(property.initializer)
+  ) {
+    return undefined;
+  }
+
+  return property.initializer;
+};
+
+const getSocialLinksProperty = (node) => {
+  const socialLinks = getArrayProperty(node, "socialLinks");
+  if (!socialLinks) return [];
+
+  return socialLinks.elements
+    .filter(ts.isObjectLiteralExpression)
+    .map((linkNode) => getStringProperty(linkNode, "url"))
+    .filter((url) => url && url !== "#");
+};
+
 const findArtistArray = (sourceFile) => {
   let artistArray;
 
@@ -105,13 +157,19 @@ const getArtistProfiles = (artistsFile = DEFAULT_ARTISTS_FILE) => {
 
   const artistProfiles = artistArray.elements
     .filter(ts.isObjectLiteralExpression)
-    .map((artistNode) => ({
-      id: getStringProperty(artistNode, "id"),
-      name: getStringProperty(artistNode, "name"),
-      basedIn: getStringProperty(artistNode, "basedIn"),
-      setType: getStringProperty(artistNode, "setType"),
-      bio: getStringProperty(artistNode, "bio"),
-    }))
+    .map((artistNode) => {
+      const id = getStringProperty(artistNode, "id");
+
+      return {
+        id,
+        name: getStringProperty(artistNode, "name"),
+        basedIn: getStringProperty(artistNode, "basedIn"),
+        setType: getStringProperty(artistNode, "setType"),
+        bio: getStringProperty(artistNode, "bio"),
+        image: id ? getPublicArtistImage(id) : undefined,
+        sameAs: getSocialLinksProperty(artistNode),
+      };
+    })
     .filter((artist) => artist.id && artist.name);
 
   if (artistProfiles.length === 0) {
@@ -163,7 +221,7 @@ const getPrerenderedRoutePaths = (artistIds = getArtistIds()) => [
   ...artistIds.map((artistId) => `/artists/${artistId}`),
   "/info",
   "/contact",
-  "/mixer",
+  "/sms-opt-in",
 ];
 
 const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
@@ -172,6 +230,7 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
     title: `${artist.name} | Perfect Dark Artist`,
     description: makeArtistDescription(artist),
     canonical: `/artists/${artist.id}`,
+    ogImage: artist.image || DEFAULT_OG_IMAGE,
     structuredData: [
       {
         "@context": "https://schema.org",
@@ -189,6 +248,32 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
           name: "Perfect Dark",
           url: SITE_URL,
         },
+        ...(artist.image ? { image: toAbsoluteUrl(artist.image) } : {}),
+        ...(artist.sameAs?.length > 0 ? { sameAs: artist.sameAs } : {}),
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Artists",
+            item: `${SITE_URL}/artists`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: artist.name,
+            item: `${SITE_URL}/artists/${artist.id}`,
+          },
+        ],
       },
     ],
   }));
@@ -200,6 +285,7 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
       description:
         "Perfect Dark is a record label, clothing brand, and artist collective.",
       canonical: "/",
+      ogImage: DEFAULT_OG_IMAGE,
       structuredData: [
         {
           "@context": "https://schema.org",
@@ -222,6 +308,7 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
       description:
         "Discover artists on Perfect Dark, a California techno label featuring Freeman 713, Fauna, Brick, Provider, and more. West Coast electronic music.",
       canonical: "/artists",
+      ogImage: DEFAULT_OG_IMAGE,
       structuredData: [
         {
           "@context": "https://schema.org",
@@ -238,6 +325,7 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
       description:
         "Learn about Perfect Dark, a California-based electronic music label, clothing brand, event collective, and climate-minded creative project.",
       canonical: "/info",
+      ogImage: DEFAULT_OG_IMAGE,
       structuredData: [
         {
           "@context": "https://schema.org",
@@ -253,13 +341,16 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
       description:
         "Contact Perfect Dark for booking inquiries, demos, collaborations, and order support.",
       canonical: "/contact",
+      ogImage: DEFAULT_OG_IMAGE,
     },
     {
-      path: "/mixer",
-      title: "Audio Mixer | Perfect Dark",
+      path: "/sms-opt-in",
+      title: "SMS Opt-In | Perfect Dark",
       description:
-        "Use the Perfect Dark browser audio mixer to blend label stems in sync.",
-      canonical: "/mixer",
+        "Perfect Dark SMS opt-in proof-of-consent page for event address messages.",
+      canonical: "/sms-opt-in",
+      robots: "noindex,follow",
+      ogImage: DEFAULT_OG_IMAGE,
     },
   ];
 };
@@ -267,17 +358,19 @@ const getRouteSeoEntries = (artistProfiles = getArtistProfiles()) => {
 const renderSitemap = ({
   routes = getSitemapRoutes(),
   baseUrl = SITE_URL,
-  currentDate = getSiteLocalDate(),
+  currentDate,
 } = {}) => {
   const entries = routes
-    .map(
-      (route) => `  <url>
+    .map((route) => {
+      const lastmod = route.lastmod || currentDate;
+      const lastmodLine = lastmod ? `    <lastmod>${lastmod}</lastmod>\n` : "";
+
+      return `  <url>
     <loc>${baseUrl}${route.path}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
+${lastmodLine}    <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
-  </url>`
-    )
+  </url>`;
+    })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -290,19 +383,25 @@ ${entries}
 const renderRedirects = (artistIds = getArtistIds()) => {
   const prerenderedRoutePaths = new Set(getPrerenderedRoutePaths(artistIds));
   const routeLines = getSpaFallbackRoutes(artistIds)
-    .flatMap((route) => (route.endsWith("/") ? [route] : [route, `${route}/`]))
-    .map((route) => {
-      const normalizedRoute = route.endsWith("/") ? route.slice(0, -1) : route;
-      const target = prerenderedRoutePaths.has(normalizedRoute)
-        ? `${normalizedRoute}/index.html`
+    .flatMap((route) => {
+      const target = prerenderedRoutePaths.has(route)
+        ? `${route}/index.html`
         : "/index.html";
 
-      return `${route}    ${target}    200`;
+      return [
+        `${route}/    ${route}    301`,
+        `${route}    ${target}    200`,
+      ];
     });
+  const externalRedirectLines = REDIRECT_ROUTES.flatMap((route) => [
+    `${route.from}/    ${route.to}    ${route.status}`,
+    `${route.from}    ${route.to}    ${route.status}`,
+  ]);
 
   return [
+    ...externalRedirectLines,
+    "/subscribe/    /subscribe    301",
     "/subscribe    /subscribe/index.html    200",
-    "/subscribe/    /subscribe/index.html    200",
     ...routeLines,
     "/*    /404.html    404",
     "",
@@ -311,6 +410,7 @@ const renderRedirects = (artistIds = getArtistIds()) => {
 
 module.exports = {
   DEFAULT_ARTISTS_FILE,
+  DEFAULT_OG_IMAGE,
   SITE_URL,
   getArtistIds,
   getArtistProfiles,

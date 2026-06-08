@@ -32,20 +32,28 @@ const initMetaPixel = () => {
   window.fbq = fbq;
   window._fbq = fbq;
 
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://connect.facebook.net/en_US/fbevents.js';
-
-  const firstScript = document.getElementsByTagName('script')[0];
-
-  if (firstScript?.parentNode) {
-    firstScript.parentNode.insertBefore(script, firstScript);
-  } else if (document.head) {
-    document.head.appendChild(script);
-  }
-
   fbq('init', META_PIXEL_ID);
   fbq('track', 'PageView');
+
+  const loadPixelScript = () => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+
+    const firstScript = document.getElementsByTagName('script')[0];
+
+    if (firstScript?.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript);
+    } else if (document.head) {
+      document.head.appendChild(script);
+    }
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(loadPixelScript, { timeout: 3000 });
+  } else {
+    setTimeout(loadPixelScript, 1500);
+  }
 };
 
 initMetaPixel();

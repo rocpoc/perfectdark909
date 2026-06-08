@@ -85,25 +85,6 @@ export const Artists: React.FC = () => {
     }
   }, [selectedArtistId, handleKeyDown]);
 
-  useEffect(() => {
-    const preloadImages = () => {
-      artistData.forEach((artist) => {
-        if (!artist.image) return;
-        const image = new Image();
-        image.decoding = "async";
-        image.src = artist.image;
-      });
-    };
-
-    if ("requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(preloadImages);
-      return () => window.cancelIdleCallback(idleId);
-    }
-
-    const timeoutId = setTimeout(preloadImages, 500);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
   const breadcrumbStructuredData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -170,7 +151,7 @@ export const Artists: React.FC = () => {
           <h1 className="pd-heading-xl mb-12">Artists</h1>
 
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
-            {artistData.map((artist) => (
+            {artistData.map((artist, index) => (
               <a
                 key={artist.id}
                 href={`/artists/${artist.id}`}
@@ -193,7 +174,8 @@ export const Artists: React.FC = () => {
                       srcSet={artist.imageSrcSet}
                       sizes={artist.imageSizes}
                       alt={artist.name}
-                      loading="eager"
+                      loading={index < 4 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : undefined}
                       decoding="async"
                     />
                   ) : (
