@@ -1,6 +1,6 @@
 export const SITE_URL = "https://perfectdark909.com";
 export const SITE_NAME = "Perfect Dark";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/logo512.png`;
+export const DEFAULT_OG_IMAGE = "/images/optimized/film-hero.jpg";
 
 export const toAbsoluteUrl = (pathOrUrl: string): string => {
   if (/^https?:\/\//i.test(pathOrUrl)) {

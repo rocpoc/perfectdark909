@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const {
+  DEFAULT_OG_IMAGE,
   SITE_URL,
   getRouteSeoEntries,
 } = require("./seo-build-utils");
@@ -28,26 +29,35 @@ const stripManagedSeo = (html) =>
     .replace(/<title>[\s\S]*?<\/title>\s*/i, "")
     .replace(/<meta\s+name="description"[\s\S]*?>\s*/i, "")
     .replace(/<meta\s+name="title"[\s\S]*?>\s*/i, "")
+    .replace(/<meta\s+name="robots"[\s\S]*?>\s*/i, "")
     .replace(/<link\s+rel="canonical"[\s\S]*?>\s*/i, "")
     .replace(/<meta\s+(?:property|name)="(?:og|twitter):[\s\S]*?>\s*/gi, "")
     .replace(/<script\s+type="application\/ld\+json"[\s\S]*?<\/script>\s*/gi, "");
 
 const renderSeoTags = (entry) => {
   const canonicalUrl = toAbsoluteUrl(entry.canonical);
+  const ogImageUrl = toAbsoluteUrl(entry.ogImage || DEFAULT_OG_IMAGE);
   const tags = [
     `<title>${escapeHtml(entry.title)}</title>`,
     `<meta name="title" content="${escapeHtml(entry.title)}" data-pd-seo="true" />`,
     `<meta name="description" content="${escapeHtml(entry.description)}" data-pd-seo="true" />`,
+    ...(entry.robots
+      ? [
+          `<meta name="robots" content="${escapeHtml(entry.robots)}" data-pd-seo="true" />`,
+        ]
+      : []),
     `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" data-pd-seo="true" />`,
     `<meta property="og:type" content="website" data-pd-seo="true" />`,
     `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" data-pd-seo="true" />`,
     `<meta property="og:title" content="${escapeHtml(entry.title)}" data-pd-seo="true" />`,
     `<meta property="og:description" content="${escapeHtml(entry.description)}" data-pd-seo="true" />`,
+    `<meta property="og:image" content="${escapeHtml(ogImageUrl)}" data-pd-seo="true" />`,
     `<meta property="og:site_name" content="Perfect Dark" data-pd-seo="true" />`,
     `<meta name="twitter:card" content="summary_large_image" data-pd-seo="true" />`,
     `<meta name="twitter:url" content="${escapeHtml(canonicalUrl)}" data-pd-seo="true" />`,
     `<meta name="twitter:title" content="${escapeHtml(entry.title)}" data-pd-seo="true" />`,
     `<meta name="twitter:description" content="${escapeHtml(entry.description)}" data-pd-seo="true" />`,
+    `<meta name="twitter:image" content="${escapeHtml(ogImageUrl)}" data-pd-seo="true" />`,
   ];
 
   (entry.structuredData ?? []).forEach((item) => {

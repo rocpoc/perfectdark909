@@ -11,10 +11,10 @@ test('renders app', () => {
   expect(container).toBeInTheDocument();
 });
 
-test('renders home gallery with optimized responsive images', () => {
+test('renders home gallery with optimized responsive images', async () => {
   renderAtPath('/');
 
-  const heroImage = screen.getByAltText(
+  const heroImage = await screen.findByAltText(
     'Perfect Dark shirt overlooking snow-covered mountains'
   );
 
@@ -36,7 +36,7 @@ test('renders crawlable artist detail metadata', async () => {
   renderAtPath('/artists/brick');
 
   expect(
-    screen.getByRole('heading', { name: 'Brick' })
+    await screen.findByRole('heading', { name: 'Brick' })
   ).toBeInTheDocument();
 
   await waitFor(() => {
@@ -56,10 +56,12 @@ test('renders crawlable artist detail metadata', async () => {
   ).toBe(true);
 });
 
-test('renders first-party info page sections', () => {
+test('renders first-party info page sections', async () => {
   renderAtPath('/info');
 
-  expect(screen.getByRole('heading', { name: 'What We Do' })).toBeInTheDocument();
+  expect(
+    await screen.findByRole('heading', { name: 'What We Do' })
+  ).toBeInTheDocument();
   expect(
     screen.getByRole('heading', { name: 'Artist Roster' })
   ).toBeInTheDocument();
@@ -73,7 +75,7 @@ test('renders not-found metadata for unknown client routes', async () => {
   renderAtPath('/does-not-exist');
 
   expect(
-    screen.getByRole('heading', { name: 'Page not found' })
+    await screen.findByRole('heading', { name: 'Page not found' })
   ).toBeInTheDocument();
 
   await waitFor(() => {
@@ -85,18 +87,14 @@ test('renders not-found metadata for unknown client routes', async () => {
   ).toBe('noindex,follow');
 });
 
-test('renders mixer metadata during client navigation', async () => {
+test('mixer route has been removed', async () => {
   renderAtPath('/mixer');
 
   expect(
-    screen.getByRole('heading', { name: 'Audio Mixer' })
+    await screen.findByRole('heading', { name: 'Page not found' })
   ).toBeInTheDocument();
 
   await waitFor(() => {
-    expect(document.title).toBe('Audio Mixer | Perfect Dark');
+    expect(document.title).toBe('Page Not Found | Perfect Dark');
   });
-
-  expect(
-    document.querySelector('link[rel="canonical"]')?.getAttribute('href')
-  ).toBe('https://perfectdark909.com/mixer');
 });

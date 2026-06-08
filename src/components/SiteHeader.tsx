@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import pdWordmark from "../img/PD Logo White.png";
 
@@ -64,16 +64,68 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const drawerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    if (!isMenuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = "hidden";
+    window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+
     return () => {
       document.body.style.overflow = "";
+      previousFocusRef.current?.focus?.();
     };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen || !drawerRef.current) return;
+
+    const drawer = drawerRef.current;
+    const getFocusableElements = () =>
+      Array.from(
+        drawer.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((element) => !element.hasAttribute("disabled"));
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusableElements = getFocusableElements();
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!firstElement || !lastElement) return;
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    drawer.addEventListener("keydown", handleKeyDown);
+    return () => drawer.removeEventListener("keydown", handleKeyDown);
   }, [isMenuOpen]);
 
   const headerClass = [
@@ -109,6 +161,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
 
             <div className="pd-header-actions">
               <button
+                ref={menuButtonRef}
                 type="button"
                 className="pd-header-link lg:hidden"
                 aria-expanded={isMenuOpen}
@@ -128,12 +181,16 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({
         aria-hidden={!isMenuOpen}
       />
       <aside
+        ref={drawerRef}
         id="pd-menu-drawer"
         className={`pd-menu-drawer ${isMenuOpen ? "is-open" : ""}`}
+        role="dialog"
+        aria-modal={isMenuOpen}
         aria-hidden={!isMenuOpen}
       >
         <div className="pd-drawer-top">
           <button
+            ref={closeButtonRef}
             type="button"
             className="pd-header-link"
             onClick={() => setIsMenuOpen(false)}
