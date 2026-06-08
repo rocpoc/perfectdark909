@@ -6,7 +6,6 @@
     "classnames": "^2.5.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-fast-marquee": "^1.6.5",
     "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.14.2",
     "web-vitals": "^5.2.0"

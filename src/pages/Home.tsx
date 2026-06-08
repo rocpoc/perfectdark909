@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import Marquee from "react-fast-marquee";
 import { SiteHeader } from "../components/SiteHeader";
 import { FooterSubscribe } from "../components/FooterSubscribe";
 import { SEO } from "../components/SEO";
@@ -94,10 +93,6 @@ const modularHeroItems = galleryItems.slice(0, 3);
 const splitGalleryItems = galleryItems.slice(3, 5);
 const modularSecondItems = galleryItems.slice(5, 8);
 const featureGalleryItem = galleryItems[8];
-
-const ticketUrl = "https://ra.co/events/2440881";
-const ticketText =
-  "PERFECT DARK // RESURRECTION // LOS ANGELES // RESIDENT ADVISOR";
 
 const GalleryTile: React.FC<GalleryItem> = ({
   src,
@@ -249,18 +244,6 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
-        <section className="pd-ticket-ticker-wrap" aria-label="Event tickets">
-          <a
-            href={ticketUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="pd-ticket-ticker"
-          >
-            <Marquee gradient={false} speed={105} autoFill>
-              <span className="pd-ticket-text">{ticketText}</span>
-            </Marquee>
-          </a>
-        </section>
       </main>
 
       <footer className="pd-footer">
