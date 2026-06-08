@@ -506,39 +506,6 @@
     text-underline-offset: 0.16em;
   }
 
-  .pd-ticket-ticker-wrap {
-    position: sticky;
-    bottom: 0;
-    z-index: 40;
-    width: 100%;
-    border-block: 1px solid rgba(255, 255, 255, 0.18);
-    background: #000;
-  }
-
-  .pd-ticket-ticker {
-    display: flex;
-    align-items: center;
-    min-height: 72px;
-    overflow: hidden;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .pd-ticket-ticker:hover {
-    background: #fff;
-    color: #000;
-  }
-
-  .pd-ticket-text {
-    display: inline-block;
-    padding-inline: 1.5rem;
-    white-space: nowrap;
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 0.96;
-    letter-spacing: 0;
-  }
-
   .pd-media-tile {
     position: relative;
     display: block;
@@ -792,13 +759,5 @@
       width: 100%;
     }
 
-    .pd-ticket-ticker {
-      min-height: 88px;
-    }
-
-    .pd-ticket-text {
-      padding-inline: 2rem;
-      font-size: 3rem;
-    }
   }
 }
